@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FB63F697F2DFD935D3A4DC0 /* Pods_Harmony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA964EE92A25094FD1F159E /* Pods_Harmony.framework */; };
 		521A04EC25C73570007F86A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A04EB25C73570007F86A0 /* AppDelegate.swift */; };
 		521A04EE25C73570007F86A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A04ED25C73570007F86A0 /* SceneDelegate.swift */; };
 		521A04F325C73570007F86A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521A04F125C73570007F86A0 /* Main.storyboard */; };
@@ -31,9 +32,24 @@
 		521A054125C8125C007F86A0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A054025C8125C007F86A0 /* RegistrationViewController.swift */; };
 		521A054425C818F4007F86A0 /* TabBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A054325C818F4007F86A0 /* TabBar+Ext.swift */; };
 		521A054725C85179007F86A0 /* Colors+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A054625C85179007F86A0 /* Colors+Ext.swift */; };
+		521A055525C9D1AF007F86A0 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521A055225C9D1AE007F86A0 /* SpotifyMetadata.framework */; };
+		521A055625C9D1AF007F86A0 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521A055325C9D1AE007F86A0 /* SpotifyAudioPlayback.framework */; };
+		521A055725C9D1AF007F86A0 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521A055425C9D1AF007F86A0 /* SpotifyAuthentication.framework */; };
+		521A055F25C9E892007F86A0 /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */; };
+		521A056225C9E95A007F86A0 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A056125C9E95A007F86A0 /* LoginCoordinator.swift */; };
+		521A056825C9F674007F86A0 /* LoginTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A056725C9F674007F86A0 /* LoginTextFieldStyle.swift */; };
+		5234BAA725CC166100561E86 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234BAA625CC166100561E86 /* LoginViewModel.swift */; };
+		5234BAAA25CC173300561E86 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234BAA925CC173300561E86 /* RegisterCoordinator.swift */; };
+		5234BAAD25CC229600561E86 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234BAAC25CC229600561E86 /* ServicesViewController.swift */; };
+		5234BAB225CC22C300561E86 /* ServicesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234BAB125CC22C300561E86 /* ServicesCoordinator.swift */; };
+		5234BAB525CC22E900561E86 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234BAB425CC22E900561E86 /* RegisterViewModel.swift */; };
+		5234BAB825CC230E00561E86 /* ServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234BAB725CC230E00561E86 /* ServicesViewModel.swift */; };
+		52B1C24F25CC388E0027C3E6 /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1C24E25CC388E0027C3E6 /* VKService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F7D604D3479CC33EE99EF88 /* Pods-Harmony.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harmony.debug.xcconfig"; path = "Target Support Files/Pods-Harmony/Pods-Harmony.debug.xcconfig"; sourceTree = "<group>"; };
+		14418CAD8F75E6B348133192 /* Pods-Harmony.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harmony.release.xcconfig"; path = "Target Support Files/Pods-Harmony/Pods-Harmony.release.xcconfig"; sourceTree = "<group>"; };
 		521A04E825C73570007F86A0 /* Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Harmony.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521A04EB25C73570007F86A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		521A04ED25C73570007F86A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +76,21 @@
 		521A054025C8125C007F86A0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		521A054325C818F4007F86A0 /* TabBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBar+Ext.swift"; sourceTree = "<group>"; };
 		521A054625C85179007F86A0 /* Colors+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Ext.swift"; sourceTree = "<group>"; };
+		521A054E25C9CCB7007F86A0 /* Harmony-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Harmony-Bridging-Header.h"; sourceTree = "<group>"; };
+		521A055225C9D1AE007F86A0 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		521A055325C9D1AE007F86A0 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		521A055425C9D1AF007F86A0 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
+		521A056125C9E95A007F86A0 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		521A056725C9F674007F86A0 /* LoginTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldStyle.swift; sourceTree = "<group>"; };
+		5234BAA625CC166100561E86 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		5234BAA925CC173300561E86 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
+		5234BAAC25CC229600561E86 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		5234BAB125CC22C300561E86 /* ServicesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCoordinator.swift; sourceTree = "<group>"; };
+		5234BAB425CC22E900561E86 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		5234BAB725CC230E00561E86 /* ServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewModel.swift; sourceTree = "<group>"; };
+		52B1C24E25CC388E0027C3E6 /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
+		9BA964EE92A25094FD1F159E /* Pods_Harmony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Harmony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,17 +98,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521A055525C9D1AF007F86A0 /* SpotifyMetadata.framework in Frameworks */,
+				521A055725C9D1AF007F86A0 /* SpotifyAuthentication.framework in Frameworks */,
+				521A055625C9D1AF007F86A0 /* SpotifyAudioPlayback.framework in Frameworks */,
+				3FB63F697F2DFD935D3A4DC0 /* Pods_Harmony.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C43EAECFE87EEB685227C17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9BA964EE92A25094FD1F159E /* Pods_Harmony.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		521A04DF25C73570007F86A0 = {
 			isa = PBXGroup;
 			children = (
 				521A04EA25C73570007F86A0 /* Harmony */,
 				521A04E925C73570007F86A0 /* Products */,
+				D8BA771E9B3E25B33F5047CF /* Pods */,
+				0C43EAECFE87EEB685227C17 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,14 +139,19 @@
 			children = (
 				521A04EB25C73570007F86A0 /* AppDelegate.swift */,
 				521A04ED25C73570007F86A0 /* SceneDelegate.swift */,
+				52B1C24D25CC38800027C3E6 /* Services */,
 				521A050A25C73668007F86A0 /* Extensions */,
-				521A050825C73658007F86A0 /* Controllers */,
+				521A056425C9F645007F86A0 /* Views */,
 				521A052A25C757B2007F86A0 /* ViewModels */,
+				521A050825C73658007F86A0 /* Controllers */,
 				521A050025C7357E007F86A0 /* Coordinators */,
-				521A04F125C73570007F86A0 /* Main.storyboard */,
+				52B1C24225CC34FE0027C3E6 /* Storyboards */,
 				521A04F425C73573007F86A0 /* Assets.xcassets */,
-				521A04F625C73573007F86A0 /* LaunchScreen.storyboard */,
 				521A04F925C73573007F86A0 /* Info.plist */,
+				521A054E25C9CCB7007F86A0 /* Harmony-Bridging-Header.h */,
+				521A055325C9D1AE007F86A0 /* SpotifyAudioPlayback.framework */,
+				521A055425C9D1AF007F86A0 /* SpotifyAuthentication.framework */,
+				521A055225C9D1AE007F86A0 /* SpotifyMetadata.framework */,
 			);
 			path = Harmony;
 			sourceTree = "<group>";
@@ -110,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				521A050125C73588007F86A0 /* AppCoordinator.swift */,
+				5234BAAF25CC22B400561E86 /* Login and Register */,
 				521A051B25C741AC007F86A0 /* ProfileCoordinator.swift */,
 				521A051E25C741FF007F86A0 /* FriendsCoordinator.swift */,
 				521A052125C74210007F86A0 /* GroupCoordinator.swift */,
@@ -122,11 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				521A053B25C811FE007F86A0 /* Login and Registration */,
-				521A052725C750D6007F86A0 /* MainTabBarController.swift */,
-				521A050F25C73FDB007F86A0 /* ProfileViewController.swift */,
-				521A051225C73FE9007F86A0 /* FriendsViewController.swift */,
-				521A051525C73FF4007F86A0 /* GroupViewController.swift */,
-				521A051825C73FFC007F86A0 /* MusicViewController.swift */,
+				52B1C24425CC35120027C3E6 /* Tabs */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -144,10 +191,8 @@
 		521A052A25C757B2007F86A0 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				521A052B25C757C2007F86A0 /* ProfileViewModel.swift */,
-				521A052F25C757CC007F86A0 /* FriendsViewModel.swift */,
-				521A053225C757D7007F86A0 /* GroupViewModel.swift */,
-				521A053525C757DF007F86A0 /* MusicViewModel.swift */,
+				5234BAA525CC165300561E86 /* Login and Register */,
+				52B1C24625CC351E0027C3E6 /* Tabs */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -157,8 +202,95 @@
 			children = (
 				521A053C25C81249007F86A0 /* LoginViewController.swift */,
 				521A054025C8125C007F86A0 /* RegistrationViewController.swift */,
+				5234BAAC25CC229600561E86 /* ServicesViewController.swift */,
 			);
 			path = "Login and Registration";
+			sourceTree = "<group>";
+		};
+		521A056425C9F645007F86A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				521A056525C9F650007F86A0 /* Login and Registration */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		521A056525C9F650007F86A0 /* Login and Registration */ = {
+			isa = PBXGroup;
+			children = (
+				521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */,
+				521A056725C9F674007F86A0 /* LoginTextFieldStyle.swift */,
+			);
+			path = "Login and Registration";
+			sourceTree = "<group>";
+		};
+		5234BAA525CC165300561E86 /* Login and Register */ = {
+			isa = PBXGroup;
+			children = (
+				5234BAA625CC166100561E86 /* LoginViewModel.swift */,
+				5234BAB425CC22E900561E86 /* RegisterViewModel.swift */,
+				5234BAB725CC230E00561E86 /* ServicesViewModel.swift */,
+			);
+			path = "Login and Register";
+			sourceTree = "<group>";
+		};
+		5234BAAF25CC22B400561E86 /* Login and Register */ = {
+			isa = PBXGroup;
+			children = (
+				521A056125C9E95A007F86A0 /* LoginCoordinator.swift */,
+				5234BAA925CC173300561E86 /* RegisterCoordinator.swift */,
+				5234BAB125CC22C300561E86 /* ServicesCoordinator.swift */,
+			);
+			path = "Login and Register";
+			sourceTree = "<group>";
+		};
+		52B1C24225CC34FE0027C3E6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				521A04F125C73570007F86A0 /* Main.storyboard */,
+				521A04F625C73573007F86A0 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		52B1C24425CC35120027C3E6 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				521A052725C750D6007F86A0 /* MainTabBarController.swift */,
+				521A050F25C73FDB007F86A0 /* ProfileViewController.swift */,
+				521A051225C73FE9007F86A0 /* FriendsViewController.swift */,
+				521A051525C73FF4007F86A0 /* GroupViewController.swift */,
+				521A051825C73FFC007F86A0 /* MusicViewController.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		52B1C24625CC351E0027C3E6 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				521A052B25C757C2007F86A0 /* ProfileViewModel.swift */,
+				521A052F25C757CC007F86A0 /* FriendsViewModel.swift */,
+				521A053225C757D7007F86A0 /* GroupViewModel.swift */,
+				521A053525C757DF007F86A0 /* MusicViewModel.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		52B1C24D25CC38800027C3E6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				52B1C24E25CC388E0027C3E6 /* VKService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D8BA771E9B3E25B33F5047CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F7D604D3479CC33EE99EF88 /* Pods-Harmony.debug.xcconfig */,
+				14418CAD8F75E6B348133192 /* Pods-Harmony.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,9 +300,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 521A04FC25C73573007F86A0 /* Build configuration list for PBXNativeTarget "Harmony" */;
 			buildPhases = (
+				70904CCF630BA859D66F7B45 /* [CP] Check Pods Manifest.lock */,
 				521A04E425C73570007F86A0 /* Sources */,
 				521A04E525C73570007F86A0 /* Frameworks */,
 				521A04E625C73570007F86A0 /* Resources */,
+				86943710B46F56DE66911698 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -226,6 +360,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		70904CCF630BA859D66F7B45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Harmony-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86943710B46F56DE66911698 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Harmony/Pods-Harmony-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Harmony/Pods-Harmony-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Harmony/Pods-Harmony-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		521A04E425C73570007F86A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -238,18 +414,28 @@
 				521A053325C757D7007F86A0 /* GroupViewModel.swift in Sources */,
 				521A052825C750D6007F86A0 /* MainTabBarController.swift in Sources */,
 				521A053625C757DF007F86A0 /* MusicViewModel.swift in Sources */,
+				521A056825C9F674007F86A0 /* LoginTextFieldStyle.swift in Sources */,
 				521A052225C74210007F86A0 /* GroupCoordinator.swift in Sources */,
 				521A051325C73FE9007F86A0 /* FriendsViewController.swift in Sources */,
+				521A055F25C9E892007F86A0 /* LoginButtonStyle.swift in Sources */,
+				52B1C24F25CC388E0027C3E6 /* VKService.swift in Sources */,
 				521A050225C73588007F86A0 /* AppCoordinator.swift in Sources */,
+				5234BAB225CC22C300561E86 /* ServicesCoordinator.swift in Sources */,
 				521A050C25C73673007F86A0 /* UIViewController+Ext.swift in Sources */,
+				5234BAB825CC230E00561E86 /* ServicesViewModel.swift in Sources */,
+				5234BAA725CC166100561E86 /* LoginViewModel.swift in Sources */,
 				521A054425C818F4007F86A0 /* TabBar+Ext.swift in Sources */,
+				5234BAAA25CC173300561E86 /* RegisterCoordinator.swift in Sources */,
 				521A051F25C741FF007F86A0 /* FriendsCoordinator.swift in Sources */,
 				521A04EC25C73570007F86A0 /* AppDelegate.swift in Sources */,
 				521A051925C73FFC007F86A0 /* MusicViewController.swift in Sources */,
 				521A051025C73FDB007F86A0 /* ProfileViewController.swift in Sources */,
+				521A056225C9E95A007F86A0 /* LoginCoordinator.swift in Sources */,
 				521A053025C757CC007F86A0 /* FriendsViewModel.swift in Sources */,
 				521A054725C85179007F86A0 /* Colors+Ext.swift in Sources */,
 				521A052525C7421F007F86A0 /* MusicCoordinator.swift in Sources */,
+				5234BAAD25CC229600561E86 /* ServicesViewController.swift in Sources */,
+				5234BAB525CC22E900561E86 /* RegisterViewModel.swift in Sources */,
 				521A052C25C757C2007F86A0 /* ProfileViewModel.swift in Sources */,
 				521A04EE25C73570007F86A0 /* SceneDelegate.swift in Sources */,
 			);
@@ -334,7 +520,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbookpro/Desktop/Harmony/Harmony/Harmony-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 			};
 			name = Debug;
 		};
@@ -388,25 +576,35 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbookpro/Desktop/Harmony/Harmony/Harmony-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		521A04FD25C73573007F86A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F7D604D3479CC33EE99EF88 /* Pods-Harmony.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RWU4M8Y9HU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Harmony",
+				);
 				INFOPLIST_FILE = Harmony/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Kostatyyy.Harmony;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Kostatyyy.Harmony;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbookpro/Desktop/Harmony/Harmony/Harmony-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -414,18 +612,26 @@
 		};
 		521A04FE25C73573007F86A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14418CAD8F75E6B348133192 /* Pods-Harmony.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RWU4M8Y9HU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Harmony",
+				);
 				INFOPLIST_FILE = Harmony/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Kostatyyy.Harmony;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Kostatyyy.Harmony;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbookpro/Desktop/Harmony/Harmony/Harmony-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

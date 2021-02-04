@@ -32,6 +32,7 @@ final class LoginCoordinator: Coordinator {
     
     func goToRegister() {
         let registerCoordinator = RegisterCoordinator(navigationController: navigationController)
+        registerCoordinator.parentCoordinator = self
         childCoordinators.append(registerCoordinator)
         registerCoordinator.start()
     }

@@ -135,20 +135,35 @@
                                     <action selector="goToForgotPassword:" destination="Cdy-ut-9Bz" eventType="touchUpInside" id="qzT-SI-GQy"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="cpX-EQ-e1H">
+                                <rect key="frame" x="87" y="74" width="240" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harmony" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chd-FP-tAT">
+                                <rect key="frame" x="110" y="210" width="194.5" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" red="0.098711206090000003" green="0.10634849170000001" blue="0.116819877" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MNx-Rh-WVv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3E1-xg-Dog" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="0yz-po-oq7"/>
+                            <constraint firstItem="cpX-EQ-e1H" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="4Dp-U9-X1F"/>
                             <constraint firstItem="3E1-xg-Dog" firstAttribute="height" secondItem="Sz5-Ld-NPt" secondAttribute="height" multiplier="0.15" id="CEI-WM-ACa"/>
                             <constraint firstItem="VVz-Gf-lF4" firstAttribute="top" secondItem="Igm-XM-kcp" secondAttribute="bottom" constant="20" id="EA9-TU-mLk"/>
+                            <constraint firstItem="cpX-EQ-e1H" firstAttribute="top" secondItem="MNx-Rh-WVv" secondAttribute="top" constant="30" id="I56-5X-UeF"/>
                             <constraint firstItem="jO3-Kr-7Xv" firstAttribute="top" secondItem="3E1-xg-Dog" secondAttribute="bottom" constant="10" id="JOe-gV-0eW"/>
                             <constraint firstItem="3E1-xg-Dog" firstAttribute="top" secondItem="MNx-Rh-WVv" secondAttribute="top" constant="275" id="LVY-61-s0q"/>
                             <constraint firstItem="Igm-XM-kcp" firstAttribute="top" secondItem="3E1-xg-Dog" secondAttribute="bottom" constant="100" id="M7g-Fn-wWJ"/>
+                            <constraint firstItem="cpX-EQ-e1H" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" multiplier="0.57971" id="PFO-dP-gsM"/>
+                            <constraint firstItem="chd-FP-tAT" firstAttribute="top" secondItem="cpX-EQ-e1H" secondAttribute="bottom" constant="8" symbolic="YES" id="PiP-yD-8Ki"/>
+                            <constraint firstItem="chd-FP-tAT" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="Wna-5M-hSf"/>
                             <constraint firstItem="Igm-XM-kcp" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" multiplier="0.6" id="cKD-zs-TbL"/>
                             <constraint firstItem="3E1-xg-Dog" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" multiplier="0.8" id="hvz-hQ-N2S"/>
                             <constraint firstItem="jO3-Kr-7Xv" firstAttribute="trailing" secondItem="3E1-xg-Dog" secondAttribute="trailing" id="jd0-lS-Grh"/>
                             <constraint firstItem="VVz-Gf-lF4" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="nVM-Lh-2nB"/>
+                            <constraint firstItem="cpX-EQ-e1H" firstAttribute="height" secondItem="Sz5-Ld-NPt" secondAttribute="height" multiplier="0.142857" id="qUX-SU-pWB"/>
                             <constraint firstItem="Igm-XM-kcp" firstAttribute="height" secondItem="Sz5-Ld-NPt" secondAttribute="height" multiplier="0.14" id="vel-Td-U0p"/>
                             <constraint firstItem="Igm-XM-kcp" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="wBq-aW-pj1"/>
                         </constraints>
@@ -492,23 +507,24 @@
     </scenes>
     <designables>
         <designable name="TJW-Ge-6BX">
-            <size key="intrinsicContentSize" width="117.5" height="23"/>
+            <size key="intrinsicContentSize" width="77.5" height="23"/>
         </designable>
         <designable name="UmD-PN-LT8">
-            <size key="intrinsicContentSize" width="122.5" height="23"/>
+            <size key="intrinsicContentSize" width="82.5" height="23"/>
         </designable>
         <designable name="VE2-vV-mQf">
-            <size key="intrinsicContentSize" width="83" height="23"/>
+            <size key="intrinsicContentSize" width="43" height="23"/>
         </designable>
         <designable name="uKi-LZ-I1e">
-            <size key="intrinsicContentSize" width="117.5" height="23"/>
+            <size key="intrinsicContentSize" width="77.5" height="23"/>
         </designable>
         <designable name="vXT-PU-QIe">
-            <size key="intrinsicContentSize" width="122.5" height="23"/>
+            <size key="intrinsicContentSize" width="82.5" height="23"/>
         </designable>
     </designables>
     <resources>
         <image name="email" width="25" height="25"/>
+        <image name="logo" width="130" height="130"/>
         <image name="okIcon" width="25" height="25"/>
         <image name="password" width="25" height="25"/>
         <image name="spotifyIcon" width="25" height="25"/>

@@ -9,21 +9,29 @@ import UIKit
 
 class ServicesViewController: UIViewController {
 
+    var viewModel: ServicesViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.viewDidDisappear()
     }
-    */
-
+    
+    /* Spotify Authorisation */
+    @IBAction func spotifySignUp(_ sender: UIButton) {
+    }
+    
+    /* VK Authorisation */
+    @IBAction func vkSignUp(_ sender: UIButton) {
+        viewModel.authVK()
+    }
+    
+    /* OK Authorisation */
+    @IBAction func okSignUp(_ sender: UIButton) {
+    }
 }

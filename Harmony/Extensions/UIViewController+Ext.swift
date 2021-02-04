@@ -14,6 +14,11 @@ extension UIViewController {
         return viewController
     }
     
+    /* Hide navigation tab */
+    func hideNavController() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     /* Set tab bar items */
     func setTabBarItem(selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: Int? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
         
