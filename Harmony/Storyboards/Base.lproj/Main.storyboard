@@ -507,19 +507,19 @@
     </scenes>
     <designables>
         <designable name="TJW-Ge-6BX">
-            <size key="intrinsicContentSize" width="77.5" height="23"/>
+            <size key="intrinsicContentSize" width="117.5" height="23"/>
         </designable>
         <designable name="UmD-PN-LT8">
-            <size key="intrinsicContentSize" width="82.5" height="23"/>
+            <size key="intrinsicContentSize" width="122.5" height="23"/>
         </designable>
         <designable name="VE2-vV-mQf">
-            <size key="intrinsicContentSize" width="43" height="23"/>
+            <size key="intrinsicContentSize" width="83" height="23"/>
         </designable>
         <designable name="uKi-LZ-I1e">
-            <size key="intrinsicContentSize" width="77.5" height="23"/>
+            <size key="intrinsicContentSize" width="117.5" height="23"/>
         </designable>
         <designable name="vXT-PU-QIe">
-            <size key="intrinsicContentSize" width="82.5" height="23"/>
+            <size key="intrinsicContentSize" width="122.5" height="23"/>
         </designable>
     </designables>
     <resources>

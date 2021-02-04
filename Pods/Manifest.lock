@@ -1,20 +1,20 @@
 PODS:
-  - SwiftyVK (3.4.2)
+  - ok-ios-sdk (2.0.14)
   - VK-ios-sdk (1.6.2)
 
 DEPENDENCIES:
-  - SwiftyVK
+  - ok-ios-sdk
   - VK-ios-sdk
 
 SPEC REPOS:
   trunk:
-    - SwiftyVK
+    - ok-ios-sdk
     - VK-ios-sdk
 
 SPEC CHECKSUMS:
-  SwiftyVK: 5005dac6e85f7b0fd44e21ed2f021a397dff4cab
+  ok-ios-sdk: 30c84b4026386f21f21a3f956e1bd51fa5540b7d
   VK-ios-sdk: 5bcf00a2014a7323f98db9328b603d4f96635caa
 
-PODFILE CHECKSUM: 3e61b0ba7f2f1fa8259f4623a9ddfce868b5e35e
+PODFILE CHECKSUM: e6d0e1c69292124389768e23cd5f0a5cd99d701b
 
 COCOAPODS: 1.10.0

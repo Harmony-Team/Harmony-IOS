@@ -1,0 +1,6 @@
+framework module ok_ios_sdk {
+  umbrella header "ok-ios-sdk-umbrella.h"
+
+  export *
+  module * { export * }
+}

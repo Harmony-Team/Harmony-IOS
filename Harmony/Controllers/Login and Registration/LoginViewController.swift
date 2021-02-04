@@ -6,18 +6,14 @@
 //
 
 import UIKit
-import SafariServices
-import AVFoundation
+import VK_ios_sdk
 
-class LoginViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
+class LoginViewController: UIViewController {
     
     var viewModel: LoginViewModel!
     
     /* Spotify */
-    var auth = SPTAuth.defaultInstance()
-    var session: SPTSession!
-    var player: SPTAudioStreamingController?
-    var loginUrl: URL?
+    
     
     @IBOutlet weak var userNameTextField: LoginTextFieldStyle!
     @IBOutlet weak var passwordTextField: LoginTextFieldStyle!
@@ -31,15 +27,7 @@ class LoginViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudio
         
         passwordTextField.isSecureTextEntry = true
         setupPasswordEye()
-    }
     
-    func setup() {
-        let redirectUrl = "spotify-ios-quick-start://spotify-login-callback"
-        let cliendID = "afa2b19905b84b09ac9c2986b43fb072"
-        auth?.redirectURL = URL(string: redirectUrl)
-        auth?.clientID = cliendID
-        auth?.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
-        loginUrl = auth?.spotifyAppAuthenticationURL()
     }
     
     private func setupPasswordEye() {
@@ -54,18 +42,6 @@ class LoginViewController: UIViewController, SPTAudioStreamingDelegate, SPTAudio
     
     @objc private func togglePasswordText() {
         passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
-    }
-    
-    //    @objc func updateAfterFirstLogin () {
-    //        let userDefaults = UserDefaults.standard
-    //        if let sessionObj: AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
-    //            let sessionDataObj = sessionObj as! Data
-    //            let firstTimeSession = NSKeyedUnarchiver.unarchivedObject(with: sessionDataObj) as! SPTSession
-    //            self.session = firstTimeSession
-    //        }
-    //    }
-    
-    @IBAction func loginWithSpotify(_ sender: UIButton) {
     }
     
     /* Go to register form */

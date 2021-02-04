@@ -7,49 +7,23 @@
 
 import UIKit
 import VK_ios_sdk
+import ok_ios_sdk
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var auth = SPTAuth()
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        auth.redirectURL = URL(string: "spotify-ios-quick-start://spotify-login-callback")
-        auth.sessionUserDefaultsKey = "current session"
         
         return true
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
+        VKSdk.processOpen(url, fromApplication: sourceApplication)
+        OKSDK.open(url)
+        
         // called when user signs into spotify. Session data saved into user defaults, then notification posted to call updateAfterFirstLogin in ViewController.swift. Modeled off recommneded auth flow suggested by Spotify documentation
-        
-        
-        if auth.canHandle(auth.redirectURL) {
-            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
-                //
-                
-                if error != nil {
-                    print("error!")
-                }
-                let userDefaults = UserDefaults.standard
-                do {
-                    let sessionData = try NSKeyedArchiver.archivedData(withRootObject: session, requiringSecureCoding: false)
-                    print(sessionData)
-                    userDefaults.set(sessionData, forKey: "SpotifySession")
-                    userDefaults.synchronize()
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
-                } catch {
-                    print("Couldn't read file.")
-                }
-            })
-            return true
-        }
-        
         return false
-        
-        
     }
 
     // MARK: UISceneSession Lifecycle

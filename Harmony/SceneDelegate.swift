@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import VK_ios_sdk
+import ok_ios_sdk
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -21,6 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let vc: LoginViewController = .instantiate()
 //        window?.rootViewController = vc
 //        window?.makeKeyAndVisible()
+        
+        let okSettings = OKSDKInitSettings()
+        okSettings.appKey = "CPKHMQJGDIHBABABA"
+        okSettings.appId = "512000771758"
+        okSettings.controllerHandler = { return self.window?.rootViewController}
+        OKSDK.initWith(okSettings)
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

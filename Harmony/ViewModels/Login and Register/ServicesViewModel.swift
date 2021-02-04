@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import SwiftyVK
+import VK_ios_sdk
 
 class ServicesViewModel {
     
     var coordinator: ServicesCoordinator!
-    let vkDelegate = VKDelegate()
     
     func goToProfile() {
         
@@ -23,14 +22,7 @@ class ServicesViewModel {
     
     /* VK Auth */
     func authVK() {
-        VK.sessions.default.logIn(
-            onSuccess: { _ in
-                print("Success")
-            },
-            onError: { error in
-                print("SwiftyVK: authorize failed with", error)
-            }
-        )
+        
     }
     
     func viewDidDisappear() {

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F0C93F3773E43CA83CD5C4F2D883188C"
-               BuildableName = "Pods_Harmony.framework"
-               BlueprintName = "Pods-Harmony"
+               BlueprintIdentifier = "D0B5E08D58431F353DFA623AF81D9C17"
+               BuildableName = "ok_ios_sdk.framework"
+               BlueprintName = "ok-ios-sdk"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
