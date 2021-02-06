@@ -25,6 +25,11 @@ class ServicesViewModel {
         
     }
     
+    /* Register user. Go to profile */
+    func endRegistration() {
+        coordinator.goToProfile()
+    }
+    
     func viewDidDisappear() {
         coordinator.goBack()
     }

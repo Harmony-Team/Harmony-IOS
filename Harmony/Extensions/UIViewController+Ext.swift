@@ -52,4 +52,29 @@ extension UIViewController {
         }
     }
     
+    /* Dismiss view controller modal from left to right */
+    func dismissFromLeft() {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.view.window!.layer.add(transition, forKey: nil)
+        self.dismiss(animated: false, completion: nil)
+    }
+}
+
+
+extension UINavigationController {
+    func pushFromLeft(controller: UIViewController) {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        view.window?.layer.add(transition, forKey: kCATransition)
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: false, completion: nil)
+    }
+    
 }

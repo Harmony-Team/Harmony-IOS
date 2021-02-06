@@ -1,5 +1,5 @@
 //
-//  MusicViewController.swift
+//  GroupsViewController.swift
 //  Harmony
 //
 //  Created by Macbook Pro on 31.01.2021.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class MusicViewController: UIViewController {
+class GroupsViewController: UIViewController {
     
-    var viewModel: MusicViewModel!
+    var viewModel: GroupViewModel!
     
-    @IBOutlet weak var musicTableView: UITableView!
+    @IBOutlet weak var groupsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,23 +20,22 @@ class MusicViewController: UIViewController {
     }
     
     private func setupTableView() {
-        musicTableView.dataSource = self
-        musicTableView.delegate = self
-        musicTableView.register(MusicCell.self, forCellReuseIdentifier: "musicCell")
+        groupsTableView.dataSource = self
+        groupsTableView.delegate = self
+        groupsTableView.register(GroupCell.self, forCellReuseIdentifier: "groupCell")
     }
     
 }
 
-extension MusicViewController: UITableViewDataSource, UITableViewDelegate {
+extension GroupsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell", for: indexPath) as! MusicCell
-        cell.titleLabel.text = "Music Title"
-        cell.authorLabel.text = "Author Name"
-        cell.durationLabel.text = "3:04"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
+        cell.titleLabel.text = "Group Title"
+        cell.msgLabel.text = "Last Msg"
         return cell
     }
     
@@ -57,4 +56,9 @@ extension MusicViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.alpha = 1
             })
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.goToCurrentChat()
+    }
 }
+

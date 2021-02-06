@@ -46,6 +46,13 @@ class RegistrationViewController: UIViewController {
 
     /* Register user */
     @IBAction func signIn(_ sender: UIButton) {
+        checkTextFields()
         viewModel.goToServices()
+    }
+    
+    /* Validate text fields */
+    private func checkTextFields() {
+        guard let name = userNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {return}
+        
     }
 }

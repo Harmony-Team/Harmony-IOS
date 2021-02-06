@@ -72,4 +72,9 @@ class ServicesViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
         }
 
     }
+    
+    /* End registration. Go to profile */
+    @IBAction func endRegistration(_ sender: UIButton) {
+        viewModel.endRegistration()
+    }
 }

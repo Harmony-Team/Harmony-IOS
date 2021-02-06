@@ -17,12 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        window = UIWindow(windowScene: scene)
-        loginCoordinator = LoginCoordinator(window: window!)
-        loginCoordinator?.start()
-//        let vc: LoginViewController = .instantiate()
-//        window?.rootViewController = vc
-//        window?.makeKeyAndVisible()
+//        window = UIWindow(windowScene: scene)
+//        loginCoordinator = LoginCoordinator(window: window!)
+//        loginCoordinator?.start()
+        let vc: MainTabBarController = .instantiate()
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
         
         let okSettings = OKSDKInitSettings()
         okSettings.appKey = "CPKHMQJGDIHBABABA"

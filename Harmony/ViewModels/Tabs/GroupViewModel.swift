@@ -11,4 +11,14 @@ class GroupViewModel {
     
     var coordinator: GroupCoordinator!
     
+    /* Create new group */
+    func addNewGroupChat() {
+        print("SS")
+    }
+    
+    /* Select chat group */
+    func goToCurrentChat() {
+        coordinator.goToGroupChat()
+    }
+    
 }

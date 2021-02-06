@@ -26,6 +26,12 @@ final class ServicesCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func goToProfile() {
+        let profileCoordinator = MainTabBarCoordinator(navigationController: navigationController)
+        childCoordinators.append(profileCoordinator)
+        profileCoordinator.start()
+    }
+    
     func goBack() {
         parentCoordinator.finishChild(coordinator: self)
     }

@@ -39,7 +39,6 @@ class MainTabBarController: UITabBarController {
      func tabChangedTo(selectedIndex: Int) {
         if selectedIndex > 0 { tabBar.addShape(shapeLayer: &shapeLayer, layer: &mainLayer) }
         else { tabBar.removeShape(shapeLayer: &shapeLayer, layer: &mainLayer) }
-        print(selectedIndex)
      }
     
     override func viewDidLoad() {
@@ -50,11 +49,6 @@ class MainTabBarController: UITabBarController {
         groupCoordinator.start()
         musicCoordinator.start()
 
-        tabBar.shadowImage = UIImage()
-        tabBar.backgroundImage = UIImage()
-        tabBar.tintColor = .white
-        tabBar.unselectedItemTintColor = .white
-
         viewControllers =
             [
                 profileCoordinator.navigationController,
@@ -64,7 +58,23 @@ class MainTabBarController: UITabBarController {
                 musicCoordinator.navigationController
             ]
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tabBar.shadowImage = UIImage()
+        tabBar.backgroundImage = UIImage()
+        tabBar.tintColor = .white
+        tabBar.unselectedItemTintColor = .white
+        
         setupMiddleButton()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        print("DD")
     }
     
     func setupMiddleButton() {
@@ -88,7 +98,20 @@ class MainTabBarController: UITabBarController {
     }
     
     @objc func d() {
-        
+        switch selectedIndex {
+        case 1:
+            print("Friends")
+            break
+        case 3:
+            print("Groups")
+            groupCoordinator.addNewGroup()
+            break
+        case 4:
+            print("Music")
+            break
+        default:
+            break
+        }
     }
     
 }

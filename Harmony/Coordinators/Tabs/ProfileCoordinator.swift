@@ -22,6 +22,7 @@ final class ProfileCoordinator: Coordinator {
         viewController.setTabBarItem(image: "profile", selectedColor: .white, unSelectedColor: .gray, title: "Profile", tabBarItemTitle: "Profile")
         let profileViewModel = ProfileViewModel()
         profileViewModel.coordinator = self
+        viewController.viewModel = profileViewModel
         navigationController.pushViewController(viewController, animated: false)
     }
     
