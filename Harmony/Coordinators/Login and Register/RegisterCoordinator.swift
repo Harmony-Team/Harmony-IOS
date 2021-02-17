@@ -26,8 +26,8 @@ final class RegisterCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func goToServices() {
-        let servicesCoordinator = ServicesCoordinator(navigationController: navigationController)
+    func goToServices(with data: Any) {
+        let servicesCoordinator = ServicesCoordinator(navigationController: navigationController, data: data)
         servicesCoordinator.parentCoordinator = self
         childCoordinators.append(servicesCoordinator)
         servicesCoordinator.start()

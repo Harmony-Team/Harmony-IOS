@@ -44,6 +44,13 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
     }
     
+    /* Login user */
+    @IBAction func signIn(_ sender: UIButton) {
+        guard let username = userNameTextField.text, let password = passwordTextField.text else {return}
+        let user = LoginUser(username: username, password: password)
+        APIManager.shared.callLoginAPI(login: user)
+    }
+    
     /* Go to register form */
     @IBAction func goToSignIn(_ sender: UIButton) {
         viewModel.goToSignIn()

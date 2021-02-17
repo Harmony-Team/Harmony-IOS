@@ -17,19 +17,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         
+        let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+        
+        if isLoggedIn {
+            let vc: MainTabBarController = .instantiate()
+            window?.rootViewController = vc
+            window?.makeKeyAndVisible()
+        } else {
+            window = UIWindow(windowScene: scene)
+            loginCoordinator = LoginCoordinator(window: window!)
+            loginCoordinator?.start()
+        }
+        
 //        window = UIWindow(windowScene: scene)
 //        loginCoordinator = LoginCoordinator(window: window!)
 //        loginCoordinator?.start()
-        let vc: MainTabBarController = .instantiate()
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible()
+//        let vc: MainTabBarController = .instantiate()
+//        window?.rootViewController = vc
+//        window?.makeKeyAndVisible()
         
         let okSettings = OKSDKInitSettings()
         okSettings.appKey = "CPKHMQJGDIHBABABA"
         okSettings.appId = "512000771758"
         okSettings.controllerHandler = { return self.window?.rootViewController}
         OKSDK.initWith(okSettings)
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

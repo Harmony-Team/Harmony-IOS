@@ -53,7 +53,25 @@
 		5236FFA725CED99400845300 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFA625CED99400845300 /* ChatCoordinator.swift */; };
 		5236FFAA25CED9C300845300 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFA925CED9C300845300 /* ChatViewModel.swift */; };
 		5236FFAD25CEF6F900845300 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */; };
+		5236FFB325CFCBC600845300 /* NewFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFB225CFCBC600845300 /* NewFriendViewController.swift */; };
+		5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFB925CFCD3600845300 /* NewFriendCoordinator.swift */; };
+		5236FFC225CFCD7600845300 /* NewFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFC125CFCD7600845300 /* NewFriendViewModel.swift */; };
+		5236FFD525D0342B00845300 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFD425D0342B00845300 /* APIManager.swift */; };
+		5236FFD925D0346900845300 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFD825D0346900845300 /* User.swift */; };
+		5276D1B325D2D2F200D1B83C /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5276D1B025D2D2F200D1B83C /* SpotifyAuthentication.framework */; };
+		5276D1B425D2D2F200D1B83C /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5276D1B125D2D2F200D1B83C /* SpotifyAudioPlayback.framework */; };
+		5276D1B525D2D2F200D1B83C /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5276D1B225D2D2F200D1B83C /* SpotifyMetadata.framework */; };
+		52A758A525D93F770051EB61 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A758A425D93F770051EB61 /* Playlist.swift */; };
+		52B11CCC25DC1FA600CFB829 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B11CCB25DC1FA600CFB829 /* Track.swift */; };
+		52B11CCF25DD7DDE00CFB829 /* MusicCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B11CCE25DD7DDE00CFB829 /* MusicCellViewModel.swift */; };
+		52B11CD225DD8CB000CFB829 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B11CD125DD8CB000CFB829 /* LoadingIndicator.swift */; };
 		52B1C24F25CC388E0027C3E6 /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1C24E25CC388E0027C3E6 /* VKService.swift */; };
+		52B5C58B25D69FF100961A4E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C58A25D69FF100961A4E /* SettingsViewController.swift */; };
+		52B5C59225D6A0BA00961A4E /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C59125D6A0BA00961A4E /* SettingsCoordinator.swift */; };
+		52B5C59725D6A0E400961A4E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C59625D6A0E400961A4E /* SettingsViewModel.swift */; };
+		52B5C59E25D6A99C00961A4E /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C59D25D6A99C00961A4E /* UserProfile.swift */; };
+		52B5C5A225D6C19F00961A4E /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C5A125D6C19F00961A4E /* SettingsCell.swift */; };
+		52B5C5A525D6CC7800961A4E /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C5A425D6CC7800961A4E /* EditProfileViewController.swift */; };
 		52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */; };
 		52D1F4C525CC8DCA002AA1C9 /* OKSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */; };
 /* End PBXBuildFile section */
@@ -109,7 +127,25 @@
 		5236FFA625CED99400845300 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		5236FFA925CED9C300845300 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
+		5236FFB225CFCBC600845300 /* NewFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendViewController.swift; sourceTree = "<group>"; };
+		5236FFB925CFCD3600845300 /* NewFriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendCoordinator.swift; sourceTree = "<group>"; };
+		5236FFC125CFCD7600845300 /* NewFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendViewModel.swift; sourceTree = "<group>"; };
+		5236FFD425D0342B00845300 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		5236FFD825D0346900845300 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5276D1B025D2D2F200D1B83C /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		5276D1B125D2D2F200D1B83C /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		5276D1B225D2D2F200D1B83C /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		52A758A425D93F770051EB61 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		52B11CCB25DC1FA600CFB829 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		52B11CCE25DD7DDE00CFB829 /* MusicCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellViewModel.swift; sourceTree = "<group>"; };
+		52B11CD125DD8CB000CFB829 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		52B1C24E25CC388E0027C3E6 /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
+		52B5C58A25D69FF100961A4E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		52B5C59125D6A0BA00961A4E /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		52B5C59625D6A0E400961A4E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		52B5C59D25D6A99C00961A4E /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		52B5C5A125D6C19F00961A4E /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		52B5C5A425D6CC7800961A4E /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		52D1F4C125CC7F9E002AA1C9 /* VKHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKHeader.h; sourceTree = "<group>"; };
 		52D1F4C325CC8DCA002AA1C9 /* OKSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKSDK.h; sourceTree = "<group>"; };
@@ -122,7 +158,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5276D1B525D2D2F200D1B83C /* SpotifyMetadata.framework in Frameworks */,
 				3FB63F697F2DFD935D3A4DC0 /* Pods_Harmony.framework in Frameworks */,
+				5276D1B325D2D2F200D1B83C /* SpotifyAuthentication.framework in Frameworks */,
+				5276D1B425D2D2F200D1B83C /* SpotifyAudioPlayback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +179,6 @@
 		521A04DF25C73570007F86A0 = {
 			isa = PBXGroup;
 			children = (
-				521A054E25C9CCB7007F86A0 /* Harmony-Bridging-Header.h */,
 				521A04EA25C73570007F86A0 /* Harmony */,
 				521A04E925C73570007F86A0 /* Products */,
 				D8BA771E9B3E25B33F5047CF /* Pods */,
@@ -161,6 +199,7 @@
 			children = (
 				521A04EB25C73570007F86A0 /* AppDelegate.swift */,
 				521A04ED25C73570007F86A0 /* SceneDelegate.swift */,
+				5236FFD725D0346100845300 /* Models */,
 				52B1C24D25CC38800027C3E6 /* Services */,
 				521A050A25C73668007F86A0 /* Extensions */,
 				521A056425C9F645007F86A0 /* Views */,
@@ -170,6 +209,10 @@
 				52B1C24225CC34FE0027C3E6 /* Storyboards */,
 				521A04F425C73573007F86A0 /* Assets.xcassets */,
 				521A04F925C73573007F86A0 /* Info.plist */,
+				521A054E25C9CCB7007F86A0 /* Harmony-Bridging-Header.h */,
+				5276D1B125D2D2F200D1B83C /* SpotifyAudioPlayback.framework */,
+				5276D1B025D2D2F200D1B83C /* SpotifyAuthentication.framework */,
+				5276D1B225D2D2F200D1B83C /* SpotifyMetadata.framework */,
 				52D1F4C125CC7F9E002AA1C9 /* VKHeader.h */,
 				52D1F4C325CC8DCA002AA1C9 /* OKSDK.h */,
 				52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */,
@@ -191,7 +234,11 @@
 			isa = PBXGroup;
 			children = (
 				521A053B25C811FE007F86A0 /* Login and Registration */,
-				52B1C24425CC35120027C3E6 /* Tabs */,
+				521A052725C750D6007F86A0 /* MainTabBarController.swift */,
+				52B5C58F25D6A07C00961A4E /* Profile */,
+				5236FFAF25CFCBB800845300 /* Friends */,
+				5236FF8A25CDAF6000845300 /* Groups */,
+				5236FFC425CFD78400845300 /* Music */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -204,6 +251,7 @@
 				521A054625C85179007F86A0 /* Colors+Ext.swift */,
 				5236FF9325CDCA3F00845300 /* UIView+Ext.swift */,
 				5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */,
+				52B11CD125DD8CB000CFB829 /* LoadingIndicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -231,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				521A056525C9F650007F86A0 /* Login and Registration */,
+				52B5C5A025D6C18D00961A4E /* ProfileSettings */,
 				5236FF9725CDE00A00845300 /* Friends */,
 				5236FF8F25CDC92C00845300 /* Groups */,
 				5236FF9C25CDE59800845300 /* Music */,
@@ -271,22 +320,22 @@
 			isa = PBXGroup;
 			children = (
 				5236FF7B25CDA73400845300 /* MainTabBarCoordinator.swift */,
-				521A051B25C741AC007F86A0 /* ProfileCoordinator.swift */,
-				521A051E25C741FF007F86A0 /* FriendsCoordinator.swift */,
-				5236FF8525CDAF2800845300 /* Group */,
+				52B5C58D25D69FF500961A4E /* Profile */,
+				5236FFB525CFCD2600845300 /* Friends */,
+				5236FF8525CDAF2800845300 /* Groups */,
 				521A052425C7421F007F86A0 /* MusicCoordinator.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
 		};
-		5236FF8525CDAF2800845300 /* Group */ = {
+		5236FF8525CDAF2800845300 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
 				521A052125C74210007F86A0 /* GroupCoordinator.swift */,
 				5236FFA625CED99400845300 /* ChatCoordinator.swift */,
 				5236FF8225CDAF1500845300 /* NewGroupCoordinator.swift */,
 			);
-			path = Group;
+			path = Groups;
 			sourceTree = "<group>";
 		};
 		5236FF8A25CDAF6000845300 /* Groups */ = {
@@ -323,6 +372,70 @@
 			path = Music;
 			sourceTree = "<group>";
 		};
+		5236FFAF25CFCBB800845300 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				521A051225C73FE9007F86A0 /* FriendsViewController.swift */,
+				5236FFB225CFCBC600845300 /* NewFriendViewController.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		5236FFB525CFCD2600845300 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				521A051E25C741FF007F86A0 /* FriendsCoordinator.swift */,
+				5236FFB925CFCD3600845300 /* NewFriendCoordinator.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		5236FFBC25CFCD6600845300 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				521A053225C757D7007F86A0 /* GroupViewModel.swift */,
+				5236FFA925CED9C300845300 /* ChatViewModel.swift */,
+				5236FF8C25CDC52000845300 /* NewGroupViewModel.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		5236FFBF25CFCD6D00845300 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				521A052F25C757CC007F86A0 /* FriendsViewModel.swift */,
+				5236FFC125CFCD7600845300 /* NewFriendViewModel.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		5236FFC425CFD78400845300 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				521A051825C73FFC007F86A0 /* MusicViewController.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		5236FFD725D0346100845300 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5236FFD825D0346900845300 /* User.swift */,
+				52A758A425D93F770051EB61 /* Playlist.swift */,
+				52B11CCB25DC1FA600CFB829 /* Track.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52A758A225D93C0F0051EB61 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				521A053525C757DF007F86A0 /* MusicViewModel.swift */,
+				52B11CCE25DD7DDE00CFB829 /* MusicCellViewModel.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 		52B1C24225CC34FE0027C3E6 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,27 +445,13 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		52B1C24425CC35120027C3E6 /* Tabs */ = {
-			isa = PBXGroup;
-			children = (
-				521A052725C750D6007F86A0 /* MainTabBarController.swift */,
-				521A050F25C73FDB007F86A0 /* ProfileViewController.swift */,
-				521A051225C73FE9007F86A0 /* FriendsViewController.swift */,
-				5236FF8A25CDAF6000845300 /* Groups */,
-				521A051825C73FFC007F86A0 /* MusicViewController.swift */,
-			);
-			path = Tabs;
-			sourceTree = "<group>";
-		};
 		52B1C24625CC351E0027C3E6 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				521A052B25C757C2007F86A0 /* ProfileViewModel.swift */,
-				521A052F25C757CC007F86A0 /* FriendsViewModel.swift */,
-				521A053225C757D7007F86A0 /* GroupViewModel.swift */,
-				5236FFA925CED9C300845300 /* ChatViewModel.swift */,
-				5236FF8C25CDC52000845300 /* NewGroupViewModel.swift */,
-				521A053525C757DF007F86A0 /* MusicViewModel.swift */,
+				52B5C59425D6A0DA00961A4E /* Profile */,
+				5236FFBF25CFCD6D00845300 /* Friends */,
+				5236FFBC25CFCD6600845300 /* Groups */,
+				52A758A225D93C0F0051EB61 /* Music */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -362,8 +461,46 @@
 			children = (
 				52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */,
 				52B1C24E25CC388E0027C3E6 /* VKService.swift */,
+				5236FFD425D0342B00845300 /* APIManager.swift */,
+				52B5C59D25D6A99C00961A4E /* UserProfile.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		52B5C58D25D69FF500961A4E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				521A051B25C741AC007F86A0 /* ProfileCoordinator.swift */,
+				52B5C59125D6A0BA00961A4E /* SettingsCoordinator.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		52B5C58F25D6A07C00961A4E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				521A050F25C73FDB007F86A0 /* ProfileViewController.swift */,
+				52B5C58A25D69FF100961A4E /* SettingsViewController.swift */,
+				52B5C5A425D6CC7800961A4E /* EditProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		52B5C59425D6A0DA00961A4E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				521A052B25C757C2007F86A0 /* ProfileViewModel.swift */,
+				52B5C59625D6A0E400961A4E /* SettingsViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		52B5C5A025D6C18D00961A4E /* ProfileSettings */ = {
+			isa = PBXGroup;
+			children = (
+				52B5C5A125D6C19F00961A4E /* SettingsCell.swift */,
+			);
+			path = ProfileSettings;
 			sourceTree = "<group>";
 		};
 		D8BA771E9B3E25B33F5047CF /* Pods */ = {
@@ -490,6 +627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				521A053D25C81249007F86A0 /* LoginViewController.swift in Sources */,
+				5236FFC225CFCD7600845300 /* NewFriendViewModel.swift in Sources */,
 				5236FFAD25CEF6F900845300 /* UITextField+Ext.swift in Sources */,
 				521A051C25C741AC007F86A0 /* ProfileCoordinator.swift in Sources */,
 				521A054125C8125C007F86A0 /* RegistrationViewController.swift in Sources */,
@@ -500,6 +638,7 @@
 				521A053625C757DF007F86A0 /* MusicViewModel.swift in Sources */,
 				5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */,
 				5236FF9E25CDE5A800845300 /* MusicCell.swift in Sources */,
+				52B11CD225DD8CB000CFB829 /* LoadingIndicator.swift in Sources */,
 				5236FFA225CED6F200845300 /* ChatViewController.swift in Sources */,
 				521A056825C9F674007F86A0 /* LoginTextFieldStyle.swift in Sources */,
 				5236FF7C25CDA73400845300 /* MainTabBarCoordinator.swift in Sources */,
@@ -508,12 +647,17 @@
 				521A055F25C9E892007F86A0 /* LoginButtonStyle.swift in Sources */,
 				5236FF8825CDAF5800845300 /* NewGroupViewController.swift in Sources */,
 				52B1C24F25CC388E0027C3E6 /* VKService.swift in Sources */,
+				5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */,
 				521A050225C73588007F86A0 /* AppCoordinator.swift in Sources */,
 				5234BAB225CC22C300561E86 /* ServicesCoordinator.swift in Sources */,
+				52A758A525D93F770051EB61 /* Playlist.swift in Sources */,
+				5236FFB325CFCBC600845300 /* NewFriendViewController.swift in Sources */,
 				5236FFA725CED99400845300 /* ChatCoordinator.swift in Sources */,
 				52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */,
 				5236FF9925CDE01700845300 /* FriendCell.swift in Sources */,
 				521A050C25C73673007F86A0 /* UIViewController+Ext.swift in Sources */,
+				5236FFD925D0346900845300 /* User.swift in Sources */,
+				52B5C58B25D69FF100961A4E /* SettingsViewController.swift in Sources */,
 				5234BAB825CC230E00561E86 /* ServicesViewModel.swift in Sources */,
 				5234BAA725CC166100561E86 /* LoginViewModel.swift in Sources */,
 				5236FF9125CDC94700845300 /* GroupCell.swift in Sources */,
@@ -522,18 +666,26 @@
 				521A051F25C741FF007F86A0 /* FriendsCoordinator.swift in Sources */,
 				521A04EC25C73570007F86A0 /* AppDelegate.swift in Sources */,
 				5236FF8D25CDC52000845300 /* NewGroupViewModel.swift in Sources */,
+				52B5C59725D6A0E400961A4E /* SettingsViewModel.swift in Sources */,
 				521A051925C73FFC007F86A0 /* MusicViewController.swift in Sources */,
 				521A051025C73FDB007F86A0 /* ProfileViewController.swift in Sources */,
 				521A056225C9E95A007F86A0 /* LoginCoordinator.swift in Sources */,
+				52B5C59225D6A0BA00961A4E /* SettingsCoordinator.swift in Sources */,
 				521A053025C757CC007F86A0 /* FriendsViewModel.swift in Sources */,
+				52B5C59E25D6A99C00961A4E /* UserProfile.swift in Sources */,
 				521A054725C85179007F86A0 /* Colors+Ext.swift in Sources */,
+				5236FFD525D0342B00845300 /* APIManager.swift in Sources */,
 				521A052525C7421F007F86A0 /* MusicCoordinator.swift in Sources */,
+				52B5C5A525D6CC7800961A4E /* EditProfileViewController.swift in Sources */,
 				5234BAAD25CC229600561E86 /* ServicesViewController.swift in Sources */,
 				5234BAB525CC22E900561E86 /* RegisterViewModel.swift in Sources */,
+				52B11CCF25DD7DDE00CFB829 /* MusicCellViewModel.swift in Sources */,
 				521A052C25C757C2007F86A0 /* ProfileViewModel.swift in Sources */,
 				5236FF8325CDAF1500845300 /* NewGroupCoordinator.swift in Sources */,
 				5236FFAA25CED9C300845300 /* ChatViewModel.swift in Sources */,
+				52B11CCC25DC1FA600CFB829 /* Track.swift in Sources */,
 				521A04EE25C73570007F86A0 /* SceneDelegate.swift in Sources */,
+				52B5C5A225D6C19F00961A4E /* SettingsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +844,7 @@
 					"$(PROJECT_DIR)/Harmony",
 				);
 				INFOPLIST_FILE = Harmony/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -699,7 +852,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Kostatyyy.Harmony;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Harmony-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbookpro/Desktop/Harmony/Harmony/Harmony-Bridging-Header.h";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -719,6 +872,7 @@
 					"$(PROJECT_DIR)/Harmony",
 				);
 				INFOPLIST_FILE = Harmony/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -726,7 +880,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Kostatyyy.Harmony;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Harmony-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbookpro/Desktop/Harmony/Harmony/Harmony-Bridging-Header.h";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

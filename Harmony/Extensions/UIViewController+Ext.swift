@@ -78,3 +78,9 @@ extension UINavigationController {
     }
     
 }
+
+extension Notification.Name {
+    struct Spotify {
+        static let authURLOpened = Notification.Name("authURLOpened")
+    }
+}

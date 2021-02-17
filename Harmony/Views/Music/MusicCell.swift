@@ -22,6 +22,15 @@ class MusicCell: UITableViewCell {
         setupLayouts()
     }
     
+    func update(viewModel: MusicCellViewModel) {
+        titleLabel.text = viewModel.trackName
+        authorLabel.text = viewModel.trackArtistName
+        logoImageView.downloaded(from: viewModel.trackImage!)
+//        viewModel.loadTrackImage { image in
+//            self.logoImageView.image = image
+//        }
+    }
+    
     private func setupViews() {
         logoImageView.backgroundColor = .lightGray
         logoImageView.layer.cornerRadius = 15

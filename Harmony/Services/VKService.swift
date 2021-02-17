@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import VK_ios_sdk
 
-class VKDelegate {
-    
-    
+class VKService {
+//    let vk_app_id = "7750806"
+//    var sdkInstance: VKSdk?
+//    var scope = ["email", "photos", "offline"]
 }

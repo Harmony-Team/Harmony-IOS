@@ -11,8 +11,8 @@ class RegisterViewModel {
     
     var coordinator: RegisterCoordinator!
     
-    func goToServices() {
-        coordinator.goToServices()
+    func goToServices(with data: Any) {
+        coordinator.goToServices(with: data)
     }
     
     func viewDidDisappear() {

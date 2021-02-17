@@ -13,10 +13,14 @@ class FriendCell: UITableViewCell {
     var nameLabel = UILabel()
     var infoLabel = UILabel()
     var checkImageView = UIImageView()
+    var addFriendButton = UIButton()
     
     override var isSelected: Bool {
         didSet {
             checkImageView.image = isSelected ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle")
+            addFriendButton.backgroundColor = isSelected ? .white : .mainColor
+            addFriendButton.titleLabel?.textColor = isSelected ? .gray : .white
+            addFriendButton.setTitle(isSelected ? "Added" : "Add", for: .normal)
         }
     }
     
@@ -40,7 +44,13 @@ class FriendCell: UITableViewCell {
         checkImageView.image = UIImage(systemName: "circle")?.withRenderingMode(.alwaysTemplate)
         checkImageView.tintColor = .mainColor
         
-        [avatarImageView, nameLabel, infoLabel, checkImageView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        addFriendButton.setTitle("Add", for: .normal)
+        addFriendButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        addFriendButton.titleLabel?.textColor = .white
+        addFriendButton.backgroundColor = .mainColor
+        addFriendButton.layer.cornerRadius = 15
+        
+        [avatarImageView, nameLabel, infoLabel, checkImageView, addFriendButton].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
     private func setupHierarchy() {
@@ -48,12 +58,14 @@ class FriendCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(infoLabel)
         contentView.addSubview(checkImageView)
+        contentView.addSubview(addFriendButton)
     }
     
     private func setupLayouts() {
         avatarImageView.pinToEdges(edges: [.left, .top], constant: 15)
         nameLabel.pinToEdges(edges: [.top], constant: 15)
         checkImageView.pinToEdges(edges: [.right], constant: 15)
+        addFriendButton.pinToEdges(edges: [.right], constant: 15)
         
         NSLayoutConstraint.activate([
             avatarImageView.heightAnchor.constraint(equalToConstant: 50),
@@ -66,7 +78,11 @@ class FriendCell: UITableViewCell {
             
             checkImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             checkImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
-            checkImageView.widthAnchor.constraint(equalTo: checkImageView.heightAnchor)
+            checkImageView.widthAnchor.constraint(equalTo: checkImageView.heightAnchor),
+            
+            addFriendButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            addFriendButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            addFriendButton.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8)
         ])
     }
     

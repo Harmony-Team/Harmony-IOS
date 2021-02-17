@@ -11,14 +11,7 @@ import VK_ios_sdk
 class ServicesViewModel {
     
     var coordinator: ServicesCoordinator!
-    
-    func goToProfile() {
-        
-    }
-    
-    func setup() {
-        
-    }
+    var user: User!
     
     /* VK Auth */
     func authVK() {
@@ -27,6 +20,7 @@ class ServicesViewModel {
     
     /* Register user. Go to profile */
     func endRegistration() {
+//        APIManager.shared.callRegisterAPI(register: user)
         coordinator.goToProfile()
     }
     

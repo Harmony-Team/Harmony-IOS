@@ -13,15 +13,18 @@ final class ServicesCoordinator: Coordinator {
     private(set)var childCoordinators: [Coordinator] = []
     var parentCoordinator: RegisterCoordinator!
     var navigationController: UINavigationController!
+    var data: Any!
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, data: Any) {
         self.navigationController = navigationController
+        self.data = data
     }
 
     func start() {
         let viewController: ServicesViewController = .instantiate()
         let servicesViewModel = ServicesViewModel()
         servicesViewModel.coordinator = self
+        servicesViewModel.user = data as? User
         viewController.viewModel = servicesViewModel
         navigationController.pushViewController(viewController, animated: true)
     }

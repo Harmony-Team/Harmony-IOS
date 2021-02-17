@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-Harmony/Pods-Harmony-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/VK-ios-sdk/VK_ios_sdk.framework
 ${BUILT_PRODUCTS_DIR}/ok-ios-sdk/ok_ios_sdk.framework
