@@ -15,16 +15,23 @@ class SettingsViewModel {
     
     func getUserInfoDictionary() {
         userInfoDictionary = [
-            "Username": user.username,
+            "Username": user.login,
             "Email": user.email,
+            "Registration Date": user.dateCreated,
+            "Role": user.role.rawValue,
             "Password": "********"
         ]
     }
     
     /* Logout and go to login form */
     func logout() {
-//        UserDefaults.standard.removeObject(forKey: "isLoggedIn")
+        UserDefaults.standard.removeObject(forKey: "isLoggedIn")
         coordinator.goToLogin()
+    }
+    
+    /* Go back to profile */
+    func viewDidDisappear() {
+        coordinator.goToProfile()
     }
     
 }

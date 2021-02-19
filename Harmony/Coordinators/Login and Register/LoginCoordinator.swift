@@ -30,6 +30,14 @@ final class LoginCoordinator: Coordinator {
         window.makeKeyAndVisible()
     }
     
+    /* Go To Profile Screen */
+    func goToProfile() {
+        let profileCoordinator = MainTabBarCoordinator(navigationController: navigationController)
+        childCoordinators.append(profileCoordinator)
+        profileCoordinator.start()
+    }
+    
+    /* Go To Registration Screen */
     func goToRegister() {
         let registerCoordinator = RegisterCoordinator(navigationController: navigationController)
         registerCoordinator.parentCoordinator = self

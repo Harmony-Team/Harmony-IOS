@@ -133,6 +133,7 @@
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="uKi-LZ-I1e" id="O8k-kh-wyO"/>
+                        <outlet property="signInButton" destination="XDf-0a-Ysi" id="OgX-nc-YDn"/>
                         <outlet property="userNameTextField" destination="UmD-PN-LT8" id="u9q-mK-xA1"/>
                     </connections>
                 </viewController>
@@ -793,7 +794,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z3Y-Hh-6xT">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z3Y-Hh-6xT">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -816,22 +817,37 @@
             </objects>
             <point key="canvasLocation" x="3319" y="78"/>
         </scene>
+        <!--Track View Controller-->
+        <scene sceneID="TfX-PB-kqe">
+            <objects>
+                <viewController storyboardIdentifier="TrackViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qyT-XK-Nne" customClass="TrackViewController" customModule="Harmony" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N7R-UF-2Br">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="OBX-Gf-lG9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhQ-wk-VDy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3319" y="755"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="TJW-Ge-6BX">
-            <size key="intrinsicContentSize" width="117.5" height="22"/>
+            <size key="intrinsicContentSize" width="77.5" height="22"/>
         </designable>
         <designable name="UmD-PN-LT8">
-            <size key="intrinsicContentSize" width="122.5" height="23"/>
+            <size key="intrinsicContentSize" width="82.5" height="23"/>
         </designable>
         <designable name="VE2-vV-mQf">
-            <size key="intrinsicContentSize" width="83" height="23"/>
+            <size key="intrinsicContentSize" width="43" height="23"/>
         </designable>
         <designable name="uKi-LZ-I1e">
-            <size key="intrinsicContentSize" width="117.5" height="22"/>
+            <size key="intrinsicContentSize" width="77.5" height="22"/>
         </designable>
         <designable name="vXT-PU-QIe">
-            <size key="intrinsicContentSize" width="122.5" height="23"/>
+            <size key="intrinsicContentSize" width="82.5" height="23"/>
         </designable>
     </designables>
     <resources>

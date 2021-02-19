@@ -63,6 +63,7 @@ class MusicCell: UITableViewCell {
             logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor),
             
             titleLabel.leftAnchor.constraint(equalTo: logoImageView.rightAnchor, constant: 15),
+            titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.65),
             
             authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             authorLabel.leftAnchor.constraint(equalTo: logoImageView.rightAnchor, constant: 15),

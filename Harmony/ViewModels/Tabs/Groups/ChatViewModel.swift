@@ -11,4 +11,8 @@ class ChatViewModel {
     
     var coordinator: ChatCoordinator!
     
+    func viewDidDisappear() {
+        coordinator.closeWithoutSaving()
+    }
+    
 }

@@ -14,9 +14,9 @@ class LoginViewController: UIViewController {
     
     /* Spotify */
     
-    
     @IBOutlet weak var userNameTextField: LoginTextFieldStyle!
     @IBOutlet weak var passwordTextField: LoginTextFieldStyle!
+    @IBOutlet weak var signInButton: LoginButtonStyle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +25,27 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        passwordTextField.isSecureTextEntry = true
+        setupForm()
         setupPasswordEye()
+    }
     
+    private func setupForm() {
+        passwordTextField.isSecureTextEntry = true
+        userNameTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
+        signInButton.isEnabled = false
+        signInButton.backgroundColor = .darkMainColor
+    }
+    
+    @objc private func textChanged(_ textField: UITextField) {
+        let filteredArray = [userNameTextField, passwordTextField].filter { $0?.text == "" }
+        if filteredArray.isEmpty {
+            signInButton.isEnabled = true
+            signInButton.backgroundColor = .mainColor
+        } else {
+            signInButton.isEnabled = false
+            signInButton.backgroundColor = .darkMainColor
+        }
     }
     
     private func setupPasswordEye() {
@@ -48,7 +66,24 @@ class LoginViewController: UIViewController {
     @IBAction func signIn(_ sender: UIButton) {
         guard let username = userNameTextField.text, let password = passwordTextField.text else {return}
         let user = LoginUser(username: username, password: password)
-        APIManager.shared.callLoginAPI(login: user)
+        
+        /* Try Login User */
+        showActivityIndicator()
+        DispatchQueue.main.async {
+            self.viewModel.loginUser(user: user) { (result) in
+                switch result {
+                case .success(let msg):
+                    if let msg = msg {
+                        self.callAlert(with: msg)
+                    }
+                    break
+                case .failure( _):
+                    print("ERROR")
+                    break
+                }
+                self.hideActivityIndicator()
+            }
+        }
     }
     
     /* Go to register form */

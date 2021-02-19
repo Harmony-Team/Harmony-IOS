@@ -15,21 +15,36 @@ class ProfileViewModel {
     var spotifyService = SpotifyService()
     
     /* Get user info from UserDefaults */
-    func getUserInfo() {
-        user = UserProfileCache.get(key: "user")
+    func getUserInfo(completion: ()->()) {
+        //        user = UserProfileCache.get(key: "user")
+        guard let token = UserDefaults.standard.string(forKey: "userToken") else {
+            return
+        }
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        APIManager.shared.getUserAPI(token: token) { user in
+            self.user = user
+            semaphore.signal()
+        }
+        
+        semaphore.wait()
+        
+        completion()
+        
     }
     
     /* Check if user is logged in Spotify */
     func checkSpotify() {
         
-//        if UserDefaults.standard.bool(forKey: "isLoggedSpotify") {
-//            print("Logged")
-//            spotifyUser = UserProfileCache.get(key: "spotifyUser")
-//            getPlaylists(for: spotifyUser!)
-//            print(spotifyUser?.spotifyAccessToken)
-//        } else {
-//            print("Not logged")
-//        }
+        //        if UserDefaults.standard.bool(forKey: "isLoggedSpotify") {
+        //            print("Logged")
+        //            spotifyUser = UserProfileCache.get(key: "spotifyUser")
+        //            getPlaylists(for: spotifyUser!)
+        //            print(spotifyUser?.spotifyAccessToken)
+        //        } else {
+        //            print("Not logged")
+        //        }
         
     }
     

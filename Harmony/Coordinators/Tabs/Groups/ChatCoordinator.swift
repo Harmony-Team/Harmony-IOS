@@ -23,11 +23,9 @@ final class ChatCoordinator: Coordinator {
         let chatViewModel = ChatViewModel()
         chatViewModel.coordinator = self
         viewController.viewModel = chatViewModel
-//        viewController.hidesBottomBarWhenPushed = true
         navModal.modalPresentationStyle = .fullScreen
         navModal.setViewControllers([viewController], animated: true)
         navigationController.pushFromLeft(controller: navModal)
-//        navigationController.present(navModal, animated: true, completion: nil)
     }
     
     func closeWithoutSaving() {

@@ -30,6 +30,12 @@ class SettingsViewController: UIViewController {
         settingsTableView.register(SettingsCell.self, forCellReuseIdentifier: "settingsCell")
         settingsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "logoutCell")
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        viewModel.viewDidDisappear()
+    }
 }
 
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {

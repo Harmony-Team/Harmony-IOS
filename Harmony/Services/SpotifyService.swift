@@ -62,7 +62,7 @@ func getTracks(for user: SpotifyUser, urlString: String, completion: @escaping (
     var tracks_list: [TrackItem]?
     var tracks = [Track]()
     
-    URLSession.shared.dataTask(with: request) { (data, response, error) in
+    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         guard error == nil else { return }
         guard let data = data else { return }
         
@@ -74,10 +74,14 @@ func getTracks(for user: SpotifyUser, urlString: String, completion: @escaping (
                 let track = Track(album: cur_track.track.album, artists: cur_track.track.artists, name: cur_track.track.name)
                 tracks.append(track)
             }
-//            print(tracks)
             completion(tracks)
         }
-    }.resume()
+    }
     
+    task.resume()
+    while task.state != .completed {
+        Thread.sleep(forTimeInterval: 0.1)
+    }
+//    print("! \(tracks.count)")
     
 }

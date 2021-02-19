@@ -37,7 +37,11 @@ final class SettingsCoordinator: Coordinator {
             appDel.loginCoordinator = LoginCoordinator(window: appDel.window!)
             appDel.loginCoordinator?.start()
         }
-        
+    }
+    
+    /* Go back to profile */
+    func goToProfile() {
+        parentCoordinator.finishChild(coordinator: self)
     }
     
 }

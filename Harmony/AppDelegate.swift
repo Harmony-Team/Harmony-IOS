@@ -7,6 +7,7 @@
 
 import UIKit
 import VK_ios_sdk
+import SwiftyVK
 import ok_ios_sdk
 
 @main
@@ -15,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var auth = SPTAuth()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        auth.redirectURL = URL(string: "spotify-ios-quick-start://spotify-login-callback")
-//        auth.sessionUserDefaultsKey = "current session"
+        //        auth.redirectURL = URL(string: "spotify-ios-quick-start://spotify-login-callback")
+        //        auth.sessionUserDefaultsKey = "current session"
         
         setupSpotify()
         
@@ -48,39 +49,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-            //Check if this URL was sent from the Spotify app or website
-            if SPTAuth.defaultInstance().canHandle(url) {
-                
-                //Send out a notification which we can listen for in our sign in view controller
-                NotificationCenter.default.post(name: NSNotification.Name.Spotify.authURLOpened, object: url)
-                
-                return true
-            }
-            
-            return false
-        }
+        let app = options[.sourceApplication] as? String
+        VK.handle(url: url, sourceApplication: app)
+        return true
+    }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-        VKSdk.processOpen(url, fromApplication: sourceApplication)
+//        VKSdk.processOpen(url, fromApplication: sourceApplication)
         OKSDK.open(url)
-//        if auth.canHandle(auth.redirectURL) {
-//            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
-//                if error != nil {
-//                    print("error!")
-//                    return
-//                }
-//                let userDefaults = UserDefaults.standard
-//                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
-//                print(sessionData)
-//                userDefaults.set(sessionData, forKey: "SpotifySession")
-//                userDefaults.synchronize()
-//                NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
-//            })
-//            return true
-//        }
-//
-//        return false
+        //        if auth.canHandle(auth.redirectURL) {
+        //            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
+        //                if error != nil {
+        //                    print("error!")
+        //                    return
+        //                }
+        //                let userDefaults = UserDefaults.standard
+        //                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
+        //                print(sessionData)
+        //                userDefaults.set(sessionData, forKey: "SpotifySession")
+        //                userDefaults.synchronize()
+        //                NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
+        //            })
+        //            return true
+        //        }
+        //
+        //        return false
         
         return false
     }

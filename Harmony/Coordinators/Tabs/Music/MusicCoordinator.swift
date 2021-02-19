@@ -25,4 +25,20 @@ final class MusicCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: false)
     }
     
+    /* Go to selected track screen */
+    func goToTrack() {
+        let trackCoordinator = TrackCoordinator(navigationController: navigationController)
+        trackCoordinator.parentCoordinator = self
+        childCoordinators.append(trackCoordinator)
+        trackCoordinator.start()
+    }
+    
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
+    }
+    
 }

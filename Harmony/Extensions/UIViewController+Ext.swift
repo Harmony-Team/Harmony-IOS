@@ -7,6 +7,8 @@
 
 import UIKit
 
+fileprivate var aView: UIView?
+
 extension UIViewController {
     static func instantiate<T>() -> T {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
@@ -61,6 +63,31 @@ extension UIViewController {
         transition.subtype = CATransitionSubtype.fromLeft
         self.view.window!.layer.add(transition, forKey: nil)
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    /* Show activity Indicator */
+    func showActivityIndicator(alpha: CGFloat = 0) {
+        aView = UIView(frame: self.view.bounds)
+        aView?.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: alpha)
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .mainColor
+        activityIndicator.center = aView!.center
+        activityIndicator.startAnimating()
+        aView?.addSubview(activityIndicator)
+        self.view.addSubview(aView!)
+    }
+    
+    /* Hide activity Indicator */
+    func hideActivityIndicator() {
+        aView?.removeFromSuperview()
+        aView = nil
+    }
+    
+    /* Show alert in registration/login form */
+    func callAlert(with msg: String) {
+        let alert = UIAlertController(title: msg, message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Try again", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

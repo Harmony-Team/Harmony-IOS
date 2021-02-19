@@ -7,6 +7,7 @@ target 'Harmony' do
   
   pod "ok-ios-sdk"
   pod "VK-ios-sdk"
+  pod 'SwiftyVK'
   pod 'Alamofire', '~> 5.2'
 
   # Pods for Harmony

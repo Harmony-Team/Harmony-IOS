@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyVK
 import Foundation
 
 class ProfileViewController: UIViewController {
@@ -18,20 +19,25 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showActivityIndicator(alpha: 1)
+        
         /* Get user info */
-        viewModel.getUserInfo()
+        DispatchQueue.main.async {
+            self.viewModel.getUserInfo {
+                self.hideActivityIndicator()
+                self.setupViews()
+            }
+        }
         
         let settingsImage = UIImage(systemName: "gear")?.withRenderingMode(.alwaysTemplate)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: settingsImage, style: .done, target: self, action: #selector(goToSettings))
         
-        setupViews()
+        
     }
     
-    
-    
     private func setupViews() {
-        userName.text = viewModel.user.username
+        userName.text = viewModel.user.login
         userImage.image = UIImage(systemName: "person.circle")?.withRenderingMode(.alwaysTemplate)
         userImage.tintColor = .gray
     }

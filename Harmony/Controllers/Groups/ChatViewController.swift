@@ -39,6 +39,7 @@ class ChatViewController: UIViewController {
     
     @objc private func back() {
         dismissFromLeft()
+        viewModel.viewDidDisappear()
     }
 
     @IBAction func didSendMsg(_ sender: UIButton) {

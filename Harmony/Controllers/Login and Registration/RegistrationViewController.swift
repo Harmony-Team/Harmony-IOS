@@ -27,6 +27,14 @@ class RegistrationViewController: UIViewController {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
+        // Move View With Keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        // Hide keyboard after tap
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         setupError()
         setupForm()
         setupPasswordEye()
@@ -34,7 +42,6 @@ class RegistrationViewController: UIViewController {
     
     /* Setting up form fields and button */
     private func setupForm() {
-//        userNameTextField.delegate = self
         signUpButton.backgroundColor = .darkMainColor
         signUpButton.isEnabled = false
         userNameTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
@@ -48,24 +55,11 @@ class RegistrationViewController: UIViewController {
         errorView.layer.cornerRadius = 10
     }
     
-    private func callAlert(with msg: String) {
-        let alert = UIAlertController(title: msg, message: "", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Try again", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     @objc private func textChanged(_ textField: UITextField) {
         let filteredArray = [userNameTextField, emailTextField, passwordTextField].filter { $0?.text == "" }
         if filteredArray.isEmpty {
             signUpButton.isEnabled = true
             signUpButton.backgroundColor = .mainColor
-            let (valid, message) = validate(textField)
-            errorDescr.text = message
-            
-            // Show/Hide Password Validation Label
-            UIView.animate(withDuration: 0.25, animations: {
-                self.errorView.isHidden = valid
-            })
         } else {
             signUpButton.isEnabled = false
             signUpButton.backgroundColor = .darkMainColor
@@ -104,58 +98,59 @@ class RegistrationViewController: UIViewController {
               let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {return}
         
-        let user = User(username: name, email: email, password: password)
+        if !getValidationErrors(textField: userNameTextField) ||
+            !getValidationErrors(textField: emailTextField) ||
+            !getValidationErrors(textField: passwordTextField) {
+            return
+        }
         
-        registerUser(user: user)
-//        viewModel.goToServices(with: user)
-    }
-    
-    /* Register user and go to services */
-    private func registerUser(user: User) {
-        APIManager.shared.callRegisterAPI(register: user, completion: { msg in
-            if msg != "" {
-                self.callAlert(with: msg)
-            } else {
-                
-                UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
-
-                UserProfileCache.save(user, "user")
-                self.viewModel.goToServices(with: user)
+        let user = RegisterUser(login: name, email: email, password: password)
+        
+        /* Try Register User */
+        showActivityIndicator()
+        DispatchQueue.main.async {
+            self.viewModel.registerUser(user: user) { (result) in
+                switch result {
+                case .success(let msg):
+                    if let msg = msg {
+                        self.callAlert(with: msg)
+                    }
+                    break
+                case .failure( _):
+                    print("ERROR")
+                    break
+                }
+                self.hideActivityIndicator()
             }
-        })
+        }
     }
     
-    fileprivate func validate(_ textField: UITextField) -> (Bool, String?) {
-        guard let text = textField.text else {
-            return (false, nil)
+    /* Keyboard moving */
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 2
+            }
         }
-        
-        if textField == userNameTextField {
-            return (text.count >= 3, "Username must include at least 3 symbols")
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
         }
-        
-        if textField == emailTextField {
-            
-            return (text.count >= 3, "Email must include at least 3 symbols")
-        }
-        
-        if textField == passwordTextField {
-            return (text.count >= 6, "Password must include at least 6 symbols")
-        }
-        
-        return (text.count > 0, "This field cannot be empty.")
+    }
+    
+    // Hide keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
-extension RegistrationViewController: UITextFieldDelegate {
+extension RegistrationViewController {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func getValidationErrors(textField: UITextField) -> Bool {
         // Validate Text Field
         let (valid, message) = validate(textField)
-        
-        if valid {
-            emailTextField.becomeFirstResponder()
-        }
         
         // Update Password Validation Label
         errorDescr.text = message
@@ -165,8 +160,46 @@ extension RegistrationViewController: UITextFieldDelegate {
             self.errorView.isHidden = valid
         })
         
+        return valid
+    }
+    
+    /* Form fields validation */
+    fileprivate func validate(_ textField: UITextField) -> (Bool, String?) {
+        guard let text = textField.text else {
+            return (false, nil)
+        }
         
-        return true
+        if textField == userNameTextField {
+            if text.count < 4 {
+                return (false, "Username must include at least 4 symbols")
+            }
+            if text.count > 15 {
+                return (false, "Username mustn't include more than 15 symbols")
+            }
+            return (viewModel.isValidUsername(name: text), "You have entered an invalid username")
+        }
+        
+        if textField == emailTextField {
+            if text.count < 4 {
+                return (false, "Email must include at least 4 symbols")
+            }
+            if text.count > 32 {
+                return (false, "Email mustn't include more than 32 symbols")
+            }
+            return (viewModel.isValidEmail(email: text), "You have entered an invalid email address")
+        }
+        
+        if textField == passwordTextField {
+            if text.count < 8 {
+                return (false, "Password must include at least 8 symbols")
+            }
+            if text.count > 32 {
+                return (false, "Password mustn't include more than 32 symbols")
+            }
+            return (viewModel.isValidPassword(password: text), "You have entered an invalid password")
+        }
+        
+        return (text.count > 0, "This field cannot be empty.")
     }
     
 }

@@ -64,7 +64,6 @@
 		52A758A525D93F770051EB61 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A758A425D93F770051EB61 /* Playlist.swift */; };
 		52B11CCC25DC1FA600CFB829 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B11CCB25DC1FA600CFB829 /* Track.swift */; };
 		52B11CCF25DD7DDE00CFB829 /* MusicCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B11CCE25DD7DDE00CFB829 /* MusicCellViewModel.swift */; };
-		52B11CD225DD8CB000CFB829 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B11CD125DD8CB000CFB829 /* LoadingIndicator.swift */; };
 		52B1C24F25CC388E0027C3E6 /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1C24E25CC388E0027C3E6 /* VKService.swift */; };
 		52B5C58B25D69FF100961A4E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C58A25D69FF100961A4E /* SettingsViewController.swift */; };
 		52B5C59225D6A0BA00961A4E /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C59125D6A0BA00961A4E /* SettingsCoordinator.swift */; };
@@ -74,6 +73,9 @@
 		52B5C5A525D6CC7800961A4E /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C5A425D6CC7800961A4E /* EditProfileViewController.swift */; };
 		52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */; };
 		52D1F4C525CC8DCA002AA1C9 /* OKSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */; };
+		52EDBF9325DEE46F002A141C /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDBF9225DEE46F002A141C /* TrackViewController.swift */; };
+		52EDBF9825DEE4BB002A141C /* TrackCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDBF9725DEE4BB002A141C /* TrackCoordinator.swift */; };
+		52EDBF9B25DEE4E3002A141C /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDBF9A25DEE4E3002A141C /* TrackViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,7 +140,6 @@
 		52A758A425D93F770051EB61 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		52B11CCB25DC1FA600CFB829 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		52B11CCE25DD7DDE00CFB829 /* MusicCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellViewModel.swift; sourceTree = "<group>"; };
-		52B11CD125DD8CB000CFB829 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		52B1C24E25CC388E0027C3E6 /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
 		52B5C58A25D69FF100961A4E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		52B5C59125D6A0BA00961A4E /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -150,6 +151,9 @@
 		52D1F4C125CC7F9E002AA1C9 /* VKHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKHeader.h; sourceTree = "<group>"; };
 		52D1F4C325CC8DCA002AA1C9 /* OKSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKSDK.h; sourceTree = "<group>"; };
 		52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKSDK.m; sourceTree = "<group>"; };
+		52EDBF9225DEE46F002A141C /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
+		52EDBF9725DEE4BB002A141C /* TrackCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCoordinator.swift; sourceTree = "<group>"; };
+		52EDBF9A25DEE4E3002A141C /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
 		9BA964EE92A25094FD1F159E /* Pods_Harmony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Harmony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -251,7 +255,6 @@
 				521A054625C85179007F86A0 /* Colors+Ext.swift */,
 				5236FF9325CDCA3F00845300 /* UIView+Ext.swift */,
 				5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */,
-				52B11CD125DD8CB000CFB829 /* LoadingIndicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -323,7 +326,7 @@
 				52B5C58D25D69FF500961A4E /* Profile */,
 				5236FFB525CFCD2600845300 /* Friends */,
 				5236FF8525CDAF2800845300 /* Groups */,
-				521A052425C7421F007F86A0 /* MusicCoordinator.swift */,
+				52EDBF9525DEE4B1002A141C /* Music */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				521A051825C73FFC007F86A0 /* MusicViewController.swift */,
+				52EDBF9225DEE46F002A141C /* TrackViewController.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -432,6 +436,7 @@
 			children = (
 				521A053525C757DF007F86A0 /* MusicViewModel.swift */,
 				52B11CCE25DD7DDE00CFB829 /* MusicCellViewModel.swift */,
+				52EDBF9A25DEE4E3002A141C /* TrackViewModel.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -501,6 +506,15 @@
 				52B5C5A125D6C19F00961A4E /* SettingsCell.swift */,
 			);
 			path = ProfileSettings;
+			sourceTree = "<group>";
+		};
+		52EDBF9525DEE4B1002A141C /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				521A052425C7421F007F86A0 /* MusicCoordinator.swift */,
+				52EDBF9725DEE4BB002A141C /* TrackCoordinator.swift */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		D8BA771E9B3E25B33F5047CF /* Pods */ = {
@@ -630,6 +644,7 @@
 				5236FFC225CFCD7600845300 /* NewFriendViewModel.swift in Sources */,
 				5236FFAD25CEF6F900845300 /* UITextField+Ext.swift in Sources */,
 				521A051C25C741AC007F86A0 /* ProfileCoordinator.swift in Sources */,
+				52EDBF9325DEE46F002A141C /* TrackViewController.swift in Sources */,
 				521A054125C8125C007F86A0 /* RegistrationViewController.swift in Sources */,
 				521A051625C73FF4007F86A0 /* GroupsViewController.swift in Sources */,
 				521A053325C757D7007F86A0 /* GroupViewModel.swift in Sources */,
@@ -638,7 +653,6 @@
 				521A053625C757DF007F86A0 /* MusicViewModel.swift in Sources */,
 				5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */,
 				5236FF9E25CDE5A800845300 /* MusicCell.swift in Sources */,
-				52B11CD225DD8CB000CFB829 /* LoadingIndicator.swift in Sources */,
 				5236FFA225CED6F200845300 /* ChatViewController.swift in Sources */,
 				521A056825C9F674007F86A0 /* LoginTextFieldStyle.swift in Sources */,
 				5236FF7C25CDA73400845300 /* MainTabBarCoordinator.swift in Sources */,
@@ -674,6 +688,7 @@
 				521A053025C757CC007F86A0 /* FriendsViewModel.swift in Sources */,
 				52B5C59E25D6A99C00961A4E /* UserProfile.swift in Sources */,
 				521A054725C85179007F86A0 /* Colors+Ext.swift in Sources */,
+				52EDBF9B25DEE4E3002A141C /* TrackViewModel.swift in Sources */,
 				5236FFD525D0342B00845300 /* APIManager.swift in Sources */,
 				521A052525C7421F007F86A0 /* MusicCoordinator.swift in Sources */,
 				52B5C5A525D6CC7800961A4E /* EditProfileViewController.swift in Sources */,
@@ -685,6 +700,7 @@
 				5236FFAA25CED9C300845300 /* ChatViewModel.swift in Sources */,
 				52B11CCC25DC1FA600CFB829 /* Track.swift in Sources */,
 				521A04EE25C73570007F86A0 /* SceneDelegate.swift in Sources */,
+				52EDBF9825DEE4BB002A141C /* TrackCoordinator.swift in Sources */,
 				52B5C5A225D6C19F00961A4E /* SettingsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
