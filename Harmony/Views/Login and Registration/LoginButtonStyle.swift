@@ -14,16 +14,7 @@ class LoginButtonStyle: UIButton {
  
         self.layer.cornerRadius = 20
         self.tintColor = .white
-        self.setupShadow()
-    }
-    
-    func setupShadow() {
-        self.layer.shadowOffset = CGSize(width: 0, height: 5)
-        self.layer.shadowRadius = 3
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
+        self.setupShadow(cornerRad: 5, shadowRad: 5, shadowOp: 0.5, offset: CGSize(width: 0, height: 5))
     }
 
 }

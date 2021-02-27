@@ -16,20 +16,23 @@ class ProfileViewModel {
     
     /* Get user info from UserDefaults */
     func getUserInfo(completion: ()->()) {
-        //        user = UserProfileCache.get(key: "user")
+        
         guard let token = UserDefaults.standard.string(forKey: "userToken") else {
             return
         }
         
-        let semaphore = DispatchSemaphore(value: 0)
-        
-        APIManager.shared.getUserAPI(token: token) { user in
+        if let user: User = UserProfileCache.get(key: "user") {
             self.user = user
-            semaphore.signal()
+        } else {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            APIManager.shared.getUserAPI(token: token) { user in
+                self.user = user
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
         }
-        
-        semaphore.wait()
-        
         completion()
         
     }

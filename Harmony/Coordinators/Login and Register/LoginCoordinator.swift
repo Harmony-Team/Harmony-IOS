@@ -44,6 +44,14 @@ final class LoginCoordinator: Coordinator {
         childCoordinators.append(registerCoordinator)
         registerCoordinator.start()
     }
+    
+    /* Go To Forgot Password Screen */
+    func goToForgotPassword() {
+        let forgotPasswordCoordinator = ForgotPasswordCoordinator(navigationController: navigationController)
+        forgotPasswordCoordinator.parentCoordinator = self
+        childCoordinators.append(forgotPasswordCoordinator)
+        forgotPasswordCoordinator.start()
+    }
 
     func finishChild(coordinator: Coordinator) {
         if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in

@@ -47,6 +47,11 @@ struct LoginUser: Codable {
     let password: String?
 }
 
+/* User Services */
+struct ServiceIntergration: Codable {
+    let spotify: String
+}
+
 /* Spotify User */
 struct SpotifyUser: Codable {
     let spotifyId: String

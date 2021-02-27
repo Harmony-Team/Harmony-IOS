@@ -48,6 +48,42 @@ class APIManager {
         }
     }
     
+    /* Creatin user function */
+    func callCreateAPI(registerUser: RegisterUser, token: String, completion: @escaping (User) -> ()) {
+
+        var code = 0
+        
+        let createAPI = "https://harmony-db.herokuapp.com/api/user?login=\(registerUser.login)&password=\(registerUser.password)&email=\(registerUser.email)"
+        let headers: HTTPHeaders = [
+            "Authorization": token
+        ]
+        
+        AF.request(createAPI, method: .post, parameters: registerUser, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                    
+                    print(json)
+                    code = (json as AnyObject).value(forKey: "code") as! Int
+                    if code == 0 {
+                        let decoder = JSONDecoder()
+                        let resp: UserResponse = try! decoder.decode(UserResponse.self, from: data!)
+//                        guard let resp: UserResponse = (json as AnyObject).value(forKey: "response") as? UserResponse else {return}
+                        let user = resp.response[0]
+                        UserProfileCache.save(user, "user")
+                        completion(user)
+                    }
+//                    completion(msg)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
     /* Login function */
     func callLoginAPI(login: LoginUser, completion: @escaping (String) -> ()) {
         
@@ -103,6 +139,7 @@ class APIManager {
                 print(json)
                 
                 let resp: UserResponse = try! JSONDecoder().decode(UserResponse.self, from: data)
+
                 let user = resp.response[0]
                 UserProfileCache.save(user, "user")
                 completion(user)
@@ -115,4 +152,38 @@ class APIManager {
         
     }
     
+    /* Set user services integrations */
+    func setUserIntergrations(token: String, services: ServiceIntergration, spotifyId: String, completion: @escaping (User)->()) {
+        
+        var code = 0
+        let servicesAPI = "http://harmony-db.herokuapp.com/api/user/integrate?spotify=\(spotifyId)&vk&ok"
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "\(token)"
+        ]
+        
+        AF.request(servicesAPI, method: .post, parameters: services, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                    
+                    print(json)
+                    code = (json as AnyObject).value(forKey: "code") as! Int
+//                    if code > 0 {
+//                        msg = (json as AnyObject).value(forKey: "message") as! String
+//                    } else {
+//                        token = (json as AnyObject).value(forKey: "token") as! String
+//                        UserDefaults.standard.setValue(token, forKey: "userToken")
+//                    }
+                    //completion(msg)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+        
+    }
 }

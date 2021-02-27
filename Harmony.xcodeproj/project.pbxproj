@@ -62,6 +62,11 @@
 		5276D1B425D2D2F200D1B83C /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5276D1B125D2D2F200D1B83C /* SpotifyAudioPlayback.framework */; };
 		5276D1B525D2D2F200D1B83C /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5276D1B225D2D2F200D1B83C /* SpotifyMetadata.framework */; };
 		52A758A525D93F770051EB61 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A758A425D93F770051EB61 /* Playlist.swift */; };
+		52ADF4BE25E4048C000B1AA1 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ADF4BD25E4048C000B1AA1 /* CustomLabel.swift */; };
+		52ADF4C125E40549000B1AA1 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */; };
+		52B0F99225E4199300010F9D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0F99125E4199300010F9D /* ForgotPasswordViewController.swift */; };
+		52B0F99525E41A2B00010F9D /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0F99425E41A2B00010F9D /* ForgotPasswordViewModel.swift */; };
+		52B0F99825E41A4500010F9D /* ForgotPasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0F99725E41A4500010F9D /* ForgotPasswordCoordinator.swift */; };
 		52B11CCC25DC1FA600CFB829 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B11CCB25DC1FA600CFB829 /* Track.swift */; };
 		52B11CCF25DD7DDE00CFB829 /* MusicCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B11CCE25DD7DDE00CFB829 /* MusicCellViewModel.swift */; };
 		52B1C24F25CC388E0027C3E6 /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1C24E25CC388E0027C3E6 /* VKService.swift */; };
@@ -71,6 +76,7 @@
 		52B5C59E25D6A99C00961A4E /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C59D25D6A99C00961A4E /* UserProfile.swift */; };
 		52B5C5A225D6C19F00961A4E /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C5A125D6C19F00961A4E /* SettingsCell.swift */; };
 		52B5C5A525D6CC7800961A4E /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5C5A425D6CC7800961A4E /* EditProfileViewController.swift */; };
+		52BCD56E25E3048800A30366 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD56C25E303D800A30366 /* Lato-Regular.ttf */; };
 		52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */; };
 		52D1F4C525CC8DCA002AA1C9 /* OKSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */; };
 		52EDBF9325DEE46F002A141C /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDBF9225DEE46F002A141C /* TrackViewController.swift */; };
@@ -138,6 +144,11 @@
 		5276D1B125D2D2F200D1B83C /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
 		5276D1B225D2D2F200D1B83C /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
 		52A758A425D93F770051EB61 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		52ADF4BD25E4048C000B1AA1 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		52B0F99125E4199300010F9D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		52B0F99425E41A2B00010F9D /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		52B0F99725E41A4500010F9D /* ForgotPasswordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCoordinator.swift; sourceTree = "<group>"; };
 		52B11CCB25DC1FA600CFB829 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		52B11CCE25DD7DDE00CFB829 /* MusicCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellViewModel.swift; sourceTree = "<group>"; };
 		52B1C24E25CC388E0027C3E6 /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
@@ -147,6 +158,7 @@
 		52B5C59D25D6A99C00961A4E /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		52B5C5A125D6C19F00961A4E /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		52B5C5A425D6CC7800961A4E /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		52BCD56C25E303D800A30366 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		52D1F4C125CC7F9E002AA1C9 /* VKHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKHeader.h; sourceTree = "<group>"; };
 		52D1F4C325CC8DCA002AA1C9 /* OKSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKSDK.h; sourceTree = "<group>"; };
@@ -220,6 +232,7 @@
 				52D1F4C125CC7F9E002AA1C9 /* VKHeader.h */,
 				52D1F4C325CC8DCA002AA1C9 /* OKSDK.h */,
 				52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */,
+				52BCD56B25E303AB00A30366 /* Fonts */,
 			);
 			path = Harmony;
 			sourceTree = "<group>";
@@ -255,6 +268,7 @@
 				521A054625C85179007F86A0 /* Colors+Ext.swift */,
 				5236FF9325CDCA3F00845300 /* UIView+Ext.swift */,
 				5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */,
+				52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -273,6 +287,7 @@
 			children = (
 				521A053C25C81249007F86A0 /* LoginViewController.swift */,
 				521A054025C8125C007F86A0 /* RegistrationViewController.swift */,
+				52B0F99125E4199300010F9D /* ForgotPasswordViewController.swift */,
 				5234BAAC25CC229600561E86 /* ServicesViewController.swift */,
 			);
 			path = "Login and Registration";
@@ -295,6 +310,7 @@
 			children = (
 				521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */,
 				521A056725C9F674007F86A0 /* LoginTextFieldStyle.swift */,
+				52ADF4BD25E4048C000B1AA1 /* CustomLabel.swift */,
 			);
 			path = "Login and Registration";
 			sourceTree = "<group>";
@@ -304,6 +320,7 @@
 			children = (
 				5234BAA625CC166100561E86 /* LoginViewModel.swift */,
 				5234BAB425CC22E900561E86 /* RegisterViewModel.swift */,
+				52B0F99425E41A2B00010F9D /* ForgotPasswordViewModel.swift */,
 				5234BAB725CC230E00561E86 /* ServicesViewModel.swift */,
 			);
 			path = "Login and Register";
@@ -314,6 +331,7 @@
 			children = (
 				521A056125C9E95A007F86A0 /* LoginCoordinator.swift */,
 				5234BAA925CC173300561E86 /* RegisterCoordinator.swift */,
+				52B0F99725E41A4500010F9D /* ForgotPasswordCoordinator.swift */,
 				5234BAB125CC22C300561E86 /* ServicesCoordinator.swift */,
 			);
 			path = "Login and Register";
@@ -508,6 +526,14 @@
 			path = ProfileSettings;
 			sourceTree = "<group>";
 		};
+		52BCD56B25E303AB00A30366 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				52BCD56C25E303D800A30366 /* Lato-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		52EDBF9525DEE4B1002A141C /* Music */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +614,7 @@
 				521A04F825C73573007F86A0 /* LaunchScreen.storyboard in Resources */,
 				521A04F525C73573007F86A0 /* Assets.xcassets in Resources */,
 				521A04F325C73570007F86A0 /* Main.storyboard in Resources */,
+				52BCD56E25E3048800A30366 /* Lato-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,10 +673,13 @@
 				521A051C25C741AC007F86A0 /* ProfileCoordinator.swift in Sources */,
 				52EDBF9325DEE46F002A141C /* TrackViewController.swift in Sources */,
 				521A054125C8125C007F86A0 /* RegistrationViewController.swift in Sources */,
+				52B0F99525E41A2B00010F9D /* ForgotPasswordViewModel.swift in Sources */,
+				52ADF4C125E40549000B1AA1 /* UILabel+Ext.swift in Sources */,
 				521A051625C73FF4007F86A0 /* GroupsViewController.swift in Sources */,
 				521A053325C757D7007F86A0 /* GroupViewModel.swift in Sources */,
 				521A052825C750D6007F86A0 /* MainTabBarController.swift in Sources */,
 				52D1F4C525CC8DCA002AA1C9 /* OKSDK.m in Sources */,
+				52ADF4BE25E4048C000B1AA1 /* CustomLabel.swift in Sources */,
 				521A053625C757DF007F86A0 /* MusicViewModel.swift in Sources */,
 				5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */,
 				5236FF9E25CDE5A800845300 /* MusicCell.swift in Sources */,
@@ -661,6 +691,7 @@
 				521A055F25C9E892007F86A0 /* LoginButtonStyle.swift in Sources */,
 				5236FF8825CDAF5800845300 /* NewGroupViewController.swift in Sources */,
 				52B1C24F25CC388E0027C3E6 /* VKService.swift in Sources */,
+				52B0F99825E41A4500010F9D /* ForgotPasswordCoordinator.swift in Sources */,
 				5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */,
 				521A050225C73588007F86A0 /* AppCoordinator.swift in Sources */,
 				5234BAB225CC22C300561E86 /* ServicesCoordinator.swift in Sources */,
@@ -674,6 +705,7 @@
 				52B5C58B25D69FF100961A4E /* SettingsViewController.swift in Sources */,
 				5234BAB825CC230E00561E86 /* ServicesViewModel.swift in Sources */,
 				5234BAA725CC166100561E86 /* LoginViewModel.swift in Sources */,
+				52B0F99225E4199300010F9D /* ForgotPasswordViewController.swift in Sources */,
 				5236FF9125CDC94700845300 /* GroupCell.swift in Sources */,
 				521A054425C818F4007F86A0 /* TabBar+Ext.swift in Sources */,
 				5234BAAA25CC173300561E86 /* RegisterCoordinator.swift in Sources */,

@@ -42,4 +42,23 @@ extension UITextField {
             self.rightViewMode = .always
         }
     }
+    
+    /* Add bottom border */
+    internal func addBottomBorder(height: CGFloat = 1.0, color: UIColor = .black) {
+        let borderView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 3))
+        borderView.setGradientStack(colorTop: UIColor.gradientColorTop.cgColor,
+                                    colorBottom: UIColor.gradientColorBottom.cgColor,
+                                    cornerRadius: 1)
+        
+        borderView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(borderView)
+        NSLayoutConstraint.activate(
+            [
+                borderView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                borderView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                borderView.bottomAnchor.constraint(equalTo: bottomAnchor),
+                borderView.heightAnchor.constraint(equalToConstant: height)
+            ]
+        )
+    }
 }

@@ -33,7 +33,7 @@ class LoginViewModel {
     
     /* Go to forgot password view */
     func goToForgotPassword() {
-        
+        coordinator.goToForgotPassword()
     }
     
 }

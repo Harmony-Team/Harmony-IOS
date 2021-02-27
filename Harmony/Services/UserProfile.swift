@@ -12,11 +12,11 @@ struct UserProfileCache<T: Codable> {
     static func save(_ value: T, _ key: String) {
          UserDefaults.standard.set(try? PropertyListEncoder().encode(value), forKey: key)
     }
-    static func get(key: String) -> T {
+    static func get(key: String) -> T? {
         var userData: T!
         if let data = UserDefaults.standard.value(forKey: key) as? Data {
             userData = try? PropertyListDecoder().decode(T.self, from: data)
-            return userData!
+            return userData
         } else {
             return userData
         }

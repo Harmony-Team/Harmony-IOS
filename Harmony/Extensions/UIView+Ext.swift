@@ -31,6 +31,50 @@ extension UIView {
             }
         }
     }
+    
+    func setupShadow(cornerRad: CGFloat, shadowRad: CGFloat, shadowOp: Float, offset: CGSize) {
+        self.layer.cornerRadius = cornerRad
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = shadowRad
+        self.layer.shadowOpacity = shadowOp
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    /* Setting gradient for fields stack */
+    func setGradientStack(colorTop: CGColor, colorBottom: CGColor, cornerRadius: CGFloat) {
+//        let colorTop = UIColor.toRGB(red: 255, green: 38, blue: 98, alpha: 1).cgColor
+//        let colorBottom = UIColor.toRGB(red: 61, green: 38, blue: 158, alpha: 1) .cgColor
+//        
+//                let gradientLayer = CAGradientLayer()
+//                gradientLayer.colors = [colorBottom, colorTop]
+//                        gradientLayer.startPoint = CGPoint(x: -0.5, y: 1.1)
+//                        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
+//                gradientLayer.frame = fieldsStack.bounds
+//        
+//                fieldsView.layer.masksToBounds = true
+//                fieldsView.layer.cornerRadius = 15
+//                fieldsView.layer.insertSublayer(gradientLayer, at: 0)
+        
+        let gradient = CAGradientLayer()
+        gradient.frame =  CGRect(origin: CGPoint.zero, size: self.frame.size)
+        gradient.colors = [
+            colorBottom,
+            colorTop
+        ]
+        gradient.startPoint = CGPoint(x: -0.5, y: 1.1)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.0)
+        
+        let shape = CAShapeLayer()
+        shape.lineWidth = 1
+        shape.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: 1, dy: 1), cornerRadius: cornerRadius).cgPath
+        shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        gradient.mask = shape
+        
+        self.layer.addSublayer(gradient)
+    }
 }
 
 fileprivate var imageCache = NSCache<NSString, UIImage>()

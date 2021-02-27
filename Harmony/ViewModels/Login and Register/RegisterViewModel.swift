@@ -18,11 +18,17 @@ class RegisterViewModel {
                 completion(.success(msg))
             } else {
                 UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
-                
-//                UserProfileCache.save(user, "user")
+                self.createUser(registerUser: user)
                 completion(.success(nil))
-                self.goToServices(with: user)
             }
+        })
+    }
+    
+    /* Create User */
+    func createUser(registerUser: RegisterUser) {
+        let token = UserDefaults.standard.value(forKey: "userToken") as! String
+        APIManager.shared.callCreateAPI(registerUser: registerUser, token: token, completion: { user in
+            self.goToServices(with: user)
         })
     }
     

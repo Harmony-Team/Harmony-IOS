@@ -17,15 +17,17 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var errorDescr: UILabel!
     
     /* Form Fields + Button */
+    @IBOutlet weak var signUpToContinue: UILabel!
     @IBOutlet weak var userNameTextField: LoginTextFieldStyle!
     @IBOutlet weak var emailTextField: LoginTextFieldStyle!
     @IBOutlet weak var passwordTextField: LoginTextFieldStyle!
     @IBOutlet weak var signUpButton: LoginButtonStyle!
+    @IBOutlet weak var fieldsView: UIView!
+    @IBOutlet weak var fieldsStack: UIStackView!
+    @IBOutlet weak var haveAccountButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // Move View With Keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -35,6 +37,8 @@ class RegistrationViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
+        addBg(image: UIImage(named: "bg2")!, alpha: 0.22)
+        
         setupError()
         setupForm()
         setupPasswordEye()
@@ -42,28 +46,31 @@ class RegistrationViewController: UIViewController {
     
     /* Setting up form fields and button */
     private func setupForm() {
-        signUpButton.backgroundColor = .darkMainColor
-        signUpButton.isEnabled = false
-        userNameTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
-        emailTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
+        fieldsView.setGradientStack(colorTop: UIColor.gradientColorTop.cgColor,
+                                    colorBottom: UIColor.gradientColorBottom.cgColor,
+                                    cornerRadius: 15)
+        
+        userNameTextField.addBottomBorder(height: 1.5, color: .white)
+        emailTextField.addBottomBorder(height: 1.5, color: .white)
+        
+        userNameTextField.addPadding(.both(15))
+        emailTextField.addPadding(.both(15))
+        passwordTextField.addPadding(.both(15))
+        
+        signUpToContinue.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 18)!)
+        signUpToContinue.addKern(1.74)
+        
+        haveAccountButton.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 14)!)
+        haveAccountButton.titleLabel?.addKern(1.74)
+                
+        signUpButton.layer.cornerRadius = signUpButton.frame.width / 2
+        signUpButton.backgroundColor = .buttonColor
     }
     
     /* Setting up error view */
     private func setupError() {
         errorView.isHidden = true
         errorView.layer.cornerRadius = 10
-    }
-    
-    @objc private func textChanged(_ textField: UITextField) {
-        let filteredArray = [userNameTextField, emailTextField, passwordTextField].filter { $0?.text == "" }
-        if filteredArray.isEmpty {
-            signUpButton.isEnabled = true
-            signUpButton.backgroundColor = .mainColor
-        } else {
-            signUpButton.isEnabled = false
-            signUpButton.backgroundColor = .darkMainColor
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -74,12 +81,13 @@ class RegistrationViewController: UIViewController {
     /* Setting up password text field eye icon */
     private func setupPasswordEye() {
         let eyeButton = UIButton()
-        eyeButton.setImage(UIImage(named: "eye"), for: .normal)
-        eyeButton.tintColor = .gray
+        let eyeImage = UIImage(named: "eye")?.withRenderingMode(.alwaysTemplate)
+        eyeButton.setImage(eyeImage, for: .normal)
+        eyeButton.tintColor = .white
         eyeButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -15, bottom: 0, right: 15)
         eyeButton.addTarget(self, action: #selector(togglePasswordText), for: .touchUpInside)
         passwordTextField.rightView = eyeButton
-        passwordTextField.rightViewMode = .always
+        passwordTextField.rightViewMode = .whileEditing
     }
     
     /* Show/Hide password */
@@ -94,15 +102,16 @@ class RegistrationViewController: UIViewController {
     
     /* Validate text fields */
     private func checkTextFields() {
-        guard let name = userNameTextField.text, !name.isEmpty,
-              let email = emailTextField.text, !email.isEmpty,
-              let password = passwordTextField.text, !password.isEmpty else {return}
         
         if !getValidationErrors(textField: userNameTextField) ||
             !getValidationErrors(textField: emailTextField) ||
             !getValidationErrors(textField: passwordTextField) {
             return
         }
+        
+        guard let name = userNameTextField.text,
+              let email = emailTextField.text,
+              let password = passwordTextField.text else {return}
         
         let user = RegisterUser(login: name, email: email, password: password)
         
@@ -144,6 +153,11 @@ class RegistrationViewController: UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    @IBAction func goToLogin(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension RegistrationViewController {

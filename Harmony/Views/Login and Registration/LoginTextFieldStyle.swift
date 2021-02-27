@@ -9,50 +9,34 @@ import UIKit
 
 @IBDesignable class LoginTextFieldStyle: UITextField {
     
-    @IBInspectable var leftImage: UIImage? {
+    @IBInspectable var fontSize: CGFloat = 14 {
         didSet {
             updateView()
         }
     }
-    @IBInspectable var leftPadding: CGFloat = 0 {
-        didSet {
-            updateView()
-        }
-    }
-
+    
     func updateView() {
-        setLeftImage()
         
-        layer.borderColor = UIColor.mainColor.cgColor
-        layer.borderWidth = 1
-        layer.cornerRadius = 15
+        setupFont()
+        
+        self.defaultTextAttributes.updateValue(1.74, forKey: NSAttributedString.Key.kern)
         
         // Placeholder text color
-        attributedPlaceholder = NSAttributedString(string: placeholder != nil ?  placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: tintColor])
+        attributedPlaceholder = NSAttributedString(string: placeholder != nil ?  placeholder! : "", attributes: [
+            NSAttributedString.Key.foregroundColor: UIColor.white.cgColor,
+            NSAttributedString.Key.kern: 1.74
+        ])
     }
-    func setLeftImage() {
-        leftViewMode = UITextField.ViewMode.always
-        var view: UIView
-        
-        if let image = leftImage {
-            let imageView = UIImageView(frame: CGRect(x: leftPadding, y: 0, width: 20, height: 20))
-            imageView.image = image
-            // Note: In order for your image to use the tint color, you have to select the image in the Assets.xcassets and change the "Render As" property to "Template Image".
-            imageView.tintColor = tintColor
-            
-            var width = imageView.frame.width + leftPadding
-            
-            if borderStyle == UITextField.BorderStyle.none || borderStyle == UITextField.BorderStyle.line {
-                width += 5
-            }
-            
-            view = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 20))
-            view.addSubview(imageView)
-        } else {
-            view = UIView(frame: CGRect(x: 0, y: 0, width: leftPadding, height: 20))
+    
+    func setupFont() {
+        guard let customFont = UIFont(name: "Lato-Regular", size: fontSize) else {
+            fatalError("""
+                Failed to load the "Lato-Regular" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
         }
-        
-        leftView = view
+        self.font = UIFontMetrics.default.scaledFont(for: customFont)
     }
-
+    
 }

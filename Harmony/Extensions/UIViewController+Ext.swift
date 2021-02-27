@@ -16,6 +16,29 @@ extension UIViewController {
         return viewController
     }
     
+    /* Adding bg for view controller */
+    func addBg(image: UIImage, alpha: CGFloat) {
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = image
+        backgroundImage.clipsToBounds = true
+        backgroundImage.contentMode = .scaleAspectFill
+        backgroundImage.alpha = alpha
+        self.view.insertSubview(backgroundImage, at: 0)
+        
+        let colorTop = UIColor.toRGB(red: 33, green: 41, blue: 57, alpha: 1).cgColor
+        let colorBottom = UIColor.toRGB(red: 22, green: 26, blue: 36, alpha: 1) .cgColor
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorBottom, colorTop]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
+        gradientLayer.frame = self.view.bounds
+                
+        self.view.layer.masksToBounds = true
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     /* Hide navigation tab */
     func hideNavController() {
         navigationController?.setNavigationBarHidden(true, animated: true)

@@ -19,6 +19,7 @@ class SettingsViewModel {
             "Email": user.email,
             "Registration Date": user.dateCreated,
             "Role": user.role.rawValue,
+            "Spotify": user.spotifyId ?? "",
             "Password": "********"
         ]
     }
@@ -26,6 +27,7 @@ class SettingsViewModel {
     /* Logout and go to login form */
     func logout() {
         UserDefaults.standard.removeObject(forKey: "isLoggedIn")
+        UserDefaults.standard.removeObject(forKey: "user")
         coordinator.goToLogin()
     }
     

@@ -14,9 +14,20 @@ class LoginViewController: UIViewController {
     
     /* Spotify */
     
+    /* Error View */
+    @IBOutlet weak var errorView: UIView!
+    @IBOutlet weak var errorTitle: UILabel!
+    @IBOutlet weak var errorDescr: UILabel!
+    
+    /* Form Fields + Button */
+    @IBOutlet weak var signInToContinueLabel: CustomLabel!
     @IBOutlet weak var userNameTextField: LoginTextFieldStyle!
     @IBOutlet weak var passwordTextField: LoginTextFieldStyle!
     @IBOutlet weak var signInButton: LoginButtonStyle!
+    @IBOutlet weak var fieldsView: UIView!
+    @IBOutlet weak var fieldsStack: UIStackView!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var dontHaveAccountButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,33 +36,48 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
+        addBg(image: UIImage(named: "bg1")!, alpha: 0.22)
+        
+        setupError()
         setupForm()
         setupPasswordEye()
     }
     
     private func setupForm() {
+        fieldsView.setGradientStack(colorTop: UIColor.gradientColorTop.cgColor,
+                                    colorBottom: UIColor.gradientColorBottom.cgColor,
+                                    cornerRadius: 15)
+        
         passwordTextField.isSecureTextEntry = true
-        userNameTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
-        signInButton.isEnabled = false
-        signInButton.backgroundColor = .darkMainColor
+        userNameTextField.addBottomBorder(height: 1.5, color: .white)
+        
+        userNameTextField.addPadding(.both(15))
+        passwordTextField.addPadding(.both(15))
+        
+        forgotPasswordButton.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 12)!)
+        forgotPasswordButton.titleLabel?.addKern(1.74)
+        
+        signInToContinueLabel.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 18)!)
+        signInToContinueLabel.addKern(1.74)
+        
+        dontHaveAccountButton.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 14)!)
+        dontHaveAccountButton.titleLabel?.addKern(1.74)
+        
+        signInButton.layer.cornerRadius = signInButton.frame.width / 2
+        signInButton.backgroundColor = .buttonColor
     }
     
-    @objc private func textChanged(_ textField: UITextField) {
-        let filteredArray = [userNameTextField, passwordTextField].filter { $0?.text == "" }
-        if filteredArray.isEmpty {
-            signInButton.isEnabled = true
-            signInButton.backgroundColor = .mainColor
-        } else {
-            signInButton.isEnabled = false
-            signInButton.backgroundColor = .darkMainColor
-        }
+    /* Setting up error view */
+    private func setupError() {
+        errorView.isHidden = true
+        errorView.layer.cornerRadius = 10
     }
     
     private func setupPasswordEye() {
         let eyeButton = UIButton()
-        eyeButton.setImage(UIImage(named: "eye"), for: .normal)
-        eyeButton.tintColor = .gray
+        let eyeImage = UIImage(named: "eye")?.withRenderingMode(.alwaysTemplate)
+        eyeButton.setImage(eyeImage, for: .normal)
+        eyeButton.tintColor = .white
         eyeButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -15, bottom: 0, right: 15)
         eyeButton.addTarget(self, action: #selector(togglePasswordText), for: .touchUpInside)
         passwordTextField.rightView = eyeButton
@@ -64,6 +90,17 @@ class LoginViewController: UIViewController {
     
     /* Login user */
     @IBAction func signIn(_ sender: UIButton) {
+        checkTextFields()
+    }
+    
+    /* Validate text fields */
+    private func checkTextFields() {
+        
+        if !getValidationErrors(textField: userNameTextField) ||
+            !getValidationErrors(textField: passwordTextField) {
+            return
+        }
+        
         guard let username = userNameTextField.text, let password = passwordTextField.text else {return}
         let user = LoginUser(username: username, password: password)
         
@@ -95,4 +132,50 @@ class LoginViewController: UIViewController {
     @IBAction func goToForgotPassword(_ sender: UIButton) {
         viewModel.goToForgotPassword()
     }
+}
+
+extension LoginViewController {
+    
+    func getValidationErrors(textField: UITextField) -> Bool {
+        // Validate Text Field
+        let (valid, message) = validate(textField)
+        
+        // Update Password Validation Label
+        errorDescr.text = message
+        
+        // Show/Hide Password Validation Label
+        UIView.animate(withDuration: 0.25, animations: {
+            self.errorView.isHidden = valid
+        })
+        
+        return valid
+    }
+    
+    /* Form fields validation */
+    fileprivate func validate(_ textField: UITextField) -> (Bool, String?) {
+        guard let text = textField.text else {
+            return (false, nil)
+        }
+        
+        if textField == userNameTextField {
+            if text.count < 4 {
+                return (false, "Username must include at least 4 symbols")
+            }
+            if text.count > 15 {
+                return (false, "Username mustn't include more than 15 symbols")
+            }
+        }
+        
+        if textField == passwordTextField {
+            if text.count < 8 {
+                return (false, "Password must include at least 8 symbols")
+            }
+            if text.count > 32 {
+                return (false, "Password mustn't include more than 32 symbols")
+            }
+        }
+        
+        return (text.count > 0, "This field cannot be empty.")
+    }
+    
 }

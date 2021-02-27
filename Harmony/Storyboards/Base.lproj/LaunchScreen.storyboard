@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,10 +12,53 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBg1" translatesAutoresizingMaskIntoConstraints="NO" id="1aR-Rt-FMz">
+                                <rect key="frame" x="0.0" y="5" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uIE-w4-5EV">
+                                <rect key="frame" x="87" y="144" width="240" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HARMONY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9E-oP-SlV">
+                                <rect key="frame" x="87" y="280" width="240" height="54"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="46"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music is social." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHc-OC-M7C">
+                                <rect key="frame" x="50" y="514" width="227" height="39"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s make it fun together." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L38-zZ-G98">
+                                <rect key="frame" x="50" y="568" width="311" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.1126354858" green="0.1400555074" blue="0.19816967839999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1aR-Rt-FMz" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="4Hn-Kn-O7q"/>
+                            <constraint firstItem="1aR-Rt-FMz" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ALY-GU-75d"/>
+                            <constraint firstItem="yHc-OC-M7C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="C9k-f2-a2K"/>
+                            <constraint firstItem="d9E-oP-SlV" firstAttribute="centerX" secondItem="1aR-Rt-FMz" secondAttribute="centerX" id="D5T-va-Alz"/>
+                            <constraint firstItem="1aR-Rt-FMz" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="E3d-bO-g6R"/>
+                            <constraint firstItem="d9E-oP-SlV" firstAttribute="width" secondItem="uIE-w4-5EV" secondAttribute="width" id="Ez7-62-SlI"/>
+                            <constraint firstItem="uIE-w4-5EV" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.142857" id="VsX-B6-vsi"/>
+                            <constraint firstItem="1aR-Rt-FMz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bQm-RO-4yp"/>
+                            <constraint firstItem="L38-zZ-G98" firstAttribute="leading" secondItem="yHc-OC-M7C" secondAttribute="leading" id="d5u-Ju-KjR"/>
+                            <constraint firstItem="L38-zZ-G98" firstAttribute="top" secondItem="yHc-OC-M7C" secondAttribute="bottom" constant="15" id="flg-rJ-0dI"/>
+                            <constraint firstItem="uIE-w4-5EV" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.57971" id="jXE-Kx-YlD"/>
+                            <constraint firstItem="yHc-OC-M7C" firstAttribute="top" secondItem="d9E-oP-SlV" secondAttribute="bottom" constant="180" id="sL0-Co-HKb"/>
+                            <constraint firstItem="uIE-w4-5EV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vN6-wD-sVh"/>
+                            <constraint firstItem="uIE-w4-5EV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="xVu-LI-yTd"/>
+                            <constraint firstItem="d9E-oP-SlV" firstAttribute="top" secondItem="uIE-w4-5EV" secondAttribute="bottom" constant="8" symbolic="YES" id="ylG-SM-5gI"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -22,4 +66,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launchLogo" width="169" height="172"/>
+        <image name="loginBg1" width="375" height="667"/>
+    </resources>
 </document>
