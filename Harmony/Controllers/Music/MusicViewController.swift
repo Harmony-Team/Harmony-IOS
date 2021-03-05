@@ -21,6 +21,19 @@ class MusicViewController: UIViewController {
         setupTableView()
         
         DispatchQueue.main.async {
+            self.viewModel.checkSpotify { (result) in
+                switch result {
+                case .failure(let error):
+                    if error == .NoPlaylists { // No playlists
+                        self.failedSpotify(msg: "You have no playlists in your sporify account")
+                    } else { // Not signed in
+                        self.failedSpotify(msg: "To see your tracks you have to sign in to your spotify account")
+                    }
+                    break
+                default:
+                    break
+                }
+            }
             self.viewModel.viewDidLoad {
                 self.hideActivityIndicator()
                 self.musicTableView.isHidden = false
@@ -29,6 +42,17 @@ class MusicViewController: UIViewController {
         viewModel.onUpdate = {
             self.musicTableView.reloadData()
         }
+    }
+    
+    private func failedSpotify(msg: String) {
+        let label = UILabel()
+        musicTableView.alpha = 0
+        label.layer.zPosition = 2
+        label.text = msg
+        label.font = UIFont.setFont(size: .Small)
+        label.textColor = .darkTextColor
+        view.addSubview(label)
+        label.center = view.center
     }
     
     private func setupTableView() {

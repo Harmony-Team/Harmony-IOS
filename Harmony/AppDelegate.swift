@@ -12,41 +12,12 @@ import ok_ios_sdk
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var auth = SPTAuth()
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //        auth.redirectURL = URL(string: "spotify-ios-quick-start://spotify-login-callback")
-        //        auth.sessionUserDefaultsKey = "current session"
         
-        setupSpotify()
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         return true
     }
     
-    func setupSpotify() {
-        let spotifyService = SpotifyService()
-        SPTAuth.defaultInstance().clientID = spotifyService.clientID
-        SPTAuth.defaultInstance().redirectURL = URL(string: spotifyService.redirectURI) 
-        SPTAuth.defaultInstance().sessionUserDefaultsKey = spotifyService.sessionKey
-        
-        //For this application we just want to stream music, so we will only request the streaming scope
-        SPTAuth.defaultInstance().requestedScopes = [
-            SPTAuthStreamingScope,
-            SPTAuthUserFollowReadScope, // Scope that lets you get a list of artists and users the authenticated user is following
-            SPTAuthUserLibraryReadScope, // Scope that lets you read user’s Your Music library
-            SPTAuthUserReadPrivateScope, // Scope that lets you read the private user information of the authenticated user
-            SPTAuthUserReadEmailScope // Scope that lets you get the email address of the authenticated user
-        ]
-        
-        // Start the player (this is only need for applications that using streaming, which we will use
-        // in this tutorial)
-        do {
-            try SPTAudioStreamingController.sharedInstance().start(withClientId: spotifyService.clientID)
-        } catch {
-            fatalError("Couldn't start Spotify SDK")
-        }
-    }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let app = options[.sourceApplication] as? String
@@ -58,23 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        VKSdk.processOpen(url, fromApplication: sourceApplication)
         OKSDK.open(url)
-        //        if auth.canHandle(auth.redirectURL) {
-        //            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
-        //                if error != nil {
-        //                    print("error!")
-        //                    return
-        //                }
-        //                let userDefaults = UserDefaults.standard
-        //                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
-        //                print(sessionData)
-        //                userDefaults.set(sessionData, forKey: "SpotifySession")
-        //                userDefaults.synchronize()
-        //                NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
-        //            })
-        //            return true
-        //        }
-        //
-        //        return false
         
         return false
     }

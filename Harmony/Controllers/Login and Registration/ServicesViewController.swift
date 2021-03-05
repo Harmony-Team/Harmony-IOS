@@ -23,7 +23,6 @@ class ServicesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     /* Spotify Authorization */
@@ -39,17 +38,11 @@ class ServicesViewController: UIViewController {
         webView = UIWebView()
         webView?.delegate = self
         spotifyVC.view.addSubview(webView)
+        webView.frame = spotifyVC.view.bounds
         webView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: spotifyVC.view.topAnchor),
-            webView.leadingAnchor.constraint(equalTo: spotifyVC.view.leadingAnchor),
-            webView.bottomAnchor.constraint(equalTo: spotifyVC.view.bottomAnchor),
-            webView.trailingAnchor.constraint(equalTo: spotifyVC.view.trailingAnchor)
-        ])
         
-        let authURLFull = "https://accounts.spotify.com/authorize?response_type=token&client_id=\(viewModel.spotifyService.clientID)&scope=\(viewModel.spotifyService.scopes)&redirect_uri=\(viewModel.spotifyService.redirectURI)&show_dialog=false"
-        
-        let urlRequest = URLRequest.init(url: URL.init(string: authURLFull)!)
+        guard let url = viewModel.spotifyService.signInUrl else { return }
+        let urlRequest = URLRequest.init(url: url)
         webView.loadRequest(urlRequest)
         
         // Create Navigation Controller

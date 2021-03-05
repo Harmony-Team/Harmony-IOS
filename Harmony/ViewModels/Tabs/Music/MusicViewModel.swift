@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum SpotifyError: Error {
+    case NotSignedIn
+    case NoPlaylists
+}
+
 class MusicViewModel {
     
     var coordinator: MusicCoordinator!
@@ -25,7 +30,6 @@ class MusicViewModel {
     var spotifyPlaylistList: [Playlist]?
     
     func viewDidLoad(completion: @escaping ()->()) {
-        checkSpotify()
         onUpdate()
         completion()
     }
@@ -40,11 +44,10 @@ class MusicViewModel {
     }
     
     /* Check if user is logged in Spotify */
-    func checkSpotify() {
+    func checkSpotify(completionHandler: @escaping (Result<Int?, SpotifyError>) -> Void) {
         
-        if UserDefaults.standard.bool(forKey: "isLoggedSpotify") {
-            print("Logged")
-            
+        if SpotifyService.shared.isSignedIn {
+            print("Logged in spotify")
             let semaphore = DispatchSemaphore(value: 0)
             
             spotifyUser = UserProfileCache.get(key: "spotifyUser")
@@ -56,6 +59,7 @@ class MusicViewModel {
 
             guard let playlists = spotifyPlaylistList else {
                 print("No Spotify Playlists")
+                completionHandler(.failure(.NoPlaylists))
                 return
             }
 
@@ -67,6 +71,7 @@ class MusicViewModel {
             }
         } else {
             print("Not logged")
+            completionHandler(.failure(.NotSignedIn))
         }
     }
     

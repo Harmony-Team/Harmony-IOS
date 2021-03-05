@@ -11,8 +11,9 @@ class ForgotPasswordViewController: UIViewController {
     
     var viewModel: ForgotPasswordViewModel!
 
-    @IBOutlet weak var emailTextField: LoginTextFieldStyle!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var continueButton: LoginButtonStyle!
+    @IBOutlet weak var dontHaveAccountButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +24,17 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     private func setupForm() {
-//        emailTextField.layer.borderWidth = 1
-//        emailTextField.layer.borderColor = UIColor.white.cgColor
-//        emailTextField.layer.cornerRadius = 15
         emailTextField.setGradientStack(colorTop: UIColor.gradientColorTop.cgColor,
                                         colorBottom: UIColor.gradientColorBottom.cgColor,
                                         cornerRadius: 15)
+        emailTextField.setupLoginFormFields()
         
         continueButton.isEnabled = false
         continueButton.layer.cornerRadius = continueButton.frame.width / 2
         continueButton.backgroundColor = .buttonColor
+        
+        dontHaveAccountButton.titleLabel?.font = UIFont.setFont(size: .Medium)
+        dontHaveAccountButton.titleLabel?.addKern(1.74)
         
         let arrowImage = UIImage(named: "right-arrow-white")
         let arrImageView = UIImageView(image: arrowImage)

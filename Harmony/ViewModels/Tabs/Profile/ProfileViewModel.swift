@@ -12,7 +12,7 @@ class ProfileViewModel {
     var coordinator: ProfileCoordinator!
     var user: User!
     var spotifyUser: SpotifyUser?
-    var spotifyService = SpotifyService()
+    var spotifyService = SpotifyService.shared
     
     /* Get user info from UserDefaults */
     func getUserInfo(completion: ()->()) {

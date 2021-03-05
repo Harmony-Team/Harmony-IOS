@@ -15,7 +15,7 @@ class ServicesViewModel {
     var user: User!
     
     /* Spotify */
-    var spotifyService = SpotifyService()
+    var spotifyService = SpotifyService.shared
     var spotifyUser: SpotifyUser?
     
     /* VK */
@@ -25,20 +25,26 @@ class ServicesViewModel {
     
     /* Spotify Auth */
     func requestForCallbackURL(request: URLRequest, completion: @escaping ()->()) {
-        // Get the access token string after the '#access_token=' and before '&token_type='
+        
+        // Exchange code for access token
         let requestURLString = (request.url?.absoluteString)! as String
-        if requestURLString.hasPrefix(spotifyService.redirectURI) {
-            if requestURLString.contains("#access_token=") {
-                if let range = requestURLString.range(of: "=") {
-                    let spotifAcTok = requestURLString[range.upperBound...]
-                    if let range = spotifAcTok.range(of: "&token_type=") {
-                        let spotifAcTokFinal = spotifAcTok[..<range.lowerBound]
-                        handleAuth(spotifyAccessToken: String(spotifAcTokFinal))
-                        completion()
-                    }
+        
+        // Getting code
+        let component = URLComponents(string: requestURLString)
+        guard let code = component?.queryItems?.first(where: { $0.name == "code" })?.value else {
+            return
+        }
+        
+        // Exchanging code for token
+        spotifyService.exchangeCodeForToken(code: code) { [weak self] success in
+            self?.spotifyService.withValidToken { token in
+                self?.handleAuth(spotifyAccessToken: token)
+                DispatchQueue.main.async {
+                   completion()
                 }
             }
         }
+        
     }
     
     func handleAuth(spotifyAccessToken: String) {
@@ -47,23 +53,26 @@ class ServicesViewModel {
     
     func fetchSpotifyProfile(accessToken: String) {
         let tokenURLFull = "https://api.spotify.com/v1/me"
-        let verify: NSURL = NSURL(string: tokenURLFull)!
-        let request: NSMutableURLRequest = NSMutableURLRequest(url: verify as URL)
-        request.addValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+        let url = URL(string: tokenURLFull)!
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "GET"
+        request.timeoutInterval = 30
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            if error == nil {
-                let result = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [AnyHashable: Any]
-                
-                let spotifyId: String! = (result?["id"] as! String) // Spotify ID
-                let spotifyDisplayName: String! = (result?["display_name"] as! String) // Spotify User Name
-                let spotifyEmail: String! = (result?["email"] as! String) // Spotify Email
-                
-                self.spotifyUser = SpotifyUser(spotifyId: spotifyId, spotifyName: spotifyDisplayName, spotifyEmail: spotifyEmail, spotifyAccessToken: accessToken)
-                
-                UserProfileCache.save(self.spotifyUser, "spotifyUser")
-                UserDefaults.standard.setValue(true, forKey: "isLoggedSpotify")
+            guard let data = data, error == nil else {
+                return
             }
+            
+            let result = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+
+            let spotifyId: String! = (result?["id"] as! String) // Spotify ID
+            let spotifyDisplayName: String! = (result?["display_name"] as! String) // Spotify User Name
+//            let spotifyEmail: String! = (result?["email"] as! String) // Spotify Email
+//            
+            self.spotifyUser = SpotifyUser(spotifyId: spotifyId, spotifyName: spotifyDisplayName, spotifyEmail: "kos@mail.ru", spotifyAccessToken: accessToken)
+//            
+            UserProfileCache.save(self.spotifyUser, "spotifyUser")
         }
         task.resume()
     }
@@ -84,7 +93,7 @@ class ServicesViewModel {
     func setIntergrationIDs() {
         let userToken = UserDefaults.standard.value(forKey: "userToken") as! String
         let serviceIntergration = ServiceIntergration(spotify: spotifyUser?.spotifyId ?? "null")
-        APIManager.shared.setUserIntergrations(token: userToken, services: serviceIntergration, spotifyId: serviceIntergration.spotify) { (_) in
+        APIManager.shared.setUserIntergrations(token: userToken, services: serviceIntergration, spotifyId: serviceIntergration.spotify) {
             self.endRegistration()
         }
     }

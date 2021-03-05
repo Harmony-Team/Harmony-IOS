@@ -21,8 +21,8 @@ class LoginViewController: UIViewController {
     
     /* Form Fields + Button */
     @IBOutlet weak var signInToContinueLabel: CustomLabel!
-    @IBOutlet weak var userNameTextField: LoginTextFieldStyle!
-    @IBOutlet weak var passwordTextField: LoginTextFieldStyle!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: LoginButtonStyle!
     @IBOutlet weak var fieldsView: UIView!
     @IBOutlet weak var fieldsStack: UIStackView!
@@ -31,6 +31,14 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Move View With Keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        // Hide keyboard after tap
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -51,18 +59,18 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
         userNameTextField.addBottomBorder(height: 1.5, color: .white)
         
-        userNameTextField.addPadding(.both(15))
-        passwordTextField.addPadding(.both(15))
+        [userNameTextField, passwordTextField].forEach { $0?.setupLoginFormFields() }
         
-        forgotPasswordButton.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 12)!)
+        forgotPasswordButton.titleLabel?.font = UIFont.setFont(size: .Small)
         forgotPasswordButton.titleLabel?.addKern(1.74)
         
-        signInToContinueLabel.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 18)!)
+        signInToContinueLabel.font = UIFont.setFont(size: .Big)
         signInToContinueLabel.addKern(1.74)
         
-        dontHaveAccountButton.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 14)!)
+        dontHaveAccountButton.titleLabel?.font = UIFont.setFont(size: .Medium)
         dontHaveAccountButton.titleLabel?.addKern(1.74)
         
+        signInButton.titleLabel?.font = UIFont.setFont(size: .Big)
         signInButton.layer.cornerRadius = signInButton.frame.width / 2
         signInButton.backgroundColor = .buttonColor
     }
@@ -71,6 +79,7 @@ class LoginViewController: UIViewController {
     private func setupError() {
         errorView.isHidden = true
         errorView.layer.cornerRadius = 10
+        [errorTitle, errorDescr].forEach { $0?.font = UIFont.setFont(size: .Medium) }
     }
     
     private func setupPasswordEye() {
@@ -131,6 +140,26 @@ class LoginViewController: UIViewController {
     /* Go to forgot password view */
     @IBAction func goToForgotPassword(_ sender: UIButton) {
         viewModel.goToForgotPassword()
+    }
+    
+    /* Keyboard moving */
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 2
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    // Hide keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

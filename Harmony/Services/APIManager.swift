@@ -153,7 +153,7 @@ class APIManager {
     }
     
     /* Set user services integrations */
-    func setUserIntergrations(token: String, services: ServiceIntergration, spotifyId: String, completion: @escaping (User)->()) {
+    func setUserIntergrations(token: String, services: ServiceIntergration, spotifyId: String, completion: @escaping ()->()) {
         
         var code = 0
         let servicesAPI = "http://harmony-db.herokuapp.com/api/user/integrate?spotify=\(spotifyId)&vk&ok"
@@ -176,7 +176,7 @@ class APIManager {
 //                        token = (json as AnyObject).value(forKey: "token") as! String
 //                        UserDefaults.standard.setValue(token, forKey: "userToken")
 //                    }
-                    //completion(msg)
+                    completion()
                 } catch {
                     print(error.localizedDescription)
                 }

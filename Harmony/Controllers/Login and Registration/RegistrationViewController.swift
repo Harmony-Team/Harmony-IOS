@@ -18,9 +18,9 @@ class RegistrationViewController: UIViewController {
     
     /* Form Fields + Button */
     @IBOutlet weak var signUpToContinue: UILabel!
-    @IBOutlet weak var userNameTextField: LoginTextFieldStyle!
-    @IBOutlet weak var emailTextField: LoginTextFieldStyle!
-    @IBOutlet weak var passwordTextField: LoginTextFieldStyle!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: LoginButtonStyle!
     @IBOutlet weak var fieldsView: UIView!
     @IBOutlet weak var fieldsStack: UIStackView!
@@ -53,16 +53,15 @@ class RegistrationViewController: UIViewController {
         userNameTextField.addBottomBorder(height: 1.5, color: .white)
         emailTextField.addBottomBorder(height: 1.5, color: .white)
         
-        userNameTextField.addPadding(.both(15))
-        emailTextField.addPadding(.both(15))
-        passwordTextField.addPadding(.both(15))
+        [userNameTextField, emailTextField, passwordTextField].forEach { $0?.setupLoginFormFields() }
         
-        signUpToContinue.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 18)!)
+        signUpToContinue.font = UIFont.setFont(size: .Big)
         signUpToContinue.addKern(1.74)
         
         haveAccountButton.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Lato-Regular", size: 14)!)
         haveAccountButton.titleLabel?.addKern(1.74)
                 
+        signUpButton.titleLabel?.font = UIFont.setFont(size: .Big)
         signUpButton.layer.cornerRadius = signUpButton.frame.width / 2
         signUpButton.backgroundColor = .buttonColor
     }
@@ -71,6 +70,7 @@ class RegistrationViewController: UIViewController {
     private func setupError() {
         errorView.isHidden = true
         errorView.layer.cornerRadius = 10
+        [errorTitle, errorDescr].forEach { $0?.font = UIFont.setFont(size: .Medium) }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

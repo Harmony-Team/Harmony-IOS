@@ -44,8 +44,9 @@ extension UITextField {
     }
     
     /* Add bottom border */
-    internal func addBottomBorder(height: CGFloat = 1.0, color: UIColor = .black) {
-        let borderView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 3))
+    func addBottomBorder(height: CGFloat = 1.0, color: UIColor = .black) {
+        let borderView = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 3))
+
         borderView.setGradientStack(colorTop: UIColor.gradientColorTop.cgColor,
                                     colorBottom: UIColor.gradientColorBottom.cgColor,
                                     cornerRadius: 1)
@@ -60,5 +61,17 @@ extension UITextField {
                 borderView.heightAnchor.constraint(equalToConstant: height)
             ]
         )
+    }
+    
+    func setupLoginFormFields() {
+       // self.addPadding(.both(15))
+        self.font = UIFont.setFont(size: .Medium)
+        self.defaultTextAttributes.updateValue(1.74, forKey: NSAttributedString.Key.kern)
+        
+        // Placeholder text color
+        attributedPlaceholder = NSAttributedString(string: placeholder != nil ?  placeholder! : "", attributes: [
+            NSAttributedString.Key.foregroundColor: UIColor.white.cgColor,
+            NSAttributedString.Key.kern: 1.74
+        ])
     }
 }
