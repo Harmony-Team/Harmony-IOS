@@ -9,12 +9,18 @@ import UIKit
 
 class GroupCell: UITableViewCell {
     
+    var logoView = UIView()
     var logoImageView = UIImageView()
+    var verticalStack = UIStackView()
     var titleLabel = UILabel()
     var msgLabel = UILabel()
+    var separatorLine = UIView()
+    var imagePadding: CGFloat?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        backgroundColor = .clear
         
         setupViews()
         setupHierarchy()
@@ -22,36 +28,53 @@ class GroupCell: UITableViewCell {
     }
     
     private func setupViews() {
-        logoImageView.backgroundColor = .lightGray
-        logoImageView.layer.cornerRadius = 25
+        logoView.setupShadow(cornerRad: 10, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))
         
-        titleLabel.font = .systemFont(ofSize: 18, weight: .semibold)
+        logoImageView.contentMode = .scaleAspectFill
+        logoImageView.tintColor = .white
         
-        msgLabel.font = .systemFont(ofSize: 16, weight: .medium)
-        msgLabel.textColor = .gray
+        titleLabel.font = UIFont.setFont(size: .Large)
+        titleLabel.textColor = .white
         
-        [logoImageView, titleLabel, msgLabel].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        msgLabel.font = UIFont.setFont(size: .Medium)
+        msgLabel.textColor = .lightTextColor
+        
+        verticalStack.axis = .vertical
+        verticalStack.spacing = 5
+        
+        separatorLine.backgroundColor = .gray
+        separatorLine.alpha = 0.3
+        
+        [logoView, logoImageView, titleLabel, msgLabel, verticalStack, separatorLine].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
     private func setupHierarchy() {
-        contentView.addSubview(logoImageView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(msgLabel)
+        contentView.addSubview(logoView)
+        logoView.addSubview(logoImageView)
+        contentView.addSubview(verticalStack)
+        verticalStack.addArrangedSubview(titleLabel)
+        verticalStack.addArrangedSubview(msgLabel)
+        contentView.addSubview(separatorLine)
     }
     
     private func setupLayouts() {
-        logoImageView.pinToEdges(edges: [.left, .top], constant: 15)
-        titleLabel.pinToEdges(edges: [.top], constant: 15)
-        
+        logoView.pinToEdges(edges: [.left], constant: contentView.frame.height * 2/5)
+        logoImageView.pinToEdges(constant: 0)
+
         NSLayoutConstraint.activate([
-            logoImageView.heightAnchor.constraint(equalToConstant: 50),
-            logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor),
+            logoView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 3/5),
+            logoView.widthAnchor.constraint(equalTo: logoView.heightAnchor),
+            logoView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            titleLabel.leftAnchor.constraint(equalTo: logoImageView.rightAnchor, constant: 15),
+            verticalStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            verticalStack.leftAnchor.constraint(equalTo: logoView.rightAnchor, constant: contentView.frame.height * 2/5),
             
-            msgLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-            msgLabel.leftAnchor.constraint(equalTo: logoImageView.rightAnchor, constant: 15)
+            separatorLine.heightAnchor.constraint(equalToConstant: 1),
+            separatorLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            separatorLine.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            separatorLine.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
+
     }
     
     required init?(coder: NSCoder) {

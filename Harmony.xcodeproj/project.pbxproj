@@ -17,16 +17,16 @@
 		521A050C25C73673007F86A0 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A050B25C73673007F86A0 /* UIViewController+Ext.swift */; };
 		521A051025C73FDB007F86A0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A050F25C73FDB007F86A0 /* ProfileViewController.swift */; };
 		521A051325C73FE9007F86A0 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A051225C73FE9007F86A0 /* FriendsViewController.swift */; };
-		521A051625C73FF4007F86A0 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A051525C73FF4007F86A0 /* GroupsViewController.swift */; };
+		521A051625C73FF4007F86A0 /* GroupsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A051525C73FF4007F86A0 /* GroupsListViewController.swift */; };
 		521A051925C73FFC007F86A0 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A051825C73FFC007F86A0 /* MusicViewController.swift */; };
 		521A051C25C741AC007F86A0 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A051B25C741AC007F86A0 /* ProfileCoordinator.swift */; };
 		521A051F25C741FF007F86A0 /* FriendsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A051E25C741FF007F86A0 /* FriendsCoordinator.swift */; };
-		521A052225C74210007F86A0 /* GroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A052125C74210007F86A0 /* GroupCoordinator.swift */; };
+		521A052225C74210007F86A0 /* GroupsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A052125C74210007F86A0 /* GroupsListCoordinator.swift */; };
 		521A052525C7421F007F86A0 /* MusicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A052425C7421F007F86A0 /* MusicCoordinator.swift */; };
 		521A052825C750D6007F86A0 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A052725C750D6007F86A0 /* MainTabBarController.swift */; };
 		521A052C25C757C2007F86A0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A052B25C757C2007F86A0 /* ProfileViewModel.swift */; };
 		521A053025C757CC007F86A0 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A052F25C757CC007F86A0 /* FriendsViewModel.swift */; };
-		521A053325C757D7007F86A0 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A053225C757D7007F86A0 /* GroupViewModel.swift */; };
+		521A053325C757D7007F86A0 /* GroupsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A053225C757D7007F86A0 /* GroupsListViewModel.swift */; };
 		521A053625C757DF007F86A0 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A053525C757DF007F86A0 /* MusicViewModel.swift */; };
 		521A053D25C81249007F86A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A053C25C81249007F86A0 /* LoginViewController.swift */; };
 		521A054125C8125C007F86A0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A054025C8125C007F86A0 /* RegistrationViewController.swift */; };
@@ -58,7 +58,24 @@
 		5236FFD525D0342B00845300 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFD425D0342B00845300 /* APIManager.swift */; };
 		5236FFD925D0346900845300 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFD825D0346900845300 /* User.swift */; };
 		52A758A525D93F770051EB61 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A758A425D93F770051EB61 /* Playlist.swift */; };
-		52ADF4BE25E4048C000B1AA1 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ADF4BD25E4048C000B1AA1 /* CustomLabel.swift */; };
+		52AC3AB025F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AAF25F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift */; };
+		52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AB325F9090400EA7E19 /* LatestGroupsCell.swift */; };
+		52AC3AB925F90F6900EA7E19 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AB825F90F6900EA7E19 /* GroupViewController.swift */; };
+		52AC3ABC25F90FC500EA7E19 /* ShareLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3ABB25F90FC500EA7E19 /* ShareLinkViewModel.swift */; };
+		52AC3AC025F9105E00EA7E19 /* GroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3ABF25F9105E00EA7E19 /* GroupCoordinator.swift */; };
+		52AC3AC325F95AAF00EA7E19 /* MusicTabBarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AC225F95AAE00EA7E19 /* MusicTabBarCollectionView.swift */; };
+		52AC3AC625F95B1B00EA7E19 /* MyMusicTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AC525F95B1B00EA7E19 /* MyMusicTabBarCell.swift */; };
+		52AC3AC925F966A100EA7E19 /* MyMusicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AC825F966A100EA7E19 /* MyMusicTableCell.swift */; };
+		52AC3ACC25F9FF2400EA7E19 /* LobbyPlaylistsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3ACB25F9FF2400EA7E19 /* LobbyPlaylistsTableCell.swift */; };
+		52AC3AD425FA01EB00EA7E19 /* LobbyPlaylistsTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AD325FA01EB00EA7E19 /* LobbyPlaylistsTabBarCell.swift */; };
+		52AC3AD925FA6E3C00EA7E19 /* GroupUsersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AD825FA6E3C00EA7E19 /* GroupUsersCollectionView.swift */; };
+		52AC3ADE25FA70A200EA7E19 /* GroupUsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3ADD25FA70A200EA7E19 /* GroupUsersCell.swift */; };
+		52AC3AE225FA850100EA7E19 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AE125FA850100EA7E19 /* UIImageView+Ext.swift */; };
+		52AC3AE525FAB51200EA7E19 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AE425FAB51200EA7E19 /* PulseAnimation.swift */; };
+		52AC3AE925FE33B300EA7E19 /* GroupUsersCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AE825FE33B300EA7E19 /* GroupUsersCellViewModel.swift */; };
+		52AC3AED25FE37C200EA7E19 /* GroupAddUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AEC25FE37C200EA7E19 /* GroupAddUserCell.swift */; };
+		52AC3AF425FE44F300EA7E19 /* WaitingFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AF325FE44F300EA7E19 /* WaitingFriendsView.swift */; };
+		52AC3AFE26034E4700EA7E19 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AFD26034E4700EA7E19 /* GroupViewModel.swift */; };
 		52ADF4C125E40549000B1AA1 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */; };
 		52B0F99225E4199300010F9D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0F99125E4199300010F9D /* ForgotPasswordViewController.swift */; };
 		52B0F99525E41A2B00010F9D /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0F99425E41A2B00010F9D /* ForgotPasswordViewModel.swift */; };
@@ -75,6 +92,9 @@
 		52B5E85C25EE732A001BD785 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5E85B25EE732A001BD785 /* UIDevice+Ext.swift */; };
 		52B5E85F25EE73A0001BD785 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5E85E25EE73A0001BD785 /* UIFont+Ext.swift */; };
 		52B5E86725F1138D001BD785 /* SpotifyAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5E86625F1138D001BD785 /* SpotifyAuthResponse.swift */; };
+		52B5E88125F7FFDD001BD785 /* NewGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5E88025F7FFDD001BD785 /* NewGroupCell.swift */; };
+		52B5E88525F80B5A001BD785 /* ShareLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5E88425F80B5A001BD785 /* ShareLinkViewController.swift */; };
+		52B5E88825F80B90001BD785 /* ShareLinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5E88725F80B90001BD785 /* ShareLinkCoordinator.swift */; };
 		52BCD56E25E3048800A30366 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD56C25E303D800A30366 /* Lato-Regular.ttf */; };
 		52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */; };
 		52D1F4C525CC8DCA002AA1C9 /* OKSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */; };
@@ -97,16 +117,16 @@
 		521A050B25C73673007F86A0 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		521A050F25C73FDB007F86A0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		521A051225C73FE9007F86A0 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
-		521A051525C73FF4007F86A0 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		521A051525C73FF4007F86A0 /* GroupsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsListViewController.swift; sourceTree = "<group>"; };
 		521A051825C73FFC007F86A0 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		521A051B25C741AC007F86A0 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		521A051E25C741FF007F86A0 /* FriendsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCoordinator.swift; sourceTree = "<group>"; };
-		521A052125C74210007F86A0 /* GroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoordinator.swift; sourceTree = "<group>"; };
+		521A052125C74210007F86A0 /* GroupsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsListCoordinator.swift; sourceTree = "<group>"; };
 		521A052425C7421F007F86A0 /* MusicCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCoordinator.swift; sourceTree = "<group>"; };
 		521A052725C750D6007F86A0 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		521A052B25C757C2007F86A0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		521A052F25C757CC007F86A0 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
-		521A053225C757D7007F86A0 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		521A053225C757D7007F86A0 /* GroupsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsListViewModel.swift; sourceTree = "<group>"; };
 		521A053525C757DF007F86A0 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		521A053C25C81249007F86A0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		521A054025C8125C007F86A0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -138,7 +158,24 @@
 		5236FFD425D0342B00845300 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		5236FFD825D0346900845300 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		52A758A425D93F770051EB61 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
-		52ADF4BD25E4048C000B1AA1 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		52AC3AAF25F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestGroupsCollectionView.swift; sourceTree = "<group>"; };
+		52AC3AB325F9090400EA7E19 /* LatestGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestGroupsCell.swift; sourceTree = "<group>"; };
+		52AC3AB825F90F6900EA7E19 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		52AC3ABB25F90FC500EA7E19 /* ShareLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkViewModel.swift; sourceTree = "<group>"; };
+		52AC3ABF25F9105E00EA7E19 /* GroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoordinator.swift; sourceTree = "<group>"; };
+		52AC3AC225F95AAE00EA7E19 /* MusicTabBarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTabBarCollectionView.swift; sourceTree = "<group>"; };
+		52AC3AC525F95B1B00EA7E19 /* MyMusicTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicTabBarCell.swift; sourceTree = "<group>"; };
+		52AC3AC825F966A100EA7E19 /* MyMusicTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicTableCell.swift; sourceTree = "<group>"; };
+		52AC3ACB25F9FF2400EA7E19 /* LobbyPlaylistsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyPlaylistsTableCell.swift; sourceTree = "<group>"; };
+		52AC3AD325FA01EB00EA7E19 /* LobbyPlaylistsTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyPlaylistsTabBarCell.swift; sourceTree = "<group>"; };
+		52AC3AD825FA6E3C00EA7E19 /* GroupUsersCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsersCollectionView.swift; sourceTree = "<group>"; };
+		52AC3ADD25FA70A200EA7E19 /* GroupUsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsersCell.swift; sourceTree = "<group>"; };
+		52AC3AE125FA850100EA7E19 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		52AC3AE425FAB51200EA7E19 /* PulseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
+		52AC3AE825FE33B300EA7E19 /* GroupUsersCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsersCellViewModel.swift; sourceTree = "<group>"; };
+		52AC3AEC25FE37C200EA7E19 /* GroupAddUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAddUserCell.swift; sourceTree = "<group>"; };
+		52AC3AF325FE44F300EA7E19 /* WaitingFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingFriendsView.swift; sourceTree = "<group>"; };
+		52AC3AFD26034E4700EA7E19 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		52B0F99125E4199300010F9D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		52B0F99425E41A2B00010F9D /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -155,6 +192,9 @@
 		52B5E85B25EE732A001BD785 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		52B5E85E25EE73A0001BD785 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		52B5E86625F1138D001BD785 /* SpotifyAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuthResponse.swift; sourceTree = "<group>"; };
+		52B5E88025F7FFDD001BD785 /* NewGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupCell.swift; sourceTree = "<group>"; };
+		52B5E88425F80B5A001BD785 /* ShareLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkViewController.swift; sourceTree = "<group>"; };
+		52B5E88725F80B90001BD785 /* ShareLinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkCoordinator.swift; sourceTree = "<group>"; };
 		52BCD56C25E303D800A30366 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		52D1F4C125CC7F9E002AA1C9 /* VKHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKHeader.h; sourceTree = "<group>"; };
@@ -257,10 +297,12 @@
 				521A054325C818F4007F86A0 /* TabBar+Ext.swift */,
 				521A054625C85179007F86A0 /* Colors+Ext.swift */,
 				5236FF9325CDCA3F00845300 /* UIView+Ext.swift */,
+				52AC3AE125FA850100EA7E19 /* UIImageView+Ext.swift */,
 				5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */,
 				52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */,
 				52B5E85B25EE732A001BD785 /* UIDevice+Ext.swift */,
 				52B5E85E25EE73A0001BD785 /* UIFont+Ext.swift */,
+				52AC3AE425FAB51200EA7E19 /* PulseAnimation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -301,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */,
-				52ADF4BD25E4048C000B1AA1 /* CustomLabel.swift */,
 			);
 			path = "Login and Registration";
 			sourceTree = "<group>";
@@ -343,9 +384,11 @@
 		5236FF8525CDAF2800845300 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
-				521A052125C74210007F86A0 /* GroupCoordinator.swift */,
-				5236FFA625CED99400845300 /* ChatCoordinator.swift */,
+				521A052125C74210007F86A0 /* GroupsListCoordinator.swift */,
 				5236FF8225CDAF1500845300 /* NewGroupCoordinator.swift */,
+				52B5E88725F80B90001BD785 /* ShareLinkCoordinator.swift */,
+				52AC3ABF25F9105E00EA7E19 /* GroupCoordinator.swift */,
+				5236FFA625CED99400845300 /* ChatCoordinator.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -353,9 +396,11 @@
 		5236FF8A25CDAF6000845300 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
-				521A051525C73FF4007F86A0 /* GroupsViewController.swift */,
-				5236FFA125CED6F200845300 /* ChatViewController.swift */,
+				521A051525C73FF4007F86A0 /* GroupsListViewController.swift */,
 				5236FF8725CDAF5800845300 /* NewGroupViewController.swift */,
+				52B5E88425F80B5A001BD785 /* ShareLinkViewController.swift */,
+				52AC3AB825F90F6900EA7E19 /* GroupViewController.swift */,
+				5236FFA125CED6F200845300 /* ChatViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -364,6 +409,8 @@
 			isa = PBXGroup;
 			children = (
 				5236FF9025CDC94700845300 /* GroupCell.swift */,
+				52B5E88025F7FFDD001BD785 /* NewGroupCell.swift */,
+				52AC3ACE25F9FFE700EA7E19 /* Lobby */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -405,9 +452,11 @@
 		5236FFBC25CFCD6600845300 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
-				521A053225C757D7007F86A0 /* GroupViewModel.swift */,
-				5236FFA925CED9C300845300 /* ChatViewModel.swift */,
+				521A053225C757D7007F86A0 /* GroupsListViewModel.swift */,
 				5236FF8C25CDC52000845300 /* NewGroupViewModel.swift */,
+				52AC3ABB25F90FC500EA7E19 /* ShareLinkViewModel.swift */,
+				52AC3AE725FE33A200EA7E19 /* Lobby */,
+				5236FFA925CED9C300845300 /* ChatViewModel.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -449,6 +498,63 @@
 				52EDBF9A25DEE4E3002A141C /* TrackViewModel.swift */,
 			);
 			path = Music;
+			sourceTree = "<group>";
+		};
+		52AC3ACE25F9FFE700EA7E19 /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3ADC25FA708600EA7E19 /* GroupUsers */,
+				52AC3AC225F95AAE00EA7E19 /* MusicTabBarCollectionView.swift */,
+				52AC3AD125FA01C800EA7E19 /* MyMusic */,
+				52AC3AD625FA01F300EA7E19 /* Lobby'sPlaylists */,
+				52AC3AF225FE44D600EA7E19 /* WaitFriendsView */,
+			);
+			path = Lobby;
+			sourceTree = "<group>";
+		};
+		52AC3AD125FA01C800EA7E19 /* MyMusic */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3AC525F95B1B00EA7E19 /* MyMusicTabBarCell.swift */,
+				52AC3AC825F966A100EA7E19 /* MyMusicTableCell.swift */,
+			);
+			path = MyMusic;
+			sourceTree = "<group>";
+		};
+		52AC3AD625FA01F300EA7E19 /* Lobby'sPlaylists */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3AD325FA01EB00EA7E19 /* LobbyPlaylistsTabBarCell.swift */,
+				52AC3ACB25F9FF2400EA7E19 /* LobbyPlaylistsTableCell.swift */,
+			);
+			path = "Lobby'sPlaylists";
+			sourceTree = "<group>";
+		};
+		52AC3ADC25FA708600EA7E19 /* GroupUsers */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3AD825FA6E3C00EA7E19 /* GroupUsersCollectionView.swift */,
+				52AC3ADD25FA70A200EA7E19 /* GroupUsersCell.swift */,
+				52AC3AEC25FE37C200EA7E19 /* GroupAddUserCell.swift */,
+			);
+			path = GroupUsers;
+			sourceTree = "<group>";
+		};
+		52AC3AE725FE33A200EA7E19 /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3AFD26034E4700EA7E19 /* GroupViewModel.swift */,
+				52AC3AE825FE33B300EA7E19 /* GroupUsersCellViewModel.swift */,
+			);
+			path = Lobby;
+			sourceTree = "<group>";
+		};
+		52AC3AF225FE44D600EA7E19 /* WaitFriendsView */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3AF325FE44F300EA7E19 /* WaitingFriendsView.swift */,
+			);
+			path = WaitFriendsView;
 			sourceTree = "<group>";
 		};
 		52B1C24225CC34FE0027C3E6 /* Storyboards */ = {
@@ -513,6 +619,8 @@
 		52B5C5A025D6C18D00961A4E /* ProfileSettings */ = {
 			isa = PBXGroup;
 			children = (
+				52AC3AAF25F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift */,
+				52AC3AB325F9090400EA7E19 /* LatestGroupsCell.swift */,
 				52B5C5A125D6C19F00961A4E /* SettingsCell.swift */,
 			);
 			path = ProfileSettings;
@@ -661,29 +769,41 @@
 			files = (
 				521A053D25C81249007F86A0 /* LoginViewController.swift in Sources */,
 				5236FFC225CFCD7600845300 /* NewFriendViewModel.swift in Sources */,
+				52AC3AC325F95AAF00EA7E19 /* MusicTabBarCollectionView.swift in Sources */,
 				5236FFAD25CEF6F900845300 /* UITextField+Ext.swift in Sources */,
+				52AC3AF425FE44F300EA7E19 /* WaitingFriendsView.swift in Sources */,
+				52B5E88825F80B90001BD785 /* ShareLinkCoordinator.swift in Sources */,
 				521A051C25C741AC007F86A0 /* ProfileCoordinator.swift in Sources */,
 				52EDBF9325DEE46F002A141C /* TrackViewController.swift in Sources */,
 				521A054125C8125C007F86A0 /* RegistrationViewController.swift in Sources */,
 				52B0F99525E41A2B00010F9D /* ForgotPasswordViewModel.swift in Sources */,
 				52ADF4C125E40549000B1AA1 /* UILabel+Ext.swift in Sources */,
-				521A051625C73FF4007F86A0 /* GroupsViewController.swift in Sources */,
-				521A053325C757D7007F86A0 /* GroupViewModel.swift in Sources */,
+				521A051625C73FF4007F86A0 /* GroupsListViewController.swift in Sources */,
+				521A053325C757D7007F86A0 /* GroupsListViewModel.swift in Sources */,
 				521A052825C750D6007F86A0 /* MainTabBarController.swift in Sources */,
+				52AC3AE925FE33B300EA7E19 /* GroupUsersCellViewModel.swift in Sources */,
 				52D1F4C525CC8DCA002AA1C9 /* OKSDK.m in Sources */,
-				52ADF4BE25E4048C000B1AA1 /* CustomLabel.swift in Sources */,
 				521A053625C757DF007F86A0 /* MusicViewModel.swift in Sources */,
+				52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */,
 				5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */,
 				5236FF9E25CDE5A800845300 /* MusicCell.swift in Sources */,
 				5236FFA225CED6F200845300 /* ChatViewController.swift in Sources */,
 				5236FF7C25CDA73400845300 /* MainTabBarCoordinator.swift in Sources */,
-				521A052225C74210007F86A0 /* GroupCoordinator.swift in Sources */,
+				521A052225C74210007F86A0 /* GroupsListCoordinator.swift in Sources */,
+				52AC3AC625F95B1B00EA7E19 /* MyMusicTabBarCell.swift in Sources */,
+				52B5E88525F80B5A001BD785 /* ShareLinkViewController.swift in Sources */,
+				52AC3AD425FA01EB00EA7E19 /* LobbyPlaylistsTabBarCell.swift in Sources */,
 				521A051325C73FE9007F86A0 /* FriendsViewController.swift in Sources */,
 				521A055F25C9E892007F86A0 /* LoginButtonStyle.swift in Sources */,
 				5236FF8825CDAF5800845300 /* NewGroupViewController.swift in Sources */,
+				52AC3AFE26034E4700EA7E19 /* GroupViewModel.swift in Sources */,
+				52AC3AD925FA6E3C00EA7E19 /* GroupUsersCollectionView.swift in Sources */,
 				52B1C24F25CC388E0027C3E6 /* VKService.swift in Sources */,
 				52B0F99825E41A4500010F9D /* ForgotPasswordCoordinator.swift in Sources */,
 				5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */,
+				52AC3ACC25F9FF2400EA7E19 /* LobbyPlaylistsTableCell.swift in Sources */,
+				52B5E88125F7FFDD001BD785 /* NewGroupCell.swift in Sources */,
+				52AC3AE525FAB51200EA7E19 /* PulseAnimation.swift in Sources */,
 				521A050225C73588007F86A0 /* AppCoordinator.swift in Sources */,
 				5234BAB225CC22C300561E86 /* ServicesCoordinator.swift in Sources */,
 				52A758A525D93F770051EB61 /* Playlist.swift in Sources */,
@@ -699,10 +819,13 @@
 				52B0F99225E4199300010F9D /* ForgotPasswordViewController.swift in Sources */,
 				52B5E85C25EE732A001BD785 /* UIDevice+Ext.swift in Sources */,
 				5236FF9125CDC94700845300 /* GroupCell.swift in Sources */,
+				52AC3AE225FA850100EA7E19 /* UIImageView+Ext.swift in Sources */,
 				521A054425C818F4007F86A0 /* TabBar+Ext.swift in Sources */,
 				5234BAAA25CC173300561E86 /* RegisterCoordinator.swift in Sources */,
 				521A051F25C741FF007F86A0 /* FriendsCoordinator.swift in Sources */,
+				52AC3AED25FE37C200EA7E19 /* GroupAddUserCell.swift in Sources */,
 				521A04EC25C73570007F86A0 /* AppDelegate.swift in Sources */,
+				52AC3AB025F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift in Sources */,
 				5236FF8D25CDC52000845300 /* NewGroupViewModel.swift in Sources */,
 				52B5C59725D6A0E400961A4E /* SettingsViewModel.swift in Sources */,
 				521A051925C73FFC007F86A0 /* MusicViewController.swift in Sources */,
@@ -715,10 +838,15 @@
 				521A054725C85179007F86A0 /* Colors+Ext.swift in Sources */,
 				52EDBF9B25DEE4E3002A141C /* TrackViewModel.swift in Sources */,
 				5236FFD525D0342B00845300 /* APIManager.swift in Sources */,
+				52AC3AB925F90F6900EA7E19 /* GroupViewController.swift in Sources */,
 				521A052525C7421F007F86A0 /* MusicCoordinator.swift in Sources */,
 				52B5C5A525D6CC7800961A4E /* EditProfileViewController.swift in Sources */,
+				52AC3ADE25FA70A200EA7E19 /* GroupUsersCell.swift in Sources */,
 				5234BAAD25CC229600561E86 /* ServicesViewController.swift in Sources */,
+				52AC3AC925F966A100EA7E19 /* MyMusicTableCell.swift in Sources */,
+				52AC3ABC25F90FC500EA7E19 /* ShareLinkViewModel.swift in Sources */,
 				5234BAB525CC22E900561E86 /* RegisterViewModel.swift in Sources */,
+				52AC3AC025F9105E00EA7E19 /* GroupCoordinator.swift in Sources */,
 				52B11CCF25DD7DDE00CFB829 /* MusicCellViewModel.swift in Sources */,
 				521A052C25C757C2007F86A0 /* ProfileViewModel.swift in Sources */,
 				5236FF8325CDAF1500845300 /* NewGroupCoordinator.swift in Sources */,

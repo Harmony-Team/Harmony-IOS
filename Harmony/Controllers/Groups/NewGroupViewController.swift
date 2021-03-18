@@ -11,78 +11,93 @@ class NewGroupViewController: UIViewController {
     
     var viewModel: NewGroupViewModel!
     
+    var bottomLine = UIView()
+    
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var newGroupLabel: UILabel!
     @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var photoImagePicker: UIImageView!
-    @IBOutlet weak var membersTableView: UITableView!
+    @IBOutlet weak var groupNameTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var createButton: LoginButtonStyle!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "New Group"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeWithoutSaving))
+        customizeNavBarController(bgColor: .white, textColor: .mainTextColor)
+        topView.layer.borderWidth = 1
+        topView.layer.borderColor = UIColor.mainTextColor.cgColor
+        topView.layer.cornerRadius = 15
+        newGroupLabel.font = UIFont.setFont(size: .Medium)
+        newGroupLabel.textColor = .mainTextColor
         
-        imageView.layer.cornerRadius = imageView.frame.height / 2
+        imageView.layer.cornerRadius = 10
         
-        setupTableView()
+        setupButtons()
+        setupFields()
     }
     
-    private func setupTableView() {
-        membersTableView.dataSource = self
-        membersTableView.delegate = self
-        membersTableView.register(FriendCell.self, forCellReuseIdentifier: "friendCell")
+    /* Setting up buttons */
+    private func setupButtons() {
+        imageView.setupShadow(cornerRad: 15, shadowRad: 15, shadowOp: 0.3, offset: CGSize(width: 10, height: 10))
+        imageView.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: 15, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
+        createButton.titleLabel?.font = UIFont.setFont(size: .Medium)
+        createButton.titleLabel?.addKern(1.74)
+        createButton.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: 30, startPoint: CGPoint(x: -0.5, y: 1.1), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
+        
+        cancelButton.titleLabel?.font = UIFont.setFont(size: .Small)
+        cancelButton.titleLabel?.addKern(1.74)
+        cancelButton.titleLabel?.tintColor = .mainTextColor
+        
+        bottomLine.backgroundColor = .lightGray
+        bottomLine.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bottomLine)
+        NSLayoutConstraint.activate([
+            bottomLine.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: 5),
+            bottomLine.heightAnchor.constraint(equalToConstant: 1),
+            bottomLine.widthAnchor.constraint(equalTo: cancelButton.widthAnchor, multiplier: 1.05),
+            bottomLine.centerXAnchor.constraint(equalTo: cancelButton.centerXAnchor)
+        ])
+    }
+    
+    /* Setting up fields */
+    private func setupFields() {
+        groupNameTextField.font = UIFont.setFont(size: .ExtraLarge)
+        
+        descriptionTextField.font = UIFont.setFont(size: .Medium)
+        
+        [groupNameTextField, descriptionTextField].forEach {
+            $0?.defaultTextAttributes.updateValue(1.74, forKey: NSAttributedString.Key.kern)
+            $0?.textColor = .mainTextColor
+            $0?.attributedPlaceholder = NSAttributedString(string: $0?.placeholder != nil ? $0?.placeholder as! String : "", attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.mainTextColor.cgColor,
+                NSAttributedString.Key.kern: 1.74
+            ])
+        }
+    }
+    
+        
+    /* Create group chat and close window */
+    @IBAction func createGroupChat(_ sender: UIButton) {
+//        viewModel.goToShareLink()
+        guard let nameText = groupNameTextField.text, !nameText.isEmpty else {
+            groupNameTextField.shakeAnimation()
+            return
+        }
+        dismiss(animated: true) {
+            self.viewModel.goToGroup()
+        }
     }
     
     /* Close window without saving */
-    @objc private func closeWithoutSaving() {
+    @IBAction func closeWithoutSaving(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
         viewModel.closeWindow()
     }
     
-    /* Create group chat and close window */
-    @IBAction func createGroupChat(_ sender: UIButton) {
+    deinit {
+        print("DEINIT: NewGroupViewController")
     }
+    
 }
-
-extension NewGroupViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        
-        let label = UILabel()
-        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-        label.text = "Members"
-        label.font = .systemFont(ofSize: 18, weight: .medium)
-        
-        headerView.addSubview(label)
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! FriendCell
-        cell.selectionStyle = .none
-        cell.nameLabel.text = "Friend Name"
-        cell.infoLabel.text = "Info"
-        cell.addFriendButton.isHidden = true
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else {return}
-        if cell.isSelected { cell.isSelected = false }
-        else { cell.isSelected = true }
-    }
-}
-

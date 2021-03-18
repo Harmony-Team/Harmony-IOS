@@ -17,26 +17,45 @@ extension UIViewController {
     }
     
     /* Adding bg for view controller */
-    func addBg(image: UIImage, alpha: CGFloat) {
+    func addBg(image: UIImage?, colorTop: UIColor, colorBottom: UIColor, alpha: CGFloat) {
         
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = image
-        backgroundImage.clipsToBounds = true
-        backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.alpha = alpha
-        self.view.insertSubview(backgroundImage, at: 0)
-        
-        let colorTop = UIColor.toRGB(red: 33, green: 41, blue: 57, alpha: 1).cgColor
-        let colorBottom = UIColor.toRGB(red: 22, green: 26, blue: 36, alpha: 1) .cgColor
-                    
+        if let image = image {
+            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            backgroundImage.image = image
+            backgroundImage.clipsToBounds = true
+            backgroundImage.contentMode = .scaleAspectFill
+            backgroundImage.alpha = alpha
+            self.view.insertSubview(backgroundImage, at: 0)
+        }
+
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorBottom, colorTop]
+        gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
         gradientLayer.frame = self.view.bounds
                 
         self.view.layer.masksToBounds = true
         self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func customizeNavBarController(bgColor: UIColor, textColor: UIColor) {
+        
+        let backArrowImage = UIImage(named: "backArrow")
+        navigationController?.navigationBar.backIndicatorImage = backArrowImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backArrowImage
+        navigationController?.navigationBar.backItem?.title = ""
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style:.plain, target:nil, action:nil)
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: textColor,
+            .font: UIFont.setFont(size: .Medium),
+            .kern: 1.74
+        ]
     }
     
     /* Hide navigation tab */

@@ -7,13 +7,17 @@
 
 import UIKit
 
-class GroupViewModel {
+class GroupsListViewModel {
     
-    var coordinator: GroupCoordinator!
+    var coordinator: GroupsListCoordinator!
     
     /* Create new group */
     func addNewGroupChat() {
-        print("SS")
+        coordinator.addNewGroup()
+    }
+    
+    func goToCurrentGroup() {
+        coordinator.goToCreatedGroup()
     }
     
     /* Select chat group */

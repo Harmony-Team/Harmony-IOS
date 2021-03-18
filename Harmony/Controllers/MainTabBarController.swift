@@ -11,51 +11,54 @@ class MainTabBarController: UITabBarController {
     
     let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
     let friendCoordinator = FriendsCoordinator(navigationController: UINavigationController())
-    let groupCoordinator = GroupCoordinator(navigationController: UINavigationController())
-    let musicCoordinator = MusicCoordinator(navigationController: UINavigationController())
+    let groupCoordinator = GroupsListCoordinator(navigationController: UINavigationController())
+//    let musicCoordinator = MusicCoordinator(navigationController: UINavigationController())
     
     var mainLayer: CALayer?
     var shapeLayer: CAShapeLayer = {
         let shapeLayer = CAShapeLayer()
         shapeLayer.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer.fillColor = UIColor.mainColor.cgColor
+        shapeLayer.fillColor = UIColor.bgColor.cgColor
         shapeLayer.lineWidth = 0.5
         return shapeLayer
     }()
     
-    override var selectedViewController: UIViewController? {
-        didSet {
-            tabChangedTo(selectedIndex: selectedIndex)
-        }
-    }
-    // Override selectedIndex for Programmatic changes
-    override var selectedIndex: Int {
-        didSet {
-            tabChangedTo(selectedIndex: selectedIndex)
-        }
-    }
+//    override var selectedViewController: UIViewController? {
+//        didSet {
+//            tabChangedTo(selectedIndex: selectedIndex)
+//        }
+//    }
+////     Override selectedIndex for Programmatic changes
+//    override var selectedIndex: Int {
+//        didSet {
+//            tabChangedTo(selectedIndex: selectedIndex)
+//        }
+//    }
 
     // handle new selection
      func tabChangedTo(selectedIndex: Int) {
-        if selectedIndex > 0 { tabBar.addShape(shapeLayer: &shapeLayer, layer: &mainLayer) }
-        else { tabBar.removeShape(shapeLayer: &shapeLayer, layer: &mainLayer) }
+//        if selectedIndex > 0 { tabBar.addShape(shapeLayer: &shapeLayer, layer: &mainLayer) }
+//        else { tabBar.removeShape(shapeLayer: &shapeLayer, layer: &mainLayer) }
      }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBar.isTranslucent = true
+        tabBar.barTintColor = .clear
+        
         profileCoordinator.start()
         friendCoordinator.start()
         groupCoordinator.start()
-        musicCoordinator.start()
+//        musicCoordinator.start()
 
         viewControllers =
             [
                 profileCoordinator.navigationController,
                 friendCoordinator.navigationController,
-                UIViewController(),
+//                UIViewController(),
                 groupCoordinator.navigationController,
-                musicCoordinator.navigationController
+//                musicCoordinator.navigationController
             ]
 
     }
@@ -68,7 +71,7 @@ class MainTabBarController: UITabBarController {
         tabBar.tintColor = .white
         tabBar.unselectedItemTintColor = .white
         
-        setupMiddleButton()
+//        setupMiddleButton()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

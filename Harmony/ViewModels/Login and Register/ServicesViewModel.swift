@@ -71,8 +71,48 @@ class ServicesViewModel {
 //            let spotifyEmail: String! = (result?["email"] as! String) // Spotify Email
 //            
             self.spotifyUser = SpotifyUser(spotifyId: spotifyId, spotifyName: spotifyDisplayName, spotifyEmail: "kos@mail.ru", spotifyAccessToken: accessToken)
-//            
+//
+            // Save Spotify User
             UserProfileCache.save(self.spotifyUser, "spotifyUser")
+            
+            // Integrate Spotify In DB
+            self.integrateSpotify(accessToken: accessToken)
+        }
+        task.resume()
+    }
+    
+    
+    /* Integration Of Spotify */
+    func integrateSpotify(accessToken: String) {
+        let tokenURLFull = "https://harmony-db.herokuapp.com/api/user/integrate"
+        let url = URL(string: tokenURLFull)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+
+        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        let us = SpotifyUserIntegration(spotifyId: "1234", accessToken: "1234", refreshToken: "1234")
+        
+        do {
+            let encodedData = try? JSONEncoder().encode(us)
+            print(String(data: encodedData!, encoding: .utf8)!) //<- Looks as intended
+            request.httpBody = encodedData
+        } catch {}
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let result = try JSONSerialization.jsonObject(with: data, options: [])
+                
+                print(result)
+                
+            } catch {
+                print(error.localizedDescription)
+            }
         }
         task.resume()
     }

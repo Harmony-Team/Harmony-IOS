@@ -18,7 +18,7 @@ final class FriendsCoordinator: Coordinator {
     
     func start() {
         let viewController: FriendsViewController = .instantiate()
-        viewController.setTabBarItem(image: "friends", selectedColor: .white, unSelectedColor: .gray, title: "Friends", tabBarItemTitle: "Friends")
+        viewController.setTabBarItem(image: "friends", selectedColor: .white, unSelectedColor: .gray, title: "FRIENDS", tabBarItemTitle: "Friends")
         let friendsViewModel = FriendsViewModel()
         friendsViewModel.coordinator = self
         viewController.viewModel = friendsViewModel

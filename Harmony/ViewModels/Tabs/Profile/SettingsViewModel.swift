@@ -15,11 +15,11 @@ class SettingsViewModel {
     
     func getUserInfoDictionary() {
         userInfoDictionary = [
-            "Username": user.login,
+//            "Username": user.login,
             "Email": user.email,
-            "Registration Date": user.dateCreated,
-            "Role": user.role.rawValue,
-            "Spotify": user.spotifyId ?? "",
+//            "Registration Date": user.dateCreated,
+//            "Role": user.role.rawValue,
+//            "Spotify": user.spotifyId ?? "",
             "Password": "********"
         ]
     }

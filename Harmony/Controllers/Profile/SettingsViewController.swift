@@ -16,19 +16,24 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addBg(image: nil, colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 1)
+        
+        customizeNavBarController(bgColor: .bgColor, textColor: .white)
+        
         viewModel.getUserInfoDictionary()
         
-        navigationItem.title = "Settings"
+        navigationItem.title = "SETTINGS"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         setupTableView()
     }
     
     private func setupTableView() {
+        settingsTableView.backgroundColor = .clear
         settingsTableView.dataSource = self
         settingsTableView.delegate = self
         settingsTableView.register(SettingsCell.self, forCellReuseIdentifier: "settingsCell")
-        settingsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "logoutCell")
+//        settingsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "logoutCell")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -44,15 +49,16 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
         
         let label = UILabel()
-        label.frame = CGRect.init(x: 10, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-        label.font = .systemFont(ofSize: 14, weight: .semibold)
-        label.textColor = .gray
+        label.frame = CGRect.init(x: tableView.frame.width * 0.08, y: 5, width: headerView.frame.width-50, height: headerView.frame.height-10)
+        label.font = UIFont.setFont(size: .Medium)
+        label.addKern(1.74)
+        label.textColor = .mainTextColor
         
         headerView.addSubview(label)
         
         switch section {
         case 0:
-            label.text = "PERSONAL INFORMATION"
+            label.text = "USER ACCOUNT"
             break
         case 1:
             label.text = "ABOUT"
@@ -83,8 +89,9 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! SettingsCell
-            cell.leftLabel.text = Array(viewModel.userInfoDictionary)[indexPath.row].key
-            cell.rightLabel.text = Array(viewModel.userInfoDictionary)[indexPath.row].value
+            cell.leftLabel.text = Array(viewModel.userInfoDictionary)[indexPath.row].value
+//            cell.rightLabel.text = Array(viewModel.userInfoDictionary)[indexPath.row].value
+            cell.rightLabel.text = "EDIT"
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! SettingsCell
@@ -92,7 +99,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.rightLabel.text = ""
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "logoutCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! SettingsCell
             cell.textLabel?.text = "Log Out"
             cell.textLabel?.textColor = .red
             return cell

@@ -25,6 +25,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var fieldsView: UIView!
     @IBOutlet weak var fieldsStack: UIStackView!
     @IBOutlet weak var haveAccountButton: UIButton!
+    @IBOutlet weak var signUpButtonBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class RegistrationViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        addBg(image: UIImage(named: "bg2")!, alpha: 0.22)
+        addBg(image: UIImage(named: "bg2"), colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 0.22)
         
         setupError()
         setupForm()
@@ -48,7 +49,7 @@ class RegistrationViewController: UIViewController {
     private func setupForm() {
         fieldsView.setGradientStack(colorTop: UIColor.gradientColorTop.cgColor,
                                     colorBottom: UIColor.gradientColorBottom.cgColor,
-                                    cornerRadius: 15)
+                                    cornerRadius: 15, startPoint: CGPoint(x: -0.5, y: 1.1), endPoint: CGPoint(x: 1.0, y: 0.0))
         
         userNameTextField.addBottomBorder(height: 1.5, color: .white)
         emailTextField.addBottomBorder(height: 1.5, color: .white)
@@ -139,14 +140,14 @@ class RegistrationViewController: UIViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height / 2
+                signUpButtonBottomConstraint.constant = keyboardSize.height / 3
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
+        self.view.frame.origin.y = 0
+        signUpButtonBottomConstraint.constant = 30
     }
     
     // Hide keyboard
@@ -172,6 +173,12 @@ extension RegistrationViewController {
         // Show/Hide Password Validation Label
         UIView.animate(withDuration: 0.25, animations: {
             self.errorView.isHidden = valid
+            // If Error
+            if !valid {
+                self.fieldsView.shakeAnimation()
+            } else {
+                self.dismissKeyboard()
+            }
         })
         
         return valid

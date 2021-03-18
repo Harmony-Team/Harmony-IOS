@@ -21,6 +21,8 @@ class ProfileViewModel {
             return
         }
         
+//        print(token)
+        
         if let user: User = UserProfileCache.get(key: "user") {
             self.user = user
         } else {

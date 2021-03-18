@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum SpotifyError: Error {
+enum SpotifysError: Error {
     case NotSignedIn
     case NoPlaylists
 }

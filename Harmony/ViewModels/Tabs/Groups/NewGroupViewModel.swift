@@ -11,8 +11,17 @@ class NewGroupViewModel {
     
     var coordinator: NewGroupCoordinator!
     
+    func goToShareLink() {
+        coordinator.goToShareLink()
+    }
+    
+    /* Go To Created Group */
+    func goToGroup() {
+        coordinator.goToGroup()
+    }
+
     func closeWindow() {
-        coordinator.closeWithoutSaving()
+        coordinator.closeWithoutSaving(nil)
     }
     
 }

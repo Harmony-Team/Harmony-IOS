@@ -14,3 +14,10 @@ struct SpotifyAuthResponse: Codable {
     let scope: String
     let token_type: String
 }
+
+
+struct SpotifyUserIntegration: Encodable {
+    var spotifyId: String
+    var accessToken: String
+    var refreshToken: String
+}

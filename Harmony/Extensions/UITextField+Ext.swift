@@ -49,7 +49,7 @@ extension UITextField {
 
         borderView.setGradientStack(colorTop: UIColor.gradientColorTop.cgColor,
                                     colorBottom: UIColor.gradientColorBottom.cgColor,
-                                    cornerRadius: 1)
+                                    cornerRadius: 1, startPoint: CGPoint(x: -0.5, y: 1.1), endPoint: CGPoint(x: 1.0, y: 0.0))
         
         borderView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(borderView)

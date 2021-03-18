@@ -10,7 +10,7 @@ import UIKit
 final class ChatCoordinator: Coordinator {
     
     private(set)var childCoordinators: [Coordinator] = []
-    var parentCoordinator: GroupCoordinator!
+    var parentCoordinator: GroupsListCoordinator!
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -29,7 +29,7 @@ final class ChatCoordinator: Coordinator {
     }
     
     func closeWithoutSaving() {
-        parentCoordinator.finishChild(coordinator: self)
+        parentCoordinator.finishChild(coordinator: self, goToRoom: nil)
     }
     
 }

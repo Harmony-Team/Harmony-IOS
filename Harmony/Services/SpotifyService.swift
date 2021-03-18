@@ -17,6 +17,7 @@ class SpotifyService {
         static let secretId = "0abcafc2ee8a4cf5a845d5b349777ff4"
         static let scopes = "user-read-private%20playlist-modify-public%20playlist-modify-private%20playlist-read-private%20playlist-read-collaborative"
         static let tokenAPIUrl = "https://accounts.spotify.com/api/token"
+        static let integrationAPIUrl = "https://harmony-db.herokuapp.com/api/user/integrate"
     }
     
     var isSignedIn: Bool {
@@ -181,6 +182,45 @@ class SpotifyService {
         }
         UserDefaults.standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)), forKey: "expirationDate")
     }
+    
+    
+    
+    /* Integration Of Spotify */
+    func integrateSpotify() {
+
+        guard let url = URL(string: Constants.integrationAPIUrl) else {
+            return
+        }
+
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+
+        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        let spotifyUser = SpotifyUserIntegration(spotifyId: "1234", accessToken: accessToken!, refreshToken: refreshToken!)
+        
+        let encodedData = try? JSONEncoder().encode(spotifyUser)
+        request.httpBody = encodedData
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let result = try JSONSerialization.jsonObject(with: data, options: [])
+                
+                print(result)
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
+    
 }
 
 

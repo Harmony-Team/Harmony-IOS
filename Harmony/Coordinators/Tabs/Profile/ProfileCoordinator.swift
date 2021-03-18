@@ -19,7 +19,7 @@ final class ProfileCoordinator: Coordinator {
     
     func start() {
         let viewController: ProfileViewController = .instantiate()
-        viewController.setTabBarItem(image: "profile", selectedColor: .white, unSelectedColor: .gray, title: "Profile", tabBarItemTitle: "Profile")
+        viewController.setTabBarItem(image: "profile", selectedColor: .white, unSelectedColor: .gray, title: "PROFILE", tabBarItemTitle: "Profile")
         let profileViewModel = ProfileViewModel()
         profileViewModel.coordinator = self
         viewController.viewModel = profileViewModel

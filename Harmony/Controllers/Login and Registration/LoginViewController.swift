@@ -11,6 +11,7 @@ import VK_ios_sdk
 class LoginViewController: UIViewController {
     
     var viewModel: LoginViewModel!
+    var keyboardSize: CGRect?
     
     /* Spotify */
     
@@ -20,7 +21,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorDescr: UILabel!
     
     /* Form Fields + Button */
-    @IBOutlet weak var signInToContinueLabel: CustomLabel!
+    @IBOutlet weak var signInToContinueLabel: UILabel!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: LoginButtonStyle!
@@ -28,6 +29,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var fieldsStack: UIStackView!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var dontHaveAccountButton: UIButton!
+    @IBOutlet weak var signInButtonBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +46,7 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        addBg(image: UIImage(named: "bg1")!, alpha: 0.22)
-        
+        addBg(image: UIImage(named: "bg1"), colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 0.22)
         setupError()
         setupForm()
         setupPasswordEye()
@@ -54,7 +55,7 @@ class LoginViewController: UIViewController {
     private func setupForm() {
         fieldsView.setGradientStack(colorTop: UIColor.gradientColorTop.cgColor,
                                     colorBottom: UIColor.gradientColorBottom.cgColor,
-                                    cornerRadius: 15)
+                                    cornerRadius: 15, startPoint: CGPoint(x: -0.5, y: 1.1), endPoint: CGPoint(x: 1.0, y: 0.0))
         
         passwordTextField.isSecureTextEntry = true
         userNameTextField.addBottomBorder(height: 1.5, color: .white)
@@ -73,6 +74,14 @@ class LoginViewController: UIViewController {
         signInButton.titleLabel?.font = UIFont.setFont(size: .Big)
         signInButton.layer.cornerRadius = signInButton.frame.width / 2
         signInButton.backgroundColor = .buttonColor
+        signInButton.translatesAutoresizingMaskIntoConstraints = false
+        
+//        NSLayoutConstraint.activate([
+//            signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            signInButton.bottomAnchor.constraint(equalTo: dontHaveAccountButton.topAnchor, constant: -30),
+//            signInButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+//            signInButton.widthAnchor.constraint(equalTo: signInButton.heightAnchor)
+//        ])
     }
     
     /* Setting up error view */
@@ -147,14 +156,14 @@ class LoginViewController: UIViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height / 2
+                signInButtonBottomConstraint.constant = keyboardSize.height / 3
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
+        self.view.frame.origin.y = 0
+        signInButtonBottomConstraint.constant = 30
     }
     
     // Hide keyboard
@@ -175,6 +184,12 @@ extension LoginViewController {
         // Show/Hide Password Validation Label
         UIView.animate(withDuration: 0.25, animations: {
             self.errorView.isHidden = valid
+            // If Error
+            if !valid {
+                self.fieldsView.shakeAnimation()
+            } else {
+                self.dismissKeyboard()
+            }
         })
         
         return valid

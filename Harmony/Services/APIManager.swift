@@ -58,6 +58,8 @@ class APIManager {
             "Authorization": token
         ]
         
+        print(token)
+        
         AF.request(createAPI, method: .post, parameters: registerUser, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
@@ -85,10 +87,11 @@ class APIManager {
     }
     
     /* Login function */
-    func callLoginAPI(login: LoginUser, completion: @escaping (String) -> ()) {
+    func callLoginAPI(login: LoginUser, completion: @escaping (String, String) -> ()) {
         
         var code = 0
         var msg = ""
+        var token = ""
         
         let loginAPI = "https://harmony-db.herokuapp.com/api/auth?login=\(login.username!)&password=\(login.password!)"
         let headers: HTTPHeaders = [
@@ -106,9 +109,12 @@ class APIManager {
                     print(json)
                     code = (json as AnyObject).value(forKey: "code") as! Int
                     if code > 0 {
-                        msg = (json as AnyObject).value(forKey: "message") as! String
+                       // msg = (json as AnyObject).value(forKey: "message") as! String
+                        msg = "ssss"
+                    } else {
+                        token = (json as AnyObject).value(forKey: "token") as! String
                     }
-                    completion(msg)
+                    completion(msg, token)
                 } catch {
                     print(error.localizedDescription)
                 }
@@ -116,6 +122,40 @@ class APIManager {
                 print(err.localizedDescription)
             }
         }
+        
+    }
+    
+    /* Token Validation function */
+    func callValidateAPI(token: String, completion: @escaping (String) -> ()) {
+        
+        let userAPI = "https://harmony-db.herokuapp.com/api/validate"
+        let url = URL(string: userAPI)!
+        var request = URLRequest(url: url)
+        var userToken = ""
+        
+        request.allHTTPHeaderFields = [
+            "Authorization": "\(token)"
+        ]
+        request.httpMethod = "GET"
+        
+        print(token)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+                
+                userToken = (json as AnyObject).value(forKey: "token") as! String
+                completion(userToken)
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+            
+        }.resume()
         
     }
     
@@ -129,6 +169,9 @@ class APIManager {
         request.allHTTPHeaderFields = [
             "Authorization": "\(token)"
         ]
+        request.httpMethod = "GET"
+        
+        print(token)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else { return }

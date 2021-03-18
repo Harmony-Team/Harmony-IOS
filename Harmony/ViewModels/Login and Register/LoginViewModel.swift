@@ -11,9 +11,9 @@ class LoginViewModel {
     
     var coordinator: LoginCoordinator!
     
-    /* Login user and go to profile */
+    /* Login user and go to token validation */
     func loginUser(user: LoginUser, completion: @escaping (Result<String?, Error>) -> Void) {
-        APIManager.shared.callLoginAPI(login: user, completion: { msg in
+        APIManager.shared.callLoginAPI(login: user, completion: { (msg, token) in
             if msg != "" {
                 completion(.success(msg))
             } else {
@@ -21,9 +21,19 @@ class LoginViewModel {
 
                 UserProfileCache.save(user, "user")
                 completion(.success(nil))
-                self.coordinator.goToProfile() /* Login user. Go to profile */
+                self.validateToken(token: token)
             }
         })
+    }
+    
+    /* Validate token and go to profile */
+    func validateToken(token: String) {
+        APIManager.shared.callValidateAPI(token: token) { token in
+            UserDefaults.standard.setValue(token, forKey: "userToken")
+            DispatchQueue.main.async {
+                self.coordinator.goToProfile() /* Login user. Go to profile */
+            }
+        }
     }
     
     /* Go to register form */

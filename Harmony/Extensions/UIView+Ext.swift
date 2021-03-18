@@ -43,28 +43,16 @@ extension UIView {
     }
     
     /* Setting gradient for fields stack */
-    func setGradientStack(colorTop: CGColor, colorBottom: CGColor, cornerRadius: CGFloat) {
-//        let colorTop = UIColor.toRGB(red: 255, green: 38, blue: 98, alpha: 1).cgColor
-//        let colorBottom = UIColor.toRGB(red: 61, green: 38, blue: 158, alpha: 1) .cgColor
-//        
-//                let gradientLayer = CAGradientLayer()
-//                gradientLayer.colors = [colorBottom, colorTop]
-//                        gradientLayer.startPoint = CGPoint(x: -0.5, y: 1.1)
-//                        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
-//                gradientLayer.frame = fieldsStack.bounds
-//        
-//                fieldsView.layer.masksToBounds = true
-//                fieldsView.layer.cornerRadius = 15
-//                fieldsView.layer.insertSublayer(gradientLayer, at: 0)
-        
+    func setGradientStack(colorTop: CGColor, colorBottom: CGColor, cornerRadius: CGFloat, startPoint: CGPoint, endPoint: CGPoint) {
         let gradient = CAGradientLayer()
         gradient.frame =  CGRect(origin: CGPoint.zero, size: self.frame.size)
         gradient.colors = [
             colorBottom,
             colorTop
         ]
-        gradient.startPoint = CGPoint(x: -0.5, y: 1.1)
-        gradient.endPoint = CGPoint(x: 1.0, y: 0.0)
+
+        gradient.startPoint = startPoint
+        gradient.endPoint = endPoint
         
         let shape = CAShapeLayer()
         shape.lineWidth = 1
@@ -74,6 +62,31 @@ extension UIView {
         gradient.mask = shape
         
         self.layer.addSublayer(gradient)
+    }
+    
+    /* Setting gradient for fields stack */
+    func setGradientFill(colorTop: CGColor, colorBottom: CGColor, cornerRadius: CGFloat, startPoint: CGPoint, endPoint: CGPoint, opacity: Float) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorBottom, colorTop]
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint = endPoint
+        gradientLayer.opacity = opacity
+        gradientLayer.frame = self.bounds
+
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = cornerRadius
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    /* Shake Animation After Form Error */
+    func shakeAnimation(){
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 3
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 10, y: self.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 10, y: self.center.y))
+        self.layer.add(animation, forKey: "position")
     }
 }
 
