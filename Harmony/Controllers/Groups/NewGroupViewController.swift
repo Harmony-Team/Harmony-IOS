@@ -17,6 +17,8 @@ class NewGroupViewController: UIViewController {
     @IBOutlet weak var newGroupLabel: UILabel!
     @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var photoImagePicker: UIImageView!
+    @IBOutlet weak var chooseImageView: UIImageView!
+    @IBOutlet weak var newGroupLogoImageView: UIImageView!
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var createButton: LoginButtonStyle!
@@ -33,6 +35,10 @@ class NewGroupViewController: UIViewController {
         newGroupLabel.textColor = .mainTextColor
         
         imageView.layer.cornerRadius = 10
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(chooseGroupLogo(tapGestureRecognizer:)))
+        chooseImageView.isUserInteractionEnabled = true
+        chooseImageView.addGestureRecognizer(tapGestureRecognizer)
         
         setupButtons()
         setupFields()
@@ -77,7 +83,15 @@ class NewGroupViewController: UIViewController {
         }
     }
     
-        
+    /* Choosing Group Logo */
+    @objc private func chooseGroupLogo(tapGestureRecognizer: UITapGestureRecognizer) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
     /* Create group chat and close window */
     @IBAction func createGroupChat(_ sender: UIButton) {
 //        viewModel.goToShareLink()
@@ -85,6 +99,13 @@ class NewGroupViewController: UIViewController {
             groupNameTextField.shakeAnimation()
             return
         }
+        
+        if let image = newGroupLogoImageView.image { // If Group Image Selected
+            viewModel.createNewGroup(with: nameText, image: image)
+        } else { // Default Image
+            viewModel.createNewGroup(with: nameText, image: UIImage(named: "groupImage")!)
+        }
+        
         dismiss(animated: true) {
             self.viewModel.goToGroup()
         }
@@ -100,4 +121,20 @@ class NewGroupViewController: UIViewController {
         print("DEINIT: NewGroupViewController")
     }
     
+}
+
+extension NewGroupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            newGroupLogoImageView.image = image
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

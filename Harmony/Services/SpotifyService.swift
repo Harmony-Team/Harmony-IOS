@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CommonCrypto
 
 class SpotifyService {
     
@@ -14,7 +15,6 @@ class SpotifyService {
     struct Constants {
         static let clientID = "afa2b19905b84b09ac9c2986b43fb072"
         static let redirectURI = "spotify-harmony-app://spotify-login-callback"
-        static let secretId = "0abcafc2ee8a4cf5a845d5b349777ff4"
         static let scopes = "user-read-private%20playlist-modify-public%20playlist-modify-private%20playlist-read-private%20playlist-read-collaborative"
         static let tokenAPIUrl = "https://accounts.spotify.com/api/token"
         static let integrationAPIUrl = "https://harmony-db.herokuapp.com/api/user/integrate"
@@ -36,7 +36,15 @@ class SpotifyService {
         return UserDefaults.standard.object(forKey: "expirationDate") as? Date
     }
     
-    private var shouldRefreshToken: Bool {
+    private var codeVerifier: String {
+        return getCodeVerifier()
+    }
+    
+    private var codeChallenge: String {
+        return getCodeChallenge(codeVerifier: codeVerifier)
+    }
+    
+    var shouldRefreshToken: Bool {
         guard let expirationDate = tokenExpirationDate else {
             return false
         }
@@ -51,7 +59,7 @@ class SpotifyService {
     
     public var signInUrl: URL? {
         let base = "https://accounts.spotify.com/authorize"
-        let string = "\(base)?response_type=code&client_id=\(Constants.clientID)&scope=\(Constants.scopes)&redirect_uri=\(Constants.redirectURI)&show_dialog=true"
+        let string = "\(base)?response_type=code&client_id=\(Constants.clientID)&scope=\(Constants.scopes)&redirect_uri=\(Constants.redirectURI)&code_challenge=\(codeChallenge)&code_challenge_method=S256&show_dialog=true"
         return URL(string: string)
     }
     
@@ -63,29 +71,29 @@ class SpotifyService {
         
         var components = URLComponents()
         components.queryItems = [
+            URLQueryItem(name: "client_id", value: Constants.clientID),
             URLQueryItem(name: "grant_type", value: "authorization_code"),
             URLQueryItem(name: "code", value: code),
-            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI)
+            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
+            URLQueryItem(name: "code_verifier", value: codeVerifier)
         ]
+        
+        print("Code Verifier: \(codeVerifier)")
+        print("Code Challenge(Base64URL): \(codeVerifier)")
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded ", forHTTPHeaderField: "Content-Type")
         request.httpBody = components.query?.data(using: .utf8)
         
-        let basicToken = Constants.clientID + ":" + Constants.secretId
-        let data = basicToken.data(using: .utf8)
-        let base64String = data?.base64EncodedString() ?? ""
-        
-        request.setValue("Basic \(base64String)", forHTTPHeaderField: "Authorization")
-        
         let task = URLSession.shared.dataTask(with: request) { [weak self] (data, resp, error) in
             guard error == nil else { return }
             guard let data = data else { return }
             
             do {
+
                 let result = try JSONDecoder().decode(SpotifyAuthResponse.self, from: data)
-                
+//                print(result)
                 self?.cacheToken(result: result)
                 
                 completion(true)
@@ -138,20 +146,15 @@ class SpotifyService {
         var components = URLComponents()
         components.queryItems = [
             URLQueryItem(name: "grant_type", value: "refresh_token"),
-            URLQueryItem(name: "refresh_token", value: refreshToken)
+            URLQueryItem(name: "refresh_token", value: refreshToken),
+            URLQueryItem(name: "client_id", value: Constants.clientID)
         ]
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpBody = components.query?.data(using: .utf8)
-        
-        let basicToken = Constants.clientID + ":" + Constants.secretId
-        let data = basicToken.data(using: .utf8)
-        let base64String = data?.base64EncodedString() ?? ""
-        
-        request.setValue("Basic \(base64String)", forHTTPHeaderField: "Authorization")
-        
+
         let task = URLSession.shared.dataTask(with: request) { [weak self] (data, resp, error) in
             self?.refreshingToken = false
             guard error == nil else { return }
@@ -220,7 +223,36 @@ class SpotifyService {
         task.resume()
     }
     
+    /* Return Code Verifier */
+    private func getCodeVerifier() -> String {
+        var buffer = [UInt8](repeating: 0, count: 64)
+        _ = SecRandomCopyBytes(kSecRandomDefault, buffer.count, &buffer)
+        let codeVerifier = Data(bytes: buffer).base64EncodedString()
+                                              .replacingOccurrences(of: "+", with: "-")
+                                              .replacingOccurrences(of: "/", with: "-")
+                                              .replacingOccurrences(of: "=", with: "-")
+                                              .trimmingCharacters(in: .whitespaces)
+        
+        return codeVerifier
+    }
     
+    /* Return Code Challenge */
+    private func getCodeChallenge(codeVerifier: String) -> String {
+        guard let verifierData = codeVerifier.data(using: String.Encoding.utf8) else { return "error" }
+            var buffer = [UInt8](repeating: 0, count:Int(CC_SHA256_DIGEST_LENGTH))
+     
+            verifierData.withUnsafeBytes {
+                CC_SHA256($0.baseAddress, CC_LONG(verifierData.count), &buffer)
+            }
+        let hash = Data(_: buffer)
+        print(hash)
+        let challenge = hash.base64EncodedData()
+        return String(decoding: challenge, as: UTF8.self)
+            .replacingOccurrences(of: "+", with: "-")
+            .replacingOccurrences(of: "/", with: "_")
+            .replacingOccurrences(of: "=", with: "")
+            .trimmingCharacters(in: .whitespaces)
+    }
 }
 
 

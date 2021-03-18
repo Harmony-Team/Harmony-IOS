@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var fieldsView: UIView!
     @IBOutlet weak var fieldsStack: UIStackView!
     @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var authorizeWithLabel: UIButton!
     @IBOutlet weak var dontHaveAccountButton: UIButton!
     @IBOutlet weak var signInButtonBottomConstraint: NSLayoutConstraint!
     
@@ -64,6 +65,9 @@ class LoginViewController: UIViewController {
         
         forgotPasswordButton.titleLabel?.font = UIFont.setFont(size: .Small)
         forgotPasswordButton.titleLabel?.addKern(1.74)
+        
+        authorizeWithLabel.titleLabel?.font = UIFont.setFont(size: .Small)
+        authorizeWithLabel.titleLabel?.addKern(1.74)
         
         signInToContinueLabel.font = UIFont.setFont(size: .Big)
         signInToContinueLabel.addKern(1.74)
@@ -139,6 +143,11 @@ class LoginViewController: UIViewController {
                 self.hideActivityIndicator()
             }
         }
+    }
+    
+    /* Authorize With Spotify */
+    @IBAction func authorizeWithSpotify(_ sender: UIButton) {
+        
     }
     
     /* Go to register form */

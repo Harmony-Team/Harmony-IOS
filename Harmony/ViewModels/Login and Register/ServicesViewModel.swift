@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CommonCrypto
 import SwiftyVK
 import VK_ios_sdk
 
@@ -119,14 +120,14 @@ class ServicesViewModel {
     
     /* VK Auth */
     func authVK() {
-        VK.sessions.default.logIn(
-            onSuccess: { info in
-                print("SwiftyVK: success authorize with", info)
-            },
-            onError: { error in
-                print("SwiftyVK: authorize failed with", error)
-            }
-        )
+//        VK.sessions.default.logIn(
+//            onSuccess: { info in
+//                print("SwiftyVK: success authorize with", info)
+//            },
+//            onError: { error in
+//                print("SwiftyVK: authorize failed with", error)
+//            }
+//        )
     }
     
     /* Set user services integrations IDs */

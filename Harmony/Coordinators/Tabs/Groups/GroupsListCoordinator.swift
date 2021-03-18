@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 final class GroupsListCoordinator: Coordinator {
     
     private(set)var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    var saveEvent = {}
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -20,6 +22,7 @@ final class GroupsListCoordinator: Coordinator {
         let viewController: GroupsListViewController = .instantiate()
         viewController.setTabBarItem(image: "group", selectedColor: .white, unSelectedColor: .gray, title: "GROUPS", tabBarItemTitle: "Group")
         let groupsViewModel = GroupsListViewModel()
+        saveEvent = groupsViewModel.reload
         groupsViewModel.coordinator = self
         viewController.viewModel = groupsViewModel
         navigationController.pushViewController(viewController, animated: false)
@@ -34,15 +37,16 @@ final class GroupsListCoordinator: Coordinator {
     }
     
     /* Go to current chat group */
-    func goToGroupChat() {
-        let chatCoordinator = ChatCoordinator(navigationController: navigationController)
-        chatCoordinator.parentCoordinator = self
-        childCoordinators.append(chatCoordinator)
-        chatCoordinator.start()
-    }
+//    func goToGroupChat(id: NSManagedObjectID) {
+//        let chatCoordinator = ChatCoordinator(navigationController: navigationController)
+//        chatCoordinator.parentCoordinator = self
+////        chatCoordinator.eventId = id
+//        childCoordinators.append(chatCoordinator)
+//        chatCoordinator.start()
+//    }
     
     /* Go To Created Group */
-    func goToCreatedGroup() {
+    func goToCreatedGroup(id: NSManagedObjectID) {
         let groupCoordinator = GroupCoordinator(navigationController: navigationController)
         groupCoordinator.parentCoordinator = self
         childCoordinators.append(groupCoordinator)
@@ -54,9 +58,9 @@ final class GroupsListCoordinator: Coordinator {
             return curCoordinator === coordinator
         }) {
             childCoordinators.remove(at: index)
-            if let _ = goToRoom { // Go To group room
-                goToCreatedGroup()
-            }
+//            if let _ = goToRoom, let id = id { // Go To group room
+//                goToCreatedGroup(id: id)
+//            }
         }
     }
     

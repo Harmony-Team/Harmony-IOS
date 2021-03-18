@@ -23,6 +23,8 @@ class ServicesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addBg(image: UIImage(named: "bg2"), colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 0.22)
+
     }
     
     /* Spotify Authorization */
@@ -72,19 +74,18 @@ class ServicesViewController: UIViewController {
     }
     
     /* VK Authorization */
-    @IBAction func vkSignUp(_ sender: UIButton) {
-        viewModel.authVK()
-    }
-    
-    /* OK Authorization */
-    @IBAction func okSignUp(_ sender: UIButton) {
-        OKSDK.authorize(withPermissions: okScope) { data in
-            print(data)
-        } error: { error in
-            print(error)
-        }
-        
-    }
+//    @IBAction func vkSignUp(_ sender: UIButton) {
+//        viewModel.authVK()
+//    }
+//    
+//    /* OK Authorization */
+//    @IBAction func okSignUp(_ sender: UIButton) {
+//        OKSDK.authorize(withPermissions: okScope) { data in
+//            print(data)
+//        } error: { error in
+//            print(error)
+//        }
+//    }
     
     /* End registration. Go to profile */
     @IBAction func endRegistration(_ sender: UIButton) {

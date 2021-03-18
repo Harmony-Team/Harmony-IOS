@@ -30,7 +30,6 @@
 		521A053625C757DF007F86A0 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A053525C757DF007F86A0 /* MusicViewModel.swift */; };
 		521A053D25C81249007F86A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A053C25C81249007F86A0 /* LoginViewController.swift */; };
 		521A054125C8125C007F86A0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A054025C8125C007F86A0 /* RegistrationViewController.swift */; };
-		521A054425C818F4007F86A0 /* TabBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A054325C818F4007F86A0 /* TabBar+Ext.swift */; };
 		521A054725C85179007F86A0 /* Colors+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A054625C85179007F86A0 /* Colors+Ext.swift */; };
 		521A055F25C9E892007F86A0 /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */; };
 		521A056225C9E95A007F86A0 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A056125C9E95A007F86A0 /* LoginCoordinator.swift */; };
@@ -76,6 +75,9 @@
 		52AC3AED25FE37C200EA7E19 /* GroupAddUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AEC25FE37C200EA7E19 /* GroupAddUserCell.swift */; };
 		52AC3AF425FE44F300EA7E19 /* WaitingFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AF325FE44F300EA7E19 /* WaitingFriendsView.swift */; };
 		52AC3AFE26034E4700EA7E19 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AFD26034E4700EA7E19 /* GroupViewModel.swift */; };
+		52AC3B0326039DA400EA7E19 /* GroupsList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3B0126039DA400EA7E19 /* GroupsList.xcdatamodeld */; };
+		52AC3B0626039DF700EA7E19 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3B0526039DF700EA7E19 /* CoreDataManager.swift */; };
+		52AC3B0A2603A96500EA7E19 /* GroupCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3B092603A96500EA7E19 /* GroupCellViewModel.swift */; };
 		52ADF4C125E40549000B1AA1 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */; };
 		52B0F99225E4199300010F9D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0F99125E4199300010F9D /* ForgotPasswordViewController.swift */; };
 		52B0F99525E41A2B00010F9D /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0F99425E41A2B00010F9D /* ForgotPasswordViewModel.swift */; };
@@ -130,7 +132,6 @@
 		521A053525C757DF007F86A0 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		521A053C25C81249007F86A0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		521A054025C8125C007F86A0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		521A054325C818F4007F86A0 /* TabBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBar+Ext.swift"; sourceTree = "<group>"; };
 		521A054625C85179007F86A0 /* Colors+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Ext.swift"; sourceTree = "<group>"; };
 		521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		521A056125C9E95A007F86A0 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -176,6 +177,9 @@
 		52AC3AEC25FE37C200EA7E19 /* GroupAddUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAddUserCell.swift; sourceTree = "<group>"; };
 		52AC3AF325FE44F300EA7E19 /* WaitingFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingFriendsView.swift; sourceTree = "<group>"; };
 		52AC3AFD26034E4700EA7E19 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		52AC3B0226039DA400EA7E19 /* GroupsList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroupsList.xcdatamodel; sourceTree = "<group>"; };
+		52AC3B0526039DF700EA7E19 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		52AC3B092603A96500EA7E19 /* GroupCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCellViewModel.swift; sourceTree = "<group>"; };
 		52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		52B0F99125E4199300010F9D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		52B0F99425E41A2B00010F9D /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 		521A04EA25C73570007F86A0 /* Harmony */ = {
 			isa = PBXGroup;
 			children = (
+				52AC3B0126039DA400EA7E19 /* GroupsList.xcdatamodeld */,
 				521A04EB25C73570007F86A0 /* AppDelegate.swift */,
 				521A04ED25C73570007F86A0 /* SceneDelegate.swift */,
 				5236FFD725D0346100845300 /* Models */,
@@ -294,7 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				521A050B25C73673007F86A0 /* UIViewController+Ext.swift */,
-				521A054325C818F4007F86A0 /* TabBar+Ext.swift */,
 				521A054625C85179007F86A0 /* Colors+Ext.swift */,
 				5236FF9325CDCA3F00845300 /* UIView+Ext.swift */,
 				52AC3AE125FA850100EA7E19 /* UIImageView+Ext.swift */,
@@ -452,9 +456,8 @@
 		5236FFBC25CFCD6600845300 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
-				521A053225C757D7007F86A0 /* GroupsListViewModel.swift */,
-				5236FF8C25CDC52000845300 /* NewGroupViewModel.swift */,
-				52AC3ABB25F90FC500EA7E19 /* ShareLinkViewModel.swift */,
+				52AC3B0D2603B40400EA7E19 /* GroupsList */,
+				52AC3B0F2603B40D00EA7E19 /* NewGroup */,
 				52AC3AE725FE33A200EA7E19 /* Lobby */,
 				5236FFA925CED9C300845300 /* ChatViewModel.swift */,
 			);
@@ -557,6 +560,24 @@
 			path = WaitFriendsView;
 			sourceTree = "<group>";
 		};
+		52AC3B0D2603B40400EA7E19 /* GroupsList */ = {
+			isa = PBXGroup;
+			children = (
+				521A053225C757D7007F86A0 /* GroupsListViewModel.swift */,
+				52AC3B092603A96500EA7E19 /* GroupCellViewModel.swift */,
+			);
+			path = GroupsList;
+			sourceTree = "<group>";
+		};
+		52AC3B0F2603B40D00EA7E19 /* NewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				5236FF8C25CDC52000845300 /* NewGroupViewModel.swift */,
+				52AC3ABB25F90FC500EA7E19 /* ShareLinkViewModel.swift */,
+			);
+			path = NewGroup;
+			sourceTree = "<group>";
+		};
 		52B1C24225CC34FE0027C3E6 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +605,7 @@
 				52B1C24E25CC388E0027C3E6 /* VKService.swift */,
 				5236FFD425D0342B00845300 /* APIManager.swift */,
 				52B5C59D25D6A99C00961A4E /* UserProfile.swift */,
+				52AC3B0526039DF700EA7E19 /* CoreDataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -780,12 +802,14 @@
 				52ADF4C125E40549000B1AA1 /* UILabel+Ext.swift in Sources */,
 				521A051625C73FF4007F86A0 /* GroupsListViewController.swift in Sources */,
 				521A053325C757D7007F86A0 /* GroupsListViewModel.swift in Sources */,
+				52AC3B0326039DA400EA7E19 /* GroupsList.xcdatamodeld in Sources */,
 				521A052825C750D6007F86A0 /* MainTabBarController.swift in Sources */,
 				52AC3AE925FE33B300EA7E19 /* GroupUsersCellViewModel.swift in Sources */,
 				52D1F4C525CC8DCA002AA1C9 /* OKSDK.m in Sources */,
 				521A053625C757DF007F86A0 /* MusicViewModel.swift in Sources */,
 				52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */,
 				5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */,
+				52AC3B0A2603A96500EA7E19 /* GroupCellViewModel.swift in Sources */,
 				5236FF9E25CDE5A800845300 /* MusicCell.swift in Sources */,
 				5236FFA225CED6F200845300 /* ChatViewController.swift in Sources */,
 				5236FF7C25CDA73400845300 /* MainTabBarCoordinator.swift in Sources */,
@@ -799,6 +823,7 @@
 				52AC3AFE26034E4700EA7E19 /* GroupViewModel.swift in Sources */,
 				52AC3AD925FA6E3C00EA7E19 /* GroupUsersCollectionView.swift in Sources */,
 				52B1C24F25CC388E0027C3E6 /* VKService.swift in Sources */,
+				52AC3B0626039DF700EA7E19 /* CoreDataManager.swift in Sources */,
 				52B0F99825E41A4500010F9D /* ForgotPasswordCoordinator.swift in Sources */,
 				5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */,
 				52AC3ACC25F9FF2400EA7E19 /* LobbyPlaylistsTableCell.swift in Sources */,
@@ -820,7 +845,6 @@
 				52B5E85C25EE732A001BD785 /* UIDevice+Ext.swift in Sources */,
 				5236FF9125CDC94700845300 /* GroupCell.swift in Sources */,
 				52AC3AE225FA850100EA7E19 /* UIImageView+Ext.swift in Sources */,
-				521A054425C818F4007F86A0 /* TabBar+Ext.swift in Sources */,
 				5234BAAA25CC173300561E86 /* RegisterCoordinator.swift in Sources */,
 				521A051F25C741FF007F86A0 /* FriendsCoordinator.swift in Sources */,
 				52AC3AED25FE37C200EA7E19 /* GroupAddUserCell.swift in Sources */,
@@ -1079,6 +1103,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		52AC3B0126039DA400EA7E19 /* GroupsList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				52AC3B0226039DA400EA7E19 /* GroupsList.xcdatamodel */,
+			);
+			currentVersion = 52AC3B0226039DA400EA7E19 /* GroupsList.xcdatamodel */;
+			path = GroupsList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 521A04E025C73570007F86A0 /* Project object */;
 }

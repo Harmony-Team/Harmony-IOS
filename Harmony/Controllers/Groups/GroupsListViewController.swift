@@ -23,6 +23,12 @@ class GroupsListViewController: UIViewController {
         
         topImage.setupTopGradientMask(with: topView)
         setupTableView()
+        
+        viewModel.onUpdate = { [weak self] in
+            self?.groupsTableView.reloadData()
+        }
+        
+        viewModel.viewDidLoad()
     }
     
     private func setupTableView() {
@@ -47,18 +53,27 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             return 1
         default:
-            return 10
+            return viewModel.numberOfCells()
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
-            cell.selectionStyle = .none
-            cell.logoImageView.image = UIImage(named: "groupImage")
-            cell.titleLabel.text = "Group Title"
-            cell.msgLabel.text = "236 Tracks"
-            return cell
+            
+            switch viewModel.cellForRow(at: indexPath) {
+            case .group(let groupCellViewModel):
+                let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
+                cell.selectionStyle = .none
+                cell.update(viewModel: groupCellViewModel)
+                return cell
+            }
+            
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
+//            cell.selectionStyle = .none
+//            cell.logoImageView.image = UIImage(named: "groupImage")
+//            cell.titleLabel.text = "Group Title"
+//            cell.msgLabel.text = "236 Tracks"
+//            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "createCell", for: indexPath) as! NewGroupCell
             cell.selectionStyle = .none
@@ -98,8 +113,8 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             viewModel.addNewGroupChat()
         } else {
-//            viewModel.goToCurrentChat()
-            viewModel.goToCurrentGroup()
+//            viewModel.goToCurrentGroup()
+            viewModel.didSelectRow(at: indexPath)
         }
     }
 }

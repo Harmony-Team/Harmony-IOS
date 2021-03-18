@@ -156,12 +156,13 @@ class GroupViewController: UIViewController {
         closeSearchBarIcon.tintColor = .white
         closeSearchBarIcon.alpha = 0
         
+        musicSearchBar.frame = CGRect(x: 0, y: 0, width: view.frame.width - (musicTabBarSegment.frame.width * 0.06) * 2 - 100, height: view.frame.height * 0.05)
         musicSearchBar.setGradientStack(colorTop: UIColor.gradientColorTop.cgColor,
                                         colorBottom: UIColor.gradientColorBottom.cgColor,
                                         cornerRadius: 15, startPoint: CGPoint(x: -0.5, y: 1.1), endPoint: CGPoint(x: 1.0, y: 0.0))
         musicSearchBar.alpha = 0
         musicSearchBar.placeholder = "Search..."
-        musicSearchBar.textColor = .mainTextColor
+        musicSearchBar.textColor = .white
         //        musicSearchBar.backgroundColor = .white
         musicSearchBar.addPadding(.both(15))
         musicSearchBar.addTarget(self, action: #selector(searchTrack), for: .valueChanged)
@@ -260,9 +261,9 @@ class GroupViewController: UIViewController {
     
     @IBAction func readyButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3, animations: {
-//            self.musicTabBarCollectionView.alpha = 0
-//            self.musicTabBarSegment.alpha = 0
-//            self.searchIcon.alpha = 0
+            self.musicTabBarCollectionView.alpha = 0
+            self.musicTabBarSegment.alpha = 0
+            self.searchIcon.alpha = 0
         }) { (_) in
             UIView.animate(withDuration: 0.2) {
                 self.waitingForFriendsView.alpha = 1

@@ -48,6 +48,7 @@ class GroupViewModel {
         
         if SpotifyService.shared.isSignedIn {
             print("Logged in spotify")
+            print(SpotifyService.shared.shouldRefreshToken)
             let semaphore = DispatchSemaphore(value: 0)
             
             spotifyUser = UserProfileCache.get(key: "spotifyUser")

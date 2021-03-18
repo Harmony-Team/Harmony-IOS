@@ -21,7 +21,7 @@ final class NewGroupCoordinator: Coordinator {
     func start() {
         navModal = UINavigationController()
         let viewController: NewGroupViewController = .instantiate()
-        let newGroupViewModel = NewGroupViewModel()
+        let newGroupViewModel = NewGroupViewModel(coreDataManager: CoreDataManager())
         newGroupViewModel.coordinator = self
         viewController.viewModel = newGroupViewModel
 //        navModal.modalPresentationStyle = .fullScreen
@@ -38,6 +38,7 @@ final class NewGroupCoordinator: Coordinator {
     
     /* Go To Created Group */
     func goToGroup() {
+        parentCoordinator.saveEvent()
         parentCoordinator.finishChild(coordinator: self, goToRoom: true)
     }
     

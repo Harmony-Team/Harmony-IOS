@@ -27,11 +27,24 @@ class GroupCell: UITableViewCell {
         setupLayouts()
     }
     
+    func update(viewModel: GroupCellViewModel) {
+        
+        titleLabel.text = viewModel.groupName
+        msgLabel.text = "236 tracks"
+//        logoImageView.image = UIImage(named: "groupImage")
+        viewModel.loadGroupImage { [weak self] image in
+            self?.logoImageView.image = image
+        }
+    }
+    
     private func setupViews() {
         logoView.setupShadow(cornerRad: 10, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))
+        logoView.backgroundColor = .red
         
-        logoImageView.contentMode = .scaleAspectFill
-        logoImageView.tintColor = .white
+//        logoImageView.contentMode = .scaleAspectFill
+        logoImageView.setupShadow(cornerRad: 10, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))
+        logoImageView.tintColor = .green
+//        logoImageView.alpha = 0.3
         
         titleLabel.font = UIFont.setFont(size: .Large)
         titleLabel.textColor = .white
@@ -59,8 +72,9 @@ class GroupCell: UITableViewCell {
     
     private func setupLayouts() {
         logoView.pinToEdges(edges: [.left], constant: contentView.frame.height * 2/5)
+        
         logoImageView.pinToEdges(constant: 0)
-
+        
         NSLayoutConstraint.activate([
             logoView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 3/5),
             logoView.widthAnchor.constraint(equalTo: logoView.heightAnchor),
@@ -74,7 +88,7 @@ class GroupCell: UITableViewCell {
             separatorLine.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             separatorLine.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
-
+        
     }
     
     required init?(coder: NSCoder) {

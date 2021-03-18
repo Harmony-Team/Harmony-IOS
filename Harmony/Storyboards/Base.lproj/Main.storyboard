@@ -117,7 +117,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCE-hb-2pe">
-                                <rect key="frame" x="20.5" y="434" width="373" height="66.5"/>
+                                <rect key="frame" x="20.5" y="533" width="373" height="66.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qba-rO-IOY">
                                         <rect key="frame" x="10" y="10" width="353" height="19.5"/>
@@ -149,29 +149,50 @@
                                     <constraint firstAttribute="trailing" secondItem="qba-rO-IOY" secondAttribute="trailing" constant="10" id="sqz-j9-eWL"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nl-bv-DqY">
+                                <rect key="frame" x="194.5" y="488" width="25" height="25"/>
+                                <state key="normal" image="spotifyFilled"/>
+                                <connections>
+                                    <action selector="authorizeWithSpotify:" destination="Cdy-ut-9Bz" eventType="touchUpInside" id="K0y-ls-NYz"/>
+                                </connections>
+                            </button>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gG9-q6-msj">
+                                <rect key="frame" x="0.0" y="454" width="414" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                <state key="normal" title="AUTHORIZE WITH">
+                                    <color key="titleColor" red="0.45737177130000001" green="0.49661362170000001" blue="0.57970577479999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MNx-Rh-WVv"/>
                         <color key="backgroundColor" red="0.25694064627699753" green="0.073218631903144246" blue="0.53265783629441632" alpha="0.72897046232876717" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HXM-Pq-tbL" firstAttribute="height" secondItem="Sz5-Ld-NPt" secondAttribute="height" multiplier="0.15" id="0cw-gX-dmN"/>
+                            <constraint firstItem="DCE-hb-2pe" firstAttribute="top" secondItem="9Nl-bv-DqY" secondAttribute="bottom" constant="20" id="1O3-HE-K7X"/>
                             <constraint firstItem="DCE-hb-2pe" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="25z-Jy-esj"/>
                             <constraint firstItem="jO3-Kr-7Xv" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" id="3po-uA-5cz"/>
                             <constraint firstItem="cpX-EQ-e1H" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="4Dp-U9-X1F"/>
                             <constraint firstItem="jO3-Kr-7Xv" firstAttribute="top" secondItem="HXM-Pq-tbL" secondAttribute="bottom" constant="20" id="6eY-XB-ife"/>
                             <constraint firstItem="jO3-Kr-7Xv" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="7R1-N8-jQO"/>
                             <constraint firstItem="MNx-Rh-WVv" firstAttribute="bottom" secondItem="VVz-Gf-lF4" secondAttribute="bottom" constant="15" id="AgG-Uw-pIU"/>
+                            <constraint firstItem="gG9-q6-msj" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" id="CoW-ES-nq3"/>
                             <constraint firstItem="XDf-0a-Ysi" firstAttribute="height" secondItem="Sz5-Ld-NPt" secondAttribute="height" multiplier="0.1" id="Fop-65-FmO"/>
+                            <constraint firstItem="9Nl-bv-DqY" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" multiplier="0.0603865" id="Frv-1y-7EX"/>
+                            <constraint firstItem="gG9-q6-msj" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="HMI-Wr-Y1E"/>
                             <constraint firstItem="cpX-EQ-e1H" firstAttribute="top" secondItem="MNx-Rh-WVv" secondAttribute="top" multiplier="0.8" constant="20" id="I56-5X-UeF"/>
                             <constraint firstItem="HAw-S8-qmj" firstAttribute="top" secondItem="cpX-EQ-e1H" secondAttribute="bottom" multiplier="1.5" id="L1n-Zs-kBz"/>
                             <constraint firstItem="XDf-0a-Ysi" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="LAQ-qg-NGM"/>
                             <constraint firstItem="HXM-Pq-tbL" firstAttribute="top" secondItem="HAw-S8-qmj" secondAttribute="bottom" constant="25" id="P8G-Ak-KJx"/>
                             <constraint firstItem="cpX-EQ-e1H" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" multiplier="0.15" id="PFO-dP-gsM"/>
+                            <constraint firstItem="9Nl-bv-DqY" firstAttribute="height" secondItem="Sz5-Ld-NPt" secondAttribute="height" multiplier="0.0279018" id="PeR-Xx-k2b"/>
                             <constraint firstItem="HXM-Pq-tbL" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="QEf-28-Aw4"/>
-                            <constraint firstItem="DCE-hb-2pe" firstAttribute="top" secondItem="jO3-Kr-7Xv" secondAttribute="bottom" constant="20" id="R49-ym-na3"/>
                             <constraint firstItem="XDf-0a-Ysi" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="height" multiplier="0.1" id="ZOZ-6k-d28"/>
+                            <constraint firstItem="9Nl-bv-DqY" firstAttribute="top" secondItem="gG9-q6-msj" secondAttribute="bottom" constant="10" id="Zvi-IA-2By"/>
                             <constraint firstItem="HXM-Pq-tbL" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" multiplier="0.9" id="bk6-ja-SMl"/>
                             <constraint firstItem="DCE-hb-2pe" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" multiplier="0.9" id="dCi-g8-bNt"/>
                             <constraint firstItem="VVz-Gf-lF4" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" id="jJD-kk-yyk"/>
+                            <constraint firstItem="9Nl-bv-DqY" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="kVA-P6-lhh"/>
+                            <constraint firstItem="gG9-q6-msj" firstAttribute="top" secondItem="jO3-Kr-7Xv" secondAttribute="bottom" constant="40" id="lbU-nh-19h"/>
                             <constraint firstItem="VVz-Gf-lF4" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="nVM-Lh-2nB"/>
                             <constraint firstItem="cpX-EQ-e1H" firstAttribute="height" secondItem="Sz5-Ld-NPt" secondAttribute="height" multiplier="0.08" id="qUX-SU-pWB"/>
                             <constraint firstItem="HAw-S8-qmj" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="uIl-Uc-g4D"/>
@@ -179,6 +200,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="authorizeWithLabel" destination="gG9-q6-msj" id="MBC-5o-aKX"/>
                         <outlet property="dontHaveAccountButton" destination="VVz-Gf-lF4" id="lLp-Zf-EcS"/>
                         <outlet property="errorDescr" destination="9kE-Pu-McN" id="ZAk-df-9CJ"/>
                         <outlet property="errorTitle" destination="qba-rO-IOY" id="JFf-6z-v5o"/>
@@ -489,9 +511,6 @@
                                         <state key="normal" title="ВКонтакте" image="vkIcon">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.94803271050000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="vkSignUp:" destination="P2K-XX-ZSW" eventType="touchUpInside" id="K2i-W6-4lB"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLc-0q-xh3" userLabel="OK" customClass="LoginButtonStyle" customModule="Harmony" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="148" width="248" height="49"/>
@@ -502,9 +521,6 @@
                                         <state key="normal" title="Одноклассники" image="okIcon">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.94803271050000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="okSignUp:" destination="P2K-XX-ZSW" eventType="touchUpInside" id="7zZ-sk-EUF"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -523,7 +539,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ol6-6L-mWr"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.25694064630000002" green="0.073218631899999997" blue="0.53265783629999996" alpha="0.72897046229999996" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zhP-Ot-RYg" firstAttribute="height" secondItem="S2T-gM-EZq" secondAttribute="height" multiplier="0.22" id="6ti-1r-d8N"/>
                             <constraint firstItem="13d-9d-hXP" firstAttribute="height" secondItem="S2T-gM-EZq" secondAttribute="height" multiplier="0.0552455" id="Cno-z5-072"/>
@@ -981,17 +997,24 @@
                                 <rect key="frame" x="61.5" y="134.5" width="291" height="268.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" alpha="0.089999999999999997" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="harmonyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xRX-T6-hOS">
-                                        <rect key="frame" x="68.5" y="53.5" width="154" height="161.5"/>
+                                        <rect key="frame" x="43" y="27" width="205" height="215"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="xRX-T6-hOS" secondAttribute="height" multiplier="64:67" id="iN3-F8-bKl"/>
                                         </constraints>
                                     </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chooseGroupImage" translatesAutoresizingMaskIntoConstraints="NO" id="FAC-bR-dYb">
+                                        <rect key="frame" x="63.5" y="80.5" width="164" height="107.5"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="FAC-bR-dYb" firstAttribute="height" secondItem="xRX-T6-hOS" secondAttribute="height" multiplier="0.5" id="7Yt-E5-GNn"/>
                                     <constraint firstItem="xRX-T6-hOS" firstAttribute="centerX" secondItem="cHs-wV-zHe" secondAttribute="centerX" id="9FF-Ev-3mO"/>
                                     <constraint firstItem="xRX-T6-hOS" firstAttribute="centerY" secondItem="cHs-wV-zHe" secondAttribute="centerY" id="APa-aX-Pu0"/>
-                                    <constraint firstItem="xRX-T6-hOS" firstAttribute="height" secondItem="cHs-wV-zHe" secondAttribute="height" multiplier="0.6" id="eHz-in-RYp"/>
+                                    <constraint firstItem="FAC-bR-dYb" firstAttribute="centerY" secondItem="cHs-wV-zHe" secondAttribute="centerY" id="CeJ-PF-fHL"/>
+                                    <constraint firstItem="FAC-bR-dYb" firstAttribute="width" secondItem="xRX-T6-hOS" secondAttribute="width" multiplier="0.8" id="TIF-O0-ldY"/>
+                                    <constraint firstItem="FAC-bR-dYb" firstAttribute="centerX" secondItem="cHs-wV-zHe" secondAttribute="centerX" id="Tm5-8F-q4C"/>
+                                    <constraint firstItem="xRX-T6-hOS" firstAttribute="height" secondItem="cHs-wV-zHe" secondAttribute="height" multiplier="0.8" id="eHz-in-RYp"/>
                                     <constraint firstAttribute="width" secondItem="cHs-wV-zHe" secondAttribute="height" multiplier="194:179" id="ePG-qo-9Rc"/>
                                 </constraints>
                             </view>
@@ -1012,6 +1035,9 @@
                                     <constraint firstItem="297-uf-gbH" firstAttribute="centerY" secondItem="oQR-iE-ZaF" secondAttribute="centerY" id="qas-CR-mDL"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="txT-aO-h86">
+                                <rect key="frame" x="125" y="215" width="164" height="107.5"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="11M-bm-y1V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1025,34 +1051,40 @@
                             <constraint firstItem="ybS-hl-aTV" firstAttribute="height" secondItem="QGY-mo-WxX" secondAttribute="height" multiplier="0.075" id="JWD-XH-Xfc"/>
                             <constraint firstItem="mfo-fv-FNc" firstAttribute="width" secondItem="QGY-mo-WxX" secondAttribute="width" multiplier="0.142512" id="OCE-Ze-yng"/>
                             <constraint firstItem="cHs-wV-zHe" firstAttribute="centerX" secondItem="11M-bm-y1V" secondAttribute="centerX" id="R0L-Rn-XER"/>
+                            <constraint firstItem="txT-aO-h86" firstAttribute="height" secondItem="FAC-bR-dYb" secondAttribute="height" id="YVU-G6-CI3"/>
                             <constraint firstItem="0RQ-aq-NWa" firstAttribute="top" secondItem="cHs-wV-zHe" secondAttribute="bottom" multiplier="1.1" id="Zmj-0z-4g8"/>
                             <constraint firstItem="oQR-iE-ZaF" firstAttribute="height" secondItem="QGY-mo-WxX" secondAttribute="height" multiplier="0.05" id="apY-hm-A58"/>
                             <constraint firstItem="oQR-iE-ZaF" firstAttribute="width" secondItem="QGY-mo-WxX" secondAttribute="width" multiplier="0.5" id="bCU-rp-9IE"/>
+                            <constraint firstItem="txT-aO-h86" firstAttribute="centerY" secondItem="cHs-wV-zHe" secondAttribute="centerY" id="dlL-6K-1tA"/>
                             <constraint firstItem="oQR-iE-ZaF" firstAttribute="top" secondItem="11M-bm-y1V" secondAttribute="top" multiplier="0.9" id="dlj-kG-k4d"/>
                             <constraint firstItem="0RQ-aq-NWa" firstAttribute="centerX" secondItem="11M-bm-y1V" secondAttribute="centerX" id="f4C-Wn-84D"/>
                             <constraint firstItem="0RQ-aq-NWa" firstAttribute="width" secondItem="cHs-wV-zHe" secondAttribute="width" id="fxM-Kp-XmV"/>
                             <constraint firstItem="ybS-hl-aTV" firstAttribute="centerX" secondItem="11M-bm-y1V" secondAttribute="centerX" id="hvj-hY-gGJ"/>
                             <constraint firstItem="mfo-fv-FNc" firstAttribute="centerX" secondItem="11M-bm-y1V" secondAttribute="centerX" id="hyF-nr-Bna"/>
                             <constraint firstItem="RUh-tg-342" firstAttribute="width" secondItem="0RQ-aq-NWa" secondAttribute="width" id="kl4-Ag-XLg"/>
+                            <constraint firstItem="txT-aO-h86" firstAttribute="centerX" secondItem="cHs-wV-zHe" secondAttribute="centerX" id="rMH-MY-qI7"/>
                             <constraint firstItem="cHs-wV-zHe" firstAttribute="height" secondItem="QGY-mo-WxX" secondAttribute="height" multiplier="0.3" id="upJ-Rm-4EI"/>
+                            <constraint firstItem="txT-aO-h86" firstAttribute="width" secondItem="FAC-bR-dYb" secondAttribute="width" id="vpc-4D-6Kp"/>
                             <constraint firstItem="ybS-hl-aTV" firstAttribute="width" secondItem="QGY-mo-WxX" secondAttribute="width" multiplier="0.6" id="xVp-dA-zqQ"/>
                             <constraint firstItem="mfo-fv-FNc" firstAttribute="height" secondItem="QGY-mo-WxX" secondAttribute="height" multiplier="0.035" id="yhP-ot-EZq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="mfo-fv-FNc" id="ffQ-4X-Mnj"/>
+                        <outlet property="chooseImageView" destination="FAC-bR-dYb" id="qt0-bN-rrX"/>
                         <outlet property="createButton" destination="ybS-hl-aTV" id="ZI7-BS-v8x"/>
                         <outlet property="descriptionTextField" destination="RUh-tg-342" id="fIq-vf-1RR"/>
                         <outlet property="groupNameTextField" destination="0RQ-aq-NWa" id="mxR-BZ-7Vm"/>
                         <outlet property="imageView" destination="cHs-wV-zHe" id="k26-KZ-inh"/>
                         <outlet property="newGroupLabel" destination="297-uf-gbH" id="wnq-8A-uWY"/>
+                        <outlet property="newGroupLogoImageView" destination="txT-aO-h86" id="fMr-hi-RDx"/>
                         <outlet property="photoImagePicker" destination="xRX-T6-hOS" id="Yb0-vu-YaW"/>
                         <outlet property="topView" destination="oQR-iE-ZaF" id="Luo-4S-jOx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVn-Hi-BYa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1271" y="755"/>
+            <point key="canvasLocation" x="1269.5652173913045" y="754.6875"/>
         </scene>
         <!--Share Link View Controller-->
         <scene sceneID="Q2K-e7-tgD">
@@ -1274,6 +1306,7 @@
     </scenes>
     <resources>
         <image name="attach" width="25" height="25"/>
+        <image name="chooseGroupImage" width="79" height="79"/>
         <image name="groupImage1" width="1024" height="683"/>
         <image name="harmonyLogo" width="169" height="172"/>
         <image name="launchLogo" width="169" height="172"/>
@@ -1281,6 +1314,7 @@
         <image name="logo" width="61" height="61"/>
         <image name="okIcon" width="25" height="25"/>
         <image name="send" width="25" height="25"/>
+        <image name="spotifyFilled" width="25" height="25"/>
         <image name="spotifyIcon" width="25" height="25"/>
         <image name="vkIcon" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">

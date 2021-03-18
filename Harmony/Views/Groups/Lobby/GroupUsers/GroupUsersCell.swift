@@ -18,7 +18,6 @@ class GroupUsersCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.backgroundColor = .bgColor
         imageView.image = UIImage(named: "groupImage")
-//        imageView.image = UIImage(systemName: "plus")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
