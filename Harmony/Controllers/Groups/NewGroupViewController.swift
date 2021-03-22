@@ -27,6 +27,14 @@ class NewGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Move View With Keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        // Hide keyboard after tap
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         customizeNavBarController(bgColor: .white, textColor: .mainTextColor)
         topView.layer.borderWidth = 1
         topView.layer.borderColor = UIColor.mainTextColor.cgColor
@@ -76,7 +84,7 @@ class NewGroupViewController: UIViewController {
         [groupNameTextField, descriptionTextField].forEach {
             $0?.defaultTextAttributes.updateValue(1.74, forKey: NSAttributedString.Key.kern)
             $0?.textColor = .mainTextColor
-            $0?.attributedPlaceholder = NSAttributedString(string: $0?.placeholder != nil ? $0?.placeholder as! String : "", attributes: [
+            $0?.attributedPlaceholder = NSAttributedString(string: $0?.placeholder ?? "", attributes: [
                 NSAttributedString.Key.foregroundColor: UIColor.mainTextColor.cgColor,
                 NSAttributedString.Key.kern: 1.74
             ])
@@ -115,6 +123,26 @@ class NewGroupViewController: UIViewController {
     @IBAction func closeWithoutSaving(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
         viewModel.closeWindow()
+    }
+    
+    /* Keyboard moving */
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 2
+//                signInButtonBottomConstraint.constant = keyboardSize.height / 3
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
+//        signInButtonBottomConstraint.constant = 30
+    }
+    
+    // Hide keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     deinit {

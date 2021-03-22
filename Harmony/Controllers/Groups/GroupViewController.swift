@@ -33,7 +33,7 @@ class GroupViewController: UIViewController {
     
     var iconLeftAnchor: NSLayoutConstraint?
     var iconRightAnchor: NSLayoutConstraint?
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +43,8 @@ class GroupViewController: UIViewController {
         customizeNavBarController(bgColor: .bgColor, textColor: .white)
         
         topImage.setupTopGradientMask(with: topView)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(musicTabBarCollectionViewSlided(notification:)), name: NSNotification.Name(rawValue: "SlideMusicSections"), object: nil)
         
         setupUsersCollectionView()
         
@@ -60,10 +62,10 @@ class GroupViewController: UIViewController {
                 switch result {
                 case .failure(let error):
                     if error == .NoPlaylists { // No playlists
-//                        self.failedSpotify(msg: "You have no playlists in your sporify account")
+                        //                        self.failedSpotify(msg: "You have no playlists in your sporify account")
                         print("You have no playlists in your sporify account")
                     } else { // Not signed in
-//                        self.failedSpotify(msg: "To see your tracks you have to sign in to your spotify account")
+                        //                        self.failedSpotify(msg: "To see your tracks you have to sign in to your spotify account")
                         print("To see your tracks you have to sign in to your spotify account")
                     }
                     break
@@ -73,12 +75,16 @@ class GroupViewController: UIViewController {
             }
             self.viewModel.viewDidLoad {
                 self.hideActivityIndicator()
-//                self.musicTableView.isHidden = false
+                //                self.musicTableView.isHidden = false
             }
         }
+        
         viewModel.onUpdate = {
             self.setupMusicCollectionView()
-            self.musicTabBarCollectionView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.musicTabBarCollectionView.reloadData()
+            }
             self.musicTabBarCollectionView.addSubview(self.readyButton)
         }
         
@@ -117,10 +123,14 @@ class GroupViewController: UIViewController {
             "ADD MY MUSIC",
             "LOBBY'S PLAYLISTS"
         ])
+        //        musicTabBarSegment.contentHorizontalAlignment = .left
+        //        for segment in 0..<musicTabBarSegment.numberOfSegments {
+        //            musicTabBarSegment.setContentOffset(CGSize(width: -20, height: 0), forSegmentAt: segment)
+        //        }
         musicTabBarSegment.selectedSegmentIndex = 0
         musicTabBarSegment.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
         musicTabBarSegment.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-        musicTabBarSegment.selectedSegmentTintColor = .clear
+        //        musicTabBarSegment.selectedSegmentTintColor = .clear
         musicTabBarSegment.apportionsSegmentWidthsByContent = true
         musicTabBarSegment.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         
@@ -138,14 +148,20 @@ class GroupViewController: UIViewController {
         musicTabBarSegment.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             musicTabBarSegment.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
-            musicTabBarSegment.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05),
+            musicTabBarSegment.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.06),
             musicTabBarSegment.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            musicTabBarSegment.topAnchor.constraint(equalTo: topImage.bottomAnchor, constant: -10)
+            musicTabBarSegment.topAnchor.constraint(equalTo: topImage.bottomAnchor, constant: -20)
         ])
     }
     
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         musicTabBarCollectionView.scrollToItem(at: IndexPath(item: sender.selectedSegmentIndex, section: 0), at: .top, animated: true)
+    }
+    
+    @objc private func musicTabBarCollectionViewSlided(notification: Notification) {
+        if let xPos = notification.userInfo?["xPos"] as? CGFloat {
+            musicTabBarSegment.selectedSegmentIndex = xPos == 0 ? 0 : 1
+        }
     }
     
     private func setupSearchBar() {
@@ -297,9 +313,5 @@ class GroupViewController: UIViewController {
             waitingForFriendsView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        print(targetContentOffset.pointee.x)
-    }
-    
+
 }

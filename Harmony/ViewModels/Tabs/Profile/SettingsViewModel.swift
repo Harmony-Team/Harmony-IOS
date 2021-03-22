@@ -28,6 +28,7 @@ class SettingsViewModel {
     func logout() {
         UserDefaults.standard.removeObject(forKey: "isLoggedIn")
         UserDefaults.standard.removeObject(forKey: "user")
+        UserDefaults.standard.removeObject(forKey: "spotifyUser")
         coordinator.goToLogin()
     }
     

@@ -10,7 +10,7 @@ import UIKit
 class MyMusicTableCell: UITableViewCell {
     
     var trackLogoView = UIView()
-    var trackLogo = UIImageView()
+    var trackLogo = TrackImageView()
     private var verticalStack = UIStackView()
     var trackName = UILabel()
     var trackArtist = UILabel()

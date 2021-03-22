@@ -54,10 +54,10 @@ struct ServiceIntergration: Codable {
 
 /* Spotify User */
 struct SpotifyUser: Codable {
-    let spotifyId: String
-    let spotifyName: String
-    let spotifyEmail: String
-    let spotifyAccessToken: String
+    var spotifyId: String
+    var spotifyName: String
+    var spotifyEmail: String
+    var spotifyAccessToken: String
 }
 
 struct Req: Codable {

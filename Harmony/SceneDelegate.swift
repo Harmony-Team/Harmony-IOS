@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import VK_ios_sdk
-import ok_ios_sdk
 
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -29,18 +28,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             loginCoordinator?.start()
         }
         
-//        window = UIWindow(windowScene: scene)
-//        loginCoordinator = LoginCoordinator(window: window!)
-//        loginCoordinator?.start()
-//        let vc: MainTabBarController = .instantiate()
-//        window?.rootViewController = vc
-//        window?.makeKeyAndVisible()
-        
-        let okSettings = OKSDKInitSettings()
-        okSettings.appKey = "CPKHMQJGDIHBABABA"
-        okSettings.appId = "512000771758"
-        okSettings.controllerHandler = { return self.window?.rootViewController}
-        OKSDK.initWith(okSettings)
+//        let okSettings = OKSDKInitSettings()
+//        okSettings.appKey = "CPKHMQJGDIHBABABA"
+//        okSettings.appId = "512000771758"
+//        okSettings.controllerHandler = { return self.window?.rootViewController}
+//        OKSDK.initWith(okSettings)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

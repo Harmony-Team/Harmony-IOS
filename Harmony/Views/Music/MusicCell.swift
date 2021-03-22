@@ -25,7 +25,7 @@ class MusicCell: UITableViewCell {
     func update(viewModel: MusicCellViewModel) {
         titleLabel.text = viewModel.trackName
         authorLabel.text = viewModel.trackArtistName
-        logoImageView.downloaded(from: viewModel.trackImage!)
+//        logoImageView.downloaded(from: viewModel.trackImage!)
 //        viewModel.loadTrackImage { image in
 //            self.logoImageView.image = image
 //        }

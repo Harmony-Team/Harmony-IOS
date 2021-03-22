@@ -12,6 +12,8 @@ class APIManager {
     
     static let shared = APIManager()
     
+    private let base_url = "https://harmony-db.herokuapp.com"
+    
     /* Register function */
     func callRegisterAPI(register: RegisterUser, completion: @escaping (String) -> ()) {
         
@@ -19,7 +21,7 @@ class APIManager {
         var msg = ""
         var token = ""
         
-        let registerAPI = "https://harmony-db.herokuapp.com/api/signup?login=\(register.login)&password=\(register.password)&email=\(register.email)"
+        let registerAPI = "\(base_url)/api/signup?login=\(register.login)&password=\(register.password)&email=\(register.email)"
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
@@ -48,12 +50,12 @@ class APIManager {
         }
     }
     
-    /* Creatin user function */
+    /* Creating user function */
     func callCreateAPI(registerUser: RegisterUser, token: String, completion: @escaping (User) -> ()) {
 
         var code = 0
         
-        let createAPI = "https://harmony-db.herokuapp.com/api/user?login=\(registerUser.login)&password=\(registerUser.password)&email=\(registerUser.email)"
+        let createAPI = "\(base_url)/api/user?login=\(registerUser.login)&password=\(registerUser.password)&email=\(registerUser.email)"
         let headers: HTTPHeaders = [
             "Authorization": token
         ]
@@ -93,7 +95,7 @@ class APIManager {
         var msg = ""
         var token = ""
         
-        let loginAPI = "https://harmony-db.herokuapp.com/api/auth?login=\(login.username!)&password=\(login.password!)"
+        let loginAPI = "\(base_url)/api/auth?login=\(login.username!)&password=\(login.password!)"
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
@@ -128,7 +130,7 @@ class APIManager {
     /* Token Validation function */
     func callValidateAPI(token: String, completion: @escaping (String) -> ()) {
         
-        let userAPI = "https://harmony-db.herokuapp.com/api/validate"
+        let userAPI = "\(base_url)/api/validate"
         let url = URL(string: userAPI)!
         var request = URLRequest(url: url)
         var userToken = ""
@@ -162,7 +164,7 @@ class APIManager {
     /* Get user function */
     func getUserAPI(token: String, completion: @escaping (User)->()) {
         
-        let userAPI = "https://harmony-db.herokuapp.com/api/user"
+        let userAPI = "\(base_url)/api/user"
         let url = URL(string: userAPI)!
         var request = URLRequest(url: url)
         
@@ -198,8 +200,7 @@ class APIManager {
     /* Set user services integrations */
     func setUserIntergrations(token: String, services: ServiceIntergration, spotifyId: String, completion: @escaping ()->()) {
         
-        var code = 0
-        let servicesAPI = "http://harmony-db.herokuapp.com/api/user/integrate?spotify=\(spotifyId)&vk&ok"
+        let servicesAPI = "\(base_url)/api/user/integrate?spotify=\(spotifyId)&vk&ok"
         
         let headers: HTTPHeaders = [
             "Authorization": "\(token)"
@@ -212,7 +213,7 @@ class APIManager {
                     let json = try JSONSerialization.jsonObject(with: data!, options: [])
                     
                     print(json)
-                    code = (json as AnyObject).value(forKey: "code") as! Int
+//                    code = (json as AnyObject).value(forKey: "code") as! Int
 //                    if code > 0 {
 //                        msg = (json as AnyObject).value(forKey: "message") as! String
 //                    } else {

@@ -51,6 +51,12 @@ class MusicTabBarCollectionView: UICollectionView, UICollectionViewDelegate, UIC
         return 0
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let cellXPos = visibleCells[0].frame.minX
+        let posDict: [String: CGFloat] = ["xPos": cellXPos]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SlideMusicSections"), object: nil, userInfo: posDict)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -32,11 +32,17 @@ final class SettingsCoordinator: Coordinator {
         parentCoordinator.finishChild(coordinator: self)
         
         // Go to login screen
-        let scene = UIApplication.shared.connectedScenes.first
-        if let appDel: SceneDelegate = (scene?.delegate as? SceneDelegate) {
-            appDel.loginCoordinator = LoginCoordinator(window: appDel.window!)
-            appDel.loginCoordinator?.start()
+        if #available(iOS 13.0, *) {
+            let scene = UIApplication.shared.connectedScenes.first
+            if let appDel: SceneDelegate = (scene?.delegate as? SceneDelegate) {
+                appDel.loginCoordinator = LoginCoordinator(window: appDel.window!)
+                appDel.loginCoordinator?.start()
+            }
+        } else {
+//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
         }
+        
     }
     
     /* Go back to profile */

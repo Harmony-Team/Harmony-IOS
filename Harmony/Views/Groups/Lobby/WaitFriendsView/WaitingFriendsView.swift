@@ -14,7 +14,7 @@ class WaitingFriendsView: UIView {
     private var label1 = UILabel()
     private var label2 = UILabel()
     private var indicatorContainer = UIView()
-    private var activityIndicator = UIActivityIndicatorView(style: .large)
+    private var activityIndicator = UIActivityIndicatorView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

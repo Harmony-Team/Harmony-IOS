@@ -117,7 +117,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCE-hb-2pe">
-                                <rect key="frame" x="20.5" y="533" width="373" height="66.5"/>
+                                <rect key="frame" x="20.5" y="514" width="373" height="66.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qba-rO-IOY">
                                         <rect key="frame" x="10" y="10" width="353" height="19.5"/>
@@ -150,14 +150,14 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nl-bv-DqY">
-                                <rect key="frame" x="194.5" y="488" width="25" height="25"/>
+                                <rect key="frame" x="194.5" y="469" width="25" height="25"/>
                                 <state key="normal" image="spotifyFilled"/>
                                 <connections>
                                     <action selector="authorizeWithSpotify:" destination="Cdy-ut-9Bz" eventType="touchUpInside" id="K0y-ls-NYz"/>
                                 </connections>
                             </button>
                             <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gG9-q6-msj">
-                                <rect key="frame" x="0.0" y="454" width="414" height="24"/>
+                                <rect key="frame" x="0.0" y="435" width="414" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                 <state key="normal" title="AUTHORIZE WITH">
                                     <color key="titleColor" red="0.45737177130000001" green="0.49661362170000001" blue="0.57970577479999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -192,7 +192,7 @@
                             <constraint firstItem="DCE-hb-2pe" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" multiplier="0.9" id="dCi-g8-bNt"/>
                             <constraint firstItem="VVz-Gf-lF4" firstAttribute="width" secondItem="Sz5-Ld-NPt" secondAttribute="width" id="jJD-kk-yyk"/>
                             <constraint firstItem="9Nl-bv-DqY" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="kVA-P6-lhh"/>
-                            <constraint firstItem="gG9-q6-msj" firstAttribute="top" secondItem="jO3-Kr-7Xv" secondAttribute="bottom" constant="40" id="lbU-nh-19h"/>
+                            <constraint firstItem="gG9-q6-msj" firstAttribute="top" secondItem="jO3-Kr-7Xv" secondAttribute="bottom" multiplier="1.05" id="lbU-nh-19h"/>
                             <constraint firstItem="VVz-Gf-lF4" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="nVM-Lh-2nB"/>
                             <constraint firstItem="cpX-EQ-e1H" firstAttribute="height" secondItem="Sz5-Ld-NPt" secondAttribute="height" multiplier="0.08" id="qUX-SU-pWB"/>
                             <constraint firstItem="HAw-S8-qmj" firstAttribute="centerX" secondItem="MNx-Rh-WVv" secondAttribute="centerX" id="uIl-Uc-g4D"/>
@@ -486,46 +486,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="zhP-Ot-RYg">
-                                <rect key="frame" x="83" y="354.5" width="248" height="197"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zhP-Ot-RYg">
+                                <rect key="frame" x="83" y="425.5" width="248" height="55.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kk0-KU-Fzi" customClass="LoginButtonStyle" customModule="Harmony" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="248" height="49"/>
-                                        <color key="backgroundColor" red="0.21416759490000001" green="0.7750398517" blue="0.33993560080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                        <color key="tintColor" red="0.98912459610000003" green="0.953355968" blue="0.92378216980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                        <state key="normal" title="Spotify" image="spotifyIcon">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.94803271050000004" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INTEGRATE WITH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGu-Uu-Dhk">
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.53145068880000002" green="0.58251941200000001" blue="0.6863866448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3W-Ly-Wpw">
+                                        <rect key="frame" x="0.0" y="30.5" width="248" height="25"/>
+                                        <state key="normal" image="spotifyFilled"/>
                                         <connections>
-                                            <action selector="spotifySignUp:" destination="P2K-XX-ZSW" eventType="touchUpInside" id="z4n-wB-8Ln"/>
+                                            <action selector="authorizeWithSpotify:" destination="Cdy-ut-9Bz" eventType="touchUpInside" id="iIT-Ku-mQu"/>
+                                            <action selector="spotifySignUp:" destination="P2K-XX-ZSW" eventType="touchUpInside" id="yNA-iU-kmh"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcQ-Uv-dvM" userLabel="VK" customClass="LoginButtonStyle" customModule="Harmony" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="74" width="248" height="49"/>
-                                        <color key="backgroundColor" red="0.26442235710000001" green="0.55755525829999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                        <color key="tintColor" red="0.98912459610000003" green="0.953355968" blue="0.92378216980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                        <state key="normal" title="ВКонтакте" image="vkIcon">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.94803271050000004" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLc-0q-xh3" userLabel="OK" customClass="LoginButtonStyle" customModule="Harmony" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="148" width="248" height="49"/>
-                                        <color key="backgroundColor" red="0.98559588190000003" green="0.48252105709999998" blue="0.12199644" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                        <color key="tintColor" red="0.98912459610000003" green="0.953355968" blue="0.92378216980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                        <state key="normal" title="Одноклассники" image="okIcon">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.94803271050000004" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
                                     </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13d-9d-hXP" userLabel="VK" customClass="LoginButtonStyle" customModule="Harmony" customModuleProvider="target">
-                                <rect key="frame" x="83" y="666.5" width="248" height="49.5"/>
+                                <rect key="frame" x="83" y="596" width="248" height="49.5"/>
                                 <color key="backgroundColor" red="0.99799984689999999" green="0.34203401210000001" blue="0.6599388719" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="tintColor" red="0.98912459610000003" green="0.953355968" blue="0.92378216980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -541,7 +522,6 @@
                         <viewLayoutGuide key="safeArea" id="Ol6-6L-mWr"/>
                         <color key="backgroundColor" red="0.25694064630000002" green="0.073218631899999997" blue="0.53265783629999996" alpha="0.72897046229999996" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zhP-Ot-RYg" firstAttribute="height" secondItem="S2T-gM-EZq" secondAttribute="height" multiplier="0.22" id="6ti-1r-d8N"/>
                             <constraint firstItem="13d-9d-hXP" firstAttribute="height" secondItem="S2T-gM-EZq" secondAttribute="height" multiplier="0.0552455" id="Cno-z5-072"/>
                             <constraint firstItem="13d-9d-hXP" firstAttribute="width" secondItem="S2T-gM-EZq" secondAttribute="width" multiplier="0.599034" id="GrO-By-keS"/>
                             <constraint firstItem="zhP-Ot-RYg" firstAttribute="centerX" secondItem="Ol6-6L-mWr" secondAttribute="centerX" id="dkq-RB-3By"/>
@@ -551,6 +531,9 @@
                             <constraint firstItem="13d-9d-hXP" firstAttribute="top" secondItem="zhP-Ot-RYg" secondAttribute="bottom" constant="115" id="tUH-KW-rDY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="integrateWithLabel" destination="cGu-Uu-Dhk" id="OcN-ki-hcU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nin-Oy-Gv4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1259,19 +1242,19 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="EKP-7x-LMN">
                                 <rect key="frame" x="87" y="144" width="240" height="128"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HARMONY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="22" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-OK-0fb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HARMONY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-OK-0fb">
                                 <rect key="frame" x="87" y="280" width="240" height="54"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music is social." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P21-Xa-Vwh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music is social." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="P21-Xa-Vwh">
                                 <rect key="frame" x="85" y="514" width="227" height="39"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s make it fun together." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-ND-6Ts">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s make it fun together." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-ND-6Ts">
                                 <rect key="frame" x="85" y="568" width="244" height="26"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1284,6 +1267,7 @@
                             <constraint firstItem="Cy6-H9-7MC" firstAttribute="centerY" secondItem="cch-lc-8a9" secondAttribute="centerY" id="72s-uV-t6c"/>
                             <constraint firstItem="e1K-ND-6Ts" firstAttribute="leading" secondItem="P21-Xa-Vwh" secondAttribute="leading" id="8tP-Lb-KKt"/>
                             <constraint firstItem="Cy6-H9-7MC" firstAttribute="width" secondItem="tNa-A2-XxZ" secondAttribute="width" id="Bal-YS-leM"/>
+                            <constraint firstItem="cch-lc-8a9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="P21-Xa-Vwh" secondAttribute="trailing" symbolic="YES" id="DDK-9h-Kvn"/>
                             <constraint firstItem="P21-Xa-Vwh" firstAttribute="top" secondItem="sW0-OK-0fb" secondAttribute="bottom" constant="180" id="XBj-Av-U4V"/>
                             <constraint firstItem="e1K-ND-6Ts" firstAttribute="top" secondItem="P21-Xa-Vwh" secondAttribute="bottom" constant="15" id="ZLD-6i-M9u"/>
                             <constraint firstItem="EKP-7x-LMN" firstAttribute="centerX" secondItem="cch-lc-8a9" secondAttribute="centerX" id="aNt-9O-Eca"/>
@@ -1312,11 +1296,8 @@
         <image name="launchLogo" width="169" height="172"/>
         <image name="loginBg1" width="375" height="667"/>
         <image name="logo" width="61" height="61"/>
-        <image name="okIcon" width="25" height="25"/>
         <image name="send" width="25" height="25"/>
         <image name="spotifyFilled" width="25" height="25"/>
-        <image name="spotifyIcon" width="25" height="25"/>
-        <image name="vkIcon" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

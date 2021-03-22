@@ -67,13 +67,6 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.update(viewModel: groupCellViewModel)
                 return cell
             }
-            
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
-//            cell.selectionStyle = .none
-//            cell.logoImageView.image = UIImage(named: "groupImage")
-//            cell.titleLabel.text = "Group Title"
-//            cell.msgLabel.text = "236 Tracks"
-//            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "createCell", for: indexPath) as! NewGroupCell
             cell.selectionStyle = .none

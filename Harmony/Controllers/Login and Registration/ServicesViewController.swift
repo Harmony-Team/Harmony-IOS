@@ -6,16 +6,13 @@
 //
 
 import UIKit
-import SafariServices
-import VK_ios_sdk
-import SwiftyVK
-import ok_ios_sdk
 import WebKit
-import Alamofire
 
 class ServicesViewController: UIViewController {
     
     var viewModel: ServicesViewModel!
+    
+    @IBOutlet weak var integrateWithLabel: UILabel!
     
     /* OK */
     var okScope = ["VALUABLE_ACCESS", "LONG_ACCESS_TOKEN", "PHOTO_CONTENT"]
@@ -24,7 +21,9 @@ class ServicesViewController: UIViewController {
         super.viewDidLoad()
         
         addBg(image: UIImage(named: "bg2"), colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 0.22)
-
+        
+        integrateWithLabel.font = UIFont.setFont(size: .Small)
+        integrateWithLabel.addKern(1.74)
     }
     
     /* Spotify Authorization */
@@ -32,20 +31,20 @@ class ServicesViewController: UIViewController {
         spotifyAuthVC()
     }
     
-    var webView: UIWebView!
+    var webView: WKWebView!
     func spotifyAuthVC() {
         // Create Spotify Auth ViewController
         let spotifyVC = UIViewController()
         // Create WebView
-        webView = UIWebView()
-        webView?.delegate = self
+        webView = WKWebView()
+        webView.navigationDelegate = self
         spotifyVC.view.addSubview(webView)
         webView.frame = spotifyVC.view.bounds
         webView.translatesAutoresizingMaskIntoConstraints = false
         
         guard let url = viewModel.spotifyService.signInUrl else { return }
         let urlRequest = URLRequest.init(url: url)
-        webView.loadRequest(urlRequest)
+        webView.load(urlRequest)
         
         // Create Navigation Controller
         let navController = UINavigationController(rootViewController: spotifyVC)
@@ -90,7 +89,6 @@ class ServicesViewController: UIViewController {
     /* End registration. Go to profile */
     @IBAction func endRegistration(_ sender: UIButton) {
         viewModel.setIntergrationIDs()
-//        viewModel.endRegistration()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -99,11 +97,12 @@ class ServicesViewController: UIViewController {
     }
 }
 
-extension ServicesViewController: UIWebViewDelegate {
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        viewModel.requestForCallbackURL(request: request) {
+extension ServicesViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        viewModel.requestForCallbackURL(request: navigationAction.request) {
             self.dismiss(animated: true, completion: nil)
         }
-        return true
+        
+        decisionHandler(.allow)
     }
 }

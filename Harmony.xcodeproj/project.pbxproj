@@ -99,7 +99,7 @@
 		52B5E88825F80B90001BD785 /* ShareLinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5E88725F80B90001BD785 /* ShareLinkCoordinator.swift */; };
 		52BCD56E25E3048800A30366 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD56C25E303D800A30366 /* Lato-Regular.ttf */; };
 		52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */; };
-		52D1F4C525CC8DCA002AA1C9 /* OKSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */; };
+		52E70AA226075DEA0049A4C7 /* TrackImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E70AA126075DEA0049A4C7 /* TrackImageView.swift */; };
 		52EDBF9325DEE46F002A141C /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDBF9225DEE46F002A141C /* TrackViewController.swift */; };
 		52EDBF9825DEE4BB002A141C /* TrackCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDBF9725DEE4BB002A141C /* TrackCoordinator.swift */; };
 		52EDBF9B25DEE4E3002A141C /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDBF9A25DEE4E3002A141C /* TrackViewModel.swift */; };
@@ -201,9 +201,7 @@
 		52B5E88725F80B90001BD785 /* ShareLinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkCoordinator.swift; sourceTree = "<group>"; };
 		52BCD56C25E303D800A30366 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
-		52D1F4C125CC7F9E002AA1C9 /* VKHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKHeader.h; sourceTree = "<group>"; };
-		52D1F4C325CC8DCA002AA1C9 /* OKSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKSDK.h; sourceTree = "<group>"; };
-		52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKSDK.m; sourceTree = "<group>"; };
+		52E70AA126075DEA0049A4C7 /* TrackImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackImageView.swift; sourceTree = "<group>"; };
 		52EDBF9225DEE46F002A141C /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		52EDBF9725DEE4BB002A141C /* TrackCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCoordinator.swift; sourceTree = "<group>"; };
 		52EDBF9A25DEE4E3002A141C /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
@@ -264,9 +262,6 @@
 				52B1C24225CC34FE0027C3E6 /* Storyboards */,
 				521A04F425C73573007F86A0 /* Assets.xcassets */,
 				521A04F925C73573007F86A0 /* Info.plist */,
-				52D1F4C125CC7F9E002AA1C9 /* VKHeader.h */,
-				52D1F4C325CC8DCA002AA1C9 /* OKSDK.h */,
-				52D1F4C425CC8DCA002AA1C9 /* OKSDK.m */,
 				52BCD56B25E303AB00A30366 /* Fonts */,
 			);
 			path = Harmony;
@@ -520,6 +515,7 @@
 			children = (
 				52AC3AC525F95B1B00EA7E19 /* MyMusicTabBarCell.swift */,
 				52AC3AC825F966A100EA7E19 /* MyMusicTableCell.swift */,
+				52E70AA126075DEA0049A4C7 /* TrackImageView.swift */,
 			);
 			path = MyMusic;
 			sourceTree = "<group>";
@@ -602,8 +598,8 @@
 			isa = PBXGroup;
 			children = (
 				52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */,
-				52B1C24E25CC388E0027C3E6 /* VKService.swift */,
 				5236FFD425D0342B00845300 /* APIManager.swift */,
+				52B1C24E25CC388E0027C3E6 /* VKService.swift */,
 				52B5C59D25D6A99C00961A4E /* UserProfile.swift */,
 				52AC3B0526039DF700EA7E19 /* CoreDataManager.swift */,
 			);
@@ -805,7 +801,6 @@
 				52AC3B0326039DA400EA7E19 /* GroupsList.xcdatamodeld in Sources */,
 				521A052825C750D6007F86A0 /* MainTabBarController.swift in Sources */,
 				52AC3AE925FE33B300EA7E19 /* GroupUsersCellViewModel.swift in Sources */,
-				52D1F4C525CC8DCA002AA1C9 /* OKSDK.m in Sources */,
 				521A053625C757DF007F86A0 /* MusicViewModel.swift in Sources */,
 				52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */,
 				5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */,
@@ -819,6 +814,7 @@
 				52AC3AD425FA01EB00EA7E19 /* LobbyPlaylistsTabBarCell.swift in Sources */,
 				521A051325C73FE9007F86A0 /* FriendsViewController.swift in Sources */,
 				521A055F25C9E892007F86A0 /* LoginButtonStyle.swift in Sources */,
+				52E70AA226075DEA0049A4C7 /* TrackImageView.swift in Sources */,
 				5236FF8825CDAF5800845300 /* NewGroupViewController.swift in Sources */,
 				52AC3AFE26034E4700EA7E19 /* GroupViewModel.swift in Sources */,
 				52AC3AD925FA6E3C00EA7E19 /* GroupUsersCollectionView.swift in Sources */,
@@ -1049,7 +1045,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1077,7 +1073,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

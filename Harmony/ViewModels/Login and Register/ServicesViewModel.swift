@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import CommonCrypto
-import SwiftyVK
-import VK_ios_sdk
 
 class ServicesViewModel {
     
@@ -20,7 +17,7 @@ class ServicesViewModel {
     var spotifyUser: SpotifyUser?
     
     /* VK */
-    var vkService = VKService()
+//    var vkService = VKService()
     
     /* OK */
     
@@ -82,7 +79,6 @@ class ServicesViewModel {
         task.resume()
     }
     
-    
     /* Integration Of Spotify */
     func integrateSpotify(accessToken: String) {
         let tokenURLFull = "https://harmony-db.herokuapp.com/api/user/integrate"
@@ -96,11 +92,9 @@ class ServicesViewModel {
         
         let us = SpotifyUserIntegration(spotifyId: "1234", accessToken: "1234", refreshToken: "1234")
         
-        do {
-            let encodedData = try? JSONEncoder().encode(us)
-            print(String(data: encodedData!, encoding: .utf8)!) //<- Looks as intended
-            request.httpBody = encodedData
-        } catch {}
+        let encodedData = try? JSONEncoder().encode(us)
+        print(String(data: encodedData!, encoding: .utf8)!) //<- Looks as intended
+        request.httpBody = encodedData
         
         let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
             guard error == nil else { return }
