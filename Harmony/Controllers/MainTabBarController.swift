@@ -12,7 +12,6 @@ class MainTabBarController: UITabBarController {
     let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
     let friendCoordinator = FriendsCoordinator(navigationController: UINavigationController())
     let groupCoordinator = GroupsListCoordinator(navigationController: UINavigationController())
-//    let musicCoordinator = MusicCoordinator(navigationController: UINavigationController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +22,12 @@ class MainTabBarController: UITabBarController {
         profileCoordinator.start()
         friendCoordinator.start()
         groupCoordinator.start()
-//        musicCoordinator.start()
 
         viewControllers =
             [
                 profileCoordinator.navigationController,
                 friendCoordinator.navigationController,
-                groupCoordinator.navigationController,
-//                musicCoordinator.navigationController
+                groupCoordinator.navigationController
             ]
 
     }
@@ -42,12 +39,6 @@ class MainTabBarController: UITabBarController {
         tabBar.backgroundImage = UIImage()
         tabBar.tintColor = .white
         tabBar.unselectedItemTintColor = .white
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        
     }
     
     @objc func d() {

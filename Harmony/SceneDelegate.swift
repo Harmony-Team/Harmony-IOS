@@ -11,6 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
     var loginCoordinator: LoginCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,9 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
         
         if isLoggedIn {
+//           // let vc: MainTabBarController = .instantiate()
             let vc: MainTabBarController = .instantiate()
             window?.rootViewController = vc
             window?.makeKeyAndVisible()
+            
+//            window = UIWindow(windowScene: scene)
+//            appCoordinator = AppCoordinator(window: window)
+//            appCoordinator?.start()
         } else {
             window = UIWindow(windowScene: scene)
             loginCoordinator = LoginCoordinator(window: window!)

@@ -14,12 +14,8 @@ class ServicesViewModel {
     
     /* Spotify */
     var spotifyService = SpotifyService.shared
+    var apiManager = APIManager.shared
     var spotifyUser: SpotifyUser?
-    
-    /* VK */
-//    var vkService = VKService()
-    
-    /* OK */
     
     /* Spotify Auth */
     func requestForCallbackURL(request: URLRequest, completion: @escaping ()->()) {
@@ -41,87 +37,13 @@ class ServicesViewModel {
                    completion()
                 }
             }
-        }
-        
+        } 
     }
     
     func handleAuth(spotifyAccessToken: String) {
-        fetchSpotifyProfile(accessToken: spotifyAccessToken)
-    }
-    
-    func fetchSpotifyProfile(accessToken: String) {
-        let tokenURLFull = "https://api.spotify.com/v1/me"
-        let url = URL(string: tokenURLFull)!
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        request.httpMethod = "GET"
-        request.timeoutInterval = 30
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            guard let data = data, error == nil else {
-                return
-            }
-            
-            let result = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
-
-            let spotifyId: String! = (result?["id"] as! String) // Spotify ID
-            let spotifyDisplayName: String! = (result?["display_name"] as! String) // Spotify User Name
-//            let spotifyEmail: String! = (result?["email"] as! String) // Spotify Email
-//            
-            self.spotifyUser = SpotifyUser(spotifyId: spotifyId, spotifyName: spotifyDisplayName, spotifyEmail: "kos@mail.ru", spotifyAccessToken: accessToken)
-//
-            // Save Spotify User
-            UserProfileCache.save(self.spotifyUser, "spotifyUser")
-            
-            // Integrate Spotify In DB
-            self.integrateSpotify(accessToken: accessToken)
+        spotifyService.fetchSpotifyProfile(accessToken: spotifyAccessToken) { spotifyUser in
+            self.apiManager.integrateSpotify(accessToken: spotifyAccessToken)
         }
-        task.resume()
-    }
-    
-    /* Integration Of Spotify */
-    func integrateSpotify(accessToken: String) {
-        let tokenURLFull = "https://harmony-db.herokuapp.com/api/user/integrate"
-        let url = URL(string: tokenURLFull)!
-        var request = URLRequest(url: url)
-        let token = UserDefaults.standard.string(forKey: "userToken")!
-
-        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        
-        let us = SpotifyUserIntegration(spotifyId: "1234", accessToken: "1234", refreshToken: "1234")
-        
-        let encodedData = try? JSONEncoder().encode(us)
-        print(String(data: encodedData!, encoding: .utf8)!) //<- Looks as intended
-        request.httpBody = encodedData
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
-            guard error == nil else { return }
-            guard let data = data else { return }
-            
-            do {
-                let result = try JSONSerialization.jsonObject(with: data, options: [])
-                
-                print(result)
-                
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        task.resume()
-    }
-    
-    /* VK Auth */
-    func authVK() {
-//        VK.sessions.default.logIn(
-//            onSuccess: { info in
-//                print("SwiftyVK: success authorize with", info)
-//            },
-//            onError: { error in
-//                print("SwiftyVK: authorize failed with", error)
-//            }
-//        )
     }
     
     /* Set user services integrations IDs */

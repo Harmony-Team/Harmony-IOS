@@ -72,7 +72,7 @@ extension UIView {
         gradientLayer.endPoint = endPoint
         gradientLayer.opacity = opacity
         gradientLayer.frame = self.bounds
-
+        
         self.layer.masksToBounds = true
         self.layer.cornerRadius = cornerRadius
         self.layer.insertSublayer(gradientLayer, at: 0)
@@ -87,5 +87,23 @@ extension UIView {
         animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 10, y: self.center.y))
         animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 10, y: self.center.y))
         self.layer.add(animation, forKey: "position")
+    }
+    
+    func setVerificationIcon() {
+        let bgViewWidth = frame.width * 0.25
+        let bgView = UIView(frame: CGRect(x: frame.width - bgViewWidth - 5, y: 5, width: bgViewWidth, height: bgViewWidth))
+        let starIcon = UIImageView()
+        
+        starIcon.image = UIImage(named: "starIcon")
+        starIcon.contentMode = .scaleAspectFill
+        starIcon.translatesAutoresizingMaskIntoConstraints = false
+        bgView.backgroundColor = .redTextColor
+        bgView.layer.cornerRadius = bgViewWidth / 2
+        bgView.layer.zPosition = 3
+        
+        addSubview(bgView)
+        bgView.addSubview(starIcon)
+        
+        starIcon.pinToEdges(constant: 7)
     }
 }

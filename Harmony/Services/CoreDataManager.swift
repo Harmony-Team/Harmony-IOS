@@ -20,8 +20,6 @@ final class CoreDataManager {
                 return
             }
         }
-        
-        
         return container
     }()
     
@@ -29,6 +27,7 @@ final class CoreDataManager {
         persistentContainer.viewContext
     }
     
+    /* Groups */
     func getGroup(id: NSManagedObjectID) -> Group? {
         do {
             return try moc.existingObject(with: id) as? Group
@@ -36,7 +35,6 @@ final class CoreDataManager {
             return nil
         }
     }
-    
     func saveGroup(name: String, image: UIImage) {
         let newGroup = Group(context: moc)
         newGroup.setValue(name, forKey: "name")
@@ -49,7 +47,6 @@ final class CoreDataManager {
             return
         }
     }
-    
     func fetchGroups() -> [Group] {
         do {
             let fetchRequest = NSFetchRequest<Group>(entityName: "Group")
@@ -60,5 +57,77 @@ final class CoreDataManager {
             return []
         }
     }
+    func deleteGroup(id: NSManagedObjectID) {
+        do {
+            let deletingGroup = try moc.existingObject(with: id) as! Group
+            moc.delete(deletingGroup)
+            try moc.save()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+}
+
+final class CoreDataManagerr {
+    
+    static var shared = CoreDataManagerr()
+    
+    var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "GroupsList")
+        container.loadPersistentStores { (_, error) in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+        }
+        return container
+    }()
+    
+    var moc: NSManagedObjectContext {
+        persistentContainer.viewContext
+    }
+
+    /* Music */
+    func getTrack(id: NSManagedObjectID) -> SpotifyTrack? {
+        do {
+            return try moc.existingObject(with: id) as? SpotifyTrack
+        } catch {
+            return nil
+        }
+    }
+    func saveTrack(track: Track) -> SpotifyTrack? {
+        let newTrack = SpotifyTrack(context: moc)
+        newTrack.setValue(track.name, forKey: "name")
+        newTrack.setValue(track.artists[0].name, forKey: "artist")
+        newTrack.setValue(track.album.images[0].url, forKey: "image_url")
+            
+            do {
+                try self.moc.save()
+                return newTrack
+            } catch {
+                return nil
+            }
+ 
+    }
+    func fetchTracks() -> [SpotifyTrack] {
+        do {
+            let fetchRequest = NSFetchRequest<SpotifyTrack>(entityName: "SpotifyTrack")
+            let tracks = try moc.fetch(fetchRequest)
+            return tracks
+        } catch {
+            return []
+        }
+    }
+    func deleteTracks() {
+        do {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SpotifyTrack")
+            let request: NSBatchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            try moc.execute(request)
+            try moc.save()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+
 }
 

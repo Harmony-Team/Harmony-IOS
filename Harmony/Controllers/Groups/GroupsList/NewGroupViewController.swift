@@ -9,20 +9,36 @@ import UIKit
 
 class NewGroupViewController: UIViewController {
     
-    var viewModel: NewGroupViewModel!
+    var viewModel: NewGroupViewModel?
+    var newPlaylistViewModel: NewPlaylistViewModel?
+    var playlistCreatedViewModel: PlaylistCreatedViewModel?
     
     var bottomLine = UIView()
     
+    /* Top View */
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var newGroupLabel: UILabel!
+    
+    /* Image Section */
     @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var photoImagePicker: UIImageView!
     @IBOutlet weak var chooseImageView: UIImageView!
     @IBOutlet weak var newGroupLogoImageView: UIImageView!
-    @IBOutlet weak var groupNameTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
+    
+    @IBOutlet weak var groupNameTextField: UITextField?
+    @IBOutlet weak var descriptionTextField: UITextField?
     @IBOutlet weak var createButton: LoginButtonStyle!
     @IBOutlet weak var cancelButton: UIButton!
+    
+    /* New Playlist */
+    @IBOutlet weak var tracksLabel: UILabel?
+    @IBOutlet weak var tracksValueLabel: UILabel?
+    @IBOutlet weak var participantsLabel: UILabel?
+    @IBOutlet weak var participantsValueLabel: UILabel?
+    
+    /* Created Playlist */
+    @IBOutlet weak var createdPlaylistLabel: UILabel?
+    @IBOutlet weak var hoursLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +74,7 @@ class NewGroupViewController: UIViewController {
         imageView.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: 15, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
         createButton.titleLabel?.font = UIFont.setFont(size: .Medium)
         createButton.titleLabel?.addKern(1.74)
-        createButton.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: 30, startPoint: CGPoint(x: -0.5, y: 1.1), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
+        createButton.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: createButton.frame.height / 2.5, startPoint: CGPoint(x: -0.5, y: 1.1), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
         
         cancelButton.titleLabel?.font = UIFont.setFont(size: .Small)
         cancelButton.titleLabel?.addKern(1.74)
@@ -77,9 +93,19 @@ class NewGroupViewController: UIViewController {
     
     /* Setting up fields */
     private func setupFields() {
-        groupNameTextField.font = UIFont.setFont(size: .ExtraLarge)
+        groupNameTextField?.font = UIFont.setFont(size: .ExtraLarge)
         
-        descriptionTextField.font = UIFont.setFont(size: .Medium)
+        descriptionTextField?.font = UIFont.setFont(size: .Medium)
+        
+        createdPlaylistLabel?.font = UIFont.setFont(size: .ExtraLarge)
+        createdPlaylistLabel?.addKern(1.74)
+        createdPlaylistLabel?.text = playlistCreatedViewModel?.spotifyPlaylistName
+        
+        [tracksLabel, tracksValueLabel, participantsLabel, participantsValueLabel, hoursLabel].forEach {
+            $0?.font = UIFont.setFont(size: .Small)
+            $0?.textColor = .redTextColor
+            $0?.addKern(1.74)
+        }
         
         [groupNameTextField, descriptionTextField].forEach {
             $0?.defaultTextAttributes.updateValue(1.74, forKey: NSAttributedString.Key.kern)
@@ -103,26 +129,53 @@ class NewGroupViewController: UIViewController {
     /* Create group chat and close window */
     @IBAction func createGroupChat(_ sender: UIButton) {
 //        viewModel.goToShareLink()
-        guard let nameText = groupNameTextField.text, !nameText.isEmpty else {
-            groupNameTextField.shakeAnimation()
+        guard let nameText = groupNameTextField?.text, !nameText.isEmpty else {
+            groupNameTextField?.shakeAnimation()
             return
         }
         
         if let image = newGroupLogoImageView.image { // If Group Image Selected
-            viewModel.createNewGroup(with: nameText, image: image)
+            viewModel?.createNewGroup(with: nameText, image: image)
         } else { // Default Image
-            viewModel.createNewGroup(with: nameText, image: UIImage(named: "groupImage")!)
+            viewModel?.createNewGroup(with: nameText, image: UIImage(named: "groupImage")!)
         }
         
         dismiss(animated: true) {
-            self.viewModel.goToGroup()
+            self.viewModel?.goToGroup()
         }
+    }
+    
+    /* Create playlist */
+    @IBAction func createNewPlaylist(_ sender: UIButton) {
+        guard let nameText = groupNameTextField?.text, !nameText.isEmpty else {
+            groupNameTextField?.shakeAnimation()
+            return
+        }
+        
+        if let image = newGroupLogoImageView.image { // If Playlist Image Selected
+            newPlaylistViewModel?.createNewPlaylist(with: nameText, image: image)
+        } else { // Default Image
+            newPlaylistViewModel?.createNewPlaylist(with: nameText, image: UIImage(named: "groupImage")!)
+        }
+    }
+    
+    /* Open Created Playlist In Sporify */
+    @IBAction func openPlaylistInSpotify(_ sender: UIButton) {
+        print("Open in Spotify")
     }
     
     /* Close window without saving */
     @IBAction func closeWithoutSaving(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-        viewModel.closeWindow()
+//        dismiss(animated: true, completion: nil)
+        guard viewModel != nil else {
+            guard newPlaylistViewModel != nil else {
+                playlistCreatedViewModel?.closeWindow()
+                return
+            }
+            newPlaylistViewModel?.closeWindow()
+            return
+        }
+        viewModel?.closeWindow()
     }
     
     /* Keyboard moving */

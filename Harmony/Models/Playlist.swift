@@ -12,6 +12,7 @@ struct Playlists: Codable {
 }
 
 struct Playlist: Codable {
+    var id: String
     var name: String
     var tracks: Tracks
 }

@@ -9,13 +9,13 @@ import UIKit
 
 class GroupCell: UITableViewCell {
     
-    var logoView = UIView()
+    private var logoView = UIView()
     var logoImageView = UIImageView()
-    var verticalStack = UIStackView()
+    private var verticalStack = UIStackView()
     var titleLabel = UILabel()
     var msgLabel = UILabel()
-    var separatorLine = UIView()
-    var imagePadding: CGFloat?
+    private var separatorLine = UIView()
+    private var imagePadding: CGFloat?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,25 +28,20 @@ class GroupCell: UITableViewCell {
     }
     
     func update(viewModel: GroupCellViewModel) {
-        
         titleLabel.text = viewModel.groupName
         msgLabel.text = "236 tracks"
-//        logoImageView.image = UIImage(named: "groupImage")
         viewModel.loadGroupImage { [weak self] image in
             self?.logoImageView.image = image
         }
     }
     
     private func setupViews() {
-        logoView.setupShadow(cornerRad: 10, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))
-        logoView.backgroundColor = .red
+        logoView.setupShadow(cornerRad: 5, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))
         
-//        logoImageView.contentMode = .scaleAspectFill
-        logoImageView.setupShadow(cornerRad: 10, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))
-        logoImageView.tintColor = .green
-//        logoImageView.alpha = 0.3
+        logoImageView.setupShadow(cornerRad: 5, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))
+        logoImageView.layer.masksToBounds = true
         
-        titleLabel.font = UIFont.setFont(size: .Large)
+        titleLabel.font = UIFont.setFont(size: .Large, weight: .Light)
         titleLabel.textColor = .white
         
         msgLabel.font = UIFont.setFont(size: .Medium)

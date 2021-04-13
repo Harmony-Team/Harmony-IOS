@@ -4,7 +4,13 @@
         <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" attributeType="String"/>
     </entity>
+    <entity name="SpotifyTrack" representedClassName="SpotifyTrack" syncable="YES" codeGenerationType="class">
+        <attribute name="artist" attributeType="String"/>
+        <attribute name="image_url" attributeType="String" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Group" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="SpotifyTrack" positionX="-63" positionY="0" width="128" height="88"/>
     </elements>
 </model>

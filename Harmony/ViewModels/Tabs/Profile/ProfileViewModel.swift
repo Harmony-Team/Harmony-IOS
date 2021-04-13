@@ -9,6 +9,9 @@ import UIKit
 
 class ProfileViewModel {
     
+    // Menu
+    var menuShow = false
+    
     var coordinator: ProfileCoordinator!
     var user: User!
     var spotifyUser: SpotifyUser?

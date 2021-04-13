@@ -11,9 +11,11 @@ class MusicTabBarCollectionView: UICollectionView, UICollectionViewDelegate, UIC
     
     var cellsCount = 2
     var viewModel: GroupViewModel?
+    var errorMsg: String
 
-    init(viewModel: GroupViewModel) {
+    init(viewModel: GroupViewModel, errorMsg: String) {
         self.viewModel = viewModel
+        self.errorMsg = errorMsg
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         super.init(frame: .zero, collectionViewLayout: layout)
@@ -25,6 +27,7 @@ class MusicTabBarCollectionView: UICollectionView, UICollectionViewDelegate, UIC
         delegate = self
         dataSource = self
         register(MusicTabBarCell.self, forCellWithReuseIdentifier: "musicSectionId")
+        register(ErrorMusicTabBarCell.self, forCellWithReuseIdentifier: "musicErrorSectionId")
         register(LobbyPlaylistsTabBarCell.self, forCellWithReuseIdentifier: "lobbyPlaylistsSectionId")
     }
     
@@ -34,9 +37,15 @@ class MusicTabBarCollectionView: UICollectionView, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 { // My Music Section
-            let cell = dequeueReusableCell(withReuseIdentifier: "musicSectionId", for: indexPath) as! MusicTabBarCell
-            cell.viewModel = viewModel
-            return cell
+            if errorMsg.isEmpty {
+                let cell = dequeueReusableCell(withReuseIdentifier: "musicSectionId", for: indexPath) as! MusicTabBarCell
+                cell.viewModel = viewModel
+                return cell
+            } else {
+                let cell = dequeueReusableCell(withReuseIdentifier: "musicErrorSectionId", for: indexPath) as! ErrorMusicTabBarCell
+                cell.setupErrorLabel(errorMsg: errorMsg)
+                return cell
+            }
         } else { // Lobby's Playlists Section
             let cell = dequeueReusableCell(withReuseIdentifier: "lobbyPlaylistsSectionId", for: indexPath) as! LobbyPlaylistsTabBarCell
             return cell

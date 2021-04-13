@@ -23,7 +23,7 @@ final class ProfileCoordinator: Coordinator {
         let profileViewModel = ProfileViewModel()
         profileViewModel.coordinator = self
         viewController.viewModel = profileViewModel
-        navigationController.pushViewController(viewController, animated: false)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     /* Settings screen */

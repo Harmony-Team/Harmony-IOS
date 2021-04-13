@@ -141,7 +141,8 @@ class LoginViewController: UIViewController {
     
     /* Authorize With Spotify */
     @IBAction func authorizeWithSpotify(_ sender: UIButton) {
-        spotifyAuthVC()
+        spotifyWebView = WKWebView()
+        spotifyAuthVC(spotifyWebView: spotifyWebView)
     }
     
     /* Go to register form */
@@ -175,47 +176,7 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: WKNavigationDelegate {
-    func spotifyAuthVC() {
-        // Create Spotify Auth ViewController
-        let spotifyVC = UIViewController()
-        // Create WebView
-        spotifyWebView = WKWebView()
-        spotifyWebView.navigationDelegate = self
-        spotifyVC.view.addSubview(spotifyWebView)
-        spotifyWebView.frame = spotifyVC.view.bounds
-        spotifyWebView.translatesAutoresizingMaskIntoConstraints = false
-        
-        guard let url = viewModel.spotifyService.signInUrl else { return }
-        let urlRequest = URLRequest.init(url: url)
-        spotifyWebView.load(urlRequest)
-        
-        // Create Navigation Controller
-        let navController = UINavigationController(rootViewController: spotifyVC)
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelAction))
-        spotifyVC.navigationItem.leftBarButtonItem = cancelButton
-        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.refreshAction))
-        spotifyVC.navigationItem.rightBarButtonItem = refreshButton
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        navController.navigationBar.titleTextAttributes = textAttributes
-        spotifyVC.navigationItem.title = "spotify.com"
-        navController.navigationBar.isTranslucent = false
-        navController.navigationBar.tintColor = .white
-        navController.navigationBar.barTintColor = .white
-        navController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        navController.setNavigationBarHidden(true, animated: false)
-        
-        self.present(navController, animated: true, completion: nil)
-    }
-    
-    @objc func cancelAction() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func refreshAction() {
-        self.spotifyWebView.reload()
-    }
-    
+extension LoginViewController {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         viewModel.requestForCallbackURL(request: navigationAction.request) {
             self.dismiss(animated: true, completion: nil)

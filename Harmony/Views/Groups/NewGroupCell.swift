@@ -34,7 +34,7 @@ class NewGroupCell: UITableViewCell {
         logoImageView.contentMode = .scaleAspectFill
         logoImageView.tintColor = .white
         
-        titleLabel.font = UIFont.setFont(size: .Large)
+        titleLabel.font = UIFont.setFont(size: .Large, weight: .Light)
         titleLabel.textColor = .redTextColor
         
         separatorLine.backgroundColor = .gray

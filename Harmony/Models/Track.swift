@@ -27,6 +27,8 @@ struct Track: Codable {
     var album: Album
     var artists: [Artist]
     var name: String
+    var id: String
+    
 }
 
 /* Track Artist */

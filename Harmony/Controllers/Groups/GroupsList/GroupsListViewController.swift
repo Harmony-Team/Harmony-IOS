@@ -33,7 +33,11 @@ class GroupsListViewController: UIViewController {
     
     private func setupTableView() {
         groupsTableView.layer.zPosition = 2
+        groupsTableView.showsVerticalScrollIndicator = false
         groupsTableView.backgroundColor = .clear
+        groupsTableView.tableFooterView = UIView(frame: CGRect.zero)
+        groupsTableView.sectionFooterHeight = 0.0
+        groupsTableView.tableFooterView = nil
         groupsTableView.dataSource = self
         groupsTableView.delegate = self
         groupsTableView.register(GroupCell.self, forCellReuseIdentifier: "groupCell")
@@ -76,6 +80,11 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIScreen.main.bounds.height * 0.15
+    }
+    
+    /* Header Section */
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
@@ -93,11 +102,6 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.height * 0.15
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 50 : 0
     }
@@ -106,8 +110,18 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             viewModel.addNewGroupChat()
         } else {
-//            viewModel.goToCurrentGroup()
             viewModel.didSelectRow(at: indexPath)
+        }
+    }
+    
+    /* Deleting Group */
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            callBottomAlert(msg: "Are you sure you want to delete this group?\n This cannot be undone.") { (res) in
+                if res == .Success {
+                    self.viewModel.deleteGroup(at: indexPath)
+                }
+            }
         }
     }
 }

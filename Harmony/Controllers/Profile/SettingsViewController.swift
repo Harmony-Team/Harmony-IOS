@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 class SettingsViewController: UIViewController {
 
@@ -17,9 +18,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         addBg(image: nil, colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 1)
-        
-        customizeNavBarController(bgColor: .bgColor, textColor: .white)
-        
+                
         viewModel.getUserInfoDictionary()
         
         navigationItem.title = "SETTINGS"
@@ -33,7 +32,21 @@ class SettingsViewController: UIViewController {
         settingsTableView.dataSource = self
         settingsTableView.delegate = self
         settingsTableView.register(SettingsCell.self, forCellReuseIdentifier: "settingsCell")
-//        settingsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "logoutCell")
+    }
+    
+    @objc private func change(switcher: UISwitch) {
+        if switcher.isOn { // Authorize In Spotify
+            let spotifyWebView = WKWebView()
+            spotifyAuthVC(spotifyWebView: spotifyWebView)
+        } else { // Logout From Spotify
+            callAlertWithOptions(title: "Spotify Logout", msg: "You will not be able to add your music in lobbies. Are you sure you want to logout?") { (response) in
+                if response == .Success {
+                    self.viewModel.handleLogout()
+                } else {
+                    switcher.isOn = true
+                }
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -44,36 +57,6 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        
-        let label = UILabel()
-        label.frame = CGRect.init(x: tableView.frame.width * 0.08, y: 5, width: headerView.frame.width-50, height: headerView.frame.height-10)
-        label.font = UIFont.setFont(size: .Medium)
-        label.addKern(1.74)
-        label.textColor = .mainTextColor
-        
-        headerView.addSubview(label)
-        
-        switch section {
-        case 0:
-            label.text = "USER ACCOUNT"
-            break
-        case 1:
-            label.text = "ABOUT"
-            break
-        default:
-            label.text = "LOGINS"
-            break
-        }
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -90,18 +73,23 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! SettingsCell
             cell.leftLabel.text = Array(viewModel.userInfoDictionary)[indexPath.row].value
-//            cell.rightLabel.text = Array(viewModel.userInfoDictionary)[indexPath.row].value
             cell.rightLabel.text = "EDIT"
+            cell.rightSwitcher.isHidden = true
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! SettingsCell
-            cell.leftLabel.text = "About App"
+            cell.leftLabel.text = "Spotify"
             cell.rightLabel.text = ""
+            cell.rightSwitcher.isOn = SpotifyService.shared.isSignedIn
+            cell.rightSwitcher.addTarget(self, action: #selector(change(switcher:)), for: .valueChanged)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! SettingsCell
             cell.textLabel?.text = "Log Out"
-            cell.textLabel?.textColor = .red
+            cell.textLabel?.textColor = .redTextColor
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.font = UIFont.setFont(size: .Large)
+            cell.rightSwitcher.isHidden = true
             return cell
         }
     }
@@ -112,11 +100,67 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            
+            viewModel.goToEditCell()
         } else if indexPath.section == 1 {
             
         } else {
             viewModel.logout()
         }
+    }
+    
+    /* Header Section */
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: view.frame.height * 0.05))
+        
+        let label = UILabel()
+        let labelHeight = headerView.frame.height-10
+        label.frame = CGRect.init(x: tableView.frame.width * 0.08, y: 50 - labelHeight, width: headerView.frame.width-50, height: labelHeight)
+        label.font = UIFont.setFont(size: .Medium)
+        label.addKern(1.74)
+        label.textColor = .mainTextColor
+        headerView.addSubview(label)
+        
+        switch section {
+        case 0:
+            label.text = "USER ACCOUNT"
+            break
+        case 1:
+            label.text = "CONNECTIONS"
+            break
+        default:
+            label.text = "LOGINS"
+            break
+        }
+        
+        return headerView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return view.frame.height * 0.05
+    }
+    
+    /* Footer Section */
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let v = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0))
+        if section != 2 {
+            let separator = UIView(frame: CGRect(x: 0, y: view.frame.height * 0.03 - 1, width: tableView.frame.width, height: 1))
+            separator.backgroundColor = .gray
+            separator.alpha = 0.3
+            v.addSubview(separator)
+        }
+        return v
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 2 { return 0 }
+        else { return view.frame.height * 0.03 }
+    }
+}
+
+extension SettingsViewController {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        viewModel.requestForCallbackURL(request: navigationAction.request) {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        decisionHandler(.allow)
     }
 }

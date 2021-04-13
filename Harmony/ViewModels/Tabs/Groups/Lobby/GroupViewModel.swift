@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum SpotifyError: Error {
     case NotSignedIn
@@ -25,51 +26,79 @@ class GroupViewModel {
     var onUpdate = {}
     
     /* Spotify */
-    var spotifyUser: SpotifyUser?
-    var spotifyTracks = [Track]()
-    var spotifyPlaylistList: [Playlist]?
+    private var spotifyService = SpotifyService.shared
+    private var spotifyUser: SpotifyUser?
+    var spotifyTracks = [SpotifyTrack]()
+    var visibleSpotifyTracks = [SpotifyTrack]() // Tracks Visible In Table View
+    var selectedSpotifyTracks = [SpotifyTrack]() // Selected Tracks
+    private var spotifyPlaylistList: [Playlist]?
     
-    func viewDidLoad(completion: @escaping ()->()) {
-        onUpdate()
-        completion()
+    func reload() {
+        self.selectedSpotifyTracks = coordinator.selectedSpotifyTracks
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MusicTableReload"), object: nil)
     }
     
-    /* Go to selected track */
-//    func goToTrack() {
-//        coordinator.goToTrack()
-//    }
+    /* Create New Playlist */
+    func createPlaylist() {
+        coordinator.createNewPlaylist()
+    }
+    
+    /* Open Search Music View Controller */
+    func goToSearchMusic() {
+        coordinator.goToMusicSearching(spotifyTracks: spotifyTracks, selectedSpotifyTracks: selectedSpotifyTracks)
+    }
     
     func cellForRow(at indexPath: IndexPath) -> Cell {
         return cells[indexPath.row]
     }
     
     /* Check if user is logged in Spotify */
-    func checkSpotify(completionHandler: @escaping (Result<Int?, SpotifyError>) -> Void) {
-        
-        if SpotifyService.shared.isSignedIn {
+    func checkSpotify(refresh: Bool, completionHandler: @escaping (Result<Int?, SpotifyError>) -> Void) {
+        if spotifyService.isSignedIn {
             print("Logged in spotify")
             print(SpotifyService.shared.shouldRefreshToken)
             let semaphore = DispatchSemaphore(value: 0)
             
             spotifyUser = UserProfileCache.get(key: "spotifyUser")
-            getPlaylists(for: spotifyUser!) { (playlistArr) in
-                self.spotifyPlaylistList = playlistArr
-                semaphore.signal()
-            }
-            semaphore.wait()
+            
+            let count = CoreDataManagerr.shared.fetchTracks()
+            
+            if count.count == 0 || SpotifyService.shared.shouldRefreshToken || refresh {
+                
+                CoreDataManagerr.shared.deleteTracks()
+                spotifyService.getPlaylists(for: spotifyUser!) { (playlistArr) in
+                    self.spotifyPlaylistList = playlistArr
+                    semaphore.signal()
+                }
+                semaphore.wait()
 
-            guard let playlists = spotifyPlaylistList else {
-                print("No Spotify Playlists")
-                completionHandler(.failure(.NoPlaylists))
-                return
+                guard let playlists = spotifyPlaylistList else {
+                    print("No Spotify Playlists")
+                    completionHandler(.failure(.NoPlaylists))
+                    return
+                }
+                
+                spotifyUser = UserProfileCache.get(key: "spotifyUser")
+
+                // Getting spotify tracks
+                getTrackList(playlists: playlists, completionHandler: { tracks in
+                    self.spotifyTracks = tracks
+                })
+                visibleSpotifyTracks = spotifyTracks
+                cells = spotifyTracks.map {
+                    let trackCellViewModel = MusicCellViewModel(track: $0)
+                    return .track(viewModel: trackCellViewModel)
+                }
+            } else {
+                spotifyTracks = CoreDataManagerr.shared.fetchTracks()
+                visibleSpotifyTracks = spotifyTracks
+                cells = visibleSpotifyTracks.map {
+                    let trackCellViewModel = MusicCellViewModel(track: $0)
+                    return .track(viewModel: trackCellViewModel)
+                }
             }
 
-            // Getting spotify tracks
-            spotifyTracks = getTrackList(playlists: playlists)
-            cells = spotifyTracks.map {
-                let trackCellViewModel = MusicCellViewModel(track: $0)
-                return .track(viewModel: trackCellViewModel)
-            }
+            completionHandler(.success(nil))
         } else {
             print("Not logged")
             completionHandler(.failure(.NotSignedIn))
@@ -77,21 +106,23 @@ class GroupViewModel {
     }
     
     /* Get Spotify Track List */
-    private func getTrackList(playlists: [Playlist]) -> [Track] {
-        var tracks = [Track]()
+    private func getTrackList(playlists: [Playlist], completionHandler: @escaping ((_ tracks: [SpotifyTrack])->Void)) {
+        var tracks = [SpotifyTrack]()
         let semaphore = DispatchSemaphore(value: 0)
-        
         for (index, playlist) in playlists.enumerated() {
-            getTracks(for: spotifyUser!, urlString: playlist.tracks.href, completion: { (track_list) in
+            spotifyService.getTracks(for: spotifyUser!, urlString: playlist.tracks.href, completion: { (track_list) in
+                
                 tracks += track_list
+                
                 if index == playlists.endIndex - 1 {
                     do { semaphore.signal() }
+                    
                 }
             })
         }
         
         semaphore.wait()
-        return tracks
+            completionHandler(tracks)
     }
     
 }

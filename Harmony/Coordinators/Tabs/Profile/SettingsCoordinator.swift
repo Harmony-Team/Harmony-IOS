@@ -24,7 +24,14 @@ final class SettingsCoordinator: Coordinator {
         settingsViewModel.coordinator = self
         settingsViewModel.user = user
         viewController.viewModel = settingsViewModel
-        navigationController.pushViewController(viewController, animated: false)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func goToEditScreen() {
+        let editProfileCoordinator = EditProfileCoordinator(navigationController: navigationController)
+        editProfileCoordinator.parentCoordinator = self
+        childCoordinators.append(editProfileCoordinator)
+        editProfileCoordinator.start()
     }
 
     /* Logout and go to login form */
@@ -48,6 +55,14 @@ final class SettingsCoordinator: Coordinator {
     /* Go back to profile */
     func goToProfile() {
         parentCoordinator.finishChild(coordinator: self)
+    }
+    
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
     }
     
 }

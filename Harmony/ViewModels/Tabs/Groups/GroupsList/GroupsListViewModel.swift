@@ -43,13 +43,14 @@ class GroupsListViewModel {
         coordinator.addNewGroup()
     }
     
-    func goToCurrentGroup() {
-//        coordinator.goToCreatedGroup()
-    }
-    
-    /* Select chat group */
-    func goToCurrentChat() {
-//        coordinator.goToGroupChat()
+    /* Delete group */
+    func deleteGroup(at indexPath: IndexPath) {
+        switch cells[indexPath.row] {
+        case .group(let groupCellViewModel):
+            let id = groupCellViewModel.group.objectID
+            coreDataManager.deleteGroup(id: id)
+            reload()
+        }
     }
     
     func numberOfCells() -> Int {

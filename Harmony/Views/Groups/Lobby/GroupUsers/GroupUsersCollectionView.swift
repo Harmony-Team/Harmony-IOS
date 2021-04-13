@@ -24,41 +24,41 @@ class GroupUsersCollectionView: UICollectionView, UICollectionViewDelegate, UICo
         backgroundColor = .clear
         delegate = self
         dataSource = self
+        register(GroupUsersCell.self, forCellWithReuseIdentifier: "groupUserAdminId")
         register(GroupUsersCell.self, forCellWithReuseIdentifier: "groupUserId")
         register(GroupAddUserCell.self, forCellWithReuseIdentifier: "groupAddUserId")
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 || section == 1 {
             return 1
         }
-        return cellsCount
+        return cellsCount - 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = dequeueReusableCell(withReuseIdentifier: "groupAddUserId", for: indexPath) as! GroupAddUserCell
             return cell
+        } else if indexPath.section == 1 {
+            let cell = dequeueReusableCell(withReuseIdentifier: "groupUserAdminId", for: indexPath) as! GroupUsersCell
+            cell.isAdmin = true
+            return cell
         } else {
             let cell = dequeueReusableCell(withReuseIdentifier: "groupUserId", for: indexPath) as! GroupUsersCell
-            if indexPath.row == 0 { // set gradient border for admin user
-                cell.isAdmin = true
-            } else { // set white border for other users
-                cell.isAdmin = false
-            }
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == 0 {
+        if section == 0 || section == 1 {
             return UIEdgeInsets.zero
         } else {
-            return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+            return UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 10.0)
         }
     }
     

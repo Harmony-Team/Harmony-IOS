@@ -10,7 +10,7 @@ import UIKit
 class MusicCellViewModel {
     private var imageCache = NSCache<NSString, UIImage>()
     private var cacheKey: String {
-        track.name
+        track.name!
     }
     
     var trackName: String? {
@@ -18,11 +18,11 @@ class MusicCellViewModel {
     }
     
     var trackArtistName: String? {
-        track.artists[0].name
+        track.artist
     }
     
     var trackImage: String? {
-        track.album.images[0].url
+        track.image_url
     }
     
     // Cache images
@@ -30,7 +30,7 @@ class MusicCellViewModel {
         if let cachedImage = imageCache.object(forKey: cacheKey as NSString) {
             completion(cachedImage)
         } else {
-            let url = URL(string: track.album.images[0].url)!
+            let url = URL(string: track.image_url!)!
             print(url)
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard let data = data else {
@@ -48,8 +48,8 @@ class MusicCellViewModel {
         }
     }
     
-    var track: Track
-    init(track: Track) {
+    var track: SpotifyTrack
+    init(track: SpotifyTrack) {
         self.track = track
     }
 }

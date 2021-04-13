@@ -25,20 +25,10 @@
 		<dict>
 			<key>CFBundleURLName</key>
 			<string>com.Kostatyyy.Harmony</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>ok512000771758</string>
-			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>vk4994842</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>vk7750806</string>
-			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -60,6 +50,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Regular.ttf</string>
+		<string>Lato-Light.ttf</string>
+		<string>Lato-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -105,9 +97,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>item0</key>
-	<string>okauth</string>
-	<key>item1</key>
-	<string>ok512000771758</string>
 </dict>
 </plist>

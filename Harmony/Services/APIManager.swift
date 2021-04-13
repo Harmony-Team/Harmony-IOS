@@ -32,7 +32,7 @@ class APIManager {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: [])
                     
-                    print(json)
+//                    print(json)
                     code = (json as AnyObject).value(forKey: "code") as! Int
                     if code > 0 {
                         msg = (json as AnyObject).value(forKey: "message") as! String
@@ -60,7 +60,7 @@ class APIManager {
             "Authorization": token
         ]
         
-        print(token)
+//        print(token)
         
         AF.request(createAPI, method: .post, parameters: registerUser, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
@@ -68,7 +68,7 @@ class APIManager {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: [])
                     
-                    print(json)
+//                    print(json)
                     code = (json as AnyObject).value(forKey: "code") as! Int
                     if code == 0 {
                         let decoder = JSONDecoder()
@@ -108,11 +108,10 @@ class APIManager {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: [])
                     
-                    print(json)
+//                    print(json)
                     code = (json as AnyObject).value(forKey: "code") as! Int
                     if code > 0 {
-                       // msg = (json as AnyObject).value(forKey: "message") as! String
-                        msg = "ssss"
+                        msg = (json as AnyObject).value(forKey: "message") as! String
                     } else {
                         token = (json as AnyObject).value(forKey: "token") as! String
                     }
@@ -140,7 +139,7 @@ class APIManager {
         ]
         request.httpMethod = "GET"
         
-        print(token)
+//        print(token)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else { return }
@@ -148,7 +147,7 @@ class APIManager {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
+//                print(json)
                 
                 userToken = (json as AnyObject).value(forKey: "token") as! String
                 completion(userToken)
@@ -173,17 +172,13 @@ class APIManager {
         ]
         request.httpMethod = "GET"
         
-        print(token)
-        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else { return }
             guard let data = data else { return }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
                 
-                let resp: UserResponse = try! JSONDecoder().decode(UserResponse.self, from: data)
+                let resp: UserResponse = try JSONDecoder().decode(UserResponse.self, from: data)
 
                 let user = resp.response[0]
                 UserProfileCache.save(user, "user")
@@ -195,6 +190,39 @@ class APIManager {
             
         }.resume()
         
+    }
+    
+    /* Integration Of Spotify */
+    func integrateSpotify(accessToken: String) {
+        let integrateApi = "\(base_url)/api/user/integrate"
+        let url = URL(string: integrateApi)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+
+        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        let us = SpotifyUserIntegration(spotifyId: "1234", accessToken: "1234", refreshToken: "1234")
+        
+        let encodedData = try? JSONEncoder().encode(us)
+        print(String(data: encodedData!, encoding: .utf8)!) //<- Looks as intended
+        request.httpBody = encodedData
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let result = try JSONSerialization.jsonObject(with: data, options: [])
+                
+                print(result)
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
     }
     
     /* Set user services integrations */

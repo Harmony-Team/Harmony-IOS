@@ -11,6 +11,7 @@ class FriendsViewController: UIViewController {
     
     var viewModel: FriendsViewModel!
     
+    @IBOutlet weak var friendsSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -19,9 +20,18 @@ class FriendsViewController: UIViewController {
         addBg(image: nil, colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 1)
         customizeNavBarController(bgColor: .bgColor, textColor: .white)
         
+        setupSearchBar()
         setupTableView()
     }
     
+    /* Setting Up Search Bar */
+    private func setupSearchBar() {
+        friendsSearchBar.searchBarStyle = .minimal
+        friendsSearchBar.delegate = self
+        friendsSearchBar.searchTextField.textColor = .white
+    }
+    
+    /* Setting Up Friends Table View */
     private func setupTableView() {
         tableView.backgroundColor = .clear
         tableView.dataSource = self
@@ -29,6 +39,13 @@ class FriendsViewController: UIViewController {
         tableView.register(FriendCell.self, forCellReuseIdentifier: "friendCell")
     }
     
+}
+
+/* Search Bar Ext */
+extension FriendsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
 }
 
 extension FriendsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -41,13 +58,11 @@ extension FriendsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         cell.nameLabel.text = "Friend Name"
         cell.infoLabel.text = "Info"
-        cell.checkImageView.isHidden = true
-        cell.addFriendButton.isHidden = true
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return UIScreen.main.bounds.height * 0.13
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

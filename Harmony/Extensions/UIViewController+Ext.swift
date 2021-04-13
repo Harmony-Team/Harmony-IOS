@@ -6,13 +6,24 @@
 //
 
 import UIKit
+import WebKit
 
 fileprivate var aView: UIView?
 
-extension UIViewController {
-    static func instantiate<T>() -> T {
+enum AlertError: Error {
+    case Cancel
+    case Success
+}
+
+extension UIViewController: WKNavigationDelegate {
+    static func instantiate<T>(id: String? = nil) -> T {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "\(T.self)") as! T
+        var viewController: T
+        if let id = id {
+            viewController = storyboard.instantiateViewController(withIdentifier: "\(id.self)") as! T
+        } else {
+            viewController = storyboard.instantiateViewController(withIdentifier: "\(T.self)") as! T
+        }
         return viewController
     }
     
@@ -27,13 +38,13 @@ extension UIViewController {
             backgroundImage.alpha = alpha
             self.view.insertSubview(backgroundImage, at: 0)
         }
-
+        
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
         gradientLayer.frame = self.view.bounds
-                
+        
         self.view.layer.masksToBounds = true
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
@@ -96,6 +107,11 @@ extension UIViewController {
         }
     }
     
+    /* Add Navigation Side Menu View */
+    func addSideMenuView(menuView: SideMenuView) {
+        view.addSubview(menuView)
+    }
+    
     /* Dismiss view controller modal from left to right */
     func dismissFromLeft() {
         let transition = CATransition()
@@ -137,7 +153,60 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "Try again", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    /* Show alert with two options */
+    func callAlertWithOptions(title: String, msg: String, completion: @escaping (AlertError) -> Void) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: { (_) in
+            completion(.Cancel)
+        }))
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (_) in
+            completion(.Success)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    /* Show Bottom Alert */
+    func callBottomAlert(msg: String, completion: @escaping (AlertError) -> Void) {
+        let deleteAlert = UIAlertController(title: "", message: msg, preferredStyle: UIAlertController.Style.actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete Group", style: .destructive) { (action: UIAlertAction) in
+            completion(.Success)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction) in
+            completion(.Cancel)
+        }
+        
+        deleteAlert.addAction(deleteAction)
+        deleteAlert.addAction(cancelAction)
+        self.present(deleteAlert, animated: true, completion: nil)
+    }
+    
+    /* Show Spotify Login Screen */
+    func spotifyAuthVC(spotifyWebView: WKWebView) {
+        // Create Spotify Auth ViewController
+        let spotifyVC = UIViewController()
+        
+        spotifyWebView.navigationDelegate = self
+        spotifyVC.view.addSubview(spotifyWebView)
+        spotifyWebView.frame = spotifyVC.view.bounds
+        spotifyWebView.translatesAutoresizingMaskIntoConstraints = false
+        
+        guard let url = SpotifyService.shared.signInUrl else { return }
+        let urlRequest = URLRequest.init(url: url)
+        spotifyWebView.load(urlRequest)
+        
+        // Create Navigation Controller
+        let navController = UINavigationController(rootViewController: spotifyVC)
+        navController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        navController.setNavigationBarHidden(true, animated: false)
+        
+        self.present(navController, animated: true, completion: nil)
+    }
 }
+
+
 
 
 extension UINavigationController {
@@ -152,10 +221,12 @@ extension UINavigationController {
         self.present(controller, animated: false, completion: nil)
     }
     
-}
-
-extension Notification.Name {
-    struct Spotify {
-        static let authURLOpened = Notification.Name("authURLOpened")
+    func fadeTo(_ viewController: UIViewController) {
+        let transition: CATransition = CATransition()
+        transition.duration = 0.3
+        transition.type = .fade
+        view.layer.add(transition, forKey: nil)
+        pushViewController(viewController, animated: false)
     }
 }
+

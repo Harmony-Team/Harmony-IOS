@@ -56,7 +56,6 @@ extension NewFriendViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         cell.nameLabel.text = "Friend Name"
         cell.infoLabel.text = "Info"
-        cell.checkImageView.isHidden = true
         return cell
     }
     

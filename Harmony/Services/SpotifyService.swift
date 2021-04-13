@@ -6,19 +6,21 @@
 //
 
 import UIKit
+import CoreData
 import CommonCrypto
 
 class SpotifyService {
     
-    var refreshingToken = false
+    private var refreshingToken = false
     
-    struct Constants {
+    private struct Constants {
         static let clientID = "afa2b19905b84b09ac9c2986b43fb072"
         static let redirectURI = "spotify-harmony-app://spotify-login-callback"
         static let scopes = "user-read-private%20user-read-email%20playlist-modify-public%20playlist-modify-private%20playlist-read-private%20playlist-read-collaborative"
         static let tokenAPIUrl = "https://accounts.spotify.com/api/token"
         static let spotifyUserAPIUrl = "https://api.spotify.com/v1/me"
         static let integrationAPIUrl = "https://harmony-db.herokuapp.com/api/user/integrate"
+        static let disintegrationAPIUrl = "https://harmony-db.herokuapp.com/api/user/disintegrate"
     }
     
     var isSignedIn: Bool {
@@ -181,6 +183,9 @@ class SpotifyService {
     /* Saving user's token */
     private func cacheToken(result: SpotifyAuthResponse) {
         UserDefaults.standard.setValue(result.access_token, forKey: "access_token")
+        var spotifyUser: SpotifyUser? = UserProfileCache.get(key: "spotifyUser")
+        spotifyUser?.spotifyAccessToken = result.access_token
+        UserProfileCache.save(spotifyUser, "spotifyUser")
         
         if let refreshToken = result.refresh_token {
             UserDefaults.standard.setValue(refreshToken, forKey: "refresh_token")
@@ -218,7 +223,6 @@ class SpotifyService {
             .replacingOccurrences(of: "=", with: "")
             .trimmingCharacters(in: .whitespaces)
     }
-    
     
     
     /* Get Spotify User Info + Saving Spotify User */
@@ -288,92 +292,114 @@ class SpotifyService {
         task.resume()
     }
     
-}
-
-
-/* Get user's playlists */
-func getPlaylists(for user: SpotifyUser, completion: @escaping ((_ playlistList: [Playlist])->Void)) {
-    let urlString = "https://api.spotify.com/v1/users/\(user.spotifyId)/playlists"
-    let url = URL(string: urlString)!
-    var request = URLRequest(url: url)
-    
-    var playlists: [Playlist]?
-//    var tracks = [Track]()
-//    var playlistLinks = [String]()
-//    var accessToken: String?
-    let accessToken = user.spotifyAccessToken
-
-//    SpotifyService.shared.withValidToken { token in
-//        accessToken = token
-//    }
-    
-    print("Getting Playlist...")
-    
-    request.allHTTPHeaderFields = [
-        "Authorization": "Bearer \(accessToken)"
-    ]
-    
-    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-        guard error == nil else { return }
-        guard let data = data else { return }
+    /* Disintegration Of Spotify */
+    func disintegrateSpotify() {
         
-        let decoder = JSONDecoder()
-        
-        /* Getting tracks from playlists */
-        if let jsonPlaylists = try? decoder.decode(Playlists.self, from: data) {
-            playlists = jsonPlaylists.items
-//            print(playlists)
-            //            playlists?.forEach { playlist in
-            //                playlistLinks.append(playlist.tracks.href)
-            //                print(playlist.tracks.href)
-            //                getTracks(for: user, urlString: playlist.tracks.href, completion: { (track_list) in
-            //                    tracks = track_list
-            //                })
-            //            }
-            completion(playlists ?? [])
+        guard let url = URL(string: Constants.disintegrationAPIUrl) else {
+            return
         }
-    }
-    
-    task.resume()
-    
-}
-
-/* Get track from playlist */
-func getTracks(for user: SpotifyUser, urlString: String, completion: @escaping ((_ tracks: [Track])->Void)) {
-    let url = URL(string: urlString)!
-    var request = URLRequest(url: url)
-    var accessToken: String?
-    SpotifyService.shared.withValidToken { token in
-        accessToken = token
-    }
-    request.allHTTPHeaderFields = [
-        "Authorization": "Bearer \(accessToken ?? "")"
-    ]
-    var tracks_list: [TrackItem]?
-    var tracks = [Track]()
-    
-    print("Getting tracks...")
-    
-    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-        guard error == nil else { return }
-        guard let data = data else { return }
         
-        let decoder = JSONDecoder()
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
         
-        if let jsonTracks = try? decoder.decode(TracksList.self, from: data) {
-            tracks_list = jsonTracks.items
-            tracks_list?.forEach { cur_track in
-                let track = Track(album: cur_track.track.album, artists: cur_track.track.artists, name: cur_track.track.name)
-                tracks.append(track)
+        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let result = try JSONSerialization.jsonObject(with: data, options: [])
+                
+                print(result)
+                
+            } catch {
+                print(error.localizedDescription)
             }
-            completion(tracks)
         }
+        task.resume()
     }
     
-    task.resume()
-    while task.state != .completed {
-        Thread.sleep(forTimeInterval: 0.1)
-    }
-    //    print("! \(tracks.count)")
     
+    /* Get user's playlists */
+    func getPlaylists(for user: SpotifyUser, completion: @escaping ((_ playlistList: [Playlist]?)->Void)) {
+        let urlString = "https://api.spotify.com/v1/users/\(user.spotifyId)/playlists"
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        
+        var playlists: [Playlist]?
+
+        SpotifyService.shared.withValidToken { token in
+
+            print("Getting Playlist...")
+
+            request.allHTTPHeaderFields = [
+                "Authorization": "Bearer \(token)"
+            ]
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard error == nil else { return }
+                guard let data = data else { return }
+                
+                let decoder = JSONDecoder()
+                
+                /* Getting tracks from playlists */
+                if let jsonPlaylists = try? decoder.decode(Playlists.self, from: data) {
+                    playlists = jsonPlaylists.items
+                    completion(playlists)
+                } else {
+                    let json = try! JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                }
+            }
+            
+            task.resume()
+        }
+        
+    }
+
+    /* Get track from playlist */
+    func getTracks(for user: SpotifyUser, urlString: String, completion: @escaping ((_ tracks: [SpotifyTrack])->Void)) {
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        let accessToken = user.spotifyAccessToken
+
+        request.allHTTPHeaderFields = [
+            "Authorization": "Bearer \(accessToken)"
+        ]
+        var tracks_list: [TrackItem]?
+        var tracks = [SpotifyTrack]()
+        
+        print("Getting tracks...")
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            let decoder = JSONDecoder()
+            
+            if let jsonTracks = try? decoder.decode(TracksList.self, from: data) {
+                tracks_list = jsonTracks.items
+                tracks_list?.forEach { cur_track in
+                    let track = Track(album: cur_track.track.album, artists: cur_track.track.artists, name: cur_track.track.name, id: cur_track.track.id)
+                    guard let spotifyTrack = CoreDataManagerr.shared.saveTrack(track: track) else {
+                        return
+                    }
+                    tracks.append(spotifyTrack)
+                    
+                }
+                semaphore.signal()
+                completion(tracks)
+            }
+        }
+        
+        task.resume()
+        _ = semaphore.wait(timeout: .distantFuture)
+        
+    }
+
 }

@@ -26,8 +26,11 @@ extension UIColor {
     /* Gradient Colors */
     static var gradientColorTop = toRGB(red: 255, green: 38, blue: 98, alpha: 1)
     static var gradientColorBottom = toRGB(red: 61, green: 38, blue: 158, alpha: 1)
-    static var loginGradientColorTop = UIColor.toRGB(red: 33, green: 41, blue: 57, alpha: 1)
-    static var loginGradientColorBottom = UIColor.toRGB(red: 22, green: 26, blue: 36, alpha: 1)
+    static var loginGradientColorTop = toRGB(red: 33, green: 41, blue: 57, alpha: 1)
+    static var loginGradientColorBottom = toRGB(red: 22, green: 26, blue: 36, alpha: 1)
+    // Menu
+    static var menuGradientColorTop = toRGB(red: 246, green: 54, blue: 105, alpha: 1)
+    static var menuGradientColorBottom = toRGB(red: 70, green: 52, blue: 169, alpha: 1)
     
     static func toRGB(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)

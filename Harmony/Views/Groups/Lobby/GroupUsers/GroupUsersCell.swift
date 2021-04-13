@@ -34,7 +34,7 @@ class GroupUsersCell: UICollectionViewCell {
         return handle
     }()
     
-    var isAdmin: Bool?
+    var isAdmin = false
     
     override init(frame: CGRect) {
         
@@ -48,8 +48,9 @@ class GroupUsersCell: UICollectionViewCell {
     private func setupCircles() {
         let containerHeight = containerView.bounds.height.rounded(.down)
         let profilePictureHeight = profilePicImageView.bounds.height.rounded(.down)
-        if let admin = isAdmin, admin {
+        if isAdmin {
             containerView.setGradientStack(colorTop: UIColor.redTextColor.cgColor, colorBottom: UIColor.black.cgColor, cornerRadius: containerHeight / 2, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 1.0, y: 0.0))
+            containerView.setVerificationIcon()
         } else {
             containerView.layer.borderColor = UIColor.white.cgColor
             containerView.layer.borderWidth = 1
@@ -61,9 +62,10 @@ class GroupUsersCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         containerView.frame = contentView.bounds
-        containerView.frame.size = CGSize(width: containerView.frame.size.width - 15, height: containerView.frame.size.height - 15)
+        containerView.frame.size = CGSize(width: containerView.frame.size.width - 15, height: containerView.frame.size.height * 0.85)
+//        contentView.backgroundColor = .gray
         profilePicImageView.frame = containerView.bounds
-        profilePicImageView.frame.size = CGSize(width: containerView.bounds.width - 10, height: containerView.bounds.height - 10)
+        profilePicImageView.frame.size = CGSize(width: containerView.bounds.width - 10, height: containerView.bounds.width - 10)
         profilePicImageView.center = containerView.center
         handleLabel.frame = CGRect(x: 0, y: contentView.frame.maxY - 15, width: contentView.bounds.width, height: 20)
         handleLabel.center.x = containerView.center.x

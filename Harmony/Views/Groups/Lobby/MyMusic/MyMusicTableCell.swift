@@ -16,6 +16,7 @@ class MyMusicTableCell: UITableViewCell {
     var trackArtist = UILabel()
     private var separatorLine = UIView()
     var addIcon = UIImageView()
+    var check = false
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,14 +28,39 @@ class MyMusicTableCell: UITableViewCell {
         setupHierarchy()
         setupLayouts()
     }
+
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                UIView.animate(withDuration: 0.15) {
+                    self.addIcon.transform = .init(scaleX: 0.6, y: 0.6)
+                } completion: { finished in
+                    if finished {
+                        self.addIcon.image = UIImage(systemName: "checkmark.circle.fill")
+                        UIView.animate(withDuration: 0.15) {
+                            self.addIcon.transform = .init(scaleX: 1, y: 1)
+                        }
+                    }
+                }
+            } else {
+                UIView.animate(withDuration: 0.15) {
+                    self.addIcon.transform = .init(scaleX: 0.6, y: 0.6)
+                } completion: { finished in
+                    if finished {
+                        self.addIcon.image = UIImage(systemName: "plus")
+                        UIView.animate(withDuration: 0.15) {
+                            self.addIcon.transform = .init(scaleX: 1, y: 1)
+                        }
+                    }
+                }
+            }
+        }
+    }
     
-    func update(viewModel: MusicCellViewModel) {
-        trackName.text = viewModel.trackName
-        trackArtist.text = viewModel.trackArtistName
-        trackLogo.downloaded(from: viewModel.trackImage!)
-//        viewModel.loadTrackImage { image in
-//            self.logoImageView.image = image
-//        }
+    func update(track: SpotifyTrack) {
+        trackName.text = track.name
+        trackArtist.text = track.artist
+        trackLogo.downloaded(from: track.image_url!)
     }
     
     private func setupViews() {
@@ -45,10 +71,10 @@ class MyMusicTableCell: UITableViewCell {
         verticalStack.axis = .vertical
         verticalStack.spacing = 5
         
-        trackName.font = UIFont.setFont(size: .Large)
+        trackName.font = UIFont.setFont(size: .Large, weight: .Light)
         trackName.textColor = .white
         
-        trackArtist.font = UIFont.setFont(size: .Medium)
+        trackArtist.font = UIFont.setFont(size: .Medium, weight: .Light)
         trackArtist.textColor = .lightTextColor
         
         addIcon.image = UIImage(systemName: "plus")
@@ -95,7 +121,7 @@ class MyMusicTableCell: UITableViewCell {
             trackLogoView.widthAnchor.constraint(equalTo: trackLogoView.heightAnchor),
             trackLogoView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            addIcon.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.25),
+            addIcon.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.26),
             addIcon.widthAnchor.constraint(equalTo: addIcon.heightAnchor),
             addIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
