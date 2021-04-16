@@ -59,16 +59,13 @@ class APIManager {
         let headers: HTTPHeaders = [
             "Authorization": token
         ]
-        
-//        print(token)
-        
+                
         AF.request(createAPI, method: .post, parameters: registerUser, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: [])
                     
-//                    print(json)
                     code = (json as AnyObject).value(forKey: "code") as! Int
                     if code == 0 {
                         let decoder = JSONDecoder()
@@ -257,5 +254,96 @@ class APIManager {
             }
         }
         
+    }
+    
+    
+    /* Creating Group */
+    func createGroup(groupName: String, groupDescr: String) {
+        let createGroupApi = "\(base_url)/api/group/create?groupName=\(groupName)&description=\(groupDescr)"
+        let url = URL(string: createGroupApi)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+
+        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let result = try JSONSerialization.jsonObject(with: data, options: [])
+                
+//                print(result)
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
+    /* Getting User's Groups */
+    func getGroups(completion: @escaping ([UserGroup]) -> ()) {
+        let getGroupApi = "\(base_url)/api/user/groups"
+        let url = URL(string: getGroupApi)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+        var code = 0
+
+        request.allHTTPHeaderFields = [
+            "Authorization": "\(token)"
+        ]
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                
+                code = (json as AnyObject).value(forKey: "code") as! Int
+                if code == 0 {
+                    let decoder = JSONDecoder()
+                    let resp: GroupsResponse = try decoder.decode(GroupsResponse.self, from: data)
+                    completion(resp.response)
+//                    print(resp.response)
+                }
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
+    /* Create Invite Code */
+    func createInviteCode(groupId: Int, days: Int) {
+        let invideCodeApi = "\(base_url)/api/group/invite?groupId=\(groupId)&days=\(days)"
+        let url = URL(string: invideCodeApi)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+
+        request.allHTTPHeaderFields = [
+            "Authorization": "\(token)"
+        ]
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                
+                print(json)
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
     }
 }

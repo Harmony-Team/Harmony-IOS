@@ -24,7 +24,10 @@ class GroupsListViewController: UIViewController {
         topImage.setupTopGradientMask(with: topView)
         setupTableView()
         
+        showActivityIndicator()
+        
         viewModel.onUpdate = { [weak self] in
+            self?.hideActivityIndicator()
             self?.groupsTableView.reloadData()
         }
         
@@ -63,7 +66,6 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
-            
             switch viewModel.cellForRow(at: indexPath) {
             case .group(let groupCellViewModel):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell

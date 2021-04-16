@@ -9,13 +9,16 @@ import UIKit
 
 class GroupUsersCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var cellsCount = 10
+    var groupAdmin: String
+    var groupUsers: [GroupUsers] // Group Users
     private static var cellScale: CGFloat = 0.26
     private var spacing: CGFloat = UIScreen.main.bounds.width * ((1 - cellScale * 3.5) / 4)
     
-    init() {
+    init(groupAdmin: String, groupUsers: [GroupUsers]) {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        self.groupAdmin = groupAdmin
+        self.groupUsers = groupUsers
         super.init(frame: .zero, collectionViewLayout: layout)
         
         contentInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
@@ -37,7 +40,7 @@ class GroupUsersCollectionView: UICollectionView, UICollectionViewDelegate, UICo
         if section == 0 || section == 1 {
             return 1
         }
-        return cellsCount - 1
+        return groupUsers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -46,10 +49,12 @@ class GroupUsersCollectionView: UICollectionView, UICollectionViewDelegate, UICo
             return cell
         } else if indexPath.section == 1 {
             let cell = dequeueReusableCell(withReuseIdentifier: "groupUserAdminId", for: indexPath) as! GroupUsersCell
+            cell.userName.text = groupAdmin.uppercased()
             cell.isAdmin = true
             return cell
         } else {
             let cell = dequeueReusableCell(withReuseIdentifier: "groupUserId", for: indexPath) as! GroupUsersCell
+            cell.update(viewModel: GroupUsersCellViewModel(groupUser: groupUsers[indexPath.row]))
             return cell
         }
     }

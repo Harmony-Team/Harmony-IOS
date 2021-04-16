@@ -25,6 +25,9 @@ class GroupViewModel {
     
     var onUpdate = {}
     
+    /* Group Info */
+    var group: UserGroup!
+    
     /* Spotify */
     private var spotifyService = SpotifyService.shared
     private var spotifyUser: SpotifyUser?
@@ -32,6 +35,10 @@ class GroupViewModel {
     var visibleSpotifyTracks = [SpotifyTrack]() // Tracks Visible In Table View
     var selectedSpotifyTracks = [SpotifyTrack]() // Selected Tracks
     private var spotifyPlaylistList: [Playlist]?
+    
+    func viewDidLoad() {
+        print(group)
+    }
     
     func reload() {
         self.selectedSpotifyTracks = coordinator.selectedSpotifyTracks

@@ -31,12 +31,12 @@ final class ShareLinkCoordinator: Coordinator {
 //        groupCoordinator.parentCoordinator = self
 //        childCoordinators.append(groupCoordinator)
 //        groupCoordinator.start()
-        navigationController.popViewController(animated: true)
+//        navigationController.popViewController(animated: true)
         closeWithoutSaving()
     }
     
     func closeWithoutSaving() {
-//        parentCoordinator.finishChild(coordinator: self)
+        parentCoordinator.finishChild(coordinator: self)
     }
     
     deinit {

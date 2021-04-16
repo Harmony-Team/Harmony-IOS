@@ -100,6 +100,7 @@
 		52B9B7672624ECE000A50683 /* MenuSectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9B7662624ECE000A50683 /* MenuSectionsCell.swift */; };
 		52B9B76A2624F2A700A50683 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52B9B7692624F2A100A50683 /* Lato-Bold.ttf */; };
 		52B9B76E26261D0300A50683 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9B76D26261D0300A50683 /* SideMenuViewModel.swift */; };
+		52B9B7722629C77D00A50683 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9B7712629C77D00A50683 /* Group.swift */; };
 		52BCD56E25E3048800A30366 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD56C25E303D800A30366 /* Lato-Regular.ttf */; };
 		52D17BA2261E263F0081C84D /* RecentActivityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D17BA1261E263F0081C84D /* RecentActivityCollectionView.swift */; };
 		52D17BA6261E26610081C84D /* RecentActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D17BA5261E26610081C84D /* RecentActivityCell.swift */; };
@@ -215,6 +216,7 @@
 		52B9B7662624ECE000A50683 /* MenuSectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionsCell.swift; sourceTree = "<group>"; };
 		52B9B7692624F2A100A50683 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		52B9B76D26261D0300A50683 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
+		52B9B7712629C77D00A50683 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		52BCD56C25E303D800A30366 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		52D17BA1261E263F0081C84D /* RecentActivityCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCollectionView.swift; sourceTree = "<group>"; };
 		52D17BA5261E26610081C84D /* RecentActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCell.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 			children = (
 				52B5E86625F1138D001BD785 /* SpotifyAuthResponse.swift */,
 				5236FFD825D0346900845300 /* User.swift */,
+				52B9B7712629C77D00A50683 /* Group.swift */,
 				52A758A425D93F770051EB61 /* Playlist.swift */,
 				52B11CCB25DC1FA600CFB829 /* Track.swift */,
 			);
@@ -952,6 +955,7 @@
 				52AC3AE225FA850100EA7E19 /* UIImageView+Ext.swift in Sources */,
 				5234BAAA25CC173300561E86 /* RegisterCoordinator.swift in Sources */,
 				521A051F25C741FF007F86A0 /* FriendsCoordinator.swift in Sources */,
+				52B9B7722629C77D00A50683 /* Group.swift in Sources */,
 				52AC3AED25FE37C200EA7E19 /* GroupAddUserCell.swift in Sources */,
 				521A04EC25C73570007F86A0 /* AppDelegate.swift in Sources */,
 				52AC3AB025F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift in Sources */,

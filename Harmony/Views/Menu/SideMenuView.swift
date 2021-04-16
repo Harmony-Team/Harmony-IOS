@@ -91,6 +91,7 @@ extension SideMenuView: UITableViewDataSource, UITableViewDelegate {
         guard let selectedCell = tableView.cellForRow(at: indexPath) as? MenuSectionsCell else {return}
 //        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         selectedCell.isSelected = true
-        viewModel.selectedSection(at: indexPath.row)
+//        viewModel.selectedSection(at: indexPath.row)
+        
     }
 }

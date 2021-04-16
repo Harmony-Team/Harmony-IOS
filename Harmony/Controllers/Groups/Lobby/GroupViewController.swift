@@ -17,7 +17,7 @@ class GroupViewController: UIViewController {
     
     /* Users Of The Group Section */
     private var groupUsersLabel = UILabel()
-    private var groupUsersCollectionView = GroupUsersCollectionView()
+    private var groupUsersCollectionView: GroupUsersCollectionView!
     
     /* Music Section */
     private var musicTabBarSegment = UISegmentedControl()
@@ -70,6 +70,8 @@ class GroupViewController: UIViewController {
         }
         waitingForFriendsView.alpha = 0
         
+        viewModel.viewDidLoad()
+        
         showActivityIndicator()
         
         DispatchQueue.main.async {
@@ -104,6 +106,7 @@ class GroupViewController: UIViewController {
     
     /* Users Collection View */
     private func setupUsersCollectionView() {
+        groupUsersCollectionView = GroupUsersCollectionView(groupAdmin: viewModel.group.hostLogin, groupUsers: viewModel.group.users)
         groupUsersLabel.text = "USERS OF THE GROUP"
         groupUsersLabel.font = UIFont.setFont(size: .Small)
         groupUsersLabel.addKern(1.74)

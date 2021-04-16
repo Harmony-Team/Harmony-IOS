@@ -29,7 +29,7 @@ class GroupCell: UITableViewCell {
     
     func update(viewModel: GroupCellViewModel) {
         titleLabel.text = viewModel.groupName
-        msgLabel.text = "236 tracks"
+        msgLabel.text = viewModel.groupDescr
         viewModel.loadGroupImage { [weak self] image in
             self?.logoImageView.image = image
         }

@@ -52,11 +52,8 @@ class NewGroupViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         customizeNavBarController(bgColor: .white, textColor: .mainTextColor)
-        topView.layer.borderWidth = 1
-        topView.layer.borderColor = UIColor.mainTextColor.cgColor
-        topView.layer.cornerRadius = 15
-        newGroupLabel.font = UIFont.setFont(size: .Medium)
-        newGroupLabel.textColor = .mainTextColor
+        
+        setupTopView()
         
         imageView.layer.cornerRadius = 10
         
@@ -66,6 +63,15 @@ class NewGroupViewController: UIViewController {
         
         setupButtons()
         setupFields()
+    }
+    
+    /* Setting Up TopView */
+    private func setupTopView() {
+        topView.layer.borderWidth = 1
+        topView.layer.borderColor = UIColor.mainTextColor.cgColor
+        topView.layer.cornerRadius = 15
+        newGroupLabel.font = UIFont.setFont(size: .Medium)
+        newGroupLabel.textColor = .mainTextColor
     }
     
     /* Setting up buttons */
@@ -134,15 +140,18 @@ class NewGroupViewController: UIViewController {
             return
         }
         
+        let descrText = descriptionTextField?.text
+        
         if let image = newGroupLogoImageView.image { // If Group Image Selected
-            viewModel?.createNewGroup(with: nameText, image: image)
+            viewModel?.createNewGroup(with: nameText, description: descrText ?? "", image: image)
         } else { // Default Image
-            viewModel?.createNewGroup(with: nameText, image: UIImage(named: "groupImage")!)
+            viewModel?.createNewGroup(with: nameText, description: descrText ?? "", image: UIImage(named: "groupImage")!)
         }
         
-        dismiss(animated: true) {
-            self.viewModel?.goToGroup()
-        }
+//        dismiss(animated: true) {
+//            self.viewModel?.goToGroup()
+            viewModel?.goToShareLink()
+//        }
     }
     
     /* Create playlist */

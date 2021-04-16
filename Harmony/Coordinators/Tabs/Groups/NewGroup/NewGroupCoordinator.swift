@@ -44,19 +44,20 @@ final class NewGroupCoordinator: Coordinator {
     
     func closeWithoutSaving(_ goToRoom: Bool?) {
         navModal?.dismiss(animated: true, completion: {
-            self.parentCoordinator.finishChild(coordinator: self, goToRoom: goToRoom)
+            self.goToGroup()
+//            self.parentCoordinator.finishChild(coordinator: self, goToRoom: goToRoom)
         })
         
     }
     
-//    func finishChild(coordinator: Coordinator) {
-//        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
-//            return curCoordinator === coordinator
-//        }) {
-//            childCoordinators.remove(at: index)
-//            closeWithoutSaving(true)
-//        }
-//    }
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+            closeWithoutSaving(true)
+        }
+    }
     
     deinit {
         print("DEINIT: NewGroupCoordinator")

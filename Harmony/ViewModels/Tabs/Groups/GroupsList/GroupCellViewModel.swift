@@ -11,13 +11,18 @@ import CoreData
 struct GroupCellViewModel {
     
     private var imageCache = NSCache<NSString, UIImage>()
-    var onSelect: (NSManagedObjectID) -> Void = {_ in}
+//    var onSelect: (NSManagedObjectID) -> Void = {_ in}
+    var onSelect: (Int, UserGroup) -> Void = {_,_  in}
     private var cacheKey: String {
-        group.objectID.description
+        String(group.id)
     }
     
-    var groupName: String? {
+    var groupName: String {
         group.name
+    }
+    
+    var groupDescr: String? {
+        group.description == nil ? "256 tracks" : group.description
     }
     
     // Cache images
@@ -25,8 +30,8 @@ struct GroupCellViewModel {
         if let cachedImage = imageCache.object(forKey: cacheKey as NSString) {
             completion(cachedImage)
         } else {
-            guard let groupImage = group.image, let image = UIImage(data: groupImage) else {
-                completion(nil)
+            guard let groupImage = group.avatar_url, let image = UIImage(named: groupImage) else {
+                completion(UIImage(named: "groupImage1"))
                 return
             }
             imageCache.setObject(image, forKey: cacheKey as NSString)
@@ -35,11 +40,12 @@ struct GroupCellViewModel {
     }
     
     func didSelect() {
-        onSelect(group.objectID)
+//        onSelect(group.objectID)
+        onSelect(group.id, group)
     }
     
-    var group: Group
-    init(group: Group) {
+    var group: UserGroup
+    init(group: UserGroup) {
         self.group = group
     }
 }

@@ -9,6 +9,9 @@ import UIKit
 
 class SideMenuViewModel {
     
+    // Menu
+    var menuShow = false
+    
     let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
     let friendCoordinator = FriendsCoordinator(navigationController: UINavigationController())
     let groupCoordinator = GroupsListCoordinator(navigationController: UINavigationController())

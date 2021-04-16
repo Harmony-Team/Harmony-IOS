@@ -12,17 +12,20 @@ final class GroupCoordinator: Coordinator {
     private(set)var childCoordinators: [Coordinator] = []
     var parentCoordinator: GroupsListCoordinator!
     var navigationController: UINavigationController
+    var group: UserGroup
     var selectedSpotifyTracks = [SpotifyTrack]()
     var updateSelectedTracks = {}
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, group: UserGroup) {
         self.navigationController = navigationController
+        self.group = group
     }
     
     func start() {
         let viewController: GroupViewController = .instantiate(id: "CreatedGroupViewController")
         viewController.hidesBottomBarWhenPushed = true
         let groupViewModel = GroupViewModel()
+        groupViewModel.group = group
         groupViewModel.selectedSpotifyTracks = selectedSpotifyTracks
         groupViewModel.coordinator = self
         updateSelectedTracks = groupViewModel.reload

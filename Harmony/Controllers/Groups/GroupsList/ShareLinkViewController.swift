@@ -13,8 +13,10 @@ class ShareLinkViewController: UIViewController {
     
     var bottomLine = UIView()
     
+    /* Top View */
     @IBOutlet weak var shareGroupView: UIView!
     @IBOutlet weak var shareGroupLabel: UILabel!
+    
     @IBOutlet weak var groupHasCreatedLabel: UILabel!
     @IBOutlet weak var shareLabel: UILabel!
     @IBOutlet weak var linkField: UITextField!
@@ -26,19 +28,32 @@ class ShareLinkViewController: UIViewController {
 
         customizeNavBarController(bgColor: .white, textColor: .mainTextColor)
         
+        setupTopView()
         setupLabels()
         setupButtons()
     }
     
     private func setupLabels() {
-        groupHasCreatedLabel.font = UIFont.setFont(size: .ExtraLarge)
+        groupHasCreatedLabel.font = UIFont.setFont(size: .Largest)
+        groupHasCreatedLabel.textAlignment = .center
         groupHasCreatedLabel.textColor = .darkTextColor
         
-        shareLabel.font = UIFont.setFont(size: .Medium)
-        shareLabel.textColor = .lightTextColor
+        shareLabel.font = UIFont.setFont(size: .Large)
+        shareLabel.textColor = .darkTextColor
+        shareLabel.textAlignment = .center
         
         linkField.font = UIFont.setFont(size: .Large)
         
+    }
+    
+    /* Setting Up TopView */
+    private func setupTopView() {
+        shareGroupView.layer.borderWidth = 1
+        shareGroupView.layer.borderColor = UIColor.mainTextColor.cgColor
+        shareGroupView.layer.cornerRadius = 15
+        
+        shareGroupLabel.font = UIFont.setFont(size: .Medium)
+        shareGroupLabel.textColor = .mainTextColor
     }
     
     /* Setting up buttons */
@@ -63,13 +78,13 @@ class ShareLinkViewController: UIViewController {
     }
     
     @IBAction func shareLink(_ sender: UIButton) {
-        
-//        dismiss(animated: true) {
-            self.viewModel.goToGroup()
-//        }
+        self.viewModel.goToGroup()
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true) {
+            self.viewModel.goToGroup()
+        }
     }
     
 }

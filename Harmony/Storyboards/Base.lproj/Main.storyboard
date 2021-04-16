@@ -1190,7 +1190,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2K-1g-ZhS">
-                                <rect key="frame" x="103.5" y="39.5" width="207" height="45"/>
+                                <rect key="frame" x="103.5" y="35" width="207" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHARE GROUP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olL-09-pbU">
                                         <rect key="frame" x="0.0" y="12" width="207" height="21"/>
@@ -1207,13 +1207,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your group has created!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZK-7O-omJ">
-                                <rect key="frame" x="44.5" y="211" width="325" height="38.5"/>
+                                <rect key="frame" x="44.5" y="200" width="325" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4f-WY-EIz">
-                                <rect key="frame" x="44.5" y="274.5" width="325" height="41"/>
+                                <rect key="frame" x="44.5" y="263.5" width="325" height="41"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Share this link with your friends to make a collaborative playlist">
                                         <attributes>
@@ -1247,7 +1247,7 @@
                             <constraint firstItem="B2K-1g-ZhS" firstAttribute="height" secondItem="URm-o8-JhN" secondAttribute="height" multiplier="0.05" id="ewi-hv-rIf"/>
                             <constraint firstItem="bZK-7O-omJ" firstAttribute="top" secondItem="B2K-1g-ZhS" secondAttribute="bottom" multiplier="2.5" id="gNY-61-51n"/>
                             <constraint firstItem="B2K-1g-ZhS" firstAttribute="centerX" secondItem="Ino-Mj-hq1" secondAttribute="centerX" id="hGZ-sP-eph"/>
-                            <constraint firstItem="B2K-1g-ZhS" firstAttribute="top" secondItem="Ino-Mj-hq1" secondAttribute="top" multiplier="0.9" id="hRW-Fl-lp3"/>
+                            <constraint firstItem="B2K-1g-ZhS" firstAttribute="top" secondItem="Ino-Mj-hq1" secondAttribute="top" multiplier="0.8" id="hRW-Fl-lp3"/>
                             <constraint firstItem="B2K-1g-ZhS" firstAttribute="width" secondItem="URm-o8-JhN" secondAttribute="width" multiplier="0.5" id="ioV-Rh-NFD"/>
                             <constraint firstItem="reI-O0-YOo" firstAttribute="centerX" secondItem="Ino-Mj-hq1" secondAttribute="centerX" id="lvV-1a-zuS"/>
                             <constraint firstItem="3Nv-V0-lWq" firstAttribute="height" secondItem="URm-o8-JhN" secondAttribute="height" multiplier="0.0351562" id="mF5-JA-he0"/>

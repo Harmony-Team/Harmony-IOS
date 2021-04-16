@@ -27,15 +27,31 @@ class GroupsListViewModel {
     }
     
     func reload() {
-        let groups = coreDataManager.fetchGroups()
-        cells = groups.map {
-            var groupCellViewModel = GroupCellViewModel(group: $0)
-            if let coordinator = coordinator {
-                groupCellViewModel.onSelect = coordinator.goToCreatedGroup
+        APIManager.shared.getGroups { groups in
+            var reversedGroups = [UserGroup]()
+            for group in groups {
+                reversedGroups.insert(group, at: 0)
             }
-            return .group(viewModel: groupCellViewModel)
+            self.cells = reversedGroups.map {
+                var groupCellViewModel = GroupCellViewModel(group: $0)
+                if let coordinator = self.coordinator {
+                    groupCellViewModel.onSelect = coordinator.goToCreatedGroup
+                }
+                return .group(viewModel: groupCellViewModel)
+            }
+            DispatchQueue.main.async {
+                self.onUpdate()
+            }
         }
-        onUpdate()
+//        let groups = coreDataManager.fetchGroups()
+//        cells = groups.map {
+//            var groupCellViewModel = GroupCellViewModel(group: $0)
+//            if let coordinator = coordinator {
+//                groupCellViewModel.onSelect = coordinator.goToCreatedGroup
+//            }
+//            return .group(viewModel: groupCellViewModel)
+//        }
+//        onUpdate()
     }
     
     /* Create new group */
@@ -47,8 +63,8 @@ class GroupsListViewModel {
     func deleteGroup(at indexPath: IndexPath) {
         switch cells[indexPath.row] {
         case .group(let groupCellViewModel):
-            let id = groupCellViewModel.group.objectID
-            coreDataManager.deleteGroup(id: id)
+//            let id = groupCellViewModel.group.objectID
+//            coreDataManager.deleteGroup(id: id)
             reload()
         }
     }

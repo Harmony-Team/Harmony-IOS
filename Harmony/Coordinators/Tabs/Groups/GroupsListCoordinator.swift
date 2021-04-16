@@ -46,12 +46,20 @@ final class GroupsListCoordinator: Coordinator {
 //    }
     
     /* Go To Created Group */
-    func goToCreatedGroup(id: NSManagedObjectID) {
-        let groupCoordinator = GroupCoordinator(navigationController: navigationController)
+    func goToCreatedGroup(id: Int, group: UserGroup) {
+        let groupCoordinator = GroupCoordinator(navigationController: navigationController, group: group)
         groupCoordinator.parentCoordinator = self
         childCoordinators.append(groupCoordinator)
         groupCoordinator.start()
     }
+//    func goToCreatedGroup(id: NSManagedObjectID) {
+//        let groupCoordinator = GroupCoordinator(navigationController: navigationController)
+//        groupCoordinator.parentCoordinator = self
+//        childCoordinators.append(groupCoordinator)
+//        groupCoordinator.start()
+//    }
+    
+    
     
     func finishChild(coordinator: Coordinator, goToRoom: Bool?) {
         if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in

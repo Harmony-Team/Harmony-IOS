@@ -14,25 +14,8 @@ class GroupUsersCell: UICollectionViewCell {
         return containerView
     }()
     
-    let profilePicImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .bgColor
-        imageView.image = UIImage(named: "groupImage")
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.isUserInteractionEnabled = true
-        return imageView
-    }()
-    
-    let handleLabel: UILabel = {
-        let handle = UILabel()
-        handle.textAlignment = .center
-        handle.font = UIFont.setFont(size: .Small)
-        handle.textColor = .white
-        handle.addKern(1.74)
-        handle.text = "VIKTOR"
-        return handle
-    }()
+    let profilePicImageView = UIImageView()
+    let userName = UILabel()
     
     var isAdmin = false
     
@@ -40,9 +23,31 @@ class GroupUsersCell: UICollectionViewCell {
         
         super.init(frame: frame)
         
+        setupViews()
+    }
+    
+    func update(viewModel: GroupUsersCellViewModel) {
+        userName.text = viewModel.userName.uppercased()
+        viewModel.loadUserImage { [weak self] image in
+            self?.profilePicImageView.image = image
+        }
+    }
+    
+    private func setupViews() {
+        userName.textAlignment = .center
+        userName.font = UIFont.setFont(size: .Small)
+        userName.textColor = .white
+        userName.addKern(1.74)
+        
+        profilePicImageView.backgroundColor = .bgColor
+        profilePicImageView.image = UIImage(named: "groupImage")
+        profilePicImageView.contentMode = .scaleAspectFill
+        profilePicImageView.clipsToBounds = true
+        profilePicImageView.isUserInteractionEnabled = true
+        
         contentView.addSubview(containerView)
         containerView.addSubview(profilePicImageView)
-        contentView.addSubview(handleLabel)
+        contentView.addSubview(userName)
     }
     
     private func setupCircles() {
@@ -63,12 +68,11 @@ class GroupUsersCell: UICollectionViewCell {
         super.layoutSubviews()
         containerView.frame = contentView.bounds
         containerView.frame.size = CGSize(width: containerView.frame.size.width - 15, height: containerView.frame.size.height * 0.85)
-//        contentView.backgroundColor = .gray
         profilePicImageView.frame = containerView.bounds
         profilePicImageView.frame.size = CGSize(width: containerView.bounds.width - 10, height: containerView.bounds.width - 10)
         profilePicImageView.center = containerView.center
-        handleLabel.frame = CGRect(x: 0, y: contentView.frame.maxY - 15, width: contentView.bounds.width, height: 20)
-        handleLabel.center.x = containerView.center.x
+        userName.frame = CGRect(x: 0, y: contentView.frame.maxY - 15, width: contentView.bounds.width, height: 20)
+        userName.center.x = containerView.center.x
         setupCircles()
     }
     
