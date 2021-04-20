@@ -26,6 +26,7 @@ class SideMenuView: UIView {
     private func commonInit() {
         Bundle.main.loadNibNamed("MenuView", owner: self, options: nil)
         addSubview(contentView)
+        contentView.layer.zPosition = 10
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
@@ -91,7 +92,7 @@ extension SideMenuView: UITableViewDataSource, UITableViewDelegate {
         guard let selectedCell = tableView.cellForRow(at: indexPath) as? MenuSectionsCell else {return}
 //        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         selectedCell.isSelected = true
-//        viewModel.selectedSection(at: indexPath.row)
-        
+        let selectedSection = viewModel.selectedSection(at: indexPath.row)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChoseSection"), object: nil, userInfo: ["section": selectedSection])
     }
 }

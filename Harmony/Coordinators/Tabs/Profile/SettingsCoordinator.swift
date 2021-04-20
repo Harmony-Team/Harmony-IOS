@@ -12,7 +12,7 @@ final class SettingsCoordinator: Coordinator {
     private(set)var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var parentCoordinator: ProfileCoordinator!
-    var user: User!
+//    var user: User!
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -22,9 +22,9 @@ final class SettingsCoordinator: Coordinator {
         let viewController: SettingsViewController = .instantiate()
         let settingsViewModel = SettingsViewModel()
         settingsViewModel.coordinator = self
-        settingsViewModel.user = user
+//        settingsViewModel.user = user
         viewController.viewModel = settingsViewModel
-        navigationController.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: false)
     }
     
     func goToEditScreen() {
@@ -32,6 +32,11 @@ final class SettingsCoordinator: Coordinator {
         editProfileCoordinator.parentCoordinator = self
         childCoordinators.append(editProfileCoordinator)
         editProfileCoordinator.start()
+    }
+    
+    /* Go To Selected Section Coordinator */
+    func goToSection(section: MenuSection) {
+        goToSection(section: section, navigationController: navigationController)
     }
 
     /* Logout and go to login form */
@@ -54,7 +59,7 @@ final class SettingsCoordinator: Coordinator {
     
     /* Go back to profile */
     func goToProfile() {
-        parentCoordinator.finishChild(coordinator: self)
+//        parentCoordinator.finishChild(coordinator: self)
     }
     
     func finishChild(coordinator: Coordinator) {

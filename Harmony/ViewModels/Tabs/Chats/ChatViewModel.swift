@@ -9,10 +9,11 @@ import UIKit
 
 class ChatViewModel {
     
-    var coordinator: ChatCoordinator!
+//    var coordinator: ChatCoordinator!
+    var coordinator: FriendsCoordinator!
     
     func viewDidDisappear() {
-        coordinator.closeWithoutSaving()
+//        coordinator.closeWithoutSaving()
     }
     
 }

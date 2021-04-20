@@ -9,8 +9,13 @@ import UIKit
 
 class GroupsListViewController: UIViewController {
     
-    var viewModel: GroupsListViewModel!
+    var viewModel = GroupsListViewModel()
     
+    /* Menu */
+    private var menuView: SideMenuView!
+    
+    /* Content */
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var topImage: UIImageView!
     @IBOutlet weak var groupsTableView: UITableView!
@@ -18,22 +23,66 @@ class GroupsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addBg(image: nil, colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 1)
+        /* Setting Up Menu And Content */
+        setupMenuAndContent()
         customizeNavBarController(bgColor: .bgColor, textColor: .white)
+        
+        let menuImage = UIImage(named: "menuIcon")?.withRenderingMode(.alwaysTemplate)
+        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: false)
+        closeMenuOnTap(nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuImage, style: .done, target: self, action: #selector(toggleMenu))
+        // Notification About Chosing Section In Menu
+        NotificationCenter.default.addObserver(self, selector: #selector(chooseSection(notification:)), name: NSNotification.Name(rawValue: "ChoseSection"), object: nil)
         
         topImage.setupTopGradientMask(with: topView)
         setupTableView()
         
+        /* Loading Groups Table */
         showActivityIndicator()
-        
         viewModel.onUpdate = { [weak self] in
             self?.hideActivityIndicator()
             self?.groupsTableView.reloadData()
         }
-        
+    
         viewModel.viewDidLoad()
     }
     
+    /* Setting Up Content View And Menu */
+    private func setupMenuAndContent() {
+        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
+        addSideMenuView(menuView: menuView)
+        setupContent(menuView: menuView, contentView: contentView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
+//        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+//        panGestureRecognizer.delegate = self
+        contentView.addGestureRecognizer(tap)
+//        contentView.addGestureRecognizer(panGestureRecognizer)
+        contentView.isUserInteractionEnabled = true
+    }
+    
+    /* Choosing Secton In Menu */
+    @objc private func chooseSection(notification: NSNotification) {
+        if let section = notification.userInfo?["section"] as? MenuSection {
+            closeMenuOnTap(nil) {
+                self.viewModel.goToSelectedSection(section: section)
+            }
+        }
+    }
+    
+    /* Content View Tapped To Close Menu */
+    @objc private func closeMenuOnTap(_ sender: UITapGestureRecognizer?, completion: (()->())? = nil) {
+        if (viewModel.menuShow) {
+            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, completion: completion)
+        }
+    }
+    
+    /* Open / Close menu */
+    @objc private func toggleMenu(_ sender: UITapGestureRecognizer?) {
+        hideActivityIndicator()
+        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true)
+    }
+
     private func setupTableView() {
         groupsTableView.layer.zPosition = 2
         groupsTableView.showsVerticalScrollIndicator = false

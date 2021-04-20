@@ -11,13 +11,26 @@ import WebKit
 class SettingsViewController: UIViewController {
 
     var viewModel: SettingsViewModel!
+    private var menuView: SideMenuView!
+    
+    // Main Content View
+    @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var settingsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addBg(image: nil, colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 1)
+        /* Setting Up Menu And Content */
+        setupMenuAndContent()
+        customizeNavBarController(bgColor: .bgColor, textColor: .white)
+        
+        let menuImage = UIImage(named: "menuIcon")?.withRenderingMode(.alwaysTemplate)
+        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: false)
+        closeMenuOnTap(nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuImage, style: .done, target: self, action: #selector(toggleMenu))
+        // Notification About Chosing Section In Menu
+        NotificationCenter.default.addObserver(self, selector: #selector(chooseSection(notification:)), name: NSNotification.Name(rawValue: "ChoseSection"), object: nil)
                 
         viewModel.getUserInfoDictionary()
         
@@ -25,6 +38,20 @@ class SettingsViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         setupTableView()
+    }
+    
+    /* Setting Up Content View And Menu */
+    private func setupMenuAndContent() {
+        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
+        addSideMenuView(menuView: menuView)
+        setupContent(menuView: menuView, contentView: contentView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
+//        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+//        panGestureRecognizer.delegate = self
+        contentView.addGestureRecognizer(tap)
+//        contentView.addGestureRecognizer(panGestureRecognizer)
+        contentView.isUserInteractionEnabled = true
     }
     
     private func setupTableView() {
@@ -53,6 +80,27 @@ class SettingsViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         viewModel.viewDidDisappear()
+    }
+    
+    /* Choosing Secton In Menu */
+    @objc private func chooseSection(notification: NSNotification) {
+        if let section = notification.userInfo?["section"] as? MenuSection {
+            closeMenuOnTap(nil) {
+                self.viewModel.goToSelectedSection(section: section)
+            }
+        }
+    }
+    
+    /* Content View Tapped To Close Menu */
+    @objc private func closeMenuOnTap(_ sender: UITapGestureRecognizer?, completion: (()->())? = nil) {
+        if (viewModel.menuShow) {
+            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, completion: completion)
+        }
+    }
+    
+    /* Open / Close menu */
+    @objc private func toggleMenu(_ sender: UITapGestureRecognizer) {
+        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true)
     }
 }
 

@@ -26,6 +26,7 @@ final class GroupsListCoordinator: Coordinator {
         groupsViewModel.coordinator = self
         viewController.viewModel = groupsViewModel
         navigationController.pushViewController(viewController, animated: false)
+//        navigationController.fadeTo(viewController)
     }
     
     /* Go to "Create new group" window */
@@ -34,6 +35,11 @@ final class GroupsListCoordinator: Coordinator {
         newGroupCoordinator.parentCoordinator = self
         childCoordinators.append(newGroupCoordinator)
         newGroupCoordinator.start()
+    }
+    
+    /* Go To Selected Section Coordinator */
+    func goToSection(section: MenuSection) {
+        goToSection(section: section, navigationController: navigationController)
     }
     
     /* Go to current chat group */

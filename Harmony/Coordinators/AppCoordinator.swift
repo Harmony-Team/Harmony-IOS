@@ -29,5 +29,50 @@ final class AppCoordinator: Coordinator {
         window?.makeKeyAndVisible()
         mainCoordinator.start()
     }
+}
+
+/* Extension To Move To Sections */
+extension Coordinator {
+    func profile(navigationController: UINavigationController) {
+        let profileCoordinator = ProfileCoordinator(navigationController: navigationController)
+        profileCoordinator.isChoosen = true
+        profileCoordinator.start()
+    }
+    
+    func groups(navigationController: UINavigationController) {
+        let groupsCoordinator = GroupsListCoordinator(navigationController: navigationController)
+        groupsCoordinator.start()
+    }
+    
+    func chats(navigationController: UINavigationController) {
+        let chatsCoordinator = GroupsListCoordinator(navigationController: navigationController)
+        chatsCoordinator.start()
+    }
+    
+    func friends(navigationController: UINavigationController) {
+        let friendsCoordinator = FriendsCoordinator(navigationController: navigationController)
+        friendsCoordinator.start()
+    }
+    
+    func settings(navigationController: UINavigationController) {
+        let settingsCoordinator = SettingsCoordinator(navigationController: navigationController)
+        settingsCoordinator.start()
+    }
+    
+    /* Go To Selected Section Coordinator */
+    func goToSection(section: MenuSection, navigationController: UINavigationController) {
+        switch section {
+        case .Profile:
+            profile(navigationController: navigationController)
+        case .Groups:
+            groups(navigationController: navigationController)
+        case .Chats:
+            groups(navigationController: navigationController)
+        case .Friends:
+            friends(navigationController: navigationController)
+        case .Settings:
+            settings(navigationController: navigationController)
+        }
+    }
     
 }

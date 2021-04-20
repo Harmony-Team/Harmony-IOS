@@ -671,9 +671,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fe9-tR-A9C">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8u-mV-g4u">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fe9-tR-A9C">
+                                        <rect key="frame" x="0.0" y="85" width="414" height="725"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fe9-tR-A9C" secondAttribute="trailing" id="6Xh-Vz-xGj"/>
+                                    <constraint firstItem="fe9-tR-A9C" firstAttribute="leading" secondItem="L8u-mV-g4u" secondAttribute="leading" id="HpA-M1-4tF"/>
+                                </constraints>
+                            </view>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="hpA-po-Cpz">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -683,17 +693,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hpA-po-Cpz" firstAttribute="height" secondItem="Fih-fp-iKD" secondAttribute="height" multiplier="0.0491071" id="453-7C-A5h"/>
-                            <constraint firstItem="fe9-tR-A9C" firstAttribute="top" secondItem="hpA-po-Cpz" secondAttribute="bottom" id="IAS-El-Yaf"/>
-                            <constraint firstItem="jnx-mb-Iug" firstAttribute="bottom" secondItem="fe9-tR-A9C" secondAttribute="bottom" id="Y51-wk-YG1"/>
+                            <constraint firstAttribute="trailing" secondItem="L8u-mV-g4u" secondAttribute="trailing" id="8Mj-xP-GcE"/>
+                            <constraint firstAttribute="bottom" secondItem="L8u-mV-g4u" secondAttribute="bottom" id="NHR-EA-fKy"/>
+                            <constraint firstItem="jnx-mb-Iug" firstAttribute="bottom" secondItem="fe9-tR-A9C" secondAttribute="bottom" constant="3" id="RA9-xu-DW9"/>
+                            <constraint firstItem="fe9-tR-A9C" firstAttribute="top" secondItem="jnx-mb-Iug" secondAttribute="top" constant="41" id="SGI-IU-acb"/>
                             <constraint firstItem="hpA-po-Cpz" firstAttribute="centerX" secondItem="jnx-mb-Iug" secondAttribute="centerX" id="aOt-di-k89"/>
                             <constraint firstItem="hpA-po-Cpz" firstAttribute="width" secondItem="Fih-fp-iKD" secondAttribute="width" id="b5Y-87-EbJ"/>
                             <constraint firstItem="hpA-po-Cpz" firstAttribute="top" secondItem="jnx-mb-Iug" secondAttribute="top" id="c7r-QH-eSZ"/>
-                            <constraint firstItem="fe9-tR-A9C" firstAttribute="leading" secondItem="jnx-mb-Iug" secondAttribute="leading" id="cLz-Is-YRa"/>
-                            <constraint firstItem="jnx-mb-Iug" firstAttribute="trailing" secondItem="fe9-tR-A9C" secondAttribute="trailing" id="tnl-lH-pRj"/>
+                            <constraint firstItem="L8u-mV-g4u" firstAttribute="leading" secondItem="Fih-fp-iKD" secondAttribute="leading" id="r8i-9r-bKw"/>
+                            <constraint firstItem="L8u-mV-g4u" firstAttribute="top" secondItem="Fih-fp-iKD" secondAttribute="top" id="tAs-Wd-RSR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" badgeValue="Friends" id="XDk-XL-MDW"/>
                     <connections>
+                        <outlet property="contentView" destination="L8u-mV-g4u" id="Z6e-0i-vMe"/>
                         <outlet property="friendsSearchBar" destination="hpA-po-Cpz" id="snk-LN-XY6"/>
                         <outlet property="tableView" destination="fe9-tR-A9C" id="gYa-Jl-R2c"/>
                     </connections>
@@ -710,23 +723,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fGn-9p-5it">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJA-3I-GNo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fGn-9p-5it">
+                                        <rect key="frame" x="0.0" y="39" width="414" height="818"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <sections/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <sections/>
-                            </tableView>
+                                <constraints>
+                                    <constraint firstItem="fGn-9p-5it" firstAttribute="leading" secondItem="dJA-3I-GNo" secondAttribute="leading" id="5GH-9y-BgJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="fGn-9p-5it" secondAttribute="trailing" id="5PH-6N-oD2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZtM-9i-pbK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZtM-9i-pbK" firstAttribute="bottom" secondItem="fGn-9p-5it" secondAttribute="bottom" id="IIN-oM-FsP"/>
-                            <constraint firstItem="fGn-9p-5it" firstAttribute="leading" secondItem="ZtM-9i-pbK" secondAttribute="leading" id="Zfg-Sl-Isy"/>
-                            <constraint firstItem="fGn-9p-5it" firstAttribute="top" secondItem="ZtM-9i-pbK" secondAttribute="top" id="g5l-3I-G9s"/>
-                            <constraint firstItem="ZtM-9i-pbK" firstAttribute="trailing" secondItem="fGn-9p-5it" secondAttribute="trailing" id="vJQ-Ne-km6"/>
+                            <constraint firstItem="ZtM-9i-pbK" firstAttribute="bottom" secondItem="fGn-9p-5it" secondAttribute="bottom" constant="5" id="BE5-pd-0qq"/>
+                            <constraint firstItem="dJA-3I-GNo" firstAttribute="leading" secondItem="IWI-Ca-OZY" secondAttribute="leading" id="CHG-zF-wfE"/>
+                            <constraint firstAttribute="trailing" secondItem="dJA-3I-GNo" secondAttribute="trailing" id="EKi-Pb-wtW"/>
+                            <constraint firstItem="dJA-3I-GNo" firstAttribute="top" secondItem="IWI-Ca-OZY" secondAttribute="top" id="Pmn-8S-wum"/>
+                            <constraint firstItem="ZtM-9i-pbK" firstAttribute="top" secondItem="fGn-9p-5it" secondAttribute="top" constant="5" id="aVK-7a-7Tu"/>
+                            <constraint firstAttribute="bottom" secondItem="dJA-3I-GNo" secondAttribute="bottom" id="fQW-ZK-6yR"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentView" destination="dJA-3I-GNo" id="wD7-e8-2ob"/>
                         <outlet property="settingsTableView" destination="fGn-9p-5it" id="YlD-DG-9Ll"/>
                     </connections>
                 </viewController>
@@ -803,37 +829,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2f-oG-zDi">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="286.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-RJ-gQW">
-                                <rect key="frame" x="0.0" y="172" width="414" height="641"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJI-ld-di9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2f-oG-zDi">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="316"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-RJ-gQW">
+                                        <rect key="frame" x="0.0" y="189.5" width="414" height="623.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="groupImage1" translatesAutoresizingMaskIntoConstraints="NO" id="78k-ez-giv">
+                                        <rect key="frame" x="-4.5" y="0.0" width="423" height="316"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="groupImage1" translatesAutoresizingMaskIntoConstraints="NO" id="78k-ez-giv">
-                                <rect key="frame" x="-4.5" y="0.0" width="423" height="286.5"/>
-                            </imageView>
+                                <constraints>
+                                    <constraint firstItem="78k-ez-giv" firstAttribute="centerX" secondItem="I2f-oG-zDi" secondAttribute="centerX" id="Akd-X8-yrW"/>
+                                    <constraint firstItem="78k-ez-giv" firstAttribute="width" secondItem="I2f-oG-zDi" secondAttribute="width" multiplier="1.02174" id="BiA-0G-dz7"/>
+                                    <constraint firstItem="I2f-oG-zDi" firstAttribute="height" secondItem="ZJI-ld-di9" secondAttribute="height" multiplier="0.352399" id="Bqy-Ez-Vct"/>
+                                    <constraint firstItem="4Nl-RJ-gQW" firstAttribute="width" secondItem="ZJI-ld-di9" secondAttribute="width" id="EdX-aL-FmA"/>
+                                    <constraint firstItem="4Nl-RJ-gQW" firstAttribute="top" secondItem="I2f-oG-zDi" secondAttribute="bottom" multiplier="0.6" id="El3-xs-gEB"/>
+                                    <constraint firstItem="I2f-oG-zDi" firstAttribute="width" secondItem="ZJI-ld-di9" secondAttribute="width" id="OJQ-3G-v1S"/>
+                                    <constraint firstItem="4Nl-RJ-gQW" firstAttribute="centerX" secondItem="ZJI-ld-di9" secondAttribute="centerX" id="OLM-S8-u4A"/>
+                                    <constraint firstItem="78k-ez-giv" firstAttribute="height" secondItem="I2f-oG-zDi" secondAttribute="height" id="Pef-Ag-dkE"/>
+                                    <constraint firstItem="I2f-oG-zDi" firstAttribute="top" secondItem="ZJI-ld-di9" secondAttribute="top" id="ZfO-dU-3hb"/>
+                                    <constraint firstItem="I2f-oG-zDi" firstAttribute="centerX" secondItem="ZJI-ld-di9" secondAttribute="centerX" id="oY3-CG-pXC"/>
+                                    <constraint firstItem="78k-ez-giv" firstAttribute="centerY" secondItem="I2f-oG-zDi" secondAttribute="centerY" id="srs-cb-28m"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qnk-um-ZnF"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4Nl-RJ-gQW" firstAttribute="leading" secondItem="Qnk-um-ZnF" secondAttribute="leading" id="ETZ-0C-z09"/>
-                            <constraint firstItem="78k-ez-giv" firstAttribute="width" secondItem="4yj-dh-Ovc" secondAttribute="width" multiplier="1.02174" id="Mwv-QY-GV7"/>
-                            <constraint firstItem="I2f-oG-zDi" firstAttribute="width" secondItem="78k-ez-giv" secondAttribute="width" multiplier="0.978723" id="SrT-eg-AWc"/>
-                            <constraint firstItem="Qnk-um-ZnF" firstAttribute="trailing" secondItem="4Nl-RJ-gQW" secondAttribute="trailing" id="Y94-nR-pCB"/>
-                            <constraint firstItem="I2f-oG-zDi" firstAttribute="centerX" secondItem="Qnk-um-ZnF" secondAttribute="centerX" id="YU5-Sr-sXT"/>
-                            <constraint firstItem="78k-ez-giv" firstAttribute="height" secondItem="4yj-dh-Ovc" secondAttribute="height" multiplier="0.32" id="ZkE-ok-YI8"/>
-                            <constraint firstItem="I2f-oG-zDi" firstAttribute="height" secondItem="78k-ez-giv" secondAttribute="height" id="dG4-AA-IgL"/>
-                            <constraint firstItem="4Nl-RJ-gQW" firstAttribute="top" secondItem="78k-ez-giv" secondAttribute="bottom" multiplier="0.6" id="jB8-Vf-Isp"/>
-                            <constraint firstItem="78k-ez-giv" firstAttribute="centerX" secondItem="Qnk-um-ZnF" secondAttribute="centerX" id="o5T-rn-5dr"/>
-                            <constraint firstItem="Qnk-um-ZnF" firstAttribute="bottom" secondItem="4Nl-RJ-gQW" secondAttribute="bottom" id="q8b-fj-kYY"/>
-                            <constraint firstItem="I2f-oG-zDi" firstAttribute="top" secondItem="4yj-dh-Ovc" secondAttribute="top" id="sGa-fp-gBu"/>
-                            <constraint firstItem="78k-ez-giv" firstAttribute="top" secondItem="4yj-dh-Ovc" secondAttribute="top" id="tJX-GP-CfQ"/>
+                            <constraint firstItem="ZJI-ld-di9" firstAttribute="top" secondItem="4yj-dh-Ovc" secondAttribute="top" id="6Ig-cw-WtE"/>
+                            <constraint firstItem="Qnk-um-ZnF" firstAttribute="trailing" secondItem="ZJI-ld-di9" secondAttribute="trailing" id="G5u-t1-cRY"/>
+                            <constraint firstAttribute="bottom" secondItem="ZJI-ld-di9" secondAttribute="bottom" id="Mu1-5W-cDA"/>
+                            <constraint firstItem="4Nl-RJ-gQW" firstAttribute="bottom" secondItem="Qnk-um-ZnF" secondAttribute="bottom" id="XqY-bM-QQg"/>
+                            <constraint firstItem="ZJI-ld-di9" firstAttribute="leading" secondItem="Qnk-um-ZnF" secondAttribute="leading" id="ljk-Rx-b1L"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" badgeValue="Groups" id="Lms-cO-vvR"/>
                     <connections>
+                        <outlet property="contentView" destination="ZJI-ld-di9" id="1lu-jk-Gh4"/>
                         <outlet property="groupsTableView" destination="4Nl-RJ-gQW" id="9bd-Tb-JP6"/>
                         <outlet property="topImage" destination="78k-ez-giv" id="9Gp-MD-AYQ"/>
                         <outlet property="topView" destination="I2f-oG-zDi" id="10R-fG-mcK"/>

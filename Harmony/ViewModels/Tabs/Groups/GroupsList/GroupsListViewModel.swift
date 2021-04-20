@@ -13,6 +13,9 @@ class GroupsListViewModel {
     private let coreDataManager: CoreDataManager
     var onUpdate = {}
     
+    // Menu
+    var menuShow = false
+    
     init(coreDataManager: CoreDataManager = CoreDataManager.shared) {
         self.coreDataManager = coreDataManager
     }
@@ -82,6 +85,11 @@ class GroupsListViewModel {
         case .group(let groupCellViewModel):
             groupCellViewModel.didSelect()
         }
+    }
+    
+    /* Go To Selected Section */
+    func goToSelectedSection(section: MenuSection) {
+        coordinator.goToSection(section: section)
     }
     
 }

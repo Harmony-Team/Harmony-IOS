@@ -23,6 +23,12 @@ final class FriendsCoordinator: Coordinator {
         friendsViewModel.coordinator = self
         viewController.viewModel = friendsViewModel
         navigationController.pushViewController(viewController, animated: false)
+//        let viewController: ChatViewController = .instantiate()
+//        viewController.setTabBarItem(image: "friends", selectedColor: .white, unSelectedColor: .gray, title: "CHATS", tabBarItemTitle: "Friends")
+//        let friendsViewModel = ChatViewModel()
+//        friendsViewModel.coordinator = self
+//        viewController.viewModel = friendsViewModel
+//        navigationController.pushViewController(viewController, animated: false)
     }
     
     /* Go to new friend window */
@@ -31,6 +37,11 @@ final class FriendsCoordinator: Coordinator {
         newFriendCoordinator.parentCoordinator = self
         childCoordinators.append(newFriendCoordinator)
         newFriendCoordinator.start()
+    }
+    
+    /* Go To Selected Section Coordinator */
+    func goToSection(section: MenuSection) {
+        goToSection(section: section, navigationController: navigationController)
     }
     
     func finishChild(coordinator: Coordinator) {

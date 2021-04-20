@@ -11,6 +11,7 @@ class ProfileViewModel {
     
     // Menu
     var menuShow = false
+    var isChosen = true
     
     var coordinator: ProfileCoordinator!
     var user: User!
@@ -59,6 +60,11 @@ class ProfileViewModel {
     /* Go to user settings */
     func goToSettings() {
         coordinator.goToSettings(for: user)
+    }
+    
+    /* Go To Selected Section */
+    func goToSelectedSection(section: MenuSection) {
+        coordinator.goToSection(section: section)
     }
     
 }

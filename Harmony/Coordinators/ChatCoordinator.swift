@@ -18,14 +18,14 @@ final class ChatCoordinator: Coordinator {
     }
     
     func start() {
-        let navModal = UINavigationController()
-        let viewController: ChatViewController = .instantiate()
-        let chatViewModel = ChatViewModel()
-        chatViewModel.coordinator = self
-        viewController.viewModel = chatViewModel
-        navModal.modalPresentationStyle = .fullScreen
-        navModal.setViewControllers([viewController], animated: true)
-        navigationController.pushFromLeft(controller: navModal)
+//        let navModal = UINavigationController()
+//        let viewController: ChatViewController = .instantiate()
+//        let chatViewModel = ChatViewModel()
+//        chatViewModel.coordinator = self
+//        viewController.viewModel = chatViewModel
+//        navModal.modalPresentationStyle = .fullScreen
+//        navModal.setViewControllers([viewController], animated: true)
+//        navigationController.pushFromLeft(controller: navModal)
     }
     
     func closeWithoutSaving() {

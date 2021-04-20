@@ -107,11 +107,6 @@ extension UIViewController: WKNavigationDelegate {
         }
     }
     
-    /* Add Navigation Side Menu View */
-    func addSideMenuView(menuView: SideMenuView) {
-        view.addSubview(menuView)
-    }
-    
     /* Dismiss view controller modal from left to right */
     func dismissFromLeft() {
         let transition = CATransition()
@@ -207,6 +202,55 @@ extension UIViewController: WKNavigationDelegate {
 }
 
 
+/* Side Menu Extension */
+extension UIViewController {
+    /* Add Navigation Side Menu View */
+    func addSideMenuView(menuView: SideMenuView) {
+        view.addSubview(menuView)
+    }
+    
+    /* Setting Up Content View */
+    func setupContent(menuView: SideMenuView, contentView: UIView) {
+        menuView.addSubview(contentView)
+        contentView.layer.zPosition = 20
+        contentView.setGradientFill(colorTop: UIColor.loginGradientColorTop.cgColor, colorBottom: UIColor.loginGradientColorBottom.cgColor, cornerRadius: 0, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
+    }
+    
+    /* Open / Close menu */
+    func goToMenu(contentView: UIView, menuShow: inout Bool, withAnimation: Bool, completion: (()->())? = nil) {
+        menuShow.toggle()
+        
+        var t = CGAffineTransform.identity
+        let scaleCoef: CGFloat = menuShow ? 0.8 : 1.0
+        let cornerRadius: CGFloat = menuShow ? 20 : 0
+        t = t.translatedBy(x: menuShow ? UIScreen.main.bounds.width / 2 : 0, y: menuShow ? 44 : 0)
+        t = t.scaledBy(x: scaleCoef, y: scaleCoef)
+        
+        navigationController?.setNavigationBarHidden(menuShow, animated: true)
+        tabBarController?.tabBar.isHidden = menuShow
+        
+        if menuShow {
+            contentView.layer.cornerRadius = cornerRadius
+            UIView.animate(withDuration: withAnimation ? 0.5 : 0, delay: 0, usingSpringWithDamping: withAnimation ? 0.5 : 0, initialSpringVelocity: 0, options: .curveEaseInOut) {
+                contentView.transform = t
+            }
+        } else {
+            UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut) {
+                contentView.transform = t
+                completion?()
+            } completion: { (_) in
+                contentView.layer.cornerRadius = cornerRadius
+                
+            }
+        }
+    }
+}
+
+
+
+
+
+
 
 
 extension UINavigationController {
@@ -223,7 +267,7 @@ extension UINavigationController {
     
     func fadeTo(_ viewController: UIViewController) {
         let transition: CATransition = CATransition()
-        transition.duration = 0.3
+        transition.duration = 0
         transition.type = .fade
         view.layer.add(transition, forKey: nil)
         pushViewController(viewController, animated: false)

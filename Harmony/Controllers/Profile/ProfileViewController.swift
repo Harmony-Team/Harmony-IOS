@@ -32,23 +32,21 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     private var recentActivityHeader = UILabel()
     private var recentActivityCollectionView = RecentActivityCollectionView()
     
-    /* Side Menu */
-//    private var sideMenuViewController: SideMenuViewController!
-//    private var sideMenuRevealWidth: CGFloat = 260
-//    private let paddingForRotation: CGFloat = 150
-//    private var isExpanded: Bool = false
-//    private var sideMenuTrailingConstraint: NSLayoutConstraint!
-//    private var revealSideMenuOnTop: Bool = true
-//    // Gestures
-//    private var draggingIsEnabled: Bool = false
-//    private var panBaseLocation: CGFloat = 0.0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tabBarController?.tabBar.isHidden = true
-        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
-        menuView.layer.zPosition = 10
+        customizeNavBarController(bgColor: .bgColor, textColor: .white)
+        
+        /* Setting Up Side Menu */
+        setupMenuAndContent()
+        if viewModel.isChosen { // Animate If Profile Screen Is Choosen In Menu
+            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: false)
+            closeMenuOnTap(nil)
+        }
+        // Notification About Chosing Section In Menu
+        NotificationCenter.default.addObserver(self, selector: #selector(chooseSection(notification:)), name: NSNotification.Name(rawValue: "ChoseSection"), object: nil)
+        
+        /* Loading Collection Views */
         showActivityIndicator(alpha: 1)
         
         /* Get user info */
@@ -60,19 +58,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                 self.setupRecentActivityCollectionView()
             }
         }
-
-        addSideMenuView(menuView: menuView)
-        setupContent()
-        
-//        addBg(image: nil, colorTop: .loginGradientColorTop, colorBottom: .loginGradientColorBottom, alpha: 1)
-        customizeNavBarController(bgColor: .bgColor, textColor: .white)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(goToMenu), name: NSNotification.Name(rawValue: "CloseSideMenu"), object: nil)
         
         let settingsImage = UIImage(systemName: "gear")?.withRenderingMode(.alwaysTemplate)
         let menuImage = UIImage(named: "menuIcon")?.withRenderingMode(.alwaysTemplate)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuImage, style: .done, target: self, action: #selector(goToMenu))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuImage, style: .done, target: self, action: #selector(toggleMenu))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: settingsImage, style: .done, target: self, action: #selector(goToSettings))
     }
     
@@ -82,14 +72,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    /* Setting Up Content View */
-    private func setupContent() {
-        menuView.addSubview(contentView)
-        contentView.layer.zPosition = 20
-        contentView.setGradientFill(colorTop: UIColor.loginGradientColorTop.cgColor, colorBottom: UIColor.loginGradientColorBottom.cgColor, cornerRadius: 0, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
+    /* Setting Up Content View And Menu */
+    private func setupMenuAndContent() {
+        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
+        addSideMenuView(menuView: menuView)
+        setupContent(menuView: menuView, contentView: contentView)
         
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         panGestureRecognizer.delegate = self
         contentView.addGestureRecognizer(tap)
@@ -180,96 +169,27 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         viewModel.goToSettings()
     }
     
-    /* Content View Tapped To Close Menu */
-    @objc private func closeMenuOnTap(_ sender: UITapGestureRecognizer) {
-        if (viewModel.menuShow) {
-            goToMenu(sender)
-        }
-    }
-    /* Open / Close menu */
-    @objc private func goToMenu(_ sender: UITapGestureRecognizer) {
-        viewModel.menuShow.toggle()
-        
-        var t = CGAffineTransform.identity
-        let scaleCoef: CGFloat = viewModel.menuShow ? 0.8 : 1.0
-        let cornerRadius: CGFloat = viewModel.menuShow ? 20 : 0
-        t = t.translatedBy(x: viewModel.menuShow ? UIScreen.main.bounds.width / 2 : 0, y: viewModel.menuShow ? 44 : 0)
-        t = t.scaledBy(x: scaleCoef, y: scaleCoef)
-        
-        navigationController?.setNavigationBarHidden(viewModel.menuShow, animated: true)
-        tabBarController?.tabBar.isHidden = viewModel.menuShow
-        
-        if viewModel.menuShow {
-            contentView.layer.cornerRadius = cornerRadius
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut) {
-                self.contentView.transform = t
-            }
-        } else {
-            UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut) {
-                self.contentView.transform = t
-            } completion: { (_) in
-                self.contentView.layer.cornerRadius = cornerRadius
+    /* Choosing Secton In Menu */
+    @objc private func chooseSection(notification: NSNotification) {
+        if let section = notification.userInfo?["section"] as? MenuSection {
+            closeMenuOnTap(nil) {
+                self.viewModel.goToSelectedSection(section: section)
             }
         }
     }
-}
-
-/*
-private func setupSideMenu() {
-    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-    self.sideMenuViewController = storyboard.instantiateViewController(withIdentifier: "SideMenuViewController") as? SideMenuViewController
-    view.insertSubview(self.sideMenuViewController!.view, at: self.revealSideMenuOnTop ? 2 : 0)
-    addChild(self.sideMenuViewController!)
-    self.sideMenuViewController!.didMove(toParent: self)
-
-    // Side Menu AutoLayout
-    self.sideMenuViewController.view.translatesAutoresizingMaskIntoConstraints = false
-
-    if self.revealSideMenuOnTop {
-        self.sideMenuTrailingConstraint = self.sideMenuViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -self.sideMenuRevealWidth - self.paddingForRotation)
-        self.sideMenuTrailingConstraint.isActive = true
-    }
-    NSLayoutConstraint.activate([
-        self.sideMenuViewController.view.widthAnchor.constraint(equalToConstant: self.sideMenuRevealWidth),
-        self.sideMenuViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        self.sideMenuViewController.view.topAnchor.constraint(equalTo: view.topAnchor)
-    ])
     
-    // Side Menu Gestures
-    let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
-    panGestureRecognizer.delegate = self
-    view.addGestureRecognizer(panGestureRecognizer)
-}
-
-func sideMenuState(expanded: Bool) {
-        if expanded {
-            self.animateSideMenu(targetPosition: self.revealSideMenuOnTop ? 0 : self.sideMenuRevealWidth) { _ in
-                self.isExpanded = true
-            }
-            // Animate Shadow (Fade In)
-//                UIView.animate(withDuration: 0.5) { self.sideMenuShadowView.alpha = 0.6 }
-        }
-        else {
-            self.animateSideMenu(targetPosition: self.revealSideMenuOnTop ? (-self.sideMenuRevealWidth - self.paddingForRotation) : 0) { _ in
-                self.isExpanded = false
-            }
-            // Animate Shadow (Fade Out)
-//                UIView.animate(withDuration: 0.5) { self.sideMenuShadowView.alpha = 0.0 }
+    /* Content View Tapped To Close Menu */
+    @objc private func closeMenuOnTap(_ sender: UITapGestureRecognizer?, completion: (()->())? = nil) {
+        if (viewModel.menuShow) {
+            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, completion: completion)
         }
     }
-
-func animateSideMenu(targetPosition: CGFloat, completion: @escaping (Bool) -> ()) {
-    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .layoutSubviews, animations: {
-        if self.revealSideMenuOnTop {
-            self.sideMenuTrailingConstraint.constant = targetPosition
-            self.view.layoutIfNeeded()
-        }
-        else {
-            self.view.subviews[1].frame.origin.x = targetPosition
-        }
-    }, completion: completion)
+    
+    /* Open / Close menu */
+    @objc private func toggleMenu(_ sender: UITapGestureRecognizer) {
+        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true)
+    }
 }
-*/
 
 /*
 extension ProfileViewController: UIGestureRecognizerDelegate {

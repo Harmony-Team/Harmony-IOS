@@ -301,6 +301,7 @@
 				521A050125C73588007F86A0 /* AppCoordinator.swift */,
 				5234BAAF25CC22B400561E86 /* Login and Register */,
 				5236FF8025CDA98D00845300 /* Tabs */,
+				5236FFA625CED99400845300 /* ChatCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -314,6 +315,7 @@
 				52B5C58F25D6A07C00961A4E /* Profile */,
 				5236FFAF25CFCBB800845300 /* Friends */,
 				5236FF8A25CDAF6000845300 /* Groups */,
+				52B9B778262F125400A50683 /* Chat */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -425,7 +427,6 @@
 				52F42E8926125CA700FCAE54 /* NewGroup */,
 				52F42E8B26125CB200FCAE54 /* CurGroup */,
 				52F42E8726125C9000FCAE54 /* NewPlaylist */,
-				5236FFA625CED99400845300 /* ChatCoordinator.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -435,7 +436,6 @@
 			children = (
 				52F42E8D2616409800FCAE54 /* GroupsList */,
 				52F42E90261640A800FCAE54 /* Lobby */,
-				5236FFA125CED6F200845300 /* ChatViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -491,7 +491,6 @@
 				52AC3B0F2603B40D00EA7E19 /* NewGroup */,
 				5233DB1A260CB07800764342 /* NewPlaylist */,
 				52AC3AE725FE33A200EA7E19 /* Lobby */,
-				5236FFA925CED9C300845300 /* ChatViewModel.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -612,6 +611,7 @@
 				52B5C59425D6A0DA00961A4E /* Profile */,
 				5236FFBF25CFCD6D00845300 /* Friends */,
 				5236FFBC25CFCD6600845300 /* Groups */,
+				52B9B77B262F137500A50683 /* Chats */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -683,6 +683,22 @@
 				52B9B76D26261D0300A50683 /* SideMenuViewModel.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		52B9B778262F125400A50683 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5236FFA125CED6F200845300 /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		52B9B77B262F137500A50683 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				5236FFA925CED9C300845300 /* ChatViewModel.swift */,
+			);
+			path = Chats;
 			sourceTree = "<group>";
 		};
 		52BCD56B25E303AB00A30366 /* Fonts */ = {

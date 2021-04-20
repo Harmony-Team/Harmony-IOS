@@ -10,6 +10,9 @@ import CoreData
 
 class SettingsViewModel {
     
+    // Menu
+    var menuShow = false
+    
     var coordinator: SettingsCoordinator!
     var user: User!
     var userInfoDictionary: [String: String]!
@@ -19,6 +22,11 @@ class SettingsViewModel {
     var apiManager = APIManager.shared
     
     func getUserInfoDictionary() {
+        
+        if let user: User = UserProfileCache.get(key: "user") {
+            self.user = user
+        }
+        
         userInfoDictionary = [
             "Email": user.email,
             "Password": "********"
@@ -76,6 +84,11 @@ class SettingsViewModel {
         UserDefaults.standard.removeObject(forKey: "refresh_token")
 
         coordinator.goToLogin()
+    }
+    
+    /* Go To Selected Section */
+    func goToSelectedSection(section: MenuSection) {
+        coordinator.goToSection(section: section)
     }
     
     /* Go back to profile */
