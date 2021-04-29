@@ -9,6 +9,7 @@ import UIKit
 
 class LobbyPlaylistsTabBarCell: UICollectionViewCell {
     
+    var viewModel: GroupViewModel!
     private var lobbyPlaylistsTableView = UITableView()
     
     override init(frame: CGRect) {

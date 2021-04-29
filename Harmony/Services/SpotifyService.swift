@@ -386,7 +386,7 @@ class SpotifyService {
                 tracks_list = jsonTracks.items
                 tracks_list?.forEach { cur_track in
                     let track = Track(album: cur_track.track.album, artists: cur_track.track.artists, name: cur_track.track.name, id: cur_track.track.id)
-                    guard let spotifyTrack = CoreDataManagerr.shared.saveTrack(track: track) else {
+                    guard let spotifyTrack = TracksCoreDataManager.shared.saveTrack(track: track) else {
                         return
                     }
                     tracks.append(spotifyTrack)

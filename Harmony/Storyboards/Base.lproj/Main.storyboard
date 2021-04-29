@@ -539,42 +539,11 @@
             </objects>
             <point key="canvasLocation" x="1661" y="-1398"/>
         </scene>
-        <!--Side Menu View Controller-->
-        <scene sceneID="GXD-gp-fDb">
-            <objects>
-                <viewController storyboardIdentifier="SideMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZZE-v9-vzT" customClass="SideMenuViewController" customModule="Harmony" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lpa-Un-gPe">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yJr-Ql-PAL">
-                                <rect key="frame" x="0.0" y="5" width="260" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Jfi-d9-UUB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="yJr-Ql-PAL" firstAttribute="centerX" secondItem="Jfi-d9-UUB" secondAttribute="centerX" id="fMd-1n-5wg"/>
-                            <constraint firstItem="yJr-Ql-PAL" firstAttribute="width" secondItem="Lpa-Un-gPe" secondAttribute="width" id="iho-Qu-sgi"/>
-                            <constraint firstItem="yJr-Ql-PAL" firstAttribute="height" secondItem="Lpa-Un-gPe" secondAttribute="height" id="v9y-Rm-pRF"/>
-                            <constraint firstItem="yJr-Ql-PAL" firstAttribute="centerY" secondItem="Jfi-d9-UUB" secondAttribute="centerY" id="yEC-fY-X5W"/>
-                        </constraints>
-                    </view>
-                    <size key="freeformSize" width="260" height="896"/>
-                    <connections>
-                        <outlet property="menuTableView" destination="yJr-Ql-PAL" id="4xm-ma-FKV"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FQa-u7-SF3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1163" y="-644"/>
-        </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="XuV-ej-ybf">
             <objects>
                 <tabBarController storyboardIdentifier="MainTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mcE-TK-eSe" customClass="MainTabBarController" customModule="Harmony" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jgs-ZQ-s80" customClass="AppTabBar" customModule="Harmony" customModuleProvider="target">
+                    <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jgs-ZQ-s80" customClass="AppTabBar" customModule="Harmony" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -584,7 +553,6 @@
                         <segue destination="yRV-80-8by" kind="relationship" relationship="viewControllers" id="Bcv-e7-sif"/>
                         <segue destination="7L6-5G-6Pm" kind="relationship" relationship="viewControllers" id="XeL-nD-Fr3"/>
                         <segue destination="Qjx-T3-J0A" kind="relationship" relationship="viewControllers" id="Osg-Wq-ZBU"/>
-                        <segue destination="Kew-Qo-pnK" kind="relationship" relationship="viewControllers" id="Vhw-kR-ukv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XP8-Yv-Ww8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -956,75 +924,6 @@
             </objects>
             <point key="canvasLocation" x="1961" y="89"/>
         </scene>
-        <!--Chat View Controller-->
-        <scene sceneID="kRy-t7-tTT">
-            <objects>
-                <viewController storyboardIdentifier="ChatViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XYS-CC-U2P" customClass="ChatViewController" customModule="Harmony" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dij-fn-nfv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKL-Ag-Ioq">
-                                <rect key="frame" x="0.0" y="815.5" width="414" height="80.5"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ty8-pn-MpP">
-                                        <rect key="frame" x="15" y="10" width="384" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNJ-fQ-H43">
-                                                <rect key="frame" x="0.0" y="7.5" width="48.5" height="25"/>
-                                                <state key="normal" image="attach"/>
-                                                <connections>
-                                                    <action selector="didAttachFiles:" destination="XYS-CC-U2P" eventType="touchUpInside" id="jto-Ud-Dfx"/>
-                                                </connections>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WoL-Hq-omU">
-                                                <rect key="frame" x="53.5" y="0.0" width="267.5" height="40"/>
-                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8S-vC-oCk">
-                                                <rect key="frame" x="326" y="7.5" width="58" height="25"/>
-                                                <color key="tintColor" red="0.99799984689999999" green="0.34203401210000001" blue="0.6599388719" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="send"/>
-                                                <connections>
-                                                    <action selector="didSendMsg:" destination="XYS-CC-U2P" eventType="touchUpInside" id="6Q4-2U-VIH"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="WoL-Hq-omU" firstAttribute="height" secondItem="ty8-pn-MpP" secondAttribute="height" id="sic-zu-nWQ"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ty8-pn-MpP" secondAttribute="trailing" constant="15" id="Jeq-tt-HV5"/>
-                                    <constraint firstItem="ty8-pn-MpP" firstAttribute="leading" secondItem="RKL-Ag-Ioq" secondAttribute="leading" constant="15" id="Px9-Gt-cud"/>
-                                    <constraint firstItem="ty8-pn-MpP" firstAttribute="top" secondItem="RKL-Ag-Ioq" secondAttribute="top" constant="10" id="URc-NU-i3z"/>
-                                    <constraint firstItem="ty8-pn-MpP" firstAttribute="height" secondItem="RKL-Ag-Ioq" secondAttribute="height" multiplier="0.5" id="dqj-aP-5z5"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="VYN-Bh-TOV"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                        <constraints>
-                            <constraint firstItem="RKL-Ag-Ioq" firstAttribute="height" secondItem="dij-fn-nfv" secondAttribute="height" multiplier="0.09" id="GgB-6G-D9Y"/>
-                            <constraint firstItem="RKL-Ag-Ioq" firstAttribute="leading" secondItem="VYN-Bh-TOV" secondAttribute="leading" id="OHl-74-ajR"/>
-                            <constraint firstItem="RKL-Ag-Ioq" firstAttribute="bottom" secondItem="VYN-Bh-TOV" secondAttribute="bottom" constant="34" id="abi-x4-iYb"/>
-                            <constraint firstItem="VYN-Bh-TOV" firstAttribute="trailing" secondItem="RKL-Ag-Ioq" secondAttribute="trailing" id="bvH-K4-h4y"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="attachFilesButton" destination="yNJ-fQ-H43" id="Pif-P6-coG"/>
-                        <outlet property="msgTextField" destination="WoL-Hq-omU" id="ex1-Wk-u5a"/>
-                        <outlet property="sendButton" destination="k8S-vC-oCk" id="RMd-Se-cKW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xmu-y7-T0A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1961" y="1422"/>
-        </scene>
         <!--New Group View Controller-->
         <scene sceneID="dcF-X5-qhZ">
             <objects>
@@ -1309,52 +1208,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lH-BX-pSE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1271" y="1422"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="C9G-hN-bpe">
-            <objects>
-                <viewController storyboardIdentifier="MusicViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kew-Qo-pnK" customClass="MusicViewController" customModule="Harmony" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gJL-h5-Lx7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z3Y-Hh-6xT">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="pk0-dv-I7e"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Z3Y-Hh-6xT" firstAttribute="top" secondItem="pk0-dv-I7e" secondAttribute="top" id="4cb-3a-OGp"/>
-                            <constraint firstItem="Z3Y-Hh-6xT" firstAttribute="leading" secondItem="pk0-dv-I7e" secondAttribute="leading" id="IV5-aJ-obR"/>
-                            <constraint firstItem="pk0-dv-I7e" firstAttribute="bottom" secondItem="Z3Y-Hh-6xT" secondAttribute="bottom" id="kGt-ms-Dki"/>
-                            <constraint firstItem="pk0-dv-I7e" firstAttribute="trailing" secondItem="Z3Y-Hh-6xT" secondAttribute="trailing" id="zSB-zf-DR3"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" badgeValue="Music" id="Ed9-fg-3rJ"/>
-                    <connections>
-                        <outlet property="musicTableView" destination="Z3Y-Hh-6xT" id="Dkw-ft-fbp"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZnL-5t-aVn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4591" y="78"/>
-        </scene>
-        <!--Track View Controller-->
-        <scene sceneID="TfX-PB-kqe">
-            <objects>
-                <viewController storyboardIdentifier="TrackViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qyT-XK-Nne" customClass="TrackViewController" customModule="Harmony" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N7R-UF-2Br">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="OBX-Gf-lG9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uhQ-wk-VDy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4591" y="755"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aDc-Iy-BtM">
@@ -1847,20 +1700,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="attach" width="25" height="25"/>
         <image name="chooseGroupImage" width="79" height="79"/>
         <image name="groupImage1" width="1024" height="683"/>
         <image name="harmonyLogo" width="169" height="172"/>
         <image name="launchLogo" width="169" height="172"/>
         <image name="loginBg1" width="375" height="667"/>
         <image name="logo" width="61" height="61"/>
-        <image name="send" width="25" height="25"/>
         <image name="spotifyFilled" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

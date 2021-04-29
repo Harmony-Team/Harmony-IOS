@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
         <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" attributeType="String"/>
+    </entity>
+    <entity name="Playlistii" representedClassName="Playlistii" syncable="YES" codeGenerationType="class">
+        <attribute name="uh" optional="YES" attributeType="String"/>
     </entity>
     <entity name="SpotifyTrack" representedClassName="SpotifyTrack" syncable="YES" codeGenerationType="class">
         <attribute name="artist" attributeType="String"/>
         <attribute name="image_url" attributeType="String" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" attributeType="String"/>
+        <attribute name="spotifyId" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Group" positionX="-63" positionY="-18" width="128" height="73"/>
-        <element name="SpotifyTrack" positionX="-63" positionY="0" width="128" height="88"/>
+        <element name="SpotifyTrack" positionX="-63" positionY="0" width="128" height="103"/>
+        <element name="Group" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="Playlistii" positionX="-36" positionY="45" width="128" height="58"/>
     </elements>
 </model>

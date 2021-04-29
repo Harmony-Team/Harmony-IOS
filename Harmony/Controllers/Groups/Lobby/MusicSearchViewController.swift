@@ -105,9 +105,7 @@ extension MusicSearchViewController: UITableViewDelegate, UITableViewDataSource 
         
         selectedCell.isSelected = true
         viewModel.selectedSpotifyTracks.append(selectedTrack)
-
-        let string = "Song \"" + selectedCell.trackName.text! + "\" was added"
-        print(string)
+        viewModel.addSong()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -116,9 +114,7 @@ extension MusicSearchViewController: UITableViewDelegate, UITableViewDataSource 
         
         selectedCell.isSelected = false
         viewModel.selectedSpotifyTracks.removeAll(where: { $0 == selectedTrack })
-        
-        let string = "Song \"" + selectedCell.trackName.text! + "\" was deleted"
-        print(string)
+        viewModel.removeSong(index: indexPath.row)
     }
     
 }

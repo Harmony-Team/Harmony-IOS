@@ -24,6 +24,14 @@ final class ForgotPasswordCoordinator: Coordinator {
         viewController.viewModel = forgotPasswordViewModel
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
+    }
 
     func goBack() {
         parentCoordinator.finishChild(coordinator: self)

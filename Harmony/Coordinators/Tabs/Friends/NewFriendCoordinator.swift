@@ -28,6 +28,14 @@ final class NewFriendCoordinator: Coordinator {
         navigationController.present(navModal, animated: true, completion: nil)
     }
     
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
+    }
+    
     func closeWithoutSaving() {
         parentCoordinator.finishChild(coordinator: self)
     }

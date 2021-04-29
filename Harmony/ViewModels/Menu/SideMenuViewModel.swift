@@ -10,7 +10,6 @@ import UIKit
 enum MenuSection {
     case Profile
     case Groups
-    case Chats
     case Friends
     case Settings
 }
@@ -23,7 +22,7 @@ class SideMenuViewModel {
     let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
     let friendCoordinator = FriendsCoordinator(navigationController: UINavigationController())
     let groupCoordinator = GroupsListCoordinator(navigationController: UINavigationController())
-    var sectionNames = ["Profile", "Groups", "Chats", "Friends", "Settings"]
+    var sectionNames = ["Profile", "Groups", "Friends", "Settings"]
     
     func selectedSection(at index: Int) -> MenuSection {
         switch index {
@@ -34,12 +33,9 @@ class SideMenuViewModel {
             // Groups
             return .Groups
         case 2:
-            // Chats
-            return .Chats
-        case 3:
             // Friends
             return .Friends
-        case 4:
+        case 3:
             // Settings
             return .Settings
         default:

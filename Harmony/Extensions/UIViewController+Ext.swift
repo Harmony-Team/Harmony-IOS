@@ -217,7 +217,7 @@ extension UIViewController {
     }
     
     /* Open / Close menu */
-    func goToMenu(contentView: UIView, menuShow: inout Bool, withAnimation: Bool, completion: (()->())? = nil) {
+    func goToMenu(contentView: UIView, menuShow: inout Bool, withAnimation: Bool, gestureRecogniser: UITapGestureRecognizer? = nil, completion: (()->())? = nil) {
         menuShow.toggle()
         
         var t = CGAffineTransform.identity
@@ -230,11 +230,16 @@ extension UIViewController {
         tabBarController?.tabBar.isHidden = menuShow
         
         if menuShow {
+            if let tap = gestureRecogniser {
+                contentView.addGestureRecognizer(tap)
+            }
+            contentView.isUserInteractionEnabled = true
             contentView.layer.cornerRadius = cornerRadius
             UIView.animate(withDuration: withAnimation ? 0.5 : 0, delay: 0, usingSpringWithDamping: withAnimation ? 0.5 : 0, initialSpringVelocity: 0, options: .curveEaseInOut) {
                 contentView.transform = t
             }
         } else {
+            contentView.gestureRecognizers?.forEach { contentView.removeGestureRecognizer($0) }
             UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut) {
                 contentView.transform = t
                 completion?()
@@ -244,6 +249,7 @@ extension UIViewController {
             }
         }
     }
+
 }
 
 

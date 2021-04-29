@@ -28,7 +28,6 @@ struct Track: Codable {
     var artists: [Artist]
     var name: String
     var id: String
-    
 }
 
 /* Track Artist */
@@ -42,4 +41,16 @@ struct Album: Codable {
 
 struct AlbumImage: Codable {
     var url: String
+}
+
+
+/* Pull Tracks Response */
+struct PullTrackResponse: Codable {
+    let response: [PullTrack]
+}
+
+/* Track In PULL */
+struct PullTrack: Codable {
+    let userLogin: String
+    let spotifyTrackId: String
 }

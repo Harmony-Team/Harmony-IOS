@@ -89,4 +89,21 @@ extension UIImage {
 
         return UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(self.renderingMode)
     }
+    
+    /* Encoding Image To Base64 String */
+    func imageToBase64() -> String {
+        let imageData: Data = self.jpegData(compressionQuality: 1)! as Data
+        let strBase64: String = imageData.base64EncodedString(options: .lineLength64Characters).replacingOccurrences(of: " ", with: "%20")
+        
+        return strBase64
+    }
+    
+    func imageFromBase64(_ base64: String) -> UIImage? {
+        if let url = URL(string: base64) {
+            if let data = try? Data(contentsOf: url) {
+                return UIImage(data: data)
+            }
+        }
+        return nil
+    }
 }

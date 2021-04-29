@@ -21,7 +21,7 @@ final class NewPlaylistCoordinator: Coordinator {
     func start() {
         navModal = UINavigationController()
         let viewController: NewGroupViewController = .instantiate(id: "NewPlaylistViewController")
-        let newPlaylistViewModel = NewPlaylistViewModel(coreDataManager: CoreDataManager())
+        let newPlaylistViewModel = NewPlaylistViewModel(coreDataManager: GroupsCoreDataManager())
         newPlaylistViewModel.coordinator = self
         viewController.newPlaylistViewModel = newPlaylistViewModel
         navModal?.setViewControllers([viewController], animated: true)

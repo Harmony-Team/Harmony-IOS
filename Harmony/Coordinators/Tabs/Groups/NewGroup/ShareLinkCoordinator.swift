@@ -12,6 +12,7 @@ final class ShareLinkCoordinator: Coordinator {
     private(set)var childCoordinators: [Coordinator] = []
     var parentCoordinator: NewGroupCoordinator!
     var navigationController: UINavigationController
+    var inviteCode: String!
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,6 +22,7 @@ final class ShareLinkCoordinator: Coordinator {
         let viewController: ShareLinkViewController = .instantiate()
         let shareViewModel = ShareLinkViewModel()
         shareViewModel.coordinator = self
+        shareViewModel.inviteCode = inviteCode
         viewController.viewModel = shareViewModel
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -37,6 +39,14 @@ final class ShareLinkCoordinator: Coordinator {
     
     func closeWithoutSaving() {
         parentCoordinator.finishChild(coordinator: self)
+    }
+    
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
     }
     
     deinit {

@@ -10,9 +10,9 @@ import UIKit
 class NewPlaylistViewModel {
     
     var coordinator: NewPlaylistCoordinator!
-    var coreDataManager: CoreDataManager?
+    var coreDataManager: GroupsCoreDataManager?
     
-    init(coreDataManager: CoreDataManager) {
+    init(coreDataManager: GroupsCoreDataManager) {
         self.coreDataManager = coreDataManager
     }
 

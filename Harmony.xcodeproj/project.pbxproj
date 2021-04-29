@@ -47,9 +47,6 @@
 		5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FF9325CDCA3F00845300 /* UIView+Ext.swift */; };
 		5236FF9925CDE01700845300 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FF9825CDE01700845300 /* FriendCell.swift */; };
 		5236FF9E25CDE5A800845300 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FF9D25CDE5A700845300 /* MusicCell.swift */; };
-		5236FFA225CED6F200845300 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFA125CED6F200845300 /* ChatViewController.swift */; };
-		5236FFA725CED99400845300 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFA625CED99400845300 /* ChatCoordinator.swift */; };
-		5236FFAA25CED9C300845300 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFA925CED9C300845300 /* ChatViewModel.swift */; };
 		5236FFAD25CEF6F900845300 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */; };
 		5236FFB325CFCBC600845300 /* NewFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFB225CFCBC600845300 /* NewFriendViewController.swift */; };
 		5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFB925CFCD3600845300 /* NewFriendCoordinator.swift */; };
@@ -76,7 +73,7 @@
 		52AC3AF425FE44F300EA7E19 /* WaitingFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AF325FE44F300EA7E19 /* WaitingFriendsView.swift */; };
 		52AC3AFE26034E4700EA7E19 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AFD26034E4700EA7E19 /* GroupViewModel.swift */; };
 		52AC3B0326039DA400EA7E19 /* GroupsList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3B0126039DA400EA7E19 /* GroupsList.xcdatamodeld */; };
-		52AC3B0626039DF700EA7E19 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3B0526039DF700EA7E19 /* CoreDataManager.swift */; };
+		52AC3B0626039DF700EA7E19 /* GroupsCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3B0526039DF700EA7E19 /* GroupsCoreDataManager.swift */; };
 		52AC3B0A2603A96500EA7E19 /* GroupCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3B092603A96500EA7E19 /* GroupCellViewModel.swift */; };
 		52ADF4C125E40549000B1AA1 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */; };
 		52B0F99225E4199300010F9D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0F99125E4199300010F9D /* ForgotPasswordViewController.swift */; };
@@ -107,7 +104,6 @@
 		52D17BAA261E3B800081C84D /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52D17BA8261E39DE0081C84D /* Lato-Light.ttf */; };
 		52D17BAD2620C2F50081C84D /* RecentActivityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D17BAC2620C2F50081C84D /* RecentActivityCellViewModel.swift */; };
 		52D17BB02621FCD70081C84D /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D17BAF2621FCD70081C84D /* EditProfileViewModel.swift */; };
-		52D17BB3262211E20081C84D /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D17BB2262211E20081C84D /* SideMenuViewController.swift */; };
 		52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */; };
 		52E70AA226075DEA0049A4C7 /* TrackImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E70AA126075DEA0049A4C7 /* TrackImageView.swift */; };
 		52F42E6E260E788800FCAE54 /* EditProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F42E6D260E788800FCAE54 /* EditProfileCoordinator.swift */; };
@@ -163,9 +159,6 @@
 		5236FF9325CDCA3F00845300 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		5236FF9825CDE01700845300 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		5236FF9D25CDE5A700845300 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
-		5236FFA125CED6F200845300 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		5236FFA625CED99400845300 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
-		5236FFA925CED9C300845300 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		5236FFB225CFCBC600845300 /* NewFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendViewController.swift; sourceTree = "<group>"; };
 		5236FFB925CFCD3600845300 /* NewFriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendCoordinator.swift; sourceTree = "<group>"; };
@@ -192,7 +185,7 @@
 		52AC3AF325FE44F300EA7E19 /* WaitingFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingFriendsView.swift; sourceTree = "<group>"; };
 		52AC3AFD26034E4700EA7E19 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		52AC3B0226039DA400EA7E19 /* GroupsList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroupsList.xcdatamodel; sourceTree = "<group>"; };
-		52AC3B0526039DF700EA7E19 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		52AC3B0526039DF700EA7E19 /* GroupsCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCoreDataManager.swift; sourceTree = "<group>"; };
 		52AC3B092603A96500EA7E19 /* GroupCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCellViewModel.swift; sourceTree = "<group>"; };
 		52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		52B0F99125E4199300010F9D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -223,7 +216,6 @@
 		52D17BA8261E39DE0081C84D /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		52D17BAC2620C2F50081C84D /* RecentActivityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCellViewModel.swift; sourceTree = "<group>"; };
 		52D17BAF2621FCD70081C84D /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
-		52D17BB2262211E20081C84D /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		52E70AA126075DEA0049A4C7 /* TrackImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackImageView.swift; sourceTree = "<group>"; };
 		52F42E6D260E788800FCAE54 /* EditProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -301,7 +293,6 @@
 				521A050125C73588007F86A0 /* AppCoordinator.swift */,
 				5234BAAF25CC22B400561E86 /* Login and Register */,
 				5236FF8025CDA98D00845300 /* Tabs */,
-				5236FFA625CED99400845300 /* ChatCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -311,11 +302,9 @@
 			children = (
 				521A053B25C811FE007F86A0 /* Login and Registration */,
 				521A052725C750D6007F86A0 /* MainTabBarController.swift */,
-				52D17BB2262211E20081C84D /* SideMenuViewController.swift */,
 				52B5C58F25D6A07C00961A4E /* Profile */,
 				5236FFAF25CFCBB800845300 /* Friends */,
 				5236FF8A25CDAF6000845300 /* Groups */,
-				52B9B778262F125400A50683 /* Chat */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -611,7 +600,6 @@
 				52B5C59425D6A0DA00961A4E /* Profile */,
 				5236FFBF25CFCD6D00845300 /* Friends */,
 				5236FFBC25CFCD6600845300 /* Groups */,
-				52B9B77B262F137500A50683 /* Chats */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -622,7 +610,7 @@
 				52D1F4B325CC766F002AA1C9 /* SpotifyService.swift */,
 				5236FFD425D0342B00845300 /* APIManager.swift */,
 				52B5C59D25D6A99C00961A4E /* UserProfile.swift */,
-				52AC3B0526039DF700EA7E19 /* CoreDataManager.swift */,
+				52AC3B0526039DF700EA7E19 /* GroupsCoreDataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -683,22 +671,6 @@
 				52B9B76D26261D0300A50683 /* SideMenuViewModel.swift */,
 			);
 			path = Menu;
-			sourceTree = "<group>";
-		};
-		52B9B778262F125400A50683 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				5236FFA125CED6F200845300 /* ChatViewController.swift */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		52B9B77B262F137500A50683 /* Chats */ = {
-			isa = PBXGroup;
-			children = (
-				5236FFA925CED9C300845300 /* ChatViewModel.swift */,
-			);
-			path = Chats;
 			sourceTree = "<group>";
 		};
 		52BCD56B25E303AB00A30366 /* Fonts */ = {
@@ -929,7 +901,6 @@
 				52D17BA6261E26610081C84D /* RecentActivityCell.swift in Sources */,
 				52AC3B0A2603A96500EA7E19 /* GroupCellViewModel.swift in Sources */,
 				5236FF9E25CDE5A800845300 /* MusicCell.swift in Sources */,
-				5236FFA225CED6F200845300 /* ChatViewController.swift in Sources */,
 				5236FF7C25CDA73400845300 /* MainTabBarCoordinator.swift in Sources */,
 				521A052225C74210007F86A0 /* GroupsListCoordinator.swift in Sources */,
 				52AC3AC625F95B1B00EA7E19 /* MyMusicTabBarCell.swift in Sources */,
@@ -943,7 +914,7 @@
 				5236FF8825CDAF5800845300 /* NewGroupViewController.swift in Sources */,
 				52AC3AFE26034E4700EA7E19 /* GroupViewModel.swift in Sources */,
 				52AC3AD925FA6E3C00EA7E19 /* GroupUsersCollectionView.swift in Sources */,
-				52AC3B0626039DF700EA7E19 /* CoreDataManager.swift in Sources */,
+				52AC3B0626039DF700EA7E19 /* GroupsCoreDataManager.swift in Sources */,
 				5233DB1C260CB08A00764342 /* NewPlaylistViewModel.swift in Sources */,
 				52B0F99825E41A4500010F9D /* ForgotPasswordCoordinator.swift in Sources */,
 				5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */,
@@ -955,7 +926,6 @@
 				52A758A525D93F770051EB61 /* Playlist.swift in Sources */,
 				52B9B76E26261D0300A50683 /* SideMenuViewModel.swift in Sources */,
 				5236FFB325CFCBC600845300 /* NewFriendViewController.swift in Sources */,
-				5236FFA725CED99400845300 /* ChatCoordinator.swift in Sources */,
 				52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */,
 				52B9B7672624ECE000A50683 /* MenuSectionsCell.swift in Sources */,
 				5236FF9925CDE01700845300 /* FriendCell.swift in Sources */,
@@ -994,11 +964,9 @@
 				52AC3ABC25F90FC500EA7E19 /* ShareLinkViewModel.swift in Sources */,
 				5234BAB525CC22E900561E86 /* RegisterViewModel.swift in Sources */,
 				52AC3AC025F9105E00EA7E19 /* GroupCoordinator.swift in Sources */,
-				52D17BB3262211E20081C84D /* SideMenuViewController.swift in Sources */,
 				5233DB18260CAFF300764342 /* NewPlaylistCoordinator.swift in Sources */,
 				521A052C25C757C2007F86A0 /* ProfileViewModel.swift in Sources */,
 				5236FF8325CDAF1500845300 /* NewGroupCoordinator.swift in Sources */,
-				5236FFAA25CED9C300845300 /* ChatViewModel.swift in Sources */,
 				52B11CCC25DC1FA600CFB829 /* Track.swift in Sources */,
 				521A04EE25C73570007F86A0 /* SceneDelegate.swift in Sources */,
 				52B5E85F25EE73A0001BD785 /* UIFont+Ext.swift in Sources */,

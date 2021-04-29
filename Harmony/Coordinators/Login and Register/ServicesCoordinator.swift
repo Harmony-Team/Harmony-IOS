@@ -35,6 +35,14 @@ final class ServicesCoordinator: Coordinator {
         profileCoordinator.start()
     }
     
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
+    }
+    
     func goBack() {
         parentCoordinator.finishChild(coordinator: self)
     }

@@ -13,9 +13,11 @@ class SettingsViewController: UIViewController {
     var viewModel: SettingsViewModel!
     private var menuView: SideMenuView!
     
+    /* Gesture To Reopen Screen From Menu */
+    private var tapGestureRecogniser: UITapGestureRecognizer!
+    
     // Main Content View
     @IBOutlet weak var contentView: UIView!
-    
     @IBOutlet weak var settingsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -26,7 +28,7 @@ class SettingsViewController: UIViewController {
         customizeNavBarController(bgColor: .bgColor, textColor: .white)
         
         let menuImage = UIImage(named: "menuIcon")?.withRenderingMode(.alwaysTemplate)
-        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: false)
+        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: false, gestureRecogniser: tapGestureRecogniser)
         closeMenuOnTap(nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuImage, style: .done, target: self, action: #selector(toggleMenu))
         // Notification About Chosing Section In Menu
@@ -45,13 +47,10 @@ class SettingsViewController: UIViewController {
         menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
         addSideMenuView(menuView: menuView)
         setupContent(menuView: menuView, contentView: contentView)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
+//        tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
 //        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
 //        panGestureRecognizer.delegate = self
-        contentView.addGestureRecognizer(tap)
 //        contentView.addGestureRecognizer(panGestureRecognizer)
-        contentView.isUserInteractionEnabled = true
     }
     
     private func setupTableView() {
@@ -94,13 +93,13 @@ class SettingsViewController: UIViewController {
     /* Content View Tapped To Close Menu */
     @objc private func closeMenuOnTap(_ sender: UITapGestureRecognizer?, completion: (()->())? = nil) {
         if (viewModel.menuShow) {
-            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, completion: completion)
+            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser, completion: completion)
         }
     }
     
     /* Open / Close menu */
     @objc private func toggleMenu(_ sender: UITapGestureRecognizer) {
-        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true)
+        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser)
     }
 }
 

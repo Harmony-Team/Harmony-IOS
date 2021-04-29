@@ -42,8 +42,8 @@ class ShareLinkViewController: UIViewController {
         shareLabel.textColor = .darkTextColor
         shareLabel.textAlignment = .center
         
+        linkField.text = viewModel.inviteCode
         linkField.font = UIFont.setFont(size: .Large)
-        
     }
     
     /* Setting Up TopView */

@@ -67,6 +67,7 @@ class SideMenuView: UIView {
     
     /* Sent Notification To Close Side Menu */
     @objc private func closeMenu() {
+        print("Tap")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CloseSideMenu"), object: nil)
     }
     

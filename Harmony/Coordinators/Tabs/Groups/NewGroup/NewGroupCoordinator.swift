@@ -21,7 +21,7 @@ final class NewGroupCoordinator: Coordinator {
     func start() {
         navModal = UINavigationController()
         let viewController: NewGroupViewController = .instantiate()
-        let newGroupViewModel = NewGroupViewModel(coreDataManager: CoreDataManager())
+        let newGroupViewModel = NewGroupViewModel(coreDataManager: GroupsCoreDataManager())
         newGroupViewModel.coordinator = self
         viewController.viewModel = newGroupViewModel
 //        navModal.modalPresentationStyle = .fullScreen
@@ -29,9 +29,10 @@ final class NewGroupCoordinator: Coordinator {
         navigationController.present(navModal!, animated: true, completion: nil)
     }
     
-    func goToShareLink() {
+    func goToShareLink(inviteCode: String) {
         let shareCoordinator = ShareLinkCoordinator(navigationController: navModal!)
         shareCoordinator.parentCoordinator = self
+        shareCoordinator.inviteCode = inviteCode
         childCoordinators.append(shareCoordinator)
         shareCoordinator.start()
     }
@@ -39,7 +40,7 @@ final class NewGroupCoordinator: Coordinator {
     /* Go To Created Group */
     func goToGroup() {
         parentCoordinator.saveEvent()
-        parentCoordinator.finishChild(coordinator: self, goToRoom: true)
+        parentCoordinator.finishChild(coordinator: self)
     }
     
     func closeWithoutSaving(_ goToRoom: Bool?) {

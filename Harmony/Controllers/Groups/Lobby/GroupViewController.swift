@@ -58,6 +58,7 @@ class GroupViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(musicTabBarCollectionViewSlided(notification:)), name: NSNotification.Name(rawValue: "SlideMusicSections"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(myMusicScrolled(notification:)), name: NSNotification.Name(rawValue: "ScrollMyMusic"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(callErrorAlertSong(notification:)), name: NSNotification.Name(rawValue: "ShowErrorAlertSong"), object: nil)
         
         setupUsersCollectionView()
         
@@ -69,8 +70,6 @@ class GroupViewController: UIViewController {
             waitingForFriendsView.addSubview(readyButton)
         }
         waitingForFriendsView.alpha = 0
-        
-        viewModel.viewDidLoad()
         
         showActivityIndicator()
         
@@ -201,6 +200,15 @@ class GroupViewController: UIViewController {
         }
     }
     
+    /* Show Alert About "Song is already in music pool" */
+    @objc private func callErrorAlertSong(notification: NSNotification) {
+        if let msg = notification.userInfo?["msg"] as? String {
+            DispatchQueue.main.async {
+                self.callAlert(with: msg)
+            }
+        }
+    }
+    
     private func setupSearchBar() {
         searchIcon.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchIcon.tintColor = .white
@@ -224,7 +232,6 @@ class GroupViewController: UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-//        searchIcon.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         searchIcon.addTarget(self, action: #selector(goToSearchMusic), for: .touchUpInside)
         closeSearchBarIcon.addTarget(self, action: #selector(closeSearchBar), for: .touchUpInside)
         

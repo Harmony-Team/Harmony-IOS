@@ -13,6 +13,7 @@ final class MusicSearchCoordinator: Coordinator {
     var parentCoordinator: GroupCoordinator!
     var navigationController: UINavigationController
     var spotifyTracks: [SpotifyTrack]
+    var group: UserGroup!
     var selectedSpotifyTracks: [SpotifyTrack]
     
     init(navigationController: UINavigationController, spotifyTracks: [SpotifyTrack], selectedSpotifyTracks: [SpotifyTrack]) {
@@ -25,6 +26,7 @@ final class MusicSearchCoordinator: Coordinator {
         let viewController: MusicSearchViewController = .instantiate()
         let musicSearchViewModel = MusicSearchViewModel(spotifyTracks: spotifyTracks, selectedSpotifyTracks: selectedSpotifyTracks)
         musicSearchViewModel.coordinator = self
+        musicSearchViewModel.group = group
         viewController.viewModel = musicSearchViewModel
         navigationController.fadeTo(viewController)
     }
@@ -32,6 +34,14 @@ final class MusicSearchCoordinator: Coordinator {
     func goToLobby(selectedSpotifyTracks: [SpotifyTrack]) {
         navigationController.popViewController(animated: false)
         parentCoordinator.finishChild(coordinator: self, goToRoom: nil, selectedSpotifyTracks: selectedSpotifyTracks)
+    }
+    
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
     }
     
 }

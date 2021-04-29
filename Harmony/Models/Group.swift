@@ -12,6 +12,13 @@ struct GroupsResponse: Codable {
     let response: [UserGroup]
 }
 
+/* New Group */
+struct NewGroup: Codable {
+    let code: Int?
+    let invite_code: String
+    let object: UserGroup
+}
+
 /* User's Group */
 struct UserGroup: Codable {
     let avatar_url: String?

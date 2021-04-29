@@ -10,13 +10,13 @@ import UIKit
 class GroupsListViewModel {
     
     var coordinator: GroupsListCoordinator!
-    private let coreDataManager: CoreDataManager
+    private let coreDataManager: GroupsCoreDataManager
     var onUpdate = {}
     
     // Menu
     var menuShow = false
     
-    init(coreDataManager: CoreDataManager = CoreDataManager.shared) {
+    init(coreDataManager: GroupsCoreDataManager = GroupsCoreDataManager.shared) {
         self.coreDataManager = coreDataManager
     }
     
@@ -65,7 +65,7 @@ class GroupsListViewModel {
     /* Delete group */
     func deleteGroup(at indexPath: IndexPath) {
         switch cells[indexPath.row] {
-        case .group(let groupCellViewModel):
+        case .group(_):
 //            let id = groupCellViewModel.group.objectID
 //            coreDataManager.deleteGroup(id: id)
             reload()

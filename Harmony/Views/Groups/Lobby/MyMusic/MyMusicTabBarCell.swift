@@ -122,15 +122,14 @@ extension MusicTabBarCell: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    // Adding Track
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) as? MyMusicTableCell else {return}
         let selectedTrack = viewModel.visibleSpotifyTracks[indexPath.row]
         
         selectedCell.isSelected = true
         viewModel.selectedSpotifyTracks.append(selectedTrack)
-
-        let string = "Song \"" + selectedCell.trackName.text! + "\" was added"
-        print(string)
+        viewModel.addSong()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -139,9 +138,7 @@ extension MusicTabBarCell: UITableViewDataSource, UITableViewDelegate {
         
         selectedCell.isSelected = false
         viewModel.selectedSpotifyTracks.removeAll(where: { $0 == selectedTrack })
-        
-        let string = "Song \"" + selectedCell.trackName.text! + "\" was deleted"
-        print(string)
+        viewModel.removeSong(index: indexPath.row)
     }
     
 }

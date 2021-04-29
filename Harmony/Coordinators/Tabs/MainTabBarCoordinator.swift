@@ -23,4 +23,12 @@ final class MainTabBarCoordinator: Coordinator {
         navigationController.present(viewController, animated: true, completion: nil)
     }
     
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
+    }
+    
 }

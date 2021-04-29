@@ -21,12 +21,12 @@ final class GroupsListCoordinator: Coordinator {
     func start() {
         let viewController: GroupsListViewController = .instantiate()
         viewController.setTabBarItem(image: "group", selectedColor: .white, unSelectedColor: .gray, title: "GROUPS", tabBarItemTitle: "Group")
+        viewController.tabBarController?.tabBar.isHidden = true
         let groupsViewModel = GroupsListViewModel()
         saveEvent = groupsViewModel.reload
         groupsViewModel.coordinator = self
         viewController.viewModel = groupsViewModel
         navigationController.pushViewController(viewController, animated: false)
-//        navigationController.fadeTo(viewController)
     }
     
     /* Go to "Create new group" window */
@@ -39,17 +39,8 @@ final class GroupsListCoordinator: Coordinator {
     
     /* Go To Selected Section Coordinator */
     func goToSection(section: MenuSection) {
-        goToSection(section: section, navigationController: navigationController)
+        goToSection(section: section, navigationController: navigationController, parentCoordinator: self)
     }
-    
-    /* Go to current chat group */
-//    func goToGroupChat(id: NSManagedObjectID) {
-//        let chatCoordinator = ChatCoordinator(navigationController: navigationController)
-//        chatCoordinator.parentCoordinator = self
-////        chatCoordinator.eventId = id
-//        childCoordinators.append(chatCoordinator)
-//        chatCoordinator.start()
-//    }
     
     /* Go To Created Group */
     func goToCreatedGroup(id: Int, group: UserGroup) {
@@ -65,17 +56,23 @@ final class GroupsListCoordinator: Coordinator {
 //        groupCoordinator.start()
 //    }
     
-    
-    
-    func finishChild(coordinator: Coordinator, goToRoom: Bool?) {
+    func finishChild(coordinator: Coordinator) {
         if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
             return curCoordinator === coordinator
         }) {
             childCoordinators.remove(at: index)
-//            if let _ = goToRoom, let id = id { // Go To group room
-//                goToCreatedGroup(id: id)
-//            }
         }
     }
+    
+//    func finishChild(coordinator: Coordinator, goToRoom: Bool?) {
+//        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+//            return curCoordinator === coordinator
+//        }) {
+//            childCoordinators.remove(at: index)
+////            if let _ = goToRoom, let id = id { // Go To group room
+////                goToCreatedGroup(id: id)
+////            }
+//        }
+//    }
     
 }

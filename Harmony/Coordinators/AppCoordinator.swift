@@ -10,6 +10,7 @@ import UIKit
 protocol Coordinator: class {
     var childCoordinators: [Coordinator] { get }
     func start()
+    func finishChild(coordinator: Coordinator)
 }
 
 final class AppCoordinator: Coordinator {
@@ -29,6 +30,14 @@ final class AppCoordinator: Coordinator {
         window?.makeKeyAndVisible()
         mainCoordinator.start()
     }
+    
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
+    }
 }
 
 /* Extension To Move To Sections */
@@ -44,34 +53,28 @@ extension Coordinator {
         groupsCoordinator.start()
     }
     
-    func chats(navigationController: UINavigationController) {
-        let chatsCoordinator = GroupsListCoordinator(navigationController: navigationController)
-        chatsCoordinator.start()
-    }
-    
     func friends(navigationController: UINavigationController) {
         let friendsCoordinator = FriendsCoordinator(navigationController: navigationController)
         friendsCoordinator.start()
     }
     
-    func settings(navigationController: UINavigationController) {
+    func settings(navigationController: UINavigationController, parentCoordinator: Coordinator) {
         let settingsCoordinator = SettingsCoordinator(navigationController: navigationController)
+        settingsCoordinator.parentCoordinator = parentCoordinator
         settingsCoordinator.start()
     }
     
     /* Go To Selected Section Coordinator */
-    func goToSection(section: MenuSection, navigationController: UINavigationController) {
+    func goToSection(section: MenuSection, navigationController: UINavigationController, parentCoordinator: Coordinator) {
         switch section {
         case .Profile:
             profile(navigationController: navigationController)
         case .Groups:
             groups(navigationController: navigationController)
-        case .Chats:
-            groups(navigationController: navigationController)
         case .Friends:
             friends(navigationController: navigationController)
         case .Settings:
-            settings(navigationController: navigationController)
+            settings(navigationController: navigationController, parentCoordinator: parentCoordinator)
         }
     }
     

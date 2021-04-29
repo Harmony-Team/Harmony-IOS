@@ -30,7 +30,7 @@ final class ProfileCoordinator: Coordinator {
     
     /* Go To Selected Section Coordinator */
     func goToSection(section: MenuSection) {
-        goToSection(section: section, navigationController: navigationController)
+        goToSection(section: section, navigationController: navigationController, parentCoordinator: self)
     }
     
     /* Settings screen */

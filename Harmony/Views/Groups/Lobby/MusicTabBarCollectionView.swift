@@ -48,6 +48,7 @@ class MusicTabBarCollectionView: UICollectionView, UICollectionViewDelegate, UIC
             }
         } else { // Lobby's Playlists Section
             let cell = dequeueReusableCell(withReuseIdentifier: "lobbyPlaylistsSectionId", for: indexPath) as! LobbyPlaylistsTabBarCell
+            cell.viewModel = viewModel
             return cell
         }
     }

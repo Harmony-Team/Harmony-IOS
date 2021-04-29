@@ -11,7 +11,7 @@ final class SettingsCoordinator: Coordinator {
     
     private(set)var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    var parentCoordinator: ProfileCoordinator!
+    var parentCoordinator: Coordinator!
 //    var user: User!
     
     init(navigationController: UINavigationController) {
@@ -36,7 +36,7 @@ final class SettingsCoordinator: Coordinator {
     
     /* Go To Selected Section Coordinator */
     func goToSection(section: MenuSection) {
-        goToSection(section: section, navigationController: navigationController)
+        goToSection(section: section, navigationController: navigationController, parentCoordinator: self)
     }
 
     /* Logout and go to login form */

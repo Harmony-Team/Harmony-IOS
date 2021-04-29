@@ -23,7 +23,7 @@ final class CreatedPlaylistCoordinator: Coordinator {
     
     func start() {
         let viewController: NewGroupViewController = .instantiate(id: "PlaylistCreatedViewController")
-        let createdPlaylistViewModel = PlaylistCreatedViewModel(coreDataManager: CoreDataManager(), spotifyPlaylistName: playlistName, spotifyPlaylistImage: playlistImage)
+        let createdPlaylistViewModel = PlaylistCreatedViewModel(coreDataManager: GroupsCoreDataManager(), spotifyPlaylistName: playlistName, spotifyPlaylistImage: playlistImage)
         createdPlaylistViewModel.coordinator = self
         viewController.playlistCreatedViewModel = createdPlaylistViewModel
         navigationController.pushViewController(viewController, animated: true)
@@ -32,6 +32,14 @@ final class CreatedPlaylistCoordinator: Coordinator {
     func closeWithoutSaving(_ goToRoom: Bool?) {
         navigationController.popViewController(animated: true)
         parentCoordinator.finishChild(coordinator: self)
+    }
+    
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
     }
     
     deinit {

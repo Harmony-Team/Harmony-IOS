@@ -14,6 +14,7 @@ class APIManager {
     
     private let base_url = "https://harmony-db.herokuapp.com"
     
+    // MARK: LOGIN/REGISTER
     /* Register function */
     func callRegisterAPI(register: RegisterUser, completion: @escaping (String) -> ()) {
         
@@ -257,9 +258,10 @@ class APIManager {
     }
     
     
+    // MARK: GROUPS
     /* Creating Group */
-    func createGroup(groupName: String, groupDescr: String) {
-        let createGroupApi = "\(base_url)/api/group/create?groupName=\(groupName)&description=\(groupDescr)"
+    func createGroup(groupName: String, groupDescr: String, avatarUrl: String, completion: @escaping (NewGroup)->()) {
+        let createGroupApi = "\(base_url)/api/group/create?groupName=\(groupName)&description=\(groupDescr)&avatarUrl=\("avatarUrl")"
         let url = URL(string: createGroupApi)!
         var request = URLRequest(url: url)
         let token = UserDefaults.standard.string(forKey: "userToken")!
@@ -273,9 +275,14 @@ class APIManager {
             guard let data = data else { return }
             
             do {
-                let result = try JSONSerialization.jsonObject(with: data, options: [])
-                
-//                print(result)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                let code = (json as AnyObject).value(forKey: "code") as! Int
+                if code == 0 {
+                    let decoder = JSONDecoder()
+                    let resp: NewGroup = try decoder.decode(NewGroup.self, from: data)
+                    
+                    completion(resp)
+                }
                 
             } catch {
                 print(error.localizedDescription)
@@ -320,7 +327,7 @@ class APIManager {
     }
     
     /* Create Invite Code */
-    func createInviteCode(groupId: Int, days: Int) {
+    func createInviteCode(groupId: Int, days: Int, completion: @escaping (String) -> ()) {
         let invideCodeApi = "\(base_url)/api/group/invite?groupId=\(groupId)&days=\(days)"
         let url = URL(string: invideCodeApi)!
         var request = URLRequest(url: url)
@@ -337,8 +344,105 @@ class APIManager {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
-                
-                print(json)
+                let inviteCode = (json as AnyObject).value(forKey: "message") as! String
+                completion(inviteCode)
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
+    /* Add Song In Pull */
+    func addSong(groupId: Int, spotifyId: String, songName: String, completion: @escaping (Result<String?, Error>) -> Void) {
+        let addSongApi = "\(base_url)/api/group/music/add?groupId=\(groupId)&spotifyId=\(spotifyId)"
+        let url = URL(string: addSongApi)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+
+        request.allHTTPHeaderFields = [
+            "Authorization": "\(token)"
+        ]
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                let code = (json as AnyObject).value(forKey: "code") as! Int
+                if(code != 0) {
+                    completion(.success("Somebody in this lobby has already added song '\(songName)' in pull.\n Add another song please."))
+                } else {
+                    print("Song '\(songName)' was added.(\(spotifyId)")
+                }
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
+    /* Remove Song From Pull */
+    func removeSong(groupId: Int, spotifyId: String, songName: String) {
+        let removeSongApi = "\(base_url)/api/group/music/remove?groupId=\(groupId)&spotifyId=\(spotifyId)"
+        let url = URL(string: removeSongApi)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+
+        request.allHTTPHeaderFields = [
+            "Authorization": "\(token)"
+        ]
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                let code = (json as AnyObject).value(forKey: "code") as! Int
+                if(code == 0) {
+                    print("Song '\(songName)' was removed.")
+                }
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
+    /* Get All Pull Songs */
+    func getSongs(groupId: Int, userLogin: String, completion: @escaping ([PullTrack]) -> ()) {
+        let getSongApi = "\(base_url)/api/group/music/get?groupId=\(groupId)"
+        let url = URL(string: getSongApi)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+        var tracksInPull = [PullTrack]()
+
+        request.allHTTPHeaderFields = [
+            "Authorization": "\(token)"
+        ]
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                let code = (json as AnyObject).value(forKey: "code") as! Int
+                if code == 0 {
+                    let decoder = JSONDecoder()
+                    let resp: PullTrackResponse = try decoder.decode(PullTrackResponse.self, from: data)
+                    
+                    tracksInPull = resp.response.filter(){$0.userLogin == userLogin}
+                    completion(tracksInPull)
+                }
             }
             catch {
                 print(error.localizedDescription)

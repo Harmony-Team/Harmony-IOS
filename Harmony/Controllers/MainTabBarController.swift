@@ -41,22 +41,4 @@ class MainTabBarController: UITabBarController {
         tabBar.unselectedItemTintColor = .white
     }
     
-    @objc func d() {
-        switch selectedIndex {
-        case 1:
-            print("Friends")
-            friendCoordinator.addNewFriend()
-            break
-        case 3:
-            print("Groups")
-            groupCoordinator.addNewGroup()
-            break
-        case 4:
-            print("Music")
-            break
-        default:
-            break
-        }
-    }
-    
 }

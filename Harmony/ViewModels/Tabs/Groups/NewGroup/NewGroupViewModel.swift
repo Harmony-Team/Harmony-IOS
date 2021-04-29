@@ -10,25 +10,27 @@ import UIKit
 class NewGroupViewModel {
     
     var coordinator: NewGroupCoordinator!
-    var coreDataManager: CoreDataManager?
+    var coreDataManager: GroupsCoreDataManager?
+    var createdGroup: NewGroup!
     
-    init(coreDataManager: CoreDataManager) {
+    init(coreDataManager: GroupsCoreDataManager) {
         self.coreDataManager = coreDataManager
     }
     
+    // TODO: SHOW INVITE CODE
     func goToShareLink() {
-        print("Creating Invite Code...");
-        APIManager.shared.getGroups { groups in
-            APIManager.shared.createInviteCode(groupId: groups[groups.count - 1].id, days: 1)
-            print(groups[groups.count - 1].name)
-        }
-        
-        coordinator.goToShareLink()
+        let inviteCode = createdGroup.invite_code
+        coordinator.goToShareLink(inviteCode: inviteCode)
     }
     
     /* Create New Group */
-    func createNewGroup(with name: String, description: String, image: UIImage) {
-        APIManager.shared.createGroup(groupName: name, groupDescr: description)
+    func createNewGroup(with name: String, description: String, imageUrl: String) {
+        APIManager.shared.createGroup(groupName: name, groupDescr: description, avatarUrl: imageUrl) { (newGroup) in
+            self.createdGroup = newGroup
+            DispatchQueue.main.async {
+                self.goToShareLink()
+            }
+        }
 //        coreDataManager?.saveGroup(name: name, image: image)
     }
     

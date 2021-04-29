@@ -32,19 +32,24 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     private var recentActivityHeader = UILabel()
     private var recentActivityCollectionView = RecentActivityCollectionView()
     
+    /* Gesture To Reopen Screen From Menu */
+    private var tapGestureRecogniser: UITapGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         customizeNavBarController(bgColor: .bgColor, textColor: .white)
         
         /* Setting Up Side Menu */
         setupMenuAndContent()
         if viewModel.isChosen { // Animate If Profile Screen Is Choosen In Menu
-            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: false)
+            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: false, gestureRecogniser: tapGestureRecogniser)
             closeMenuOnTap(nil)
         }
         // Notification About Chosing Section In Menu
         NotificationCenter.default.addObserver(self, selector: #selector(chooseSection(notification:)), name: NSNotification.Name(rawValue: "ChoseSection"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(closeMenuOnTap(_:completion:)), name: NSNotification.Name(rawValue: "CloseSideMenu"), object: nil)
         
         /* Loading Collection Views */
         showActivityIndicator(alpha: 1)
@@ -75,15 +80,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     /* Setting Up Content View And Menu */
     private func setupMenuAndContent() {
         menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
+        tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
         addSideMenuView(menuView: menuView)
         setupContent(menuView: menuView, contentView: contentView)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         panGestureRecognizer.delegate = self
-        contentView.addGestureRecognizer(tap)
         contentView.addGestureRecognizer(panGestureRecognizer)
-        contentView.isUserInteractionEnabled = true
     }
     
     @objc private func handlePanGesture(sender: UIPanGestureRecognizer) {
@@ -181,112 +184,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     /* Content View Tapped To Close Menu */
     @objc private func closeMenuOnTap(_ sender: UITapGestureRecognizer?, completion: (()->())? = nil) {
         if (viewModel.menuShow) {
-            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, completion: completion)
+            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser, completion: completion)
         }
     }
     
     /* Open / Close menu */
     @objc private func toggleMenu(_ sender: UITapGestureRecognizer) {
-        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true)
+        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser)
     }
 }
-
-/*
-extension ProfileViewController: UIGestureRecognizerDelegate {
-    
-    @objc func revealSideMenu() {
-        self.sideMenuState(expanded: self.isExpanded ? false : true)
-    }
-    
-    // Dragging Side Menu
-    @objc private func handlePanGesture(sender: UIPanGestureRecognizer) {
-        
-        // ...
-
-        let position: CGFloat = sender.translation(in: self.view).x
-        let velocity: CGFloat = sender.velocity(in: self.view).x
-
-        switch sender.state {
-        case .began:
-
-            // If the user tries to expand the menu more than the reveal width, then cancel the pan gesture
-            if velocity > 0, self.isExpanded {
-                sender.state = .cancelled
-            }
-
-            // If the user swipes right but the side menu hasn't expanded yet, enable dragging
-            if velocity > 0, !self.isExpanded {
-                self.draggingIsEnabled = true
-            }
-            // If user swipes left and the side menu is already expanded, enable dragging they collapsing the side menu)
-            else if velocity < 0, self.isExpanded {
-                self.draggingIsEnabled = true
-            }
-
-            if self.draggingIsEnabled {
-                // If swipe is fast, Expand/Collapse the side menu with animation instead of dragging
-                let velocityThreshold: CGFloat = 550
-                if abs(velocity) > velocityThreshold {
-                    self.sideMenuState(expanded: self.isExpanded ? false : true)
-                    self.draggingIsEnabled = false
-                    return
-                }
-
-                if self.revealSideMenuOnTop {
-                    self.panBaseLocation = 0.0
-                    if self.isExpanded {
-                        self.panBaseLocation = self.sideMenuRevealWidth
-                    }
-                }
-            }
-
-        case .changed:
-
-            // Expand/Collapse side menu while dragging
-            if self.draggingIsEnabled {
-                if self.revealSideMenuOnTop {
-                    // Show/Hide shadow background view while dragging
-                    let xLocation: CGFloat = self.panBaseLocation + position
-                    let percentage = (xLocation * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
-
-                    let alpha = percentage >= 0.6 ? 0.6 : percentage
-
-                    // Move side menu while dragging
-                    if xLocation <= self.sideMenuRevealWidth {
-                        self.sideMenuTrailingConstraint.constant = xLocation - self.sideMenuRevealWidth
-                    }
-                }
-                else {
-                    if let recogView = sender.view?.subviews[1] {
-                       // Show/Hide shadow background view while dragging
-                        let percentage = (recogView.frame.origin.x * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
-
-                        let alpha = percentage >= 0.6 ? 0.6 : percentage
-
-                        // Move side menu while dragging
-                        if recogView.frame.origin.x <= self.sideMenuRevealWidth, recogView.frame.origin.x >= 0 {
-                            recogView.frame.origin.x = recogView.frame.origin.x + position
-                            sender.setTranslation(CGPoint.zero, in: view)
-                        }
-                    }
-                }
-            }
-        case .ended:
-            self.draggingIsEnabled = false
-            // If the side menu is half Open/Close, then Expand/Collapse with animationse with animation
-            if self.revealSideMenuOnTop {
-                let movedMoreThanHalf = self.sideMenuTrailingConstraint.constant > -(self.sideMenuRevealWidth * 0.5)
-                self.sideMenuState(expanded: movedMoreThanHalf)
-            }
-            else {
-                if let recogView = sender.view?.subviews[1] {
-                    let movedMoreThanHalf = recogView.frame.origin.x > self.sideMenuRevealWidth * 0.5
-                    self.sideMenuState(expanded: movedMoreThanHalf)
-                }
-            }
-        default:
-            break
-        }
-    }
-}
-*/

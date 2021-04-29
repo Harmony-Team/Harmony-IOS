@@ -71,7 +71,7 @@ class SettingsViewModel {
         UserDefaults.standard.removeObject(forKey: "spotifyUser")
         UserDefaults.standard.removeObject(forKey: "access_token")
         UserDefaults.standard.removeObject(forKey: "refresh_token")
-        CoreDataManagerr.shared.deleteTracks()
+        TracksCoreDataManager.shared.deleteTracks()
         spotifyService.disintegrateSpotify()
     }
     

@@ -10,11 +10,11 @@ import UIKit
 class PlaylistCreatedViewModel {
     
     var coordinator: CreatedPlaylistCoordinator!
-    var coreDataManager: CoreDataManager?
+    var coreDataManager: GroupsCoreDataManager?
     var spotifyPlaylistName: String
     var spotifyPlaylistImage: UIImage
     
-    init(coreDataManager: CoreDataManager, spotifyPlaylistName: String, spotifyPlaylistImage: UIImage) {
+    init(coreDataManager: GroupsCoreDataManager, spotifyPlaylistName: String, spotifyPlaylistImage: UIImage) {
         self.coreDataManager = coreDataManager
         self.spotifyPlaylistName = spotifyPlaylistName
         self.spotifyPlaylistImage = spotifyPlaylistImage

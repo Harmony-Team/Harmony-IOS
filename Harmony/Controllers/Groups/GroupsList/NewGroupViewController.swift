@@ -134,24 +134,19 @@ class NewGroupViewController: UIViewController {
     
     /* Create group chat and close window */
     @IBAction func createGroupChat(_ sender: UIButton) {
-//        viewModel.goToShareLink()
-        guard let nameText = groupNameTextField?.text, !nameText.isEmpty else {
+
+        guard let nameText = groupNameTextField?.text?.replacingOccurrences(of: " ", with: "%20"), groupNameTextField?.text?.prefix(1) != " ", !nameText.isEmpty else {
             groupNameTextField?.shakeAnimation()
             return
         }
         
-        let descrText = descriptionTextField?.text
+        let descrText = descriptionTextField?.text?.replacingOccurrences(of: " ", with: "%20")
         
         if let image = newGroupLogoImageView.image { // If Group Image Selected
-            viewModel?.createNewGroup(with: nameText, description: descrText ?? "", image: image)
+            viewModel?.createNewGroup(with: nameText, description: descrText ?? "", imageUrl: image.imageToBase64())
         } else { // Default Image
-            viewModel?.createNewGroup(with: nameText, description: descrText ?? "", image: UIImage(named: "groupImage")!)
+            viewModel?.createNewGroup(with: nameText, description: descrText ?? "", imageUrl: UIImage(named: "groupImage")!.imageToBase64())
         }
-        
-//        dismiss(animated: true) {
-//            self.viewModel?.goToGroup()
-            viewModel?.goToShareLink()
-//        }
     }
     
     /* Create playlist */
@@ -192,14 +187,12 @@ class NewGroupViewController: UIViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height / 2
-//                signInButtonBottomConstraint.constant = keyboardSize.height / 3
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
-//        signInButtonBottomConstraint.constant = 30
     }
     
     // Hide keyboard

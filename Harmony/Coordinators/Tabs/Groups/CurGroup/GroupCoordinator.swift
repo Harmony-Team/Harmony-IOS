@@ -43,8 +43,17 @@ final class GroupCoordinator: Coordinator {
     func goToMusicSearching(spotifyTracks: [SpotifyTrack], selectedSpotifyTracks: [SpotifyTrack]) {
         let musicSearchCoordinator = MusicSearchCoordinator(navigationController: navigationController, spotifyTracks: spotifyTracks, selectedSpotifyTracks: selectedSpotifyTracks)
         musicSearchCoordinator.parentCoordinator = self
+        musicSearchCoordinator.group = group
         childCoordinators.append(musicSearchCoordinator)
         musicSearchCoordinator.start()
+    }
+    
+    func finishChild(coordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { (curCoordinator) -> Bool in
+            return curCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
     }
     
     func finishChild(coordinator: Coordinator, goToRoom: Bool?, selectedSpotifyTracks: [SpotifyTrack]? = nil) {

@@ -13,7 +13,8 @@ class GroupsListViewController: UIViewController {
     
     /* Menu */
     private var menuView: SideMenuView!
-    
+    private var tapGestureRecogniser: UITapGestureRecognizer!
+
     /* Content */
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var topView: UIView!
@@ -53,12 +54,9 @@ class GroupsListViewController: UIViewController {
         addSideMenuView(menuView: menuView)
         setupContent(menuView: menuView, contentView: contentView)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
-//        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+        tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
 //        panGestureRecognizer.delegate = self
-        contentView.addGestureRecognizer(tap)
 //        contentView.addGestureRecognizer(panGestureRecognizer)
-        contentView.isUserInteractionEnabled = true
     }
     
     /* Choosing Secton In Menu */
@@ -73,18 +71,18 @@ class GroupsListViewController: UIViewController {
     /* Content View Tapped To Close Menu */
     @objc private func closeMenuOnTap(_ sender: UITapGestureRecognizer?, completion: (()->())? = nil) {
         if (viewModel.menuShow) {
-            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, completion: completion)
+            goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser, completion: completion)
         }
     }
     
     /* Open / Close menu */
     @objc private func toggleMenu(_ sender: UITapGestureRecognizer?) {
         hideActivityIndicator()
-        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true)
+        goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser)
     }
 
     private func setupTableView() {
-        groupsTableView.layer.zPosition = 2
+        groupsTableView.layer.zPosition = 25
         groupsTableView.showsVerticalScrollIndicator = false
         groupsTableView.backgroundColor = .clear
         groupsTableView.tableFooterView = UIView(frame: CGRect.zero)
