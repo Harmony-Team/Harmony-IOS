@@ -9,14 +9,16 @@ import UIKit
 
 class GroupUsersCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var viewModel: GroupViewModel
     var groupAdmin: String
     var groupUsers: [GroupUsers] // Group Users
     private static var cellScale: CGFloat = 0.26
     private var spacing: CGFloat = UIScreen.main.bounds.width * ((1 - cellScale * 3.5) / 4)
     
-    init(groupAdmin: String, groupUsers: [GroupUsers]) {
+    init(viewModel: GroupViewModel, groupAdmin: String, groupUsers: [GroupUsers]) {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        self.viewModel = viewModel
         self.groupAdmin = groupAdmin
         self.groupUsers = groupUsers
         super.init(frame: .zero, collectionViewLayout: layout)
@@ -76,7 +78,11 @@ class GroupUsersCollectionView: UICollectionView, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Select")
+        if indexPath.section == 0 {
+            viewModel.goToSearchFriends()
+        } else {
+            print("Select")
+        }
     }
     
     required init?(coder: NSCoder) {

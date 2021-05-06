@@ -31,6 +31,7 @@ class NewGroupCell: UITableViewCell {
         logoView.setupShadow(cornerRad: 10, shadowRad: 5, shadowOp: 0.6, offset: CGSize(width: 0, height: 5))
         logoView.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: 15, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
         
+        logoImageView.image = UIImage(systemName: "plus")
         logoImageView.contentMode = .scaleAspectFill
         logoImageView.tintColor = .white
         

@@ -13,6 +13,9 @@ final class NewPlaylistCoordinator: Coordinator {
     var parentCoordinator: GroupCoordinator!
     var navigationController: UINavigationController
     var navModal: UINavigationController?
+    var tracksCount: Int!
+    var partitionsTotalCount: Int!
+    var partitionsReadyCount: Int!
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -23,6 +26,9 @@ final class NewPlaylistCoordinator: Coordinator {
         let viewController: NewGroupViewController = .instantiate(id: "NewPlaylistViewController")
         let newPlaylistViewModel = NewPlaylistViewModel(coreDataManager: GroupsCoreDataManager())
         newPlaylistViewModel.coordinator = self
+        newPlaylistViewModel.tracksCount = tracksCount
+        newPlaylistViewModel.partitionsTotalCount = partitionsTotalCount
+        newPlaylistViewModel.partitionsReadyCount = partitionsReadyCount
         viewController.newPlaylistViewModel = newPlaylistViewModel
         navModal?.setViewControllers([viewController], animated: true)
         navigationController.present(navModal!, animated: true, completion: nil)

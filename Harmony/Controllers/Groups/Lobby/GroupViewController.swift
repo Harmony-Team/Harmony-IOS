@@ -105,7 +105,7 @@ class GroupViewController: UIViewController {
     
     /* Users Collection View */
     private func setupUsersCollectionView() {
-        groupUsersCollectionView = GroupUsersCollectionView(groupAdmin: viewModel.group.hostLogin, groupUsers: viewModel.group.users)
+        groupUsersCollectionView = GroupUsersCollectionView(viewModel: viewModel, groupAdmin: viewModel.group.hostLogin, groupUsers: viewModel.group.users)
         groupUsersLabel.text = "USERS OF THE GROUP"
         groupUsersLabel.font = UIFont.setFont(size: .Small)
         groupUsersLabel.addKern(1.74)

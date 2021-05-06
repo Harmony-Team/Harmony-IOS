@@ -81,6 +81,7 @@ class FriendsViewController: UIViewController {
     
     /* Open / Close menu */
     @objc private func toggleMenu(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
         goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser)
     }
     

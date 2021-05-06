@@ -36,26 +36,28 @@ final class GroupsCoreDataManager {
             return nil
         }
     }
-    func saveGroup(name: String, image: UIImage) {
+    func saveGroup(groupInfo: UserGroup, image: UIImage? = nil) {
         let newGroup = Group(context: moc)
-        newGroup.setValue(name, forKey: "name")
-        let imageData = image.jpegData(compressionQuality: 1)
-        newGroup.setValue(imageData, forKey: "image")
-        
+        newGroup.setValue(groupInfo.name, forKey: "name")
+        newGroup.setValue(groupInfo.description, forKey: "descr")
+//        let imageData = image.jpegData(compressionQuality: 1)
+//        newGroup.setValue(imageData, forKey: "image")
+        newGroup.setValue(groupInfo.avatar_url, forKey: "imageUrl")
+        newGroup.setValue(groupInfo.id, forKey: "id")
         do {
             try moc.save()
         } catch {
             return
         }
     }
-    func fetchGroups() -> [Group] {
+    func fetchGroups() -> [Group]? {
         do {
             let fetchRequest = NSFetchRequest<Group>(entityName: "Group")
             let groups = try moc.fetch(fetchRequest)
             print(groups.count)
             return groups
         } catch {
-            return []
+            return nil
         }
     }
     func deleteGroup(id: NSManagedObjectID) {

@@ -315,8 +315,47 @@ class APIManager {
                 if code == 0 {
                     let decoder = JSONDecoder()
                     let resp: GroupsResponse = try decoder.decode(GroupsResponse.self, from: data)
-                    completion(resp.response)
 //                    print(resp.response)
+                    completion(resp.response)
+                    
+                }
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
+    /* Getting User's Groups */
+    func getGroupById(id: Int, completion: @escaping (UserGroup) -> ()) {
+        let getGroupApi = "\(base_url)/api/user/groups"
+        let url = URL(string: getGroupApi)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+        var code = 0
+
+        request.allHTTPHeaderFields = [
+            "Authorization": "\(token)"
+        ]
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                
+                code = (json as AnyObject).value(forKey: "code") as! Int
+                if code == 0 {
+                    let decoder = JSONDecoder()
+                    let resp: GroupsResponse = try decoder.decode(GroupsResponse.self, from: data)
+                    resp.response.forEach {
+                        if $0.id == id {
+                            completion($0)
+                        }
+                    }
                 }
             }
             catch {
@@ -417,12 +456,13 @@ class APIManager {
     }
     
     /* Get All Pull Songs */
-    func getSongs(groupId: Int, userLogin: String, completion: @escaping ([PullTrack]) -> ()) {
+    func getSongs(groupId: Int, userLogin: String, completion: @escaping (([PullTrack], Int)) -> ()) {
         let getSongApi = "\(base_url)/api/group/music/get?groupId=\(groupId)"
         let url = URL(string: getSongApi)!
         var request = URLRequest(url: url)
         let token = UserDefaults.standard.string(forKey: "userToken")!
         var tracksInPull = [PullTrack]()
+        var tracksCount = 0
 
         request.allHTTPHeaderFields = [
             "Authorization": "\(token)"
@@ -440,8 +480,10 @@ class APIManager {
                     let decoder = JSONDecoder()
                     let resp: PullTrackResponse = try decoder.decode(PullTrackResponse.self, from: data)
                     
+                    tracksCount = resp.response.count
+                    
                     tracksInPull = resp.response.filter(){$0.userLogin == userLogin}
-                    completion(tracksInPull)
+                    completion((tracksInPull, tracksCount))
                 }
             }
             catch {

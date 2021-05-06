@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3FB63F697F2DFD935D3A4DC0 /* Pods_Harmony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA964EE92A25094FD1F159E /* Pods_Harmony.framework */; };
+		5214407C26448BD800DB2A6B /* FriendsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214407B26448BD800DB2A6B /* FriendsSearchViewController.swift */; };
+		5214407F26448DF000DB2A6B /* FriendsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214407E26448DF000DB2A6B /* FriendsSearchViewModel.swift */; };
+		5214408226448E4D00DB2A6B /* FriendsSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214408126448E4D00DB2A6B /* FriendsSearchCoordinator.swift */; };
 		521A04EC25C73570007F86A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A04EB25C73570007F86A0 /* AppDelegate.swift */; };
 		521A04EE25C73570007F86A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A04ED25C73570007F86A0 /* SceneDelegate.swift */; };
 		521A04F325C73570007F86A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521A04F125C73570007F86A0 /* Main.storyboard */; };
@@ -118,6 +121,9 @@
 /* Begin PBXFileReference section */
 		0F7D604D3479CC33EE99EF88 /* Pods-Harmony.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harmony.debug.xcconfig"; path = "Target Support Files/Pods-Harmony/Pods-Harmony.debug.xcconfig"; sourceTree = "<group>"; };
 		14418CAD8F75E6B348133192 /* Pods-Harmony.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harmony.release.xcconfig"; path = "Target Support Files/Pods-Harmony/Pods-Harmony.release.xcconfig"; sourceTree = "<group>"; };
+		5214407B26448BD800DB2A6B /* FriendsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSearchViewController.swift; sourceTree = "<group>"; };
+		5214407E26448DF000DB2A6B /* FriendsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSearchViewModel.swift; sourceTree = "<group>"; };
+		5214408126448E4D00DB2A6B /* FriendsSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSearchCoordinator.swift; sourceTree = "<group>"; };
 		521A04E825C73570007F86A0 /* Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Harmony.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521A04EB25C73570007F86A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		521A04ED25C73570007F86A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -554,6 +560,7 @@
 				52AC3AE825FE33B300EA7E19 /* GroupUsersCellViewModel.swift */,
 				52F42E7E260FA4D600FCAE54 /* MusicCellViewModel.swift */,
 				52F42E9A2616442000FCAE54 /* MusicSearchViewModel.swift */,
+				5214407E26448DF000DB2A6B /* FriendsSearchViewModel.swift */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -724,6 +731,7 @@
 			children = (
 				52AC3ABF25F9105E00EA7E19 /* GroupCoordinator.swift */,
 				52F42E97261643DD00FCAE54 /* MusicSearchCoordinator.swift */,
+				5214408126448E4D00DB2A6B /* FriendsSearchCoordinator.swift */,
 			);
 			path = CurGroup;
 			sourceTree = "<group>";
@@ -743,6 +751,7 @@
 			children = (
 				52AC3AB825F90F6900EA7E19 /* GroupViewController.swift */,
 				52F42E94261640D000FCAE54 /* MusicSearchViewController.swift */,
+				5214407B26448BD800DB2A6B /* FriendsSearchViewController.swift */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -898,10 +907,12 @@
 				52F42E6E260E788800FCAE54 /* EditProfileCoordinator.swift in Sources */,
 				52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */,
 				5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */,
+				5214407F26448DF000DB2A6B /* FriendsSearchViewModel.swift in Sources */,
 				52D17BA6261E26610081C84D /* RecentActivityCell.swift in Sources */,
 				52AC3B0A2603A96500EA7E19 /* GroupCellViewModel.swift in Sources */,
 				5236FF9E25CDE5A800845300 /* MusicCell.swift in Sources */,
 				5236FF7C25CDA73400845300 /* MainTabBarCoordinator.swift in Sources */,
+				5214407C26448BD800DB2A6B /* FriendsSearchViewController.swift in Sources */,
 				521A052225C74210007F86A0 /* GroupsListCoordinator.swift in Sources */,
 				52AC3AC625F95B1B00EA7E19 /* MyMusicTabBarCell.swift in Sources */,
 				52F42E8526125BE600FCAE54 /* CreatedPlaylistCoordinator.swift in Sources */,
@@ -927,6 +938,7 @@
 				52B9B76E26261D0300A50683 /* SideMenuViewModel.swift in Sources */,
 				5236FFB325CFCBC600845300 /* NewFriendViewController.swift in Sources */,
 				52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */,
+				5214408226448E4D00DB2A6B /* FriendsSearchCoordinator.swift in Sources */,
 				52B9B7672624ECE000A50683 /* MenuSectionsCell.swift in Sources */,
 				5236FF9925CDE01700845300 /* FriendCell.swift in Sources */,
 				52F42E98261643DE00FCAE54 /* MusicSearchCoordinator.swift in Sources */,

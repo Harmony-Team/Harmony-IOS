@@ -28,6 +28,14 @@ final class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: false)
     }
     
+    /* Go To Recent Group */
+    func goToCreatedGroup(id: Int, group: UserGroup) {
+        let groupCoordinator = GroupCoordinator(navigationController: navigationController, group: group)
+        groupCoordinator.parentCoordinator = self
+        childCoordinators.append(groupCoordinator)
+        groupCoordinator.start()
+    }
+    
     /* Go To Selected Section Coordinator */
     func goToSection(section: MenuSection) {
         goToSection(section: section, navigationController: navigationController, parentCoordinator: self)

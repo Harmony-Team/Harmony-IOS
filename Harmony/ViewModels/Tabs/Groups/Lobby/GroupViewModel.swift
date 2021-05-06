@@ -36,6 +36,9 @@ class GroupViewModel {
     var visibleSpotifyTracks = [SpotifyTrack]() // Tracks Visible In Table View
     var selectedSpotifyTracks = [SpotifyTrack]() // Selected Tracks
     private var spotifyPlaylistList: [Playlist]?
+    private var tracksCount = 0 // Total Lobby Tracks
+    private var partitionsTotalCount = 0 // Total Lobby Users
+    private var partitionsReadyCount = 0 // Number of ready users
     
     /* Playlists Info */
     
@@ -68,12 +71,17 @@ class GroupViewModel {
     
     /* Create New Playlist */
     func createPlaylist() {
-        coordinator.createNewPlaylist()
+        coordinator.createNewPlaylist(tracks: tracksCount, totalPartitions: partitionsTotalCount, readyPartitions: partitionsReadyCount)
     }
     
     /* Open Search Music View Controller */
     func goToSearchMusic() {
         coordinator.goToMusicSearching(spotifyTracks: spotifyTracks, selectedSpotifyTracks: selectedSpotifyTracks)
+    }
+    
+    /* Open Search Friends View Controller */
+    func goToSearchFriends() {
+        coordinator.goToFriendsSearching()
     }
     
     func cellForRow(at indexPath: IndexPath) -> Cell {
@@ -127,7 +135,10 @@ class GroupViewModel {
             }
             
             // Getting And Checking Songs In Pull
-            ApiManager.getSongs(groupId: group.id, userLogin: user.login) { (tracks) in
+            ApiManager.getSongs(groupId: group.id, userLogin: user.login) { (tracks, count) in
+                self.tracksCount = count
+                self.partitionsTotalCount = self.group.users.count
+                self.partitionsReadyCount = 1
                 for (_, song) in tracks.enumerated() {
                     self.selectedSpotifyTracks.append(contentsOf: self.visibleSpotifyTracks.filter(){$0.spotifyId == song.spotifyTrackId})
                 }

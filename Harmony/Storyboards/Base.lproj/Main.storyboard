@@ -643,31 +643,31 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fe9-tR-A9C">
-                                        <rect key="frame" x="0.0" y="85" width="414" height="725"/>
+                                        <rect key="frame" x="0.0" y="88" width="414" height="722"/>
                                     </tableView>
+                                    <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="hpA-po-Cpz">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="fe9-tR-A9C" secondAttribute="trailing" id="6Xh-Vz-xGj"/>
+                                    <constraint firstItem="hpA-po-Cpz" firstAttribute="centerX" secondItem="L8u-mV-g4u" secondAttribute="centerX" id="BIG-Gp-2Xc"/>
                                     <constraint firstItem="fe9-tR-A9C" firstAttribute="leading" secondItem="L8u-mV-g4u" secondAttribute="leading" id="HpA-M1-4tF"/>
+                                    <constraint firstItem="hpA-po-Cpz" firstAttribute="height" secondItem="L8u-mV-g4u" secondAttribute="height" multiplier="0.0491071" id="LnR-TZ-Brn"/>
+                                    <constraint firstItem="hpA-po-Cpz" firstAttribute="width" secondItem="L8u-mV-g4u" secondAttribute="width" id="LvJ-Cs-M1Z"/>
+                                    <constraint firstItem="fe9-tR-A9C" firstAttribute="top" secondItem="hpA-po-Cpz" secondAttribute="bottom" id="Zck-VK-SZF"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="hpA-po-Cpz">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jnx-mb-Iug"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hpA-po-Cpz" firstAttribute="height" secondItem="Fih-fp-iKD" secondAttribute="height" multiplier="0.0491071" id="453-7C-A5h"/>
                             <constraint firstAttribute="trailing" secondItem="L8u-mV-g4u" secondAttribute="trailing" id="8Mj-xP-GcE"/>
                             <constraint firstAttribute="bottom" secondItem="L8u-mV-g4u" secondAttribute="bottom" id="NHR-EA-fKy"/>
+                            <constraint firstItem="hpA-po-Cpz" firstAttribute="top" secondItem="jnx-mb-Iug" secondAttribute="top" id="Oum-2f-8E8"/>
                             <constraint firstItem="jnx-mb-Iug" firstAttribute="bottom" secondItem="fe9-tR-A9C" secondAttribute="bottom" constant="3" id="RA9-xu-DW9"/>
-                            <constraint firstItem="fe9-tR-A9C" firstAttribute="top" secondItem="jnx-mb-Iug" secondAttribute="top" constant="41" id="SGI-IU-acb"/>
-                            <constraint firstItem="hpA-po-Cpz" firstAttribute="centerX" secondItem="jnx-mb-Iug" secondAttribute="centerX" id="aOt-di-k89"/>
-                            <constraint firstItem="hpA-po-Cpz" firstAttribute="width" secondItem="Fih-fp-iKD" secondAttribute="width" id="b5Y-87-EbJ"/>
-                            <constraint firstItem="hpA-po-Cpz" firstAttribute="top" secondItem="jnx-mb-Iug" secondAttribute="top" id="c7r-QH-eSZ"/>
                             <constraint firstItem="L8u-mV-g4u" firstAttribute="leading" secondItem="Fih-fp-iKD" secondAttribute="leading" id="r8i-9r-bKw"/>
                             <constraint firstItem="L8u-mV-g4u" firstAttribute="top" secondItem="Fih-fp-iKD" secondAttribute="top" id="tAs-Wd-RSR"/>
                         </constraints>
@@ -805,7 +805,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-RJ-gQW">
-                                        <rect key="frame" x="0.0" y="189.5" width="414" height="623.5"/>
+                                        <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="groupImage1" translatesAutoresizingMaskIntoConstraints="NO" id="78k-ez-giv">
@@ -818,7 +818,6 @@
                                     <constraint firstItem="78k-ez-giv" firstAttribute="width" secondItem="I2f-oG-zDi" secondAttribute="width" multiplier="1.02174" id="BiA-0G-dz7"/>
                                     <constraint firstItem="I2f-oG-zDi" firstAttribute="height" secondItem="ZJI-ld-di9" secondAttribute="height" multiplier="0.352399" id="Bqy-Ez-Vct"/>
                                     <constraint firstItem="4Nl-RJ-gQW" firstAttribute="width" secondItem="ZJI-ld-di9" secondAttribute="width" id="EdX-aL-FmA"/>
-                                    <constraint firstItem="4Nl-RJ-gQW" firstAttribute="top" secondItem="I2f-oG-zDi" secondAttribute="bottom" multiplier="0.6" id="El3-xs-gEB"/>
                                     <constraint firstItem="I2f-oG-zDi" firstAttribute="width" secondItem="ZJI-ld-di9" secondAttribute="width" id="OJQ-3G-v1S"/>
                                     <constraint firstItem="4Nl-RJ-gQW" firstAttribute="centerX" secondItem="ZJI-ld-di9" secondAttribute="centerX" id="OLM-S8-u4A"/>
                                     <constraint firstItem="78k-ez-giv" firstAttribute="height" secondItem="I2f-oG-zDi" secondAttribute="height" id="Pef-Ag-dkE"/>
@@ -835,6 +834,7 @@
                             <constraint firstItem="Qnk-um-ZnF" firstAttribute="trailing" secondItem="ZJI-ld-di9" secondAttribute="trailing" id="G5u-t1-cRY"/>
                             <constraint firstAttribute="bottom" secondItem="ZJI-ld-di9" secondAttribute="bottom" id="Mu1-5W-cDA"/>
                             <constraint firstItem="4Nl-RJ-gQW" firstAttribute="bottom" secondItem="Qnk-um-ZnF" secondAttribute="bottom" id="XqY-bM-QQg"/>
+                            <constraint firstItem="Qnk-um-ZnF" firstAttribute="top" secondItem="4Nl-RJ-gQW" secondAttribute="top" id="dbK-OJ-OFQ"/>
                             <constraint firstItem="ZJI-ld-di9" firstAttribute="leading" secondItem="Qnk-um-ZnF" secondAttribute="leading" id="ljk-Rx-b1L"/>
                         </constraints>
                     </view>
@@ -1094,7 +1094,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
             </objects>
-            <point key="canvasLocation" x="1961" y="809"/>
+            <point key="canvasLocation" x="1961" y="815"/>
         </scene>
         <!--Share Link View Controller-->
         <scene sceneID="Q2K-e7-tgD">
@@ -1697,6 +1697,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z58-56-u1Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2670" y="1422"/>
+        </scene>
+        <!--Friends Search View Controller-->
+        <scene sceneID="ZBu-XI-CBg">
+            <objects>
+                <viewController storyboardIdentifier="FriendsSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wzF-1K-Pem" customClass="FriendsSearchViewController" customModule="Harmony" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ExA-zC-A6e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IWQ-Yt-Cue">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jz7-z6-lKh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jz7-z6-lKh" firstAttribute="trailing" secondItem="IWQ-Yt-Cue" secondAttribute="trailing" id="1Qe-3n-dEy"/>
+                            <constraint firstItem="IWQ-Yt-Cue" firstAttribute="leading" secondItem="jz7-z6-lKh" secondAttribute="leading" id="NoE-s1-Lqu"/>
+                            <constraint firstItem="IWQ-Yt-Cue" firstAttribute="top" secondItem="jz7-z6-lKh" secondAttribute="top" id="OBR-RN-AsN"/>
+                            <constraint firstItem="jz7-z6-lKh" firstAttribute="bottom" secondItem="IWQ-Yt-Cue" secondAttribute="bottom" id="QJJ-Rp-l02"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="friendsTableView" destination="IWQ-Yt-Cue" id="yT6-Cs-7JE"/>
+                        <outlet property="searchBar" destination="lf3-0O-Zib" id="3hY-oh-GKE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Glh-bc-kcn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="lf3-0O-Zib">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+            </objects>
+            <point key="canvasLocation" x="1961" y="1523"/>
         </scene>
     </scenes>
     <resources>

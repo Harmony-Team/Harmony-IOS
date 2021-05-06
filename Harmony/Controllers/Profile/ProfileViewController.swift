@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     /* Collection Views */
     private var latestGroupsHeader = UILabel()
-    private var latestGroupsCollectionView = LatestGroupsCollectionView()
+    private var latestGroupsCollectionView: LatestGroupsCollectionView!
     private var recentActivityHeader = UILabel()
     private var recentActivityCollectionView = RecentActivityCollectionView()
     
@@ -136,6 +136,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     /* Setting Up Lates Groups Collection View */
     private func setupLatestGroupsCollectionView() {
+        latestGroupsCollectionView = LatestGroupsCollectionView(viewModel: viewModel)
         contentView.addSubview(latestGroupsHeader)
         contentView.addSubview(latestGroupsCollectionView)
         latestGroupsCollectionView.translatesAutoresizingMaskIntoConstraints = false

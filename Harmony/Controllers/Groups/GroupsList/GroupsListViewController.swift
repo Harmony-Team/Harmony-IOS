@@ -82,6 +82,7 @@ class GroupsListViewController: UIViewController {
     }
 
     private func setupTableView() {
+        groupsTableView.contentInset = UIEdgeInsets(top: topView.frame.height * 0.3, left: 0, bottom: 0, right: 0)
         groupsTableView.layer.zPosition = 25
         groupsTableView.showsVerticalScrollIndicator = false
         groupsTableView.backgroundColor = .clear
