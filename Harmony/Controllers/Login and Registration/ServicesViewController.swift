@@ -34,7 +34,7 @@ class ServicesViewController: UIViewController {
 
     /* End registration. Go to profile */
     @IBAction func endRegistration(_ sender: UIButton) {
-        viewModel.setIntergrationIDs()
+        viewModel.endRegistration()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

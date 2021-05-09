@@ -20,7 +20,8 @@ final class GroupsListCoordinator: Coordinator {
     
     func start() {
         let viewController: GroupsListViewController = .instantiate()
-        viewController.setTabBarItem(image: "group", selectedColor: .white, unSelectedColor: .gray, title: "GROUPS", tabBarItemTitle: "Group")
+//        viewController.setTabBarItem(image: "group", selectedColor: .white, unSelectedColor: .gray, title: "GROUPS", tabBarItemTitle: "Group")
+        viewController.title = "GROUPS"
         viewController.tabBarController?.tabBar.isHidden = true
         let groupsViewModel = GroupsListViewModel()
         saveEvent = groupsViewModel.reload

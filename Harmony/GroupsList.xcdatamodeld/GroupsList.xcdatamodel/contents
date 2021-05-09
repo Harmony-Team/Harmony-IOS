@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
-        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="descr" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Decimal" defaultValueString="0"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="imageUrl" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
     </entity>
     <entity name="Playlistii" representedClassName="Playlistii" syncable="YES" codeGenerationType="class">
@@ -14,8 +17,8 @@
         <attribute name="spotifyId" attributeType="String"/>
     </entity>
     <elements>
-        <element name="SpotifyTrack" positionX="-63" positionY="0" width="128" height="103"/>
-        <element name="Group" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="Group" positionX="-54" positionY="18" width="128" height="118"/>
         <element name="Playlistii" positionX="-36" positionY="45" width="128" height="58"/>
+        <element name="SpotifyTrack" positionX="-63" positionY="0" width="128" height="103"/>
     </elements>
 </model>

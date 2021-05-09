@@ -28,7 +28,9 @@ class RegisterViewModel {
     func createUser(registerUser: RegisterUser) {
         let token = UserDefaults.standard.value(forKey: "userToken") as! String
         APIManager.shared.callCreateAPI(registerUser: registerUser, token: token, completion: { user in
-            self.goToServices(with: user)
+            DispatchQueue.main.async {
+                self.goToServices(with: user)
+            }
         })
     }
     

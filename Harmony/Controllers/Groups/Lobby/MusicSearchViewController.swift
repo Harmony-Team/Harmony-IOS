@@ -45,7 +45,11 @@ class MusicSearchViewController: UIViewController {
     private func setupSearchBar() {
         searchBar.becomeFirstResponder()
         searchBar.delegate = self
-        searchBar.searchTextField.textColor = .white
+        if #available(iOS 13.0, *) {
+            searchBar.searchTextField.textColor = .white
+        } else {
+            searchBar.tintColor = .white
+        }
     }
     
     /* Go Back To Lobby (Fade Out) */

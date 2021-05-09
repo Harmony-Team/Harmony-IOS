@@ -24,14 +24,12 @@ enum Status: String, Codable {
 
 /* User */
 struct User: Codable {
-    let dateCreated: String
+    let dateCreated: Int?
     let login: String
     let email: String
     let role: Role
     let status: Status
-    let okId: String?
-    let spotifyId: String?
-    let vkId: String?
+    let spotify: String?
 }
 
 /* Register User */

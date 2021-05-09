@@ -20,12 +20,21 @@ final class ProfileCoordinator: Coordinator {
     
     func start() {
         let viewController: ProfileViewController = .instantiate()
-        viewController.setTabBarItem(image: "profile", selectedColor: .white, unSelectedColor: .gray, title: "PROFILE", tabBarItemTitle: "Profile")
+//        viewController.setTabBarItem(image: "profile", selectedColor: .white, unSelectedColor: .gray, title: "PROFILE", tabBarItemTitle: "Profile")
+        viewController.title = "PROFILE"
         let profileViewModel = ProfileViewModel()
         profileViewModel.coordinator = self
         profileViewModel.isChosen = isChoosen
         viewController.viewModel = profileViewModel
         navigationController.pushViewController(viewController, animated: false)
+    }
+    
+    /* Go To Recent Group */
+    func goToCreatedGroup(id: Int, group: UserGroup) {
+        let groupCoordinator = GroupCoordinator(navigationController: navigationController, group: group)
+        groupCoordinator.parentCoordinator = self
+        childCoordinators.append(groupCoordinator)
+        groupCoordinator.start()
     }
     
     /* Go To Selected Section Coordinator */

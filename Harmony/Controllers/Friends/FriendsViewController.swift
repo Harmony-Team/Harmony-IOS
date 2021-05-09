@@ -42,7 +42,7 @@ class FriendsViewController: UIViewController {
     
     /* Setting Up Content View And Menu */
     private func setupMenuAndContent() {
-        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
+        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel(), selectedSection: 2)
         addSideMenuView(menuView: menuView)
         setupContent(menuView: menuView, contentView: contentView)
         tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
@@ -52,7 +52,11 @@ class FriendsViewController: UIViewController {
     private func setupSearchBar() {
         friendsSearchBar.searchBarStyle = .minimal
         friendsSearchBar.delegate = self
-        friendsSearchBar.searchTextField.textColor = .white
+        if #available(iOS 13.0, *) {
+            friendsSearchBar.searchTextField.textColor = .white
+        } else {
+            friendsSearchBar.tintColor = .white
+        }
     }
     
     /* Setting Up Friends Table View */
@@ -81,6 +85,7 @@ class FriendsViewController: UIViewController {
     
     /* Open / Close menu */
     @objc private func toggleMenu(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
         goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser)
     }
     
@@ -111,6 +116,6 @@ extension FriendsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        viewModel.goToFriendProfile()
     }
 }

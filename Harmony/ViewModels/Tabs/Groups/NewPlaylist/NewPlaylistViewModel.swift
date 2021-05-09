@@ -12,6 +12,11 @@ class NewPlaylistViewModel {
     var coordinator: NewPlaylistCoordinator!
     var coreDataManager: GroupsCoreDataManager?
     
+    // Playlist Details
+    var tracksCount: Int!
+    var partitionsTotalCount: Int!
+    var partitionsReadyCount: Int!
+    
     init(coreDataManager: GroupsCoreDataManager) {
         self.coreDataManager = coreDataManager
     }

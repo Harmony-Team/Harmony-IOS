@@ -22,8 +22,11 @@ class GroupAddUserCell: UICollectionViewCell {
     
     let profilePicImageView: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage(systemName: "plus")
-        imageView.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
+        if #available(iOS 13, *) {
+            imageView.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
+        } else {
+            imageView.image = UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)
+        }
         imageView.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: 0, startPoint: CGPoint(x: -0.5, y: 1.5), endPoint: CGPoint(x: 1.5, y: -0.5), opacity: 1.0)
         imageView.tintColor = .redTextColor
         imageView.contentMode = .scaleAspectFit

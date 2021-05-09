@@ -18,7 +18,8 @@ final class FriendsCoordinator: Coordinator {
     
     func start() {
         let viewController: FriendsViewController = .instantiate()
-        viewController.setTabBarItem(image: "friends", selectedColor: .white, unSelectedColor: .gray, title: "FRIENDS", tabBarItemTitle: "Friends")
+//        viewController.setTabBarItem(image: "friends", selectedColor: .white, unSelectedColor: .gray, title: "FRIENDS", tabBarItemTitle: "Friends")
+        viewController.title = "FRIENDS"
         let friendsViewModel = FriendsViewModel()
         friendsViewModel.coordinator = self
         viewController.viewModel = friendsViewModel
@@ -37,6 +38,14 @@ final class FriendsCoordinator: Coordinator {
         newFriendCoordinator.parentCoordinator = self
         childCoordinators.append(newFriendCoordinator)
         newFriendCoordinator.start()
+    }
+    
+    /* Go To Friend Profile */
+    func goToFriendProfile() {
+        let friendProfileCoordinator = FriendProfileCoordinator(navigationController: navigationController)
+        friendProfileCoordinator.parentCoordinator = self
+        childCoordinators.append(friendProfileCoordinator)
+        friendProfileCoordinator.start()
     }
     
     /* Go To Selected Section Coordinator */

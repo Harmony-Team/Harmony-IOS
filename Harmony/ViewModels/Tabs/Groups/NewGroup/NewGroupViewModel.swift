@@ -27,11 +27,11 @@ class NewGroupViewModel {
     func createNewGroup(with name: String, description: String, imageUrl: String) {
         APIManager.shared.createGroup(groupName: name, groupDescr: description, avatarUrl: imageUrl) { (newGroup) in
             self.createdGroup = newGroup
+            self.coreDataManager?.saveGroup(groupInfo: newGroup.object)
             DispatchQueue.main.async {
                 self.goToShareLink()
             }
         }
-//        coreDataManager?.saveGroup(name: name, image: image)
     }
     
     /* Go To Created Group */

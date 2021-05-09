@@ -75,37 +75,43 @@ extension UIViewController: WKNavigationDelegate {
     }
     
     /* Set tab bar items */
-    func setTabBarItem(selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: Int? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
-        
-        self.title = title
-        
-        tabBarItem = UITabBarItem(
-            title: tabBarItemTitle,
-            image: UIImage(systemName: unselectedImageSystemImageName)?
-                .withTintColor(unSelectedColor, renderingMode: .alwaysTemplate),
-            selectedImage: UIImage(systemName: selectedImageSystemImageName)?
-                .withTintColor(selectedColor, renderingMode: .alwaysTemplate)
-        )
-        if let tag = tag {
-            tabBarItem.tag = tag
-        }
-    }
+//    func setTabBarItem(selectedImageSystemImageName: String, unselectedImageSystemImageName: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: Int? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
+//        
+//        self.title = title
+//        
+//        if #available(iOS 13.0, *) {
+//            tabBarItem = UITabBarItem(
+//                title: tabBarItemTitle,
+//                image: UIImage(systemName: unselectedImageSystemImageName)?.withTintColor(unSelectedColor, renderingMode: .alwaysTemplate),
+//                selectedImage: UIImage(systemName: selectedImageSystemImageName)?.withTintColor(selectedColor, renderingMode: .alwaysTemplate)
+//            )
+//        } else {
+//            tabBarItem = UITabBarItem(
+//                title: tabBarItemTitle,
+//                image: UIImage(named: unselectedImageSystemImageName)?.withTintColor(unSelectedColor, renderingMode: .alwaysTemplate),
+//                selectedImage: UIImage(named: selectedImageSystemImageName)?.withTintColor(selectedColor, renderingMode: .alwaysTemplate)
+//            )
+//        }
+//        if let tag = tag {
+//            tabBarItem.tag = tag
+//        }
+//    }
     
-    func setTabBarItem(image: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: Int? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
-        
-        self.title = title
-        
-        tabBarItem = UITabBarItem(
-            title: tabBarItemTitle,
-            image: UIImage(named: image)?
-                .withTintColor(selectedColor, renderingMode: .alwaysTemplate).withRenderingMode(.alwaysOriginal),
-            selectedImage: UIImage(named: image)?
-                .withTintColor(selectedColor, renderingMode: .alwaysTemplate).withRenderingMode(.alwaysOriginal)
-        )
-        if let tag = tag {
-            tabBarItem.tag = tag
-        }
-    }
+//    func setTabBarItem(image: String, selectedColor: UIColor, unSelectedColor: UIColor, tag: Int? = nil, title: String? = nil, tabBarItemTitle: String? = nil) {
+//        
+//        self.title = title
+//        
+//        tabBarItem = UITabBarItem(
+//            title: tabBarItemTitle,
+//            image: UIImage(named: image)?
+//                .withTintColor(selectedColor, renderingMode: .alwaysTemplate).withRenderingMode(.alwaysOriginal),
+//            selectedImage: UIImage(named: image)?
+//                .withTintColor(selectedColor, renderingMode: .alwaysTemplate).withRenderingMode(.alwaysOriginal)
+//        )
+//        if let tag = tag {
+//            tabBarItem.tag = tag
+//        }
+//    }
     
     /* Dismiss view controller modal from left to right */
     func dismissFromLeft() {

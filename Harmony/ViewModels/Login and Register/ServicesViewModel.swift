@@ -45,16 +45,7 @@ class ServicesViewModel {
             self.apiManager.integrateSpotify(accessToken: spotifyAccessToken)
         }
     }
-    
-    /* Set user services integrations IDs */
-    func setIntergrationIDs() {
-        let userToken = UserDefaults.standard.value(forKey: "userToken") as! String
-        let serviceIntergration = ServiceIntergration(spotify: spotifyUser?.spotifyId ?? "null")
-        APIManager.shared.setUserIntergrations(token: userToken, services: serviceIntergration, spotifyId: serviceIntergration.spotify) {
-            self.endRegistration()
-        }
-    }
-    
+
     /* Register user. Go to profile */
     func endRegistration() {
         coordinator.goToProfile()

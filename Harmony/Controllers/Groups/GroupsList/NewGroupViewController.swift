@@ -113,6 +113,9 @@ class NewGroupViewController: UIViewController {
             $0?.addKern(1.74)
         }
         
+        tracksValueLabel?.text = "\(newPlaylistViewModel?.tracksCount ?? 0)"
+        participantsValueLabel?.text = "\(newPlaylistViewModel?.partitionsReadyCount ?? 0)/\(newPlaylistViewModel?.partitionsTotalCount ?? 0)"
+        
         [groupNameTextField, descriptionTextField].forEach {
             $0?.defaultTextAttributes.updateValue(1.74, forKey: NSAttributedString.Key.kern)
             $0?.textColor = .mainTextColor

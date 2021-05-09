@@ -121,21 +121,25 @@ class LoginViewController: UIViewController {
         let user = LoginUser(username: username, password: password)
         
         /* Try Login User */
-        showActivityIndicator()
         DispatchQueue.main.async {
+            self.showActivityIndicator()
+        }
             self.viewModel.loginUser(user: user) { (result) in
                 switch result {
                 case .success(let msg):
                     if let msg = msg {
-                        self.callAlert(with: msg)
+                        DispatchQueue.main.async {
+                            self.callAlert(with: msg)
+                        }
                     }
                     break
                 case .failure( _):
                     print("ERROR")
                     break
                 }
-                self.hideActivityIndicator()
             }
+        DispatchQueue.main.async {
+            self.hideActivityIndicator()
         }
     }
     

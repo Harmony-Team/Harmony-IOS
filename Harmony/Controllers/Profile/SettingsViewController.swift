@@ -44,7 +44,7 @@ class SettingsViewController: UIViewController {
     
     /* Setting Up Content View And Menu */
     private func setupMenuAndContent() {
-        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
+        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel(), selectedSection: 3)
         addSideMenuView(menuView: menuView)
         setupContent(menuView: menuView, contentView: contentView)
 //        tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))

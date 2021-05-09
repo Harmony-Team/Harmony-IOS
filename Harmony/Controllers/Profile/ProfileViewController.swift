@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     /* Collection Views */
     private var latestGroupsHeader = UILabel()
-    private var latestGroupsCollectionView = LatestGroupsCollectionView()
+    private var latestGroupsCollectionView: LatestGroupsCollectionView!
     private var recentActivityHeader = UILabel()
     private var recentActivityCollectionView = RecentActivityCollectionView()
     
@@ -64,11 +64,16 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             }
         }
         
-        let settingsImage = UIImage(systemName: "gear")?.withRenderingMode(.alwaysTemplate)
+//        let settingsImage: UIImage?
+//        if #available(iOS 13.0, *) {
+//            settingsImage = UIImage(systemName: "gear")?.withRenderingMode(.alwaysTemplate)
+//        } else {
+//            settingsImage = UIImage(named: "gear")?.withRenderingMode(.alwaysTemplate)
+//        }
         let menuImage = UIImage(named: "menuIcon")?.withRenderingMode(.alwaysTemplate)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuImage, style: .done, target: self, action: #selector(toggleMenu))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: settingsImage, style: .done, target: self, action: #selector(goToSettings))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: settingsImage, style: .done, target: self, action: #selector(goToSettings))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +84,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     /* Setting Up Content View And Menu */
     private func setupMenuAndContent() {
-        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
+        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel(), selectedSection: 0)
         tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
         addSideMenuView(menuView: menuView)
         setupContent(menuView: menuView, contentView: contentView)
@@ -136,6 +141,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     /* Setting Up Lates Groups Collection View */
     private func setupLatestGroupsCollectionView() {
+        latestGroupsCollectionView = LatestGroupsCollectionView(viewModel: viewModel)
         contentView.addSubview(latestGroupsHeader)
         contentView.addSubview(latestGroupsCollectionView)
         latestGroupsCollectionView.translatesAutoresizingMaskIntoConstraints = false

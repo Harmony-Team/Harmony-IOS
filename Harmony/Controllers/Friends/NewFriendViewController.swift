@@ -21,7 +21,11 @@ class NewFriendViewController: UIViewController {
         navigationItem.searchController = UISearchController()
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = "New Friend"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeWithoutSaving))
+//        if #available(iOS 13.0, *) {
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeWithoutSaving))
+//        } else {
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeWithoutSaving))
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

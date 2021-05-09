@@ -117,21 +117,25 @@ class RegistrationViewController: UIViewController {
         let user = RegisterUser(login: name, email: email, password: password)
         
         /* Try Register User */
-        showActivityIndicator()
         DispatchQueue.main.async {
-            self.viewModel.registerUser(user: user) { (result) in
-                switch result {
-                case .success(let msg):
-                    if let msg = msg {
+            self.showActivityIndicator()
+        }
+        self.viewModel.registerUser(user: user) { (result) in
+            switch result {
+            case .success(let msg):
+                if let msg = msg {
+                    DispatchQueue.main.async {
                         self.callAlert(with: msg)
                     }
-                    break
-                case .failure( _):
-                    print("ERROR")
-                    break
                 }
-                self.hideActivityIndicator()
+                break
+            case .failure( _):
+                print("ERROR")
+                break
             }
+        }
+        DispatchQueue.main.async {
+            self.hideActivityIndicator()
         }
     }
     

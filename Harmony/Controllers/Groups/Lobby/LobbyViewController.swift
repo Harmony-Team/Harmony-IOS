@@ -1,5 +1,5 @@
 //
-//  GroupViewController.swift
+//  LobbyViewController.swift
 //  Harmony
 //
 //  Created by Macbook Pro on 10.03.2021.

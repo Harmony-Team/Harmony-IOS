@@ -10,15 +10,17 @@ import UIKit
 class GroupsListViewModel {
     
     var coordinator: GroupsListCoordinator!
-    private let coreDataManager: GroupsCoreDataManager
+//    private let coreDataManager: GroupsCoreDataManager
     var onUpdate = {}
-    
+    var userGroups = [UserGroup]() // All User Groups
+    var visibleGroups = [UserGroup]() // Groups Visible In Table View
+
     // Menu
     var menuShow = false
     
-    init(coreDataManager: GroupsCoreDataManager = GroupsCoreDataManager.shared) {
-        self.coreDataManager = coreDataManager
-    }
+//    init(coreDataManager: GroupsCoreDataManager = GroupsCoreDataManager.shared) {
+//        self.coreDataManager = coreDataManager
+//    }
     
     enum Cell {
         case group(viewModel: GroupCellViewModel)
@@ -30,31 +32,48 @@ class GroupsListViewModel {
     }
     
     func reload() {
-        APIManager.shared.getGroups { groups in
-            var reversedGroups = [UserGroup]()
-            for group in groups {
-                reversedGroups.insert(group, at: 0)
-            }
-            self.cells = reversedGroups.map {
-                var groupCellViewModel = GroupCellViewModel(group: $0)
-                if let coordinator = self.coordinator {
-                    groupCellViewModel.onSelect = coordinator.goToCreatedGroup
-                }
-                return .group(viewModel: groupCellViewModel)
-            }
-            DispatchQueue.main.async {
-                self.onUpdate()
-            }
-        }
-//        let groups = coreDataManager.fetchGroups()
-//        cells = groups.map {
-//            var groupCellViewModel = GroupCellViewModel(group: $0)
-//            if let coordinator = coordinator {
-//                groupCellViewModel.onSelect = coordinator.goToCreatedGroup
+        // If there are groups in CoreData, get groups from CoreData
+//        if let groups = coreDataManager.fetchGroups() {
+//            cells = groups.map {
+//                var groupCellViewModel = GroupCellViewModel(group: $0)
+//                if let coordinator = coordinator {
+//                    groupCellViewModel.onSelect = coordinator.goToCreatedGroup
+//                }
+//                return .group(viewModel: groupCellViewModel)
 //            }
-//            return .group(viewModel: groupCellViewModel)
+//            onUpdate()
+//        } else { // Otherwise get groups from API
+            APIManager.shared.getGroups { groups in
+                self.userGroups = []
+                for group in groups {
+                    self.userGroups.insert(group, at: 0)
+                }
+                self.visibleGroups = self.userGroups
+                self.cells = self.visibleGroups.map {
+                    var groupCellViewModel = GroupCellViewModel(group: $0)
+                    if let coordinator = self.coordinator {
+                        groupCellViewModel.onSelect = coordinator.goToCreatedGroup
+                    }
+                    return .group(viewModel: groupCellViewModel)
+                }
+                DispatchQueue.main.async {
+                    self.onUpdate()
+                }
+            }
 //        }
-//        onUpdate()
+    }
+    
+    func updateCells() {
+        self.cells = self.visibleGroups.map {
+            var groupCellViewModel = GroupCellViewModel(group: $0)
+            if let coordinator = self.coordinator {
+                groupCellViewModel.onSelect = coordinator.goToCreatedGroup
+            }
+            return .group(viewModel: groupCellViewModel)
+        }
+        DispatchQueue.main.async {
+            self.onUpdate()
+        }
     }
     
     /* Create new group */

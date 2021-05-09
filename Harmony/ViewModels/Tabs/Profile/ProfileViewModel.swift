@@ -18,14 +18,21 @@ class ProfileViewModel {
     var spotifyUser: SpotifyUser?
     var spotifyService = SpotifyService.shared
     
+    // Groups Info
+    private var apiManager = APIManager.shared
+    var onUpdate = {}
+    
+    enum Cell {
+        case group(viewModel: GroupCellViewModel)
+    }
+    private(set) var cells: [Cell] = []
+    
     /* Get user info from UserDefaults */
     func getUserInfo(completion: ()->()) {
         
         guard let token = UserDefaults.standard.string(forKey: "userToken") else {
             return
         }
-        
-//        print(token)
         
         if let user: User = UserProfileCache.get(key: "user") {
             self.user = user
@@ -43,6 +50,30 @@ class ProfileViewModel {
         
     }
     
+    func viewDidLoad() {
+        getLatestGroups()
+    }
+    
+    /* Get latest user groups */
+    func getLatestGroups() {
+        apiManager.getGroups { groups in
+            var reversedGroups = [UserGroup]()
+            for group in groups {
+                reversedGroups.insert(group, at: 0)
+            }
+            self.cells = reversedGroups.map {
+                var groupCellViewModel = GroupCellViewModel(group: $0)
+                if let coordinator = self.coordinator {
+                    groupCellViewModel.onSelect = coordinator.goToCreatedGroup
+                }
+                return .group(viewModel: groupCellViewModel)
+            }
+            DispatchQueue.main.async {
+                self.onUpdate()
+            }
+        }
+    }
+    
     /* Check if user is logged in Spotify */
     func checkSpotify() {
         
@@ -55,6 +86,21 @@ class ProfileViewModel {
         //            print("Not logged")
         //        }
         
+    }
+    
+    func numberOfCells() -> Int {
+        return cells.count
+    }
+    
+    func cellForRow(at indexPath: IndexPath) -> Cell {
+        return cells[indexPath.row]
+    }
+    
+    func didSelectRow(at indexPath: IndexPath) {
+        switch cells[indexPath.row] {
+        case .group(let groupCellViewModel):
+            groupCellViewModel.didSelect()
+        }
     }
     
     /* Go to user settings */

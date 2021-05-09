@@ -10,15 +10,17 @@ import UIKit
 class SideMenuView: UIView {
 
     var viewModel: SideMenuViewModel!
-    
+    var selectedSection: Int!
+
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var sectionsTableView: UITableView!
     
     private var closeButton = UIButton()
     
-    init(frame: CGRect, viewModel: SideMenuViewModel) {
+    init(frame: CGRect, viewModel: SideMenuViewModel, selectedSection: Int) {
         super.init(frame: frame)
         self.viewModel = viewModel
+        self.selectedSection = selectedSection
         
         commonInit()
     }
@@ -37,7 +39,12 @@ class SideMenuView: UIView {
     private func setupViews() {
         contentView.setGradientFill(colorTop: UIColor.menuGradientColorTop.cgColor, colorBottom: UIColor.menuGradientColorBottom.cgColor, cornerRadius: 0, startPoint: CGPoint(x: 0, y: 1), endPoint: CGPoint(x: 1, y: 0), opacity: 1)
         
-        closeButton.setBackgroundImage(UIImage(systemName: "xmark"), for: .normal)
+        if #available(iOS 13.0, *) {
+            closeButton.setBackgroundImage(UIImage(systemName: "xmark")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        } else {
+            closeButton.setBackgroundImage(UIImage(named: "xmark")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
+        
         closeButton.tintColor = .white
         closeButton.addTarget(self, action: #selector(closeMenu), for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +92,7 @@ extension SideMenuView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuSectionsCellId", for: indexPath) as! MenuSectionsCell
         cell.sectionNameLabel.text = viewModel.sectionNames[indexPath.row]
-        if indexPath.row == 0 { cell.sectionNameLabel.font = UIFont.setFont(size: .Largest, weight: .Bold) } 
+        if indexPath.row == selectedSection { cell.isSelected = true }
         return cell
     }
     

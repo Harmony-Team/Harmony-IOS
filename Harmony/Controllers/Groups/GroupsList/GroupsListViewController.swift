@@ -16,6 +16,10 @@ class GroupsListViewController: UIViewController {
     private var tapGestureRecogniser: UITapGestureRecognizer!
 
     /* Content */
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchLobbyField: UITextField!
+    @IBOutlet weak var searchIcon: UIImageView!
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var topImage: UIImageView!
@@ -50,9 +54,23 @@ class GroupsListViewController: UIViewController {
     
     /* Setting Up Content View And Menu */
     private func setupMenuAndContent() {
-        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel())
+        menuView = SideMenuView(frame: view.frame, viewModel: SideMenuViewModel(), selectedSection: 1)
         addSideMenuView(menuView: menuView)
         setupContent(menuView: menuView, contentView: contentView)
+        
+        searchView.setupShadow(cornerRad: searchView.frame.height * 0.5, shadowRad: searchView.frame.height * 0.6, shadowOp: 0.5, offset: CGSize(width: 3, height: 5))
+//        searchView.layer.cornerRadius = searchView.frame.height * 0.5
+        searchLobbyField.font = UIFont.setFont(size: .Big)
+        searchLobbyField.textColor = .mainTextColor
+        searchLobbyField.delegate = self
+        if #available(iOS 13.0, *) {
+            searchIcon.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysTemplate)
+        } else {
+            searchIcon.image = UIImage(named: "magnifyingglass")?.withRenderingMode(.alwaysTemplate)
+        }
+        
+        searchIcon.contentMode = .scaleAspectFill
+        searchIcon.tintColor = .mainTextColor
         
         tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
 //        panGestureRecognizer.delegate = self
@@ -82,6 +100,7 @@ class GroupsListViewController: UIViewController {
     }
 
     private func setupTableView() {
+//        groupsTableView.contentInset = UIEdgeInsets(top: topView.frame.height * 0.3, left: 0, bottom: 0, right: 0)
         groupsTableView.layer.zPosition = 25
         groupsTableView.showsVerticalScrollIndicator = false
         groupsTableView.backgroundColor = .clear
@@ -96,6 +115,7 @@ class GroupsListViewController: UIViewController {
     
 }
 
+/* Table View Extension */
 extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -107,12 +127,22 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             return 1
         default:
-            return viewModel.numberOfCells()
+            return viewModel.visibleGroups.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "createCell", for: indexPath) as! NewGroupCell
+            cell.selectionStyle = .none
+            if #available(iOS 13, *) {
+                cell.logoImageView.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
+            } else {
+                cell.logoImageView.image = UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)
+            }
+            cell.titleLabel.text = "Create a new group..."
+            return cell
+        } else {
             switch viewModel.cellForRow(at: indexPath) {
             case .group(let groupCellViewModel):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
@@ -120,12 +150,6 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.update(viewModel: groupCellViewModel)
                 return cell
             }
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "createCell", for: indexPath) as! NewGroupCell
-            cell.selectionStyle = .none
-            cell.logoImageView.image = UIImage(systemName: "plus")
-            cell.titleLabel.text = "Create a new group..."
-            return cell
         }
     }
     
@@ -175,3 +199,24 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+/* Text Field Extension (Searching) */
+extension GroupsListViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+
+        var searchText = textField.text! + string
+                
+        if(string.isEmpty) {searchText.removeLast()}
+        
+        if !searchText.isEmpty {
+            viewModel.visibleGroups = viewModel.userGroups.filter {
+                return $0.name.range(of: searchText, options: .caseInsensitive) != nil
+            }
+        } else {
+            viewModel.visibleGroups = viewModel.userGroups
+        }
+
+        viewModel.updateCells()
+
+        return true
+    }
+}

@@ -17,6 +17,11 @@ class FriendsViewModel {
         coordinator.addNewFriend()
     }
     
+    /* Open Friend Profile */
+    func goToFriendProfile() {
+        coordinator.goToFriendProfile()
+    }
+    
     /* Go To Selected Section */
     func goToSelectedSection(section: MenuSection) {
         coordinator.goToSection(section: section)

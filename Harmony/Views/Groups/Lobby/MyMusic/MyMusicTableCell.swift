@@ -36,7 +36,11 @@ class MyMusicTableCell: UITableViewCell {
                     self.addIcon.transform = .init(scaleX: 0.6, y: 0.6)
                 } completion: { finished in
                     if finished {
-                        self.addIcon.image = UIImage(systemName: "checkmark.circle.fill")
+                        if #available(iOS 13, *) {
+                            self.addIcon.image = UIImage(systemName: "checkmark.circle.fill")?.withRenderingMode(.alwaysTemplate)
+                        } else {
+                            self.addIcon.image = UIImage(named: "checkmark.circle.fill")?.withRenderingMode(.alwaysTemplate)
+                        }
                         UIView.animate(withDuration: 0.15) {
                             self.addIcon.transform = .init(scaleX: 1, y: 1)
                         }
@@ -47,7 +51,11 @@ class MyMusicTableCell: UITableViewCell {
                     self.addIcon.transform = .init(scaleX: 0.6, y: 0.6)
                 } completion: { finished in
                     if finished {
-                        self.addIcon.image = UIImage(systemName: "plus")
+                        if #available(iOS 13, *) {
+                            self.addIcon.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
+                        } else {
+                            self.addIcon.image = UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)
+                        }
                         UIView.animate(withDuration: 0.15) {
                             self.addIcon.transform = .init(scaleX: 1, y: 1)
                         }
@@ -77,7 +85,12 @@ class MyMusicTableCell: UITableViewCell {
         trackArtist.font = UIFont.setFont(size: .Medium, weight: .Light)
         trackArtist.textColor = .lightTextColor
         
-        addIcon.image = UIImage(systemName: "plus")
+        if #available(iOS 13, *) {
+            addIcon.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
+        } else {
+            addIcon.image = UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)
+        }
+        
         addIcon.tintColor = .redTextColor
         addIcon.contentMode = .scaleAspectFill
         addIcon.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(addIconTapped)))
