@@ -11,12 +11,8 @@
 		5214407C26448BD800DB2A6B /* FriendsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214407B26448BD800DB2A6B /* FriendsSearchViewController.swift */; };
 		5214407F26448DF000DB2A6B /* FriendsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214407E26448DF000DB2A6B /* FriendsSearchViewModel.swift */; };
 		5214408226448E4D00DB2A6B /* FriendsSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214408126448E4D00DB2A6B /* FriendsSearchCoordinator.swift */; };
-		5214408526472F4000DB2A6B /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214408426472F4000DB2A6B /* FriendProfileViewController.swift */; };
-		52144089264730E700DB2A6B /* FriendProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52144088264730E700DB2A6B /* FriendProfileViewModel.swift */; };
-		5214408C2647311300DB2A6B /* FriendProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5214408B2647311300DB2A6B /* FriendProfileCoordinator.swift */; };
 		521A04EC25C73570007F86A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A04EB25C73570007F86A0 /* AppDelegate.swift */; };
 		521A04EE25C73570007F86A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A04ED25C73570007F86A0 /* SceneDelegate.swift */; };
-		521A04F325C73570007F86A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521A04F125C73570007F86A0 /* Main.storyboard */; };
 		521A04F525C73573007F86A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 521A04F425C73573007F86A0 /* Assets.xcassets */; };
 		521A04F825C73573007F86A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521A04F625C73573007F86A0 /* LaunchScreen.storyboard */; };
 		521A050225C73588007F86A0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A050125C73588007F86A0 /* AppCoordinator.swift */; };
@@ -59,6 +55,11 @@
 		5236FFC225CFCD7600845300 /* NewFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFC125CFCD7600845300 /* NewFriendViewModel.swift */; };
 		5236FFD525D0342B00845300 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFD425D0342B00845300 /* APIManager.swift */; };
 		5236FFD925D0346900845300 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236FFD825D0346900845300 /* User.swift */; };
+		528AF7C0264943EB004E5753 /* FriendProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AF7BF264943EB004E5753 /* FriendProfileViewModel.swift */; };
+		528AF7C326494404004E5753 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AF7C226494404004E5753 /* FriendProfileViewController.swift */; };
+		528AF7C626494415004E5753 /* FriendProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AF7C526494415004E5753 /* FriendProfileCoordinator.swift */; };
+		528AF7CA264944E8004E5753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528AF7C8264944E8004E5753 /* Main.storyboard */; };
+		528AF7CF264948DF004E5753 /* LobbySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AF7CE264948DF004E5753 /* LobbySettingsViewController.swift */; };
 		52A758A525D93F770051EB61 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A758A425D93F770051EB61 /* Playlist.swift */; };
 		52AC3AB025F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AAF25F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift */; };
 		52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AB325F9090400EA7E19 /* LatestGroupsCell.swift */; };
@@ -104,7 +105,6 @@
 		52B9B76A2624F2A700A50683 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52B9B7692624F2A100A50683 /* Lato-Bold.ttf */; };
 		52B9B76E26261D0300A50683 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9B76D26261D0300A50683 /* SideMenuViewModel.swift */; };
 		52B9B7722629C77D00A50683 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9B7712629C77D00A50683 /* Group.swift */; };
-		52BAE74126480B1100958735 /* LobbySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAE74026480B1100958735 /* LobbySettingsViewController.swift */; };
 		52BCD56E25E3048800A30366 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD56C25E303D800A30366 /* Lato-Regular.ttf */; };
 		52D17BA2261E263F0081C84D /* RecentActivityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D17BA1261E263F0081C84D /* RecentActivityCollectionView.swift */; };
 		52D17BA6261E26610081C84D /* RecentActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D17BA5261E26610081C84D /* RecentActivityCell.swift */; };
@@ -128,13 +128,9 @@
 		5214407B26448BD800DB2A6B /* FriendsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSearchViewController.swift; sourceTree = "<group>"; };
 		5214407E26448DF000DB2A6B /* FriendsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSearchViewModel.swift; sourceTree = "<group>"; };
 		5214408126448E4D00DB2A6B /* FriendsSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSearchCoordinator.swift; sourceTree = "<group>"; };
-		5214408426472F4000DB2A6B /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
-		52144088264730E700DB2A6B /* FriendProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewModel.swift; sourceTree = "<group>"; };
-		5214408B2647311300DB2A6B /* FriendProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCoordinator.swift; sourceTree = "<group>"; };
 		521A04E825C73570007F86A0 /* Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Harmony.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521A04EB25C73570007F86A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		521A04ED25C73570007F86A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		521A04F225C73570007F86A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		521A04F425C73573007F86A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		521A04F725C73573007F86A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		521A04F925C73573007F86A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -178,6 +174,11 @@
 		5236FFC125CFCD7600845300 /* NewFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendViewModel.swift; sourceTree = "<group>"; };
 		5236FFD425D0342B00845300 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		5236FFD825D0346900845300 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		528AF7BF264943EB004E5753 /* FriendProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileViewModel.swift; sourceTree = "<group>"; };
+		528AF7C226494404004E5753 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
+		528AF7C526494415004E5753 /* FriendProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileCoordinator.swift; sourceTree = "<group>"; };
+		528AF7C9264944E8004E5753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		528AF7CE264948DF004E5753 /* LobbySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbySettingsViewController.swift; sourceTree = "<group>"; };
 		52A758A425D93F770051EB61 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		52AC3AAF25F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestGroupsCollectionView.swift; sourceTree = "<group>"; };
 		52AC3AB325F9090400EA7E19 /* LatestGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestGroupsCell.swift; sourceTree = "<group>"; };
@@ -223,7 +224,6 @@
 		52B9B7692624F2A100A50683 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		52B9B76D26261D0300A50683 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		52B9B7712629C77D00A50683 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		52BAE74026480B1100958735 /* LobbySettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbySettingsViewController.swift; sourceTree = "<group>"; };
 		52BCD56C25E303D800A30366 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		52D17BA1261E263F0081C84D /* RecentActivityCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCollectionView.swift; sourceTree = "<group>"; };
 		52D17BA5261E26610081C84D /* RecentActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCell.swift; sourceTree = "<group>"; };
@@ -473,7 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				521A051225C73FE9007F86A0 /* FriendsViewController.swift */,
-				5214408426472F4000DB2A6B /* FriendProfileViewController.swift */,
+				528AF7C226494404004E5753 /* FriendProfileViewController.swift */,
 				5236FFB225CFCBC600845300 /* NewFriendViewController.swift */,
 			);
 			path = Friends;
@@ -483,7 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				521A051E25C741FF007F86A0 /* FriendsCoordinator.swift */,
-				5214408B2647311300DB2A6B /* FriendProfileCoordinator.swift */,
+				528AF7C526494415004E5753 /* FriendProfileCoordinator.swift */,
 				5236FFB925CFCD3600845300 /* NewFriendCoordinator.swift */,
 			);
 			path = Friends;
@@ -504,7 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				521A052F25C757CC007F86A0 /* FriendsViewModel.swift */,
-				52144088264730E700DB2A6B /* FriendProfileViewModel.swift */,
+				528AF7BF264943EB004E5753 /* FriendProfileViewModel.swift */,
 				5236FFC125CFCD7600845300 /* NewFriendViewModel.swift */,
 			);
 			path = Friends;
@@ -605,7 +605,7 @@
 		52B1C24225CC34FE0027C3E6 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				521A04F125C73570007F86A0 /* Main.storyboard */,
+				528AF7C8264944E8004E5753 /* Main.storyboard */,
 				52B9B75E2624E91A00A50683 /* MenuView.xib */,
 				521A04F625C73573007F86A0 /* LaunchScreen.storyboard */,
 			);
@@ -761,7 +761,7 @@
 			isa = PBXGroup;
 			children = (
 				52AC3AB825F90F6900EA7E19 /* LobbyViewController.swift */,
-				52BAE74026480B1100958735 /* LobbySettingsViewController.swift */,
+				528AF7CE264948DF004E5753 /* LobbySettingsViewController.swift */,
 				52F42E94261640D000FCAE54 /* MusicSearchViewController.swift */,
 				5214407B26448BD800DB2A6B /* FriendsSearchViewController.swift */,
 			);
@@ -841,8 +841,8 @@
 				52B9B75F2624E91A00A50683 /* MenuView.xib in Resources */,
 				521A04F825C73573007F86A0 /* LaunchScreen.storyboard in Resources */,
 				521A04F525C73573007F86A0 /* Assets.xcassets in Resources */,
-				521A04F325C73570007F86A0 /* Main.storyboard in Resources */,
 				52BCD56E25E3048800A30366 /* Lato-Regular.ttf in Resources */,
+				528AF7CA264944E8004E5753 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,12 +913,13 @@
 				52B9B7632624E97400A50683 /* SideMenuView.swift in Sources */,
 				5233DB0F260BACE400764342 /* ErrorMusicTabBarCell.swift in Sources */,
 				521A053325C757D7007F86A0 /* GroupsListViewModel.swift in Sources */,
+				528AF7C0264943EB004E5753 /* FriendProfileViewModel.swift in Sources */,
 				52AC3B0326039DA400EA7E19 /* GroupsList.xcdatamodeld in Sources */,
 				521A052825C750D6007F86A0 /* MainTabBarController.swift in Sources */,
 				52AC3AE925FE33B300EA7E19 /* GroupUsersCellViewModel.swift in Sources */,
 				52F42E6E260E788800FCAE54 /* EditProfileCoordinator.swift in Sources */,
+				528AF7CF264948DF004E5753 /* LobbySettingsViewController.swift in Sources */,
 				52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */,
-				52BAE74126480B1100958735 /* LobbySettingsViewController.swift in Sources */,
 				5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */,
 				5214407F26448DF000DB2A6B /* FriendsSearchViewModel.swift in Sources */,
 				52D17BA6261E26610081C84D /* RecentActivityCell.swift in Sources */,
@@ -941,6 +942,7 @@
 				52AC3B0626039DF700EA7E19 /* GroupsCoreDataManager.swift in Sources */,
 				5233DB1C260CB08A00764342 /* NewPlaylistViewModel.swift in Sources */,
 				52B0F99825E41A4500010F9D /* ForgotPasswordCoordinator.swift in Sources */,
+				528AF7C326494404004E5753 /* FriendProfileViewController.swift in Sources */,
 				5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */,
 				52AC3ACC25F9FF2400EA7E19 /* LobbyPlaylistsTableCell.swift in Sources */,
 				52B5E88125F7FFDD001BD785 /* NewGroupCell.swift in Sources */,
@@ -956,9 +958,9 @@
 				5236FF9925CDE01700845300 /* FriendCell.swift in Sources */,
 				52F42E98261643DE00FCAE54 /* MusicSearchCoordinator.swift in Sources */,
 				521A050C25C73673007F86A0 /* UIViewController+Ext.swift in Sources */,
+				528AF7C626494415004E5753 /* FriendProfileCoordinator.swift in Sources */,
 				5236FFD925D0346900845300 /* User.swift in Sources */,
 				52B5C58B25D69FF100961A4E /* SettingsViewController.swift in Sources */,
-				5214408C2647311300DB2A6B /* FriendProfileCoordinator.swift in Sources */,
 				5234BAB825CC230E00561E86 /* ServicesViewModel.swift in Sources */,
 				5234BAA725CC166100561E86 /* LoginViewModel.swift in Sources */,
 				52B0F99225E4199300010F9D /* ForgotPasswordViewController.swift in Sources */,
@@ -970,7 +972,6 @@
 				52B9B7722629C77D00A50683 /* Group.swift in Sources */,
 				52AC3AED25FE37C200EA7E19 /* GroupAddUserCell.swift in Sources */,
 				521A04EC25C73570007F86A0 /* AppDelegate.swift in Sources */,
-				5214408526472F4000DB2A6B /* FriendProfileViewController.swift in Sources */,
 				52AC3AB025F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift in Sources */,
 				5236FF8D25CDC52000845300 /* NewGroupViewModel.swift in Sources */,
 				52B5C59725D6A0E400961A4E /* SettingsViewModel.swift in Sources */,
@@ -992,7 +993,6 @@
 				5234BAB525CC22E900561E86 /* RegisterViewModel.swift in Sources */,
 				52AC3AC025F9105E00EA7E19 /* GroupCoordinator.swift in Sources */,
 				5233DB18260CAFF300764342 /* NewPlaylistCoordinator.swift in Sources */,
-				52144089264730E700DB2A6B /* FriendProfileViewModel.swift in Sources */,
 				521A052C25C757C2007F86A0 /* ProfileViewModel.swift in Sources */,
 				5236FF8325CDAF1500845300 /* NewGroupCoordinator.swift in Sources */,
 				52B11CCC25DC1FA600CFB829 /* Track.swift in Sources */,
@@ -1006,20 +1006,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		521A04F125C73570007F86A0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				521A04F225C73570007F86A0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		521A04F625C73573007F86A0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				521A04F725C73573007F86A0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		528AF7C8264944E8004E5753 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				528AF7C9264944E8004E5753 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
