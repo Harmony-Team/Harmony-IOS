@@ -20,7 +20,7 @@ class NewGroupViewModel {
     // TODO: SHOW INVITE CODE
     func goToShareLink() {
         let inviteCode = createdGroup.invite_code
-        coordinator.goToShareLink(inviteCode: inviteCode)
+        coordinator.goToShareLink(inviteCode: inviteCode!)
     }
     
     /* Create New Group */

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
         
         if isLoggedIn {
-            let vc: MainTabBarController = .instantiate()
+            let vc: ProfileViewController = .instantiate()
             window?.rootViewController = vc
             window?.makeKeyAndVisible()
         } else {

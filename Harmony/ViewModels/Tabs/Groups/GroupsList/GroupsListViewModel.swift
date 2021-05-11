@@ -81,12 +81,17 @@ class GroupsListViewModel {
         coordinator.addNewGroup()
     }
     
+    /* Join Group */
+    func joinGroup() {
+        coordinator.joinGroup()
+    }
+    
     /* Delete group */
     func deleteGroup(at indexPath: IndexPath) {
         switch cells[indexPath.row] {
         case .group(_):
-            //            let id = groupCellViewModel.group.objectID
-            //            coreDataManager.deleteGroup(id: id)
+//            let id = groupCellViewModel.group.objectID
+//            coreDataManager.deleteGroup(id: id)
             reload()
         }
     }

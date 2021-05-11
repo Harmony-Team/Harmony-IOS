@@ -13,7 +13,7 @@ class ShareLinkViewModel {
     var inviteCode: String!
     
     func goToGroup() {
-        coordinator.goToGroup()
+        coordinator.closeWithoutSaving()
     }
     
 }

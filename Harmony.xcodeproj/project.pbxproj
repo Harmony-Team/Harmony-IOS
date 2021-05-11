@@ -60,6 +60,7 @@
 		528AF7C626494415004E5753 /* FriendProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AF7C526494415004E5753 /* FriendProfileCoordinator.swift */; };
 		528AF7CA264944E8004E5753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528AF7C8264944E8004E5753 /* Main.storyboard */; };
 		528AF7CF264948DF004E5753 /* LobbySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AF7CE264948DF004E5753 /* LobbySettingsViewController.swift */; };
+		528AF7D72649D821004E5753 /* CreateOrJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528AF7D62649D821004E5753 /* CreateOrJoinView.swift */; };
 		52A758A525D93F770051EB61 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A758A425D93F770051EB61 /* Playlist.swift */; };
 		52AC3AB025F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AAF25F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift */; };
 		52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AB325F9090400EA7E19 /* LatestGroupsCell.swift */; };
@@ -120,6 +121,9 @@
 		52F42E95261640D000FCAE54 /* MusicSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F42E94261640D000FCAE54 /* MusicSearchViewController.swift */; };
 		52F42E98261643DE00FCAE54 /* MusicSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F42E97261643DD00FCAE54 /* MusicSearchCoordinator.swift */; };
 		52F42E9B2616442000FCAE54 /* MusicSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F42E9A2616442000FCAE54 /* MusicSearchViewModel.swift */; };
+		52F69387264AC2EC0017727F /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F69386264AC2EC0017727F /* JoinGroupViewController.swift */; };
+		52F6938C264AC5570017727F /* JoinGroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6938B264AC5570017727F /* JoinGroupCoordinator.swift */; };
+		52F69394264AC5E60017727F /* JoinGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F69393264AC5E60017727F /* JoinGroupViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -179,6 +183,7 @@
 		528AF7C526494415004E5753 /* FriendProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileCoordinator.swift; sourceTree = "<group>"; };
 		528AF7C9264944E8004E5753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		528AF7CE264948DF004E5753 /* LobbySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbySettingsViewController.swift; sourceTree = "<group>"; };
+		528AF7D62649D821004E5753 /* CreateOrJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrJoinView.swift; sourceTree = "<group>"; };
 		52A758A425D93F770051EB61 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		52AC3AAF25F8FC3A00EA7E19 /* LatestGroupsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestGroupsCollectionView.swift; sourceTree = "<group>"; };
 		52AC3AB325F9090400EA7E19 /* LatestGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestGroupsCell.swift; sourceTree = "<group>"; };
@@ -239,6 +244,9 @@
 		52F42E94261640D000FCAE54 /* MusicSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewController.swift; sourceTree = "<group>"; };
 		52F42E97261643DD00FCAE54 /* MusicSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchCoordinator.swift; sourceTree = "<group>"; };
 		52F42E9A2616442000FCAE54 /* MusicSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModel.swift; sourceTree = "<group>"; };
+		52F69386264AC2EC0017727F /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
+		52F6938B264AC5570017727F /* JoinGroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupCoordinator.swift; sourceTree = "<group>"; };
+		52F69393264AC5E60017727F /* JoinGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewModel.swift; sourceTree = "<group>"; };
 		9BA964EE92A25094FD1F159E /* Pods_Harmony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Harmony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -428,6 +436,7 @@
 			children = (
 				521A052125C74210007F86A0 /* GroupsListCoordinator.swift */,
 				52F42E8926125CA700FCAE54 /* NewGroup */,
+				52F6938E264AC55B0017727F /* JoinGroup */,
 				52F42E8B26125CB200FCAE54 /* CurGroup */,
 				52F42E8726125C9000FCAE54 /* NewPlaylist */,
 			);
@@ -446,8 +455,7 @@
 		5236FF8F25CDC92C00845300 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
-				5236FF9025CDC94700845300 /* GroupCell.swift */,
-				52B5E88025F7FFDD001BD785 /* NewGroupCell.swift */,
+				528AF7D42649D805004E5753 /* GroupsList */,
 				52AC3ACE25F9FFE700EA7E19 /* Lobby */,
 			);
 			path = Groups;
@@ -494,6 +502,7 @@
 			children = (
 				52AC3B0D2603B40400EA7E19 /* GroupsList */,
 				52AC3B0F2603B40D00EA7E19 /* NewGroup */,
+				52F69397264AC5EB0017727F /* JoinGroup */,
 				5233DB1A260CB07800764342 /* NewPlaylist */,
 				52AC3AE725FE33A200EA7E19 /* Lobby */,
 			);
@@ -520,6 +529,16 @@
 				52B11CCB25DC1FA600CFB829 /* Track.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		528AF7D42649D805004E5753 /* GroupsList */ = {
+			isa = PBXGroup;
+			children = (
+				5236FF9025CDC94700845300 /* GroupCell.swift */,
+				52B5E88025F7FFDD001BD785 /* NewGroupCell.swift */,
+				528AF7D62649D821004E5753 /* CreateOrJoinView.swift */,
+			);
+			path = GroupsList;
 			sourceTree = "<group>";
 		};
 		52AC3ACE25F9FFE700EA7E19 /* Lobby */ = {
@@ -751,8 +770,8 @@
 			isa = PBXGroup;
 			children = (
 				521A051525C73FF4007F86A0 /* GroupsListViewController.swift */,
-				5236FF8725CDAF5800845300 /* NewGroupViewController.swift */,
-				52B5E88425F80B5A001BD785 /* ShareLinkViewController.swift */,
+				52F69384264AC2D90017727F /* CreateGroup */,
+				52F69389264AC2F00017727F /* JoinGroup */,
 			);
 			path = GroupsList;
 			sourceTree = "<group>";
@@ -766,6 +785,39 @@
 				5214407B26448BD800DB2A6B /* FriendsSearchViewController.swift */,
 			);
 			path = Lobby;
+			sourceTree = "<group>";
+		};
+		52F69384264AC2D90017727F /* CreateGroup */ = {
+			isa = PBXGroup;
+			children = (
+				5236FF8725CDAF5800845300 /* NewGroupViewController.swift */,
+				52B5E88425F80B5A001BD785 /* ShareLinkViewController.swift */,
+			);
+			path = CreateGroup;
+			sourceTree = "<group>";
+		};
+		52F69389264AC2F00017727F /* JoinGroup */ = {
+			isa = PBXGroup;
+			children = (
+				52F69386264AC2EC0017727F /* JoinGroupViewController.swift */,
+			);
+			path = JoinGroup;
+			sourceTree = "<group>";
+		};
+		52F6938E264AC55B0017727F /* JoinGroup */ = {
+			isa = PBXGroup;
+			children = (
+				52F6938B264AC5570017727F /* JoinGroupCoordinator.swift */,
+			);
+			path = JoinGroup;
+			sourceTree = "<group>";
+		};
+		52F69397264AC5EB0017727F /* JoinGroup */ = {
+			isa = PBXGroup;
+			children = (
+				52F69393264AC5E60017727F /* JoinGroupViewModel.swift */,
+			);
+			path = JoinGroup;
 			sourceTree = "<group>";
 		};
 		D8BA771E9B3E25B33F5047CF /* Pods */ = {
@@ -898,6 +950,7 @@
 				52F42E7F260FA4D600FCAE54 /* MusicCellViewModel.swift in Sources */,
 				521A053D25C81249007F86A0 /* LoginViewController.swift in Sources */,
 				5236FFC225CFCD7600845300 /* NewFriendViewModel.swift in Sources */,
+				52F69387264AC2EC0017727F /* JoinGroupViewController.swift in Sources */,
 				52AC3AC325F95AAF00EA7E19 /* MusicTabBarCollectionView.swift in Sources */,
 				52F42E95261640D000FCAE54 /* MusicSearchViewController.swift in Sources */,
 				5236FFAD25CEF6F900845300 /* UITextField+Ext.swift in Sources */,
@@ -926,6 +979,7 @@
 				52AC3B0A2603A96500EA7E19 /* GroupCellViewModel.swift in Sources */,
 				5236FF9E25CDE5A800845300 /* MusicCell.swift in Sources */,
 				5236FF7C25CDA73400845300 /* MainTabBarCoordinator.swift in Sources */,
+				52F69394264AC5E60017727F /* JoinGroupViewModel.swift in Sources */,
 				5214407C26448BD800DB2A6B /* FriendsSearchViewController.swift in Sources */,
 				521A052225C74210007F86A0 /* GroupsListCoordinator.swift in Sources */,
 				52AC3AC625F95B1B00EA7E19 /* MyMusicTabBarCell.swift in Sources */,
@@ -944,6 +998,7 @@
 				52B0F99825E41A4500010F9D /* ForgotPasswordCoordinator.swift in Sources */,
 				528AF7C326494404004E5753 /* FriendProfileViewController.swift in Sources */,
 				5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */,
+				52F6938C264AC5570017727F /* JoinGroupCoordinator.swift in Sources */,
 				52AC3ACC25F9FF2400EA7E19 /* LobbyPlaylistsTableCell.swift in Sources */,
 				52B5E88125F7FFDD001BD785 /* NewGroupCell.swift in Sources */,
 				52AC3AE525FAB51200EA7E19 /* PulseAnimation.swift in Sources */,
@@ -964,6 +1019,7 @@
 				5234BAB825CC230E00561E86 /* ServicesViewModel.swift in Sources */,
 				5234BAA725CC166100561E86 /* LoginViewModel.swift in Sources */,
 				52B0F99225E4199300010F9D /* ForgotPasswordViewController.swift in Sources */,
+				528AF7D72649D821004E5753 /* CreateOrJoinView.swift in Sources */,
 				52B5E85C25EE732A001BD785 /* UIDevice+Ext.swift in Sources */,
 				5236FF9125CDC94700845300 /* GroupCell.swift in Sources */,
 				52AC3AE225FA850100EA7E19 /* UIImageView+Ext.swift in Sources */,

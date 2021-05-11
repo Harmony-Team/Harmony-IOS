@@ -22,7 +22,7 @@ final class GroupCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController: LobbyViewController = .instantiate(id: "CreatedGroupViewController")
+        let viewController: LobbyViewController = .instantiate(id: "GroupViewController")
         viewController.hidesBottomBarWhenPushed = true
         viewController.title = "LOBBY"
         let groupViewModel = GroupViewModel()

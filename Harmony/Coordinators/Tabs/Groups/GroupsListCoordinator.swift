@@ -38,6 +38,14 @@ final class GroupsListCoordinator: Coordinator {
         newGroupCoordinator.start()
     }
     
+    /* Go to "Join group" window */
+    func joinGroup() {
+        let joinGroupCoordinator = JoinGroupCoordinator(navigationController: navigationController)
+        joinGroupCoordinator.parentCoordinator = self
+        childCoordinators.append(joinGroupCoordinator)
+        joinGroupCoordinator.start()
+    }
+    
     /* Go To Selected Section Coordinator */
     func goToSection(section: MenuSection) {
         goToSection(section: section, navigationController: navigationController, parentCoordinator: self)

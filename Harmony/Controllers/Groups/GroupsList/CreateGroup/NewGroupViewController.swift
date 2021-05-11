@@ -173,7 +173,6 @@ class NewGroupViewController: UIViewController {
     
     /* Close window without saving */
     @IBAction func closeWithoutSaving(_ sender: UIButton) {
-//        dismiss(animated: true, completion: nil)
         guard viewModel != nil else {
             guard newPlaylistViewModel != nil else {
                 playlistCreatedViewModel?.closeWindow()

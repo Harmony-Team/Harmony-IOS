@@ -12,7 +12,7 @@ class GroupUsersCollectionView: UICollectionView, UICollectionViewDelegate, UICo
     var viewModel: GroupViewModel
     var groupAdmin: String
     var groupUsers: [GroupUsers] // Group Users
-    private static var cellScale: CGFloat = 0.26
+    private static var cellScale: CGFloat = 0.25
     private var spacing: CGFloat = UIScreen.main.bounds.width * ((1 - cellScale * 3.5) / 4)
     
     init(viewModel: GroupViewModel, groupAdmin: String, groupUsers: [GroupUsers]) {
@@ -20,7 +20,7 @@ class GroupUsersCollectionView: UICollectionView, UICollectionViewDelegate, UICo
         layout.scrollDirection = .horizontal
         self.viewModel = viewModel
         self.groupAdmin = groupAdmin
-        self.groupUsers = groupUsers
+        self.groupUsers = groupUsers.filter{$0.login != groupAdmin}
         super.init(frame: .zero, collectionViewLayout: layout)
         
         contentInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)

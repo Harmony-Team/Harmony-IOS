@@ -78,7 +78,10 @@ class ShareLinkViewController: UIViewController {
     }
     
     @IBAction func shareLink(_ sender: UIButton) {
-        self.viewModel.goToGroup()
+        let activityController = UIActivityViewController(activityItems: [viewModel.inviteCode!], applicationActivities: nil)
+        present(activityController, animated: true) {
+            self.viewModel.goToGroup()
+        }
     }
     
     @IBAction func cancel(_ sender: UIButton) {

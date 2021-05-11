@@ -129,12 +129,12 @@ class LobbyViewController: UIViewController {
         NSLayoutConstraint.activate([
             groupUsersLabel.widthAnchor.constraint(equalTo: view.widthAnchor),
             groupUsersLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            groupUsersLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            groupUsersLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             
             groupUsersCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
             groupUsersCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
             groupUsersCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            groupUsersCollectionView.topAnchor.constraint(equalTo: groupUsersLabel.bottomAnchor, constant: 10)
+            groupUsersCollectionView.topAnchor.constraint(equalTo: groupUsersLabel.bottomAnchor, constant: 5)
         ])
     }
     
@@ -164,7 +164,7 @@ class LobbyViewController: UIViewController {
         view.addSubview(musicTabBarSegment)
         musicTabBarSegment.translatesAutoresizingMaskIntoConstraints = false
         
-        segmentTopAnchor = musicTabBarSegment.topAnchor.constraint(equalTo: groupUsersCollectionView.bottomAnchor, constant: 15)
+        segmentTopAnchor = musicTabBarSegment.topAnchor.constraint(equalTo: groupUsersCollectionView.bottomAnchor, constant: 10)
         segmentTopAnchor?.isActive = true
         NSLayoutConstraint.activate([
             musicTabBarSegment.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),

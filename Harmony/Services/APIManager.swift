@@ -351,6 +351,42 @@ class APIManager {
         task.resume()
     }
     
+    /* Join Group By Code */
+    func joinGroupByCode(code: String, completion: @escaping ((String?, NewGroup?)) -> ()) {
+        let invideCodeApi = "\(base_url)/api/group/join?inviteCode=\(code)"
+        let url = URL(string: invideCodeApi)!
+        var request = URLRequest(url: url)
+        let token = UserDefaults.standard.string(forKey: "userToken")!
+
+        request.allHTTPHeaderFields = [
+            "Authorization": "\(token)"
+        ]
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+            guard error == nil else { return }
+            guard let data = data else { return }
+                        
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+                let code = (json as AnyObject).value(forKey: "code") as! Int
+                if(code != 0) {
+                    let msg = (json as AnyObject).value(forKey: "message") as! String
+                    completion((msg, nil))
+                } else {
+                    let decoder = JSONDecoder()
+                    let resp: NewGroup = try decoder.decode(NewGroup.self, from: data)
+                    completion((nil, resp))
+                }
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
     /* Add Song In Pull */
     func addSong(groupId: Int, spotifyId: String, songName: String, completion: @escaping (Result<String?, Error>) -> Void) {
         let addSongApi = "\(base_url)/api/group/music/add?groupId=\(groupId)&spotifyId=\(spotifyId)"

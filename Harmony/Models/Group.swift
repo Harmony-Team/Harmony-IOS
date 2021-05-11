@@ -15,7 +15,7 @@ struct GroupsResponse: Codable {
 /* New Group */
 struct NewGroup: Codable {
     let code: Int?
-    let invite_code: String
+    let invite_code: String?
     let object: UserGroup
 }
 

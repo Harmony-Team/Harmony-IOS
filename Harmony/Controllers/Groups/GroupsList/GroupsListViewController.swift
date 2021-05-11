@@ -14,16 +14,20 @@ class GroupsListViewController: UIViewController {
     /* Menu */
     private var menuView: SideMenuView!
     private var tapGestureRecogniser: UITapGestureRecognizer!
-
-    /* Content */
+    
+    /* Search Section */
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchLobbyField: UITextField!
     @IBOutlet weak var searchIcon: UIImageView!
     
+    /* Content */
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var topImage: UIImageView!
     @IBOutlet weak var groupsTableView: UITableView!
+    
+    /* Create Group Or Join Alert */
+    private var createOrJoinView: CreateOrJoinView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +40,16 @@ class GroupsListViewController: UIViewController {
         goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: false)
         closeMenuOnTap(nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuImage, style: .done, target: self, action: #selector(toggleMenu))
+        
         // Notification About Chosing Section In Menu
         NotificationCenter.default.addObserver(self, selector: #selector(chooseSection(notification:)), name: NSNotification.Name(rawValue: "ChoseSection"), object: nil)
         
+        // Notification About Creating Or Joining Group
+        NotificationCenter.default.addObserver(self, selector: #selector(createOrJoinGroup(notification:)), name: NSNotification.Name(rawValue: "NewGroupChoice"), object: nil)
+        
         topImage.setupTopGradientMask(with: topView)
         setupTableView()
+        setupCustomView()
         
         /* Loading Groups Table */
         showActivityIndicator()
@@ -48,7 +57,7 @@ class GroupsListViewController: UIViewController {
             self?.hideActivityIndicator()
             self?.groupsTableView.reloadData()
         }
-    
+        
         viewModel.viewDidLoad()
     }
     
@@ -59,22 +68,17 @@ class GroupsListViewController: UIViewController {
         setupContent(menuView: menuView, contentView: contentView)
         
         searchView.setupShadow(cornerRad: searchView.frame.height * 0.5, shadowRad: searchView.frame.height * 0.6, shadowOp: 0.5, offset: CGSize(width: 3, height: 5))
-//        searchView.layer.cornerRadius = searchView.frame.height * 0.5
         searchLobbyField.font = UIFont.setFont(size: .Big)
         searchLobbyField.textColor = .mainTextColor
         searchLobbyField.delegate = self
-        if #available(iOS 13.0, *) {
-            searchIcon.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysTemplate)
-        } else {
-            searchIcon.image = UIImage(named: "magnifyingglass")?.withRenderingMode(.alwaysTemplate)
-        }
         
+        searchIcon.image = searchIcon.image?.withRenderingMode(.alwaysTemplate)
         searchIcon.contentMode = .scaleAspectFill
         searchIcon.tintColor = .mainTextColor
         
         tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(closeMenuOnTap(_:completion:)))
-//        panGestureRecognizer.delegate = self
-//        contentView.addGestureRecognizer(panGestureRecognizer)
+        //        panGestureRecognizer.delegate = self
+        //        contentView.addGestureRecognizer(panGestureRecognizer)
     }
     
     /* Choosing Secton In Menu */
@@ -98,9 +102,9 @@ class GroupsListViewController: UIViewController {
         hideActivityIndicator()
         goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser)
     }
-
+    
     private func setupTableView() {
-//        groupsTableView.contentInset = UIEdgeInsets(top: topView.frame.height * 0.3, left: 0, bottom: 0, right: 0)
+        //        groupsTableView.contentInset = UIEdgeInsets(top: topView.frame.height * 0.3, left: 0, bottom: 0, right: 0)
         groupsTableView.layer.zPosition = 25
         groupsTableView.showsVerticalScrollIndicator = false
         groupsTableView.backgroundColor = .clear
@@ -113,6 +117,38 @@ class GroupsListViewController: UIViewController {
         groupsTableView.register(NewGroupCell.self, forCellReuseIdentifier: "createCell")
     }
     
+    /* Setting Up Alert View */
+    private func setupCustomView() {
+        createOrJoinView = CreateOrJoinView(frame: .zero)
+        createOrJoinView.translatesAutoresizingMaskIntoConstraints = false
+        createOrJoinView.alpha = 0
+        contentView.addSubview(createOrJoinView!)
+        
+        NSLayoutConstraint.activate([
+            createOrJoinView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            createOrJoinView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
+            createOrJoinView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            createOrJoinView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    @objc private func createOrJoinGroup(notification: NSNotification) {
+        if let groupChoice = notification.userInfo?["choice"] as? NewGroupChoice {
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
+                self.createOrJoinView.transform = CGAffineTransform(translationX: 0, y: 800)
+                self.groupsTableView.alpha = 1
+                self.searchView.alpha = 1
+                self.createOrJoinView.alpha = 0
+            }) { _ in
+                self.createOrJoinView.transform = CGAffineTransform(translationX: 0, y: 0)
+                if groupChoice == .Create {
+                    self.viewModel.addNewGroupChat()
+                } else {
+                    self.viewModel.joinGroup()
+                }
+            }
+        }
+    }
 }
 
 /* Table View Extension */
@@ -181,7 +217,12 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            viewModel.addNewGroupChat()
+            UIView.animate(withDuration: 0.3) {
+                self.createOrJoinView.alpha = 1
+                self.groupsTableView.alpha = 0
+                self.searchView.alpha = 0
+            }
+            //            viewModel.addNewGroupChat()
         } else {
             viewModel.didSelectRow(at: indexPath)
         }
@@ -202,9 +243,9 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
 /* Text Field Extension (Searching) */
 extension GroupsListViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
-
+        
         var searchText = textField.text! + string
-                
+        
         if(string.isEmpty) {searchText.removeLast()}
         
         if !searchText.isEmpty {
@@ -214,9 +255,9 @@ extension GroupsListViewController: UITextFieldDelegate {
         } else {
             viewModel.visibleGroups = viewModel.userGroups
         }
-
+        
         viewModel.updateCells()
-
+        
         return true
     }
 }
