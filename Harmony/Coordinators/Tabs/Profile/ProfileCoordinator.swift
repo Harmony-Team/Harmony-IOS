@@ -31,7 +31,7 @@ final class ProfileCoordinator: Coordinator {
     
     /* Go To Recent Group */
     func goToCreatedGroup(id: Int, group: UserGroup) {
-        let groupCoordinator = GroupCoordinator(navigationController: navigationController, group: group)
+        let groupCoordinator = LobbyCoordinator(navigationController: navigationController, group: group)
         groupCoordinator.parentCoordinator = self
         childCoordinators.append(groupCoordinator)
         groupCoordinator.start()

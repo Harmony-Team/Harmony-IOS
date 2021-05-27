@@ -15,7 +15,6 @@ struct SpotifyAuthResponse: Codable {
     let token_type: String
 }
 
-
 struct SpotifyUserIntegration: Encodable {
     var spotifyId: String
     var accessToken: String

@@ -65,7 +65,6 @@ class LobbyViewController: UIViewController {
         navigationController?.title = "LOBBY"
         
         NotificationCenter.default.addObserver(self, selector: #selector(musicTabBarCollectionViewSlided(notification:)), name: NSNotification.Name(rawValue: "SlideMusicSections"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(myMusicScrolled(notification:)), name: NSNotification.Name(rawValue: "ScrollMyMusic"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(callErrorAlertSong(notification:)), name: NSNotification.Name(rawValue: "ShowErrorAlertSong"), object: nil)
         
         setupUsersCollectionView()
@@ -186,28 +185,6 @@ class LobbyViewController: UIViewController {
         }
     }
     
-    /* Notification: Hide My View After Scrolling Music */
-    @objc private func myMusicScrolled(notification: Notification) {
-        if let yPos = notification.userInfo?["yPos"] as? CGFloat {
-            let delta = yPos - lastContentOffset
-            let safeFrame = view.safeAreaLayoutGuide.layoutFrame
-
-//            let availableToScroll: Bool = (topViewHeightConstraint.constant + safeFrame.minY) > -safeFrame.minY
-//            let availableToScroll: Bool = (topViewHeightConstraint.constant + safeFrame.minY) < safeFrame.minY
-
-//            if availableToScroll {
-
-                segmentTopAnchor!.constant -= delta
-                topViewHeightConstraint.constant -= delta
-            
-                print(safeFrame.minY)
-                print(topViewHeightConstraint.constant + safeFrame.minY)
-//            }
-
-            lastContentOffset = yPos
-        }
-    }
-    
     /* Show Alert About "Song is already in music pool" */
     @objc private func callErrorAlertSong(notification: NSNotification) {
         if let msg = notification.userInfo?["msg"] as? String {
@@ -305,12 +282,8 @@ class LobbyViewController: UIViewController {
     /* Setting Up Ready/Create Button */
     private func setupButton() {
         readyButton.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: readyButton.frame.width / 2, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
-        readyButton.titleLabel?.font = UIFont.setFont(size: .Small)
-        readyButton.titleLabel?.addKern(1.74)
         readyButton.layer.zPosition = 2
         
-        notReadyButton?.titleLabel?.font = UIFont.setFont(size: .Small)
-        notReadyButton?.titleLabel?.addKern(1.74)
         notReadyButton?.tintColor = .white
         notReadyButton?.layer.zPosition = 3
         notReadyButton?.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: 30, startPoint: CGPoint(x: -0.5, y: 1.1), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
@@ -366,7 +339,7 @@ class LobbyViewController: UIViewController {
     
     /* Open Lobby Settings */
     @objc private func openLobbySettings() {
-        
+        viewModel.goToLobbySettings()
     }
     
     /* Ready Button Tapped */

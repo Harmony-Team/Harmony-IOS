@@ -130,8 +130,6 @@ class APIManager {
         ]
         request.httpMethod = "GET"
         
-//        print(token)
-        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else { return }
             guard let data = data else { return }
@@ -273,7 +271,6 @@ class APIManager {
                 if code == 0 {
                     let decoder = JSONDecoder()
                     let resp: GroupsResponse = try decoder.decode(GroupsResponse.self, from: data)
-//                    print(resp.response)
                     completion(resp.response)
                     
                 }

@@ -114,7 +114,7 @@ class NewGroupViewController: UIViewController {
         }
         
         tracksValueLabel?.text = "\(newPlaylistViewModel?.tracksCount ?? 0)"
-        participantsValueLabel?.text = "\(newPlaylistViewModel?.partitionsReadyCount ?? 0)/\(newPlaylistViewModel?.partitionsTotalCount ?? 0)"
+        participantsValueLabel?.text = "\(newPlaylistViewModel?.participantsReadyCount ?? 0)/\(newPlaylistViewModel?.participantsTotalCount ?? 0)"
         
         [groupNameTextField, descriptionTextField].forEach {
             $0?.defaultTextAttributes.updateValue(1.74, forKey: NSAttributedString.Key.kern)

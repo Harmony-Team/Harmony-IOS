@@ -7,8 +7,9 @@
 
 import UIKit
 
-class LatestGroupsCell: UICollectionViewCell {
+class LatestGroupsCell: UICollectionViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "LatestGroupIdCell"
     var logoView = UIView()
     var groupLogo = UIImageView()
     
@@ -19,7 +20,7 @@ class LatestGroupsCell: UICollectionViewCell {
         setupLayouts()
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         
         logoView.frame = contentView.frame
         logoView.setupShadow(cornerRad: contentView.frame.width / 2, shadowRad: 5, shadowOp: 0.1, offset: CGSize(width: 3, height: 5))

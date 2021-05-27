@@ -7,8 +7,9 @@
 
 import UIKit
 
-class MusicCell: UITableViewCell {
+class MusicCell: UITableViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "MusicIdCell"
     var logoImageView = UIImageView()
     var titleLabel = UILabel()
     var authorLabel = UILabel()
@@ -31,7 +32,7 @@ class MusicCell: UITableViewCell {
 //        }
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         logoImageView.backgroundColor = .lightGray
         logoImageView.layer.cornerRadius = 15
         

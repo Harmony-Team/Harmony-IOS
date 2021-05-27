@@ -10,7 +10,7 @@ import UIKit
 final class FriendsSearchCoordinator: Coordinator {
     
     private(set)var childCoordinators: [Coordinator] = []
-    var parentCoordinator: GroupCoordinator!
+    var parentCoordinator: LobbyCoordinator!
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {

@@ -7,8 +7,9 @@
 
 import UIKit
 
-class MyMusicTableCell: UITableViewCell {
+class MyMusicTableCell: UITableViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "MyMusicIdCell"
     var trackLogoView = UIView()
     var trackLogo = TrackImageView()
     private var verticalStack = UIStackView()
@@ -71,7 +72,7 @@ class MyMusicTableCell: UITableViewCell {
         trackLogo.downloaded(from: track.image_url!)
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         trackLogoView.setupShadow(cornerRad: 15, shadowRad: 6, shadowOp: 0.3, offset: CGSize(width: 0, height: 6))
         trackLogo.image = UIImage(named: "groupImage")
         trackLogo.contentMode = .scaleAspectFill

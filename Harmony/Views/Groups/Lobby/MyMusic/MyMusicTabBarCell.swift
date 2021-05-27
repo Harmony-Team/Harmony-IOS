@@ -29,7 +29,7 @@ class MusicTabBarCell: UICollectionViewCell {
         musicTableView.dataSource = self
         musicTableView.delegate = self
         musicTableView.allowsMultipleSelection = true
-        musicTableView.register(MyMusicTableCell.self, forCellReuseIdentifier: "musicTableCellId")
+        musicTableView.register(MyMusicTableCell.self, forCellReuseIdentifier: MyMusicTableCell.reuseId)
         musicTableView.separatorStyle = .none
         musicTableView.rowHeight = UIScreen.main.bounds.height * 0.1
         musicTableView.backgroundColor = .clear
@@ -108,7 +108,7 @@ extension MusicTabBarCell: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "musicTableCellId", for: indexPath) as! MyMusicTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MyMusicTableCell.reuseId, for: indexPath) as! MyMusicTableCell
         cell.update(track: viewModel.visibleSpotifyTracks[indexPath.row])
         cell.selectionStyle = .none
         return cell

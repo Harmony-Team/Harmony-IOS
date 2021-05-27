@@ -102,7 +102,7 @@ final class TracksCoreDataManager {
     func saveTrack(track: Track) -> SpotifyTrack? {
         let newTrack = SpotifyTrack(context: moc)
         newTrack.setValue(track.name, forKey: "name")
-        newTrack.setValue(track.artists[0].name, forKey: "artist")
+        newTrack.setValue(track.artistsList, forKey: "artist")
         newTrack.setValue(track.album.images[0].url, forKey: "image_url")
         newTrack.setValue(track.id, forKey: "spotifyId")
         

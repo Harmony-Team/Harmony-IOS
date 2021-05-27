@@ -47,6 +47,9 @@ class GroupsListViewController: UIViewController {
         // Notification About Creating Or Joining Group
         NotificationCenter.default.addObserver(self, selector: #selector(createOrJoinGroup(notification:)), name: NSNotification.Name(rawValue: "NewGroupChoice"), object: nil)
         
+        // Notification About Going Back To Groups
+        NotificationCenter.default.addObserver(self, selector: #selector(goBackToGroups), name: NSNotification.Name(rawValue: "BackToGroups"), object: nil)
+        
         topImage.setupTopGradientMask(with: topView)
         setupTableView()
         setupCustomView()
@@ -104,7 +107,6 @@ class GroupsListViewController: UIViewController {
     }
     
     private func setupTableView() {
-        //        groupsTableView.contentInset = UIEdgeInsets(top: topView.frame.height * 0.3, left: 0, bottom: 0, right: 0)
         groupsTableView.layer.zPosition = 25
         groupsTableView.showsVerticalScrollIndicator = false
         groupsTableView.backgroundColor = .clear
@@ -113,8 +115,8 @@ class GroupsListViewController: UIViewController {
         groupsTableView.tableFooterView = nil
         groupsTableView.dataSource = self
         groupsTableView.delegate = self
-        groupsTableView.register(GroupCell.self, forCellReuseIdentifier: "groupCell")
-        groupsTableView.register(NewGroupCell.self, forCellReuseIdentifier: "createCell")
+        groupsTableView.register(GroupCell.self, forCellReuseIdentifier: GroupCell.reuseId)
+        groupsTableView.register(NewGroupCell.self, forCellReuseIdentifier: NewGroupCell.reuseId)
     }
     
     /* Setting Up Alert View */
@@ -132,6 +134,7 @@ class GroupsListViewController: UIViewController {
         ])
     }
     
+    /* Create Or Join Group */
     @objc private func createOrJoinGroup(notification: NSNotification) {
         if let groupChoice = notification.userInfo?["choice"] as? NewGroupChoice {
             UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
@@ -148,6 +151,15 @@ class GroupsListViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    /* Going Back To Groups */
+    @objc private func goBackToGroups() {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
+            self.groupsTableView.alpha = 1
+            self.searchView.alpha = 1
+            self.createOrJoinView.alpha = 0
+        })
     }
 }
 
@@ -169,19 +181,19 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "createCell", for: indexPath) as! NewGroupCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: NewGroupCell.reuseId, for: indexPath) as! NewGroupCell
             cell.selectionStyle = .none
             if #available(iOS 13, *) {
                 cell.logoImageView.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
             } else {
                 cell.logoImageView.image = UIImage(named: "plus")?.withRenderingMode(.alwaysTemplate)
             }
-            cell.titleLabel.text = "Create a new group..."
+            cell.titleLabel.text = "Add a new group..."
             return cell
         } else {
             switch viewModel.cellForRow(at: indexPath) {
             case .group(let groupCellViewModel):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: GroupCell.reuseId, for: indexPath) as! GroupCell
                 cell.selectionStyle = .none
                 cell.update(viewModel: groupCellViewModel)
                 return cell
@@ -222,7 +234,6 @@ extension GroupsListViewController: UITableViewDataSource, UITableViewDelegate {
                 self.groupsTableView.alpha = 0
                 self.searchView.alpha = 0
             }
-            //            viewModel.addNewGroupChat()
         } else {
             viewModel.didSelectRow(at: indexPath)
         }
@@ -245,17 +256,9 @@ extension GroupsListViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
         var searchText = textField.text! + string
-        
-        if(string.isEmpty) {searchText.removeLast()}
-        
-        if !searchText.isEmpty {
-            viewModel.visibleGroups = viewModel.userGroups.filter {
-                return $0.name.range(of: searchText, options: .caseInsensitive) != nil
-            }
-        } else {
-            viewModel.visibleGroups = viewModel.userGroups
-        }
-        
+        if (string.isEmpty) {searchText.removeLast()}
+
+        viewModel.visibleGroups = viewModel.userGroups.matching(searchText)
         viewModel.updateCells()
         
         return true

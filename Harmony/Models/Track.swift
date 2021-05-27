@@ -28,6 +28,10 @@ struct Track: Codable {
     var artists: [Artist]
     var name: String
     var id: String
+    
+    var artistsList: String {
+        artists.map({ $0.name }).joined(separator: ", ")
+    }
 }
 
 /* Track Artist */
@@ -53,4 +57,17 @@ struct PullTrackResponse: Codable {
 struct PullTrack: Codable {
     let userLogin: String
     let spotifyTrackId: String
+}
+
+/* Extension To Spotify Tracks List To Filter It */
+extension Array where Element == SpotifyTrack {
+    func matching(_ text: String?) -> [SpotifyTrack] {
+        if let text = text, text.count > 0 {
+            return self.filter {
+                return $0.name?.range(of: text, options: .caseInsensitive) != nil
+            }
+        } else {
+            return self
+        }
+    }
 }

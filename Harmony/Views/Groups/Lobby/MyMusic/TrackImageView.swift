@@ -21,17 +21,17 @@ class TrackImageView: UIImageView {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else { return }
             
+            let imageToCache = UIImage(data: data)
+            imageCache.setObject(imageToCache!, forKey: url.absoluteString as NSString)
+            
             DispatchQueue.main.async() {
-                let imageToCache = UIImage(data: data)
-                
                 if self.imageUrlString == url.absoluteString {
                     self.image = imageToCache
                 }
-                
-                imageCache.setObject(imageToCache!, forKey: url.absoluteString as NSString)
             }
         }.resume()
     }
+    
     func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFill) {
         if let cachedImage = imageCache.object(forKey: link as NSString) {
             self.image = cachedImage

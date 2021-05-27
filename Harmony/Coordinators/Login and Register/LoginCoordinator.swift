@@ -19,7 +19,7 @@ final class LoginCoordinator: Coordinator {
     }
 
     func start() {
-        let viewController: LoginViewController = .instantiate()
+        let viewController: LoginViewController = .instantiate(storyboardName: "LoginAndRegister")
         let loginViewModel = LoginViewModel()
         loginViewModel.coordinator = self
         viewController.viewModel = loginViewModel
@@ -32,7 +32,7 @@ final class LoginCoordinator: Coordinator {
     
     /* Go To Profile Screen */
     func goToProfile() {
-        let profileCoordinator = MainTabBarCoordinator(navigationController: navigationController)
+        let profileCoordinator = ProfileCoordinator(navigationController: navigationController)
         childCoordinators.append(profileCoordinator)
         profileCoordinator.start()
     }
@@ -51,6 +51,14 @@ final class LoginCoordinator: Coordinator {
         forgotPasswordCoordinator.parentCoordinator = self
         childCoordinators.append(forgotPasswordCoordinator)
         forgotPasswordCoordinator.start()
+    }
+    
+    /* Go To Spotify Integration After Registration */
+    func goToServices(with data: Any) {
+        let servicesCoordinator = ServicesCoordinator(navigationController: navigationController, data: data)
+        servicesCoordinator.parentCoordinator = self
+        childCoordinators.append(servicesCoordinator)
+        servicesCoordinator.start()
     }
 
     func finishChild(coordinator: Coordinator) {

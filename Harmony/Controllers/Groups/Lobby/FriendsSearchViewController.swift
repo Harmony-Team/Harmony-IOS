@@ -35,7 +35,7 @@ class FriendsSearchViewController: UIViewController {
         friendsTableView.dataSource = self
         friendsTableView.delegate = self
         friendsTableView.allowsMultipleSelection = true
-        friendsTableView.register(FriendCell.self, forCellReuseIdentifier: "friendTableCellId")
+        friendsTableView.register(FriendCell.self, forCellReuseIdentifier: FriendCell.reuseId)
         friendsTableView.separatorStyle = .none
         friendsTableView.rowHeight = UIScreen.main.bounds.height * 0.1
         friendsTableView.backgroundColor = .clear
@@ -89,7 +89,7 @@ extension FriendsSearchViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendTableCellId", for: indexPath) as! FriendCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FriendCell.reuseId, for: indexPath) as! FriendCell
         
 //        cell.update(track: viewModel.visibleSpotifyTracks[indexPath.row])
         cell.nameLabel.text = "Friend Name"

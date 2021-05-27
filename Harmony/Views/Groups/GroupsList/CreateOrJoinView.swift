@@ -19,6 +19,8 @@ class CreateOrJoinView: UIView {
     private var orLabel = UILabel()
     private var createGroupButton = LoginButtonStyle()
     private var joinGroupButton = LoginButtonStyle()
+    private var cancelButton = UIButton()
+    private var bottomLine = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,12 +43,12 @@ class CreateOrJoinView: UIView {
         titleLabel.textColor = .mainTextColor
         titleLabel.textAlignment = .center
         
-        createGroupButton.setTitle("Create A New Group", for: .normal)
+        createGroupButton.setTitle("CREATE A NEW GROUP", for: .normal)
         createGroupButton.titleLabel?.font = UIFont.setFont(size: .Medium, weight: .Bold)
         createGroupButton.titleLabel?.addKern(1.74)
         createGroupButton.addTarget(self, action: #selector(createGroup), for: .touchUpInside)
                 
-        joinGroupButton.setTitle("Join A Group By Link", for: .normal)
+        joinGroupButton.setTitle("JOIN A GROUP BY CODE", for: .normal)
         joinGroupButton.setTitleColor(.darkMainTextColor, for: .normal)
         joinGroupButton.titleLabel?.font = UIFont.setFont(size: .Medium, weight: .Bold)
         joinGroupButton.titleLabel?.addKern(1.74)
@@ -57,7 +59,15 @@ class CreateOrJoinView: UIView {
         orLabel.textColor = .mainTextColor
         orLabel.textAlignment = .center
         
-        [topView, titleLabel, createGroupButton, joinGroupButton, orLabel].forEach {
+        cancelButton.setTitle("CANCEL", for: .normal)
+        cancelButton.setTitleColor(.mainTextColor, for: .normal)
+        cancelButton.titleLabel?.font = UIFont.setFont(size: .Small)
+        cancelButton.titleLabel?.addKern(1.74)
+        cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        
+        bottomLine.backgroundColor = .lightGray
+        
+        [topView, titleLabel, createGroupButton, joinGroupButton, orLabel, cancelButton, bottomLine].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
@@ -76,6 +86,11 @@ class CreateOrJoinView: UIView {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NewGroupChoice"), object: nil, userInfo: result)
     }
     
+    /* Return Back To Groups */
+    @objc private func cancel() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "BackToGroups"), object: nil)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         createGroupButton.setGradientFill(colorTop: UIColor.gradientColorTop.cgColor, colorBottom: UIColor.gradientColorBottom.cgColor, cornerRadius: createGroupButton.frame.width * 0.1, startPoint: CGPoint(x: 0.0, y: 1.0), endPoint: CGPoint(x: 1.0, y: 0.0), opacity: 1)
@@ -88,6 +103,8 @@ class CreateOrJoinView: UIView {
         addSubview(createGroupButton)
         addSubview(joinGroupButton)
         addSubview(orLabel)
+        addSubview(cancelButton)
+        addSubview(bottomLine)
     }
     
     private func setupLayouts() {
@@ -109,6 +126,15 @@ class CreateOrJoinView: UIView {
             joinGroupButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             joinGroupButton.widthAnchor.constraint(equalTo: createGroupButton.widthAnchor),
             joinGroupButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.17),
+            
+            cancelButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30),
+            cancelButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
+            cancelButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            bottomLine.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: 5),
+            bottomLine.heightAnchor.constraint(equalToConstant: 1),
+            bottomLine.widthAnchor.constraint(equalTo: cancelButton.widthAnchor, multiplier: 1.05),
+            bottomLine.centerXAnchor.constraint(equalTo: cancelButton.centerXAnchor)
         ])
 
         titleLabel.pinToEdges()

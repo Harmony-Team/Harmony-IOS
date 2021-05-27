@@ -64,7 +64,7 @@ class FriendsViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(FriendCell.self, forCellReuseIdentifier: "friendCell")
+        tableView.register(FriendCell.self, forCellReuseIdentifier: FriendCell.reuseId)
     }
     
     /* Choosing Secton In Menu */
@@ -104,7 +104,7 @@ extension FriendsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! FriendCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FriendCell.reuseId, for: indexPath) as! FriendCell
         cell.selectionStyle = .none
         cell.nameLabel.text = "Friend Name"
         cell.infoLabel.text = "Info"

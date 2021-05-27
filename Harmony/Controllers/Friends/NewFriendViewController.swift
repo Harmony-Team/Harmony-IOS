@@ -38,7 +38,7 @@ class NewFriendViewController: UIViewController {
         friendsTableView.setContentOffset(CGPoint(x: 0, y: -1), animated: false)
         friendsTableView.dataSource = self
         friendsTableView.delegate = self
-        friendsTableView.register(FriendCell.self, forCellReuseIdentifier: "friendCell")
+        friendsTableView.register(FriendCell.self, forCellReuseIdentifier: FriendCell.reuseId)
     }
     
     /* Close window without saving */
@@ -56,7 +56,7 @@ extension NewFriendViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! FriendCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FriendCell.reuseId, for: indexPath) as! FriendCell
         cell.selectionStyle = .none
         cell.nameLabel.text = "Friend Name"
         cell.infoLabel.text = "Info"

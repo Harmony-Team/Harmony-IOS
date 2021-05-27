@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class GroupCoordinator: Coordinator {
+final class LobbyCoordinator: Coordinator {
     
     private(set)var childCoordinators: [Coordinator] = []
     var parentCoordinator: Coordinator!
@@ -22,16 +22,19 @@ final class GroupCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController: LobbyViewController = .instantiate(id: "GroupViewController")
-        viewController.hidesBottomBarWhenPushed = true
-        viewController.title = "LOBBY"
-        let groupViewModel = GroupViewModel()
-        groupViewModel.group = group
-        groupViewModel.selectedSpotifyTracks = selectedSpotifyTracks
-        groupViewModel.coordinator = self
-        updateSelectedTracks = groupViewModel.reload
-        viewController.viewModel = groupViewModel
-        navigationController.pushViewController(viewController, animated: true)
+        if let user: User = UserProfileCache.get(key: "user") {
+            let id = group.hostLogin == user.login ? "CreatedGroupViewController" : "GroupViewController"
+            let viewController: LobbyViewController = .instantiate(id: id)
+            viewController.hidesBottomBarWhenPushed = true
+            viewController.title = group.name.uppercased()
+            let groupViewModel = GroupViewModel()
+            groupViewModel.group = group
+            groupViewModel.selectedSpotifyTracks = selectedSpotifyTracks
+            groupViewModel.coordinator = self
+            updateSelectedTracks = groupViewModel.reload
+            viewController.viewModel = groupViewModel
+            navigationController.pushViewController(viewController, animated: true)
+        }
     }
     
     func createNewPlaylist(tracks: Int, totalPartitions: Int, readyPartitions: Int) {

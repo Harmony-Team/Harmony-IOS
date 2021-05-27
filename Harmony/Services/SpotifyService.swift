@@ -350,8 +350,8 @@ class SpotifyService {
                     playlists = jsonPlaylists.items
                     completion(playlists)
                 } else {
-                    let json = try! JSONSerialization.jsonObject(with: data, options: [])
-                    print(json)
+//                    let json = try! JSONSerialization.jsonObject(with: data, options: [])
+//                    print(json)
                 }
             }
             
@@ -381,8 +381,6 @@ class SpotifyService {
             guard let data = data else { return }
             
             let decoder = JSONDecoder()
-            let res = try? JSONSerialization.jsonObject(with: data, options: [])
-            print(res)
             if let jsonTracks = try? decoder.decode(TracksList.self, from: data) {
                 tracks_list = jsonTracks.items
                 tracks_list?.forEach { cur_track in

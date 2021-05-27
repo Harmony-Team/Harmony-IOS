@@ -19,7 +19,7 @@ final class RegisterCoordinator: Coordinator {
     }
 
     func start() {
-        let viewController: RegistrationViewController = .instantiate()
+        let viewController: RegistrationViewController = .instantiate(storyboardName: "LoginAndRegister")
         let registerViewModel = RegisterViewModel()
         registerViewModel.coordinator = self
         viewController.viewModel = registerViewModel
@@ -28,7 +28,7 @@ final class RegisterCoordinator: Coordinator {
     
     func goToServices(with data: Any) {
         let servicesCoordinator = ServicesCoordinator(navigationController: navigationController, data: data)
-        servicesCoordinator.parentCoordinator = self
+//        servicesCoordinator.parentCoordinator = self
         childCoordinators.append(servicesCoordinator)
         servicesCoordinator.start()
     }

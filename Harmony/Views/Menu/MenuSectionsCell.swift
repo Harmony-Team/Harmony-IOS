@@ -7,8 +7,9 @@
 
 import UIKit
 
-class MenuSectionsCell: UITableViewCell {
+class MenuSectionsCell: UITableViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "MenuSectionsCellId"
     var sectionNameLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -27,7 +28,7 @@ class MenuSectionsCell: UITableViewCell {
         }
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         sectionNameLabel.text = "Test"
         sectionNameLabel.font = UIFont.setFont(size: .Largest, weight: .Light)
         sectionNameLabel.addKern(1.5)

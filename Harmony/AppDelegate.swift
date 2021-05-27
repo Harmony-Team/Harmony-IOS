@@ -15,34 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-        
-        if isLoggedIn {
-            let vc: ProfileViewController = .instantiate()
-            window?.rootViewController = vc
-            window?.makeKeyAndVisible()
-        } else {
-            window = UIWindow(frame: UIScreen.main.bounds)
-            loginCoordinator = LoginCoordinator(window: window!)
-            loginCoordinator?.start()
-        }
+//        let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+//        
+//        if isLoggedIn {
+//            let vc: ProfileViewController = .instantiate()
+//            window?.rootViewController = vc
+//            window?.makeKeyAndVisible()
+//        } else {
+//            window = UIWindow(frame: UIScreen.main.bounds)
+//            loginCoordinator = LoginCoordinator(window: window!)
+//            loginCoordinator?.start()
+//        }
         
         return true
-    }
-    
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        let app = options[.sourceApplication] as? String
-//        VK.handle(url: url, sourceApplication: app)
-        return true
-    }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-//        VKSdk.processOpen(url, fromApplication: sourceApplication)
-//        OKSDK.open(url)
-        
-        return false
     }
     
     // MARK: UISceneSession Lifecycle

@@ -33,3 +33,16 @@ struct UserGroup: Codable {
 struct GroupUsers: Codable {
     let login: String
 }
+
+/* Extension To User's Groups List To Filter It */
+extension Array where Element == UserGroup {
+    func matching(_ text: String?) -> [UserGroup] {
+        if let text = text, text.count > 0 {
+            return self.filter {
+                $0.name.contains(text)
+            }
+        } else {
+            return self
+        }
+    }
+}

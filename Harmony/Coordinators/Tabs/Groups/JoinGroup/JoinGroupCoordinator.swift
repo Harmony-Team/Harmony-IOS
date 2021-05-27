@@ -39,7 +39,7 @@ final class JoinGroupCoordinator: Coordinator {
         navModal?.dismiss(animated: true, completion: {
             self.parentCoordinator.saveEvent()
             self.parentCoordinator.finishChild(coordinator: self)
-            let groupCoordinator = GroupCoordinator(navigationController: self.navigationController, group: group)
+            let groupCoordinator = LobbyCoordinator(navigationController: self.navigationController, group: group)
             groupCoordinator.parentCoordinator = self
             self.childCoordinators.append(groupCoordinator)
             groupCoordinator.start()

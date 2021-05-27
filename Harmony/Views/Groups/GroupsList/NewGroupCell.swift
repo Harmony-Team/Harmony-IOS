@@ -7,8 +7,9 @@
 
 import UIKit
 
-class NewGroupCell: UITableViewCell {
+class NewGroupCell: UITableViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "NewGroupIdCell"
     var logoView = UIView()
     var logoImageView = UIImageView()
     var titleLabel = UILabel()
@@ -25,7 +26,7 @@ class NewGroupCell: UITableViewCell {
         setupLayouts()
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         let cellHeight: CGFloat = UIScreen.main.bounds.height * 0.15
         logoView.frame.size = CGSize(width: cellHeight * 3/5, height: cellHeight * 3/5)
         logoView.setupShadow(cornerRad: 10, shadowRad: 5, shadowOp: 0.6, offset: CGSize(width: 0, height: 5))

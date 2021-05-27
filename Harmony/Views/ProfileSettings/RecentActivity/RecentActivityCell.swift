@@ -7,8 +7,9 @@
 
 import UIKit
 
-class RecentActivityCell: UICollectionViewCell {
+class RecentActivityCell: UICollectionViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "RecentActivityIdCell"
     private var label = UILabel()
     private var timeLabel = UILabel()
     
@@ -42,7 +43,7 @@ class RecentActivityCell: UICollectionViewCell {
         timeLabel.text = viewModel.timeString
     }
     
-    private func setupViews() {
+    internal func setupViews() {
 //        label.text = "Iuser followed Nathan Hunt, Carolyne Miller & two others."
         label.numberOfLines = 0
         label.font = UIFont.setFont(size: .Large, weight: .Light)

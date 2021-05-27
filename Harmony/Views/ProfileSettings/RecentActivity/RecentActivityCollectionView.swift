@@ -49,7 +49,7 @@ class RecentActivityCollectionView: UICollectionView, UICollectionViewDelegate, 
         backgroundColor = .clear
         delegate = self
         dataSource = self
-        register(RecentActivityCell.self, forCellWithReuseIdentifier: "recentActivityId")
+        register(RecentActivityCell.self, forCellWithReuseIdentifier: RecentActivityCell.reuseId)
     }
     
     override func layoutSubviews() {
@@ -72,7 +72,7 @@ class RecentActivityCollectionView: UICollectionView, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: "recentActivityId", for: indexPath) as! RecentActivityCell
+        let cell = dequeueReusableCell(withReuseIdentifier: RecentActivityCell.reuseId, for: indexPath) as! RecentActivityCell
         cell.update(viewModel: RecentActivityCellViewModel())
         return cell
     }

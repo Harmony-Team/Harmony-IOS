@@ -18,7 +18,7 @@ final class ForgotPasswordCoordinator: Coordinator {
     }
 
     func start() {
-        let viewController: ForgotPasswordViewController = .instantiate()
+        let viewController: ForgotPasswordViewController = .instantiate(storyboardName: "LoginAndRegister")
         let forgotPasswordViewModel = ForgotPasswordViewModel()
         forgotPasswordViewModel.coordinator = self
         viewController.viewModel = forgotPasswordViewModel

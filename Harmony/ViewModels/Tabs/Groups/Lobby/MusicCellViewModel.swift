@@ -31,7 +31,6 @@ class MusicCellViewModel {
             completion(cachedImage)
         } else {
             let url = URL(string: track.image_url!)!
-            print(url)
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard let data = data else {
                     completion(nil)

@@ -14,8 +14,8 @@ class NewPlaylistViewModel {
     
     // Playlist Details
     var tracksCount: Int!
-    var partitionsTotalCount: Int!
-    var partitionsReadyCount: Int!
+    var participantsTotalCount: Int!
+    var participantsReadyCount: Int!
     
     init(coreDataManager: GroupsCoreDataManager) {
         self.coreDataManager = coreDataManager

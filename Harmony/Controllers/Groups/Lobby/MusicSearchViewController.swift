@@ -23,9 +23,7 @@ class MusicSearchViewController: UIViewController {
         let cancelSearchBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
         self.navigationItem.setRightBarButton(cancelSearchBarButtonItem, animated: true)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationAction(notification:)), name: NSNotification.Name(rawValue: "SearchMusicTextEntered"), object: nil)
-        
+
         setupTableView()
         setupSearchBar()
     }
@@ -35,7 +33,7 @@ class MusicSearchViewController: UIViewController {
         musicTableView.dataSource = self
         musicTableView.delegate = self
         musicTableView.allowsMultipleSelection = true
-        musicTableView.register(MyMusicTableCell.self, forCellReuseIdentifier: "musicTableCellId")
+        musicTableView.register(MyMusicTableCell.self, forCellReuseIdentifier: MyMusicTableCell.reuseId)
         musicTableView.separatorStyle = .none
         musicTableView.rowHeight = UIScreen.main.bounds.height * 0.1
         musicTableView.backgroundColor = .clear
@@ -56,29 +54,13 @@ class MusicSearchViewController: UIViewController {
     @objc private func cancelButtonTapped() {
         viewModel.goToLobbyViewController()
     }
-
-    /* Filter Spotify Tracks */
-    @objc private func notificationAction(notification: Notification) {
-        if let text = notification.userInfo?["text"] as? String {
-            if !text.isEmpty {
-                viewModel.visibleSpotifyTracks = viewModel.spotifyTracks.filter {
-                    return $0.name?.range(of: text, options: .caseInsensitive) != nil
-                }
-            } else {
-                viewModel.visibleSpotifyTracks = viewModel.spotifyTracks
-            }
-
-            musicTableView.reloadData()
-        }
-    }
-    
 }
 
-/* Search Bar Ext */
+/* Search Bar Ext To Filter Visible Spotify Tracks */
 extension MusicSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let searchDict: [String: String] = ["text": searchText]
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SearchMusicTextEntered"), object: nil, userInfo: searchDict)
+        viewModel.visibleSpotifyTracks = viewModel.spotifyTracks.matching(searchText)
+        musicTableView.reloadData()
     }
 }
 
@@ -89,7 +71,7 @@ extension MusicSearchViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "musicTableCellId", for: indexPath) as! MyMusicTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MyMusicTableCell.reuseId, for: indexPath) as! MyMusicTableCell
         cell.update(track: viewModel.visibleSpotifyTracks[indexPath.row])
         cell.selectionStyle = .none
         return cell

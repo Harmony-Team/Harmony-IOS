@@ -7,8 +7,9 @@
 
 import UIKit
 
-class GroupCell: UITableViewCell {
+class GroupCell: UITableViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "GroupIdCell"
     private var logoView = UIView()
     var logoImageView = UIImageView()
     private var verticalStack = UIStackView()
@@ -35,7 +36,7 @@ class GroupCell: UITableViewCell {
         }
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         logoView.setupShadow(cornerRad: 5, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))
         
         logoImageView.setupShadow(cornerRad: 5, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))

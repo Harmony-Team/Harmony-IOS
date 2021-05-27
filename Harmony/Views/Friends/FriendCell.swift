@@ -7,8 +7,9 @@
 
 import UIKit
 
-class FriendCell: UITableViewCell {
+class FriendCell: UITableViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "FriendIdCell"
     var avatarView = UIView()
     var avatarImageView = UIImageView()
     var verticalStack = UIStackView()
@@ -26,7 +27,7 @@ class FriendCell: UITableViewCell {
         setupLayouts()
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         
         avatarView.setupShadow(cornerRad: 0, shadowRad: 5, shadowOp: 0.3, offset: CGSize(width: 3, height: 5))
         

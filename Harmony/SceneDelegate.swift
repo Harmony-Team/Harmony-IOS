@@ -20,10 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
         
         if isLoggedIn {
-//            let vc: MainTabBarController = .instantiate()
-//            window?.rootViewController = vc
-//            window?.makeKeyAndVisible()
-            
             window = UIWindow(windowScene: scene)
             appCoordinator = AppCoordinator(window: window)
             appCoordinator?.start()
@@ -62,7 +58,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
 
 }
 

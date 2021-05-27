@@ -7,8 +7,9 @@
 
 import UIKit
 
-class GroupUsersCell: UICollectionViewCell {
+class GroupUsersCell: UICollectionViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "GroupUsersIdCell"
     let containerView: UIView = {
         let containerView = UIView()
         return containerView
@@ -33,7 +34,7 @@ class GroupUsersCell: UICollectionViewCell {
         }
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         userName.textAlignment = .center
         userName.font = UIFont.setFont(size: .Small)
         userName.textColor = .white

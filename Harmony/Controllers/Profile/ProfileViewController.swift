@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 enum MenuViewAppearence {
     case Show
@@ -64,16 +65,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             }
         }
         
-//        let settingsImage: UIImage?
-//        if #available(iOS 13.0, *) {
-//            settingsImage = UIImage(systemName: "gear")?.withRenderingMode(.alwaysTemplate)
-//        } else {
-//            settingsImage = UIImage(named: "gear")?.withRenderingMode(.alwaysTemplate)
-//        }
         let menuImage = UIImage(named: "menuIcon")?.withRenderingMode(.alwaysTemplate)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuImage, style: .done, target: self, action: #selector(toggleMenu))
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: settingsImage, style: .done, target: self, action: #selector(goToSettings))
+        
+//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = self.view.bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        self.view.addSubview(blurEffectView)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -199,3 +201,20 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         goToMenu(contentView: contentView, menuShow: &viewModel.menuShow, withAnimation: true, gestureRecogniser: tapGestureRecogniser)
     }
 }
+//
+//struct MyProvider: PreviewProvider {
+//    static var previews: some View {
+//        ContainerView().edgesIgnoringSafeArea(.all)
+//    }
+//
+//    struct ContainerView: UIViewControllerRepresentable {
+//
+//        func makeUIViewController(context: UIViewControllerRepresentableContext<MyProvider.ContainerView>) -> ProfileViewController {
+//            return ProfileViewController()
+//        }
+//
+//        func updateUIViewController(_ uiViewController: MyProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<MyProvider.ContainerView>) {
+//
+//        }
+//    }
+//}

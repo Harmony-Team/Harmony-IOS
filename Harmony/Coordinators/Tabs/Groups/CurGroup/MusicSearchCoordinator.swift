@@ -10,7 +10,7 @@ import UIKit
 final class MusicSearchCoordinator: Coordinator {
     
     private(set)var childCoordinators: [Coordinator] = []
-    var parentCoordinator: GroupCoordinator!
+    var parentCoordinator: LobbyCoordinator!
     var navigationController: UINavigationController
     var spotifyTracks: [SpotifyTrack]
     var group: UserGroup!

@@ -11,7 +11,7 @@ import Foundation
 final class ServicesCoordinator: Coordinator {
     
     private(set)var childCoordinators: [Coordinator] = []
-    var parentCoordinator: RegisterCoordinator!
+    var parentCoordinator: LoginCoordinator!
     var navigationController: UINavigationController!
     var data: Any!
     
@@ -21,7 +21,7 @@ final class ServicesCoordinator: Coordinator {
     }
 
     func start() {
-        let viewController: ServicesViewController = .instantiate()
+        let viewController: ServicesViewController = .instantiate(storyboardName: "LoginAndRegister")
         let servicesViewModel = ServicesViewModel()
         servicesViewModel.coordinator = self
         servicesViewModel.user = data as? User
@@ -30,7 +30,7 @@ final class ServicesCoordinator: Coordinator {
     }
     
     func goToProfile() {
-        let profileCoordinator = MainTabBarCoordinator(navigationController: navigationController)
+        let profileCoordinator = ProfileCoordinator(navigationController: navigationController)
         childCoordinators.append(profileCoordinator)
         profileCoordinator.start()
     }

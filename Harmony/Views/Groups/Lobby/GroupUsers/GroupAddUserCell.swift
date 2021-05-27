@@ -7,8 +7,9 @@
 
 import UIKit
 
-class GroupAddUserCell: UICollectionViewCell {
+class GroupAddUserCell: UICollectionViewCell, SelfConfiguringCell {
     
+    static var reuseId: String = "AddGroupIdCell"
     let containerView: UIView = {
         let containerView = UIView()
         return containerView
@@ -49,6 +50,10 @@ class GroupAddUserCell: UICollectionViewCell {
         
         super.init(frame: frame)
         
+        setupViews()
+    }
+    
+    internal func setupViews() {
         contentView.addSubview(containerView)
         containerView.addSubview(profileImageContainer)
         containerView.addSubview(profilePicImageView)

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,8 @@
 		521A054725C85179007F86A0 /* Colors+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A054625C85179007F86A0 /* Colors+Ext.swift */; };
 		521A055F25C9E892007F86A0 /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */; };
 		521A056225C9E95A007F86A0 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A056125C9E95A007F86A0 /* LoginCoordinator.swift */; };
+		521E5F75265E8BD10040ED72 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521E5F74265E8BD10040ED72 /* SelfConfiguringCell.swift */; };
+		521E5F81265EDA4F0040ED72 /* Constraints+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521E5F80265EDA4F0040ED72 /* Constraints+Ext.swift */; };
 		5233DB0F260BACE400764342 /* ErrorMusicTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DB0E260BACE400764342 /* ErrorMusicTabBarCell.swift */; };
 		5233DB18260CAFF300764342 /* NewPlaylistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DB17260CAFF300764342 /* NewPlaylistCoordinator.swift */; };
 		5233DB1C260CB08A00764342 /* NewPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DB1B260CB08A00764342 /* NewPlaylistViewModel.swift */; };
@@ -66,7 +68,7 @@
 		52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AB325F9090400EA7E19 /* LatestGroupsCell.swift */; };
 		52AC3AB925F90F6900EA7E19 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AB825F90F6900EA7E19 /* LobbyViewController.swift */; };
 		52AC3ABC25F90FC500EA7E19 /* ShareLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3ABB25F90FC500EA7E19 /* ShareLinkViewModel.swift */; };
-		52AC3AC025F9105E00EA7E19 /* GroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3ABF25F9105E00EA7E19 /* GroupCoordinator.swift */; };
+		52AC3AC025F9105E00EA7E19 /* LobbyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3ABF25F9105E00EA7E19 /* LobbyCoordinator.swift */; };
 		52AC3AC325F95AAF00EA7E19 /* MusicTabBarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AC225F95AAE00EA7E19 /* MusicTabBarCollectionView.swift */; };
 		52AC3AC625F95B1B00EA7E19 /* MyMusicTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AC525F95B1B00EA7E19 /* MyMusicTabBarCell.swift */; };
 		52AC3AC925F966A100EA7E19 /* MyMusicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AC825F966A100EA7E19 /* MyMusicTableCell.swift */; };
@@ -75,7 +77,6 @@
 		52AC3AD925FA6E3C00EA7E19 /* GroupUsersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AD825FA6E3C00EA7E19 /* GroupUsersCollectionView.swift */; };
 		52AC3ADE25FA70A200EA7E19 /* GroupUsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3ADD25FA70A200EA7E19 /* GroupUsersCell.swift */; };
 		52AC3AE225FA850100EA7E19 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AE125FA850100EA7E19 /* UIImageView+Ext.swift */; };
-		52AC3AE525FAB51200EA7E19 /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AE425FAB51200EA7E19 /* PulseAnimation.swift */; };
 		52AC3AE925FE33B300EA7E19 /* GroupUsersCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AE825FE33B300EA7E19 /* GroupUsersCellViewModel.swift */; };
 		52AC3AED25FE37C200EA7E19 /* GroupAddUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AEC25FE37C200EA7E19 /* GroupAddUserCell.swift */; };
 		52AC3AF425FE44F300EA7E19 /* WaitingFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3AF325FE44F300EA7E19 /* WaitingFriendsView.swift */; };
@@ -107,6 +108,8 @@
 		52B9B76E26261D0300A50683 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9B76D26261D0300A50683 /* SideMenuViewModel.swift */; };
 		52B9B7722629C77D00A50683 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9B7712629C77D00A50683 /* Group.swift */; };
 		52BCD56E25E3048800A30366 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD56C25E303D800A30366 /* Lato-Regular.ttf */; };
+		52C45D4A265AB415002B7A9D /* LoginAndRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52C45D49265AB415002B7A9D /* LoginAndRegister.storyboard */; };
+		52C45D85265BE8C7002B7A9D /* JSONDecoder+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C45D84265BE8C7002B7A9D /* JSONDecoder+Ext.swift */; };
 		52D17BA2261E263F0081C84D /* RecentActivityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D17BA1261E263F0081C84D /* RecentActivityCollectionView.swift */; };
 		52D17BA6261E26610081C84D /* RecentActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D17BA5261E26610081C84D /* RecentActivityCell.swift */; };
 		52D17BAA261E3B800081C84D /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52D17BA8261E39DE0081C84D /* Lato-Light.ttf */; };
@@ -124,6 +127,9 @@
 		52F69387264AC2EC0017727F /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F69386264AC2EC0017727F /* JoinGroupViewController.swift */; };
 		52F6938C264AC5570017727F /* JoinGroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6938B264AC5570017727F /* JoinGroupCoordinator.swift */; };
 		52F69394264AC5E60017727F /* JoinGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F69393264AC5E60017727F /* JoinGroupViewModel.swift */; };
+		52F6939B264C1EB20017727F /* LobbySettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6939A264C1EB20017727F /* LobbySettingsCoordinator.swift */; };
+		52F6939E264C1F240017727F /* LobbySettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6939D264C1F240017727F /* LobbySettingsViewModel.swift */; };
+		52F693A4264C742A0017727F /* LobbySettingsUserCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F693A3264C742A0017727F /* LobbySettingsUserCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +161,8 @@
 		521A054625C85179007F86A0 /* Colors+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Ext.swift"; sourceTree = "<group>"; };
 		521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		521A056125C9E95A007F86A0 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		521E5F74265E8BD10040ED72 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		521E5F80265EDA4F0040ED72 /* Constraints+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constraints+Ext.swift"; sourceTree = "<group>"; };
 		5233DB0E260BACE400764342 /* ErrorMusicTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMusicTabBarCell.swift; sourceTree = "<group>"; };
 		5233DB17260CAFF300764342 /* NewPlaylistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaylistCoordinator.swift; sourceTree = "<group>"; };
 		5233DB1B260CB08A00764342 /* NewPlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaylistViewModel.swift; sourceTree = "<group>"; };
@@ -189,7 +197,7 @@
 		52AC3AB325F9090400EA7E19 /* LatestGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestGroupsCell.swift; sourceTree = "<group>"; };
 		52AC3AB825F90F6900EA7E19 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		52AC3ABB25F90FC500EA7E19 /* ShareLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkViewModel.swift; sourceTree = "<group>"; };
-		52AC3ABF25F9105E00EA7E19 /* GroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoordinator.swift; sourceTree = "<group>"; };
+		52AC3ABF25F9105E00EA7E19 /* LobbyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyCoordinator.swift; sourceTree = "<group>"; };
 		52AC3AC225F95AAE00EA7E19 /* MusicTabBarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTabBarCollectionView.swift; sourceTree = "<group>"; };
 		52AC3AC525F95B1B00EA7E19 /* MyMusicTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicTabBarCell.swift; sourceTree = "<group>"; };
 		52AC3AC825F966A100EA7E19 /* MyMusicTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicTableCell.swift; sourceTree = "<group>"; };
@@ -198,7 +206,6 @@
 		52AC3AD825FA6E3C00EA7E19 /* GroupUsersCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsersCollectionView.swift; sourceTree = "<group>"; };
 		52AC3ADD25FA70A200EA7E19 /* GroupUsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsersCell.swift; sourceTree = "<group>"; };
 		52AC3AE125FA850100EA7E19 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
-		52AC3AE425FAB51200EA7E19 /* PulseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
 		52AC3AE825FE33B300EA7E19 /* GroupUsersCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsersCellViewModel.swift; sourceTree = "<group>"; };
 		52AC3AEC25FE37C200EA7E19 /* GroupAddUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAddUserCell.swift; sourceTree = "<group>"; };
 		52AC3AF325FE44F300EA7E19 /* WaitingFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingFriendsView.swift; sourceTree = "<group>"; };
@@ -230,6 +237,8 @@
 		52B9B76D26261D0300A50683 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		52B9B7712629C77D00A50683 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		52BCD56C25E303D800A30366 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		52C45D49265AB415002B7A9D /* LoginAndRegister.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndRegister.storyboard; sourceTree = "<group>"; };
+		52C45D84265BE8C7002B7A9D /* JSONDecoder+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Ext.swift"; sourceTree = "<group>"; };
 		52D17BA1261E263F0081C84D /* RecentActivityCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCollectionView.swift; sourceTree = "<group>"; };
 		52D17BA5261E26610081C84D /* RecentActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityCell.swift; sourceTree = "<group>"; };
 		52D17BA8261E39DE0081C84D /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
@@ -247,6 +256,9 @@
 		52F69386264AC2EC0017727F /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
 		52F6938B264AC5570017727F /* JoinGroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupCoordinator.swift; sourceTree = "<group>"; };
 		52F69393264AC5E60017727F /* JoinGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewModel.swift; sourceTree = "<group>"; };
+		52F6939A264C1EB20017727F /* LobbySettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbySettingsCoordinator.swift; sourceTree = "<group>"; };
+		52F6939D264C1F240017727F /* LobbySettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbySettingsViewModel.swift; sourceTree = "<group>"; };
+		52F693A3264C742A0017727F /* LobbySettingsUserCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbySettingsUserCollectionView.swift; sourceTree = "<group>"; };
 		9BA964EE92A25094FD1F159E /* Pods_Harmony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Harmony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -294,6 +306,7 @@
 				52AC3B0126039DA400EA7E19 /* GroupsList.xcdatamodeld */,
 				521A04EB25C73570007F86A0 /* AppDelegate.swift */,
 				521A04ED25C73570007F86A0 /* SceneDelegate.swift */,
+				521E5F73265E8BC50040ED72 /* Protocols */,
 				5236FFD725D0346100845300 /* Models */,
 				52B1C24D25CC38800027C3E6 /* Services */,
 				521A050A25C73668007F86A0 /* Extensions */,
@@ -325,6 +338,7 @@
 				521A053B25C811FE007F86A0 /* Login and Registration */,
 				521A052725C750D6007F86A0 /* MainTabBarController.swift */,
 				52B5C58F25D6A07C00961A4E /* Profile */,
+				52C45D4C265AB9DD002B7A9D /* Settings */,
 				5236FFAF25CFCBB800845300 /* Friends */,
 				5236FF8A25CDAF6000845300 /* Groups */,
 			);
@@ -334,15 +348,9 @@
 		521A050A25C73668007F86A0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				521A050B25C73673007F86A0 /* UIViewController+Ext.swift */,
-				521A054625C85179007F86A0 /* Colors+Ext.swift */,
-				5236FF9325CDCA3F00845300 /* UIView+Ext.swift */,
-				52AC3AE125FA850100EA7E19 /* UIImageView+Ext.swift */,
-				5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */,
-				52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */,
-				52B5E85B25EE732A001BD785 /* UIDevice+Ext.swift */,
-				52B5E85E25EE73A0001BD785 /* UIFont+Ext.swift */,
-				52AC3AE425FAB51200EA7E19 /* PulseAnimation.swift */,
+				52C45D7B265BE880002B7A9D /* UI */,
+				52C45D81265BE8A4002B7A9D /* Network */,
+				52C45D7E265BE897002B7A9D /* Colors */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,6 +382,7 @@
 				52B9B7612624E96700A50683 /* Menu */,
 				521A056525C9F650007F86A0 /* Login and Registration */,
 				52B5C5A025D6C18D00961A4E /* ProfileSettings */,
+				521E5F78265E8D660040ED72 /* Settings */,
 				5236FF9725CDE00A00845300 /* Friends */,
 				5236FF8F25CDC92C00845300 /* Groups */,
 				5236FF9C25CDE59800845300 /* Music */,
@@ -387,6 +396,31 @@
 				521A055E25C9E892007F86A0 /* LoginButtonStyle.swift */,
 			);
 			path = "Login and Registration";
+			sourceTree = "<group>";
+		};
+		521E5F73265E8BC50040ED72 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				521E5F74265E8BD10040ED72 /* SelfConfiguringCell.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		521E5F78265E8D660040ED72 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				52B5C5A125D6C19F00961A4E /* SettingsCell.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		521E5F7A265E90E10040ED72 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				52B5C59125D6A0BA00961A4E /* SettingsCoordinator.swift */,
+				52F42E6D260E788800FCAE54 /* EditProfileCoordinator.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		5233DB1A260CB07800764342 /* NewPlaylist */ = {
@@ -425,6 +459,7 @@
 			children = (
 				5236FF7B25CDA73400845300 /* MainTabBarCoordinator.swift */,
 				52B5C58D25D69FF500961A4E /* Profile */,
+				521E5F7A265E90E10040ED72 /* Settings */,
 				5236FFB525CFCD2600845300 /* Friends */,
 				5236FF8525CDAF2800845300 /* Groups */,
 			);
@@ -549,6 +584,7 @@
 				52AC3AD125FA01C800EA7E19 /* MyMusic */,
 				52AC3AD625FA01F300EA7E19 /* Lobby'sPlaylists */,
 				52AC3AF225FE44D600EA7E19 /* WaitFriendsView */,
+				52F693A2264C74010017727F /* Settings */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -588,6 +624,7 @@
 			children = (
 				52AC3AFD26034E4700EA7E19 /* GroupViewModel.swift */,
 				52AC3AE825FE33B300EA7E19 /* GroupUsersCellViewModel.swift */,
+				52F6939D264C1F240017727F /* LobbySettingsViewModel.swift */,
 				52F42E7E260FA4D600FCAE54 /* MusicCellViewModel.swift */,
 				52F42E9A2616442000FCAE54 /* MusicSearchViewModel.swift */,
 				5214407E26448DF000DB2A6B /* FriendsSearchViewModel.swift */,
@@ -625,6 +662,7 @@
 			isa = PBXGroup;
 			children = (
 				528AF7C8264944E8004E5753 /* Main.storyboard */,
+				52C45D49265AB415002B7A9D /* LoginAndRegister.storyboard */,
 				52B9B75E2624E91A00A50683 /* MenuView.xib */,
 				521A04F625C73573007F86A0 /* LaunchScreen.storyboard */,
 			);
@@ -635,6 +673,7 @@
 			isa = PBXGroup;
 			children = (
 				52B5C59425D6A0DA00961A4E /* Profile */,
+				52C45D4D265ABA00002B7A9D /* Settings */,
 				5236FFBF25CFCD6D00845300 /* Friends */,
 				5236FFBC25CFCD6600845300 /* Groups */,
 			);
@@ -656,8 +695,6 @@
 			isa = PBXGroup;
 			children = (
 				521A051B25C741AC007F86A0 /* ProfileCoordinator.swift */,
-				52B5C59125D6A0BA00961A4E /* SettingsCoordinator.swift */,
-				52F42E6D260E788800FCAE54 /* EditProfileCoordinator.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -666,8 +703,6 @@
 			isa = PBXGroup;
 			children = (
 				521A050F25C73FDB007F86A0 /* ProfileViewController.swift */,
-				52B5C58A25D69FF100961A4E /* SettingsViewController.swift */,
-				52B5C5A425D6CC7800961A4E /* EditProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -677,8 +712,6 @@
 			children = (
 				521A052B25C757C2007F86A0 /* ProfileViewModel.swift */,
 				52D17BAC2620C2F50081C84D /* RecentActivityCellViewModel.swift */,
-				52B5C59625D6A0E400961A4E /* SettingsViewModel.swift */,
-				52D17BAF2621FCD70081C84D /* EditProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -688,7 +721,6 @@
 			children = (
 				52D17B9E261E25C50081C84D /* LatesGroups */,
 				52D17BA0261E26160081C84D /* RecentActivity */,
-				52B5C5A125D6C19F00961A4E /* SettingsCell.swift */,
 			);
 			path = ProfileSettings;
 			sourceTree = "<group>";
@@ -718,6 +750,55 @@
 				52B9B7692624F2A100A50683 /* Lato-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		52C45D4C265AB9DD002B7A9D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				52B5C58A25D69FF100961A4E /* SettingsViewController.swift */,
+				52B5C5A425D6CC7800961A4E /* EditProfileViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		52C45D4D265ABA00002B7A9D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				52B5C59625D6A0E400961A4E /* SettingsViewModel.swift */,
+				52D17BAF2621FCD70081C84D /* EditProfileViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		52C45D7B265BE880002B7A9D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				521A050B25C73673007F86A0 /* UIViewController+Ext.swift */,
+				5236FF9325CDCA3F00845300 /* UIView+Ext.swift */,
+				52AC3AE125FA850100EA7E19 /* UIImageView+Ext.swift */,
+				5236FFAC25CEF6F900845300 /* UITextField+Ext.swift */,
+				52ADF4C025E40549000B1AA1 /* UILabel+Ext.swift */,
+				52B5E85B25EE732A001BD785 /* UIDevice+Ext.swift */,
+				52B5E85E25EE73A0001BD785 /* UIFont+Ext.swift */,
+				521E5F80265EDA4F0040ED72 /* Constraints+Ext.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		52C45D7E265BE897002B7A9D /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				521A054625C85179007F86A0 /* Colors+Ext.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		52C45D81265BE8A4002B7A9D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				52C45D84265BE8C7002B7A9D /* JSONDecoder+Ext.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		52D17B9E261E25C50081C84D /* LatesGroups */ = {
@@ -759,7 +840,8 @@
 		52F42E8B26125CB200FCAE54 /* CurGroup */ = {
 			isa = PBXGroup;
 			children = (
-				52AC3ABF25F9105E00EA7E19 /* GroupCoordinator.swift */,
+				52AC3ABF25F9105E00EA7E19 /* LobbyCoordinator.swift */,
+				52F6939A264C1EB20017727F /* LobbySettingsCoordinator.swift */,
 				52F42E97261643DD00FCAE54 /* MusicSearchCoordinator.swift */,
 				5214408126448E4D00DB2A6B /* FriendsSearchCoordinator.swift */,
 			);
@@ -820,6 +902,14 @@
 			path = JoinGroup;
 			sourceTree = "<group>";
 		};
+		52F693A2264C74010017727F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				52F693A3264C742A0017727F /* LobbySettingsUserCollectionView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		D8BA771E9B3E25B33F5047CF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -840,7 +930,6 @@
 				521A04E425C73570007F86A0 /* Sources */,
 				521A04E525C73570007F86A0 /* Frameworks */,
 				521A04E625C73570007F86A0 /* Resources */,
-				86943710B46F56DE66911698 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -891,6 +980,7 @@
 				52B9B76A2624F2A700A50683 /* Lato-Bold.ttf in Resources */,
 				52D17BAA261E3B800081C84D /* Lato-Light.ttf in Resources */,
 				52B9B75F2624E91A00A50683 /* MenuView.xib in Resources */,
+				52C45D4A265AB415002B7A9D /* LoginAndRegister.storyboard in Resources */,
 				521A04F825C73573007F86A0 /* LaunchScreen.storyboard in Resources */,
 				521A04F525C73573007F86A0 /* Assets.xcassets in Resources */,
 				52BCD56E25E3048800A30366 /* Lato-Regular.ttf in Resources */,
@@ -921,23 +1011,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		86943710B46F56DE66911698 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Harmony/Pods-Harmony-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Harmony/Pods-Harmony-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Harmony/Pods-Harmony-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -971,6 +1044,7 @@
 				521A052825C750D6007F86A0 /* MainTabBarController.swift in Sources */,
 				52AC3AE925FE33B300EA7E19 /* GroupUsersCellViewModel.swift in Sources */,
 				52F42E6E260E788800FCAE54 /* EditProfileCoordinator.swift in Sources */,
+				521E5F81265EDA4F0040ED72 /* Constraints+Ext.swift in Sources */,
 				528AF7CF264948DF004E5753 /* LobbySettingsViewController.swift in Sources */,
 				52AC3AB425F9090400EA7E19 /* LatestGroupsCell.swift in Sources */,
 				5236FF9425CDCA3F00845300 /* UIView+Ext.swift in Sources */,
@@ -991,17 +1065,18 @@
 				521A055F25C9E892007F86A0 /* LoginButtonStyle.swift in Sources */,
 				52E70AA226075DEA0049A4C7 /* TrackImageView.swift in Sources */,
 				5236FF8825CDAF5800845300 /* NewGroupViewController.swift in Sources */,
+				52C45D85265BE8C7002B7A9D /* JSONDecoder+Ext.swift in Sources */,
 				52AC3AFE26034E4700EA7E19 /* GroupViewModel.swift in Sources */,
 				52AC3AD925FA6E3C00EA7E19 /* GroupUsersCollectionView.swift in Sources */,
 				52AC3B0626039DF700EA7E19 /* GroupsCoreDataManager.swift in Sources */,
 				5233DB1C260CB08A00764342 /* NewPlaylistViewModel.swift in Sources */,
+				52F6939B264C1EB20017727F /* LobbySettingsCoordinator.swift in Sources */,
 				52B0F99825E41A4500010F9D /* ForgotPasswordCoordinator.swift in Sources */,
 				528AF7C326494404004E5753 /* FriendProfileViewController.swift in Sources */,
 				5236FFBA25CFCD3600845300 /* NewFriendCoordinator.swift in Sources */,
 				52F6938C264AC5570017727F /* JoinGroupCoordinator.swift in Sources */,
 				52AC3ACC25F9FF2400EA7E19 /* LobbyPlaylistsTableCell.swift in Sources */,
 				52B5E88125F7FFDD001BD785 /* NewGroupCell.swift in Sources */,
-				52AC3AE525FAB51200EA7E19 /* PulseAnimation.swift in Sources */,
 				521A050225C73588007F86A0 /* AppCoordinator.swift in Sources */,
 				5234BAB225CC22C300561E86 /* ServicesCoordinator.swift in Sources */,
 				52A758A525D93F770051EB61 /* Playlist.swift in Sources */,
@@ -1009,6 +1084,7 @@
 				5236FFB325CFCBC600845300 /* NewFriendViewController.swift in Sources */,
 				52D1F4B425CC766F002AA1C9 /* SpotifyService.swift in Sources */,
 				5214408226448E4D00DB2A6B /* FriendsSearchCoordinator.swift in Sources */,
+				52F693A4264C742A0017727F /* LobbySettingsUserCollectionView.swift in Sources */,
 				52B9B7672624ECE000A50683 /* MenuSectionsCell.swift in Sources */,
 				5236FF9925CDE01700845300 /* FriendCell.swift in Sources */,
 				52F42E98261643DE00FCAE54 /* MusicSearchCoordinator.swift in Sources */,
@@ -1042,18 +1118,20 @@
 				5236FFD525D0342B00845300 /* APIManager.swift in Sources */,
 				52AC3AB925F90F6900EA7E19 /* LobbyViewController.swift in Sources */,
 				52B5C5A525D6CC7800961A4E /* EditProfileViewController.swift in Sources */,
+				52F6939E264C1F240017727F /* LobbySettingsViewModel.swift in Sources */,
 				52AC3ADE25FA70A200EA7E19 /* GroupUsersCell.swift in Sources */,
 				5234BAAD25CC229600561E86 /* ServicesViewController.swift in Sources */,
 				52AC3AC925F966A100EA7E19 /* MyMusicTableCell.swift in Sources */,
 				52AC3ABC25F90FC500EA7E19 /* ShareLinkViewModel.swift in Sources */,
 				5234BAB525CC22E900561E86 /* RegisterViewModel.swift in Sources */,
-				52AC3AC025F9105E00EA7E19 /* GroupCoordinator.swift in Sources */,
+				52AC3AC025F9105E00EA7E19 /* LobbyCoordinator.swift in Sources */,
 				5233DB18260CAFF300764342 /* NewPlaylistCoordinator.swift in Sources */,
 				521A052C25C757C2007F86A0 /* ProfileViewModel.swift in Sources */,
 				5236FF8325CDAF1500845300 /* NewGroupCoordinator.swift in Sources */,
 				52B11CCC25DC1FA600CFB829 /* Track.swift in Sources */,
 				521A04EE25C73570007F86A0 /* SceneDelegate.swift in Sources */,
 				52B5E85F25EE73A0001BD785 /* UIFont+Ext.swift in Sources */,
+				521E5F75265E8BD10040ED72 /* SelfConfiguringCell.swift in Sources */,
 				52B5C5A225D6C19F00961A4E /* SettingsCell.swift in Sources */,
 				52D17BB02621FCD70081C84D /* EditProfileViewModel.swift in Sources */,
 			);

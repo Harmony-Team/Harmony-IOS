@@ -15,7 +15,7 @@ enum SpotifyError: Error {
 
 class GroupViewModel {
     
-    var coordinator: GroupCoordinator!
+    var coordinator: LobbyCoordinator!
     
     enum Cell {
         case track(viewModel: MusicCellViewModel)
@@ -26,6 +26,7 @@ class GroupViewModel {
     var onUpdate = {}
     
     /* Group Info */
+    var user: User!
     var group: UserGroup!
     
     /* Tracks Info (Spotify) */
@@ -37,8 +38,8 @@ class GroupViewModel {
     var selectedSpotifyTracks = [SpotifyTrack]() // Selected Tracks
     private var spotifyPlaylistList: [Playlist]?
     private var tracksCount = 0 // Total Lobby Tracks
-    private var partitionsTotalCount = 0 // Total Lobby Users
-    private var partitionsReadyCount = 0 // Number of ready users
+    private var participantsTotalCount = 0 // Total Lobby Users
+    private var participantsReadyCount = 0 // Number of ready users
     
     /* Playlists Info */
     
@@ -71,7 +72,13 @@ class GroupViewModel {
     
     /* Create New Playlist */
     func createPlaylist() {
-        coordinator.createNewPlaylist(tracks: tracksCount, totalPartitions: partitionsTotalCount, readyPartitions: partitionsReadyCount)
+        // Getting Songs Count In Pull
+        ApiManager.getSongs(groupId: group.id, userLogin: user.login) { (tracks, count) in
+            self.tracksCount = count
+            DispatchQueue.main.async {
+                self.coordinator.createNewPlaylist(tracks: self.tracksCount, totalPartitions: self.participantsTotalCount, readyPartitions: self.participantsReadyCount)
+            }
+        }
     }
     
     /* Open Search Music View Controller */
@@ -90,7 +97,7 @@ class GroupViewModel {
     
     /* Check if user is logged in Spotify */
     func checkSpotify(refresh: Bool, completionHandler: @escaping (Result<Int?, SpotifyError>) -> Void) {
-        guard let user: User = UserProfileCache.get(key: "user") else {return}
+        user = UserProfileCache<User>.get(key: "user")
         if spotifyService.isSignedIn {
             print("Logged in spotify")
             print(SpotifyService.shared.shouldRefreshToken)
@@ -102,6 +109,8 @@ class GroupViewModel {
             
             if count.count == 0 || SpotifyService.shared.shouldRefreshToken || refresh {
                 TracksCoreDataManager.shared.deleteTracks()
+                
+                // Getting User's Playlists
                 spotifyService.getPlaylists(for: spotifyUser!) { (playlistArr) in
                     self.spotifyPlaylistList = playlistArr
                     semaphore.signal()
@@ -137,8 +146,8 @@ class GroupViewModel {
             // Getting And Checking Songs In Pull
             ApiManager.getSongs(groupId: group.id, userLogin: user.login) { (tracks, count) in
                 self.tracksCount = count
-                self.partitionsTotalCount = self.group.users.count
-                self.partitionsReadyCount = 1
+                self.participantsTotalCount = self.group.users.count
+                self.participantsReadyCount = 1
                 for (_, song) in tracks.enumerated() {
                     self.selectedSpotifyTracks.append(contentsOf: self.visibleSpotifyTracks.filter(){$0.spotifyId == song.spotifyTrackId})
                 }
@@ -173,4 +182,8 @@ class GroupViewModel {
             completionHandler(tracks)
     }
     
+    /* Go To Lobby Settings */
+    func goToLobbySettings() {
+        coordinator.goToLobbySettings()
+    }
 }

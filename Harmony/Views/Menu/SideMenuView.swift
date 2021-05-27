@@ -65,7 +65,7 @@ class SideMenuView: UIView {
         sectionsTableView.backgroundColor = .clear
         sectionsTableView.delegate = self
         sectionsTableView.dataSource = self
-        sectionsTableView.register(MenuSectionsCell.self, forCellReuseIdentifier: "menuSectionsCellId")
+        sectionsTableView.register(MenuSectionsCell.self, forCellReuseIdentifier: MenuSectionsCell.reuseId)
         
         // Centering Table View
         let headerHeight: CGFloat = (frame.size.height - CGFloat(Int(sectionsTableView.rowHeight) * sectionsTableView.numberOfRows(inSection: 0))) / 2
@@ -90,7 +90,7 @@ extension SideMenuView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "menuSectionsCellId", for: indexPath) as! MenuSectionsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MenuSectionsCell.reuseId, for: indexPath) as! MenuSectionsCell
         cell.sectionNameLabel.text = viewModel.sectionNames[indexPath.row]
         if indexPath.row == selectedSection { cell.isSelected = true }
         return cell

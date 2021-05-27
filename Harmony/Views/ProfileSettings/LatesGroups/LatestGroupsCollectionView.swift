@@ -33,7 +33,7 @@ class LatestGroupsCollectionView: UICollectionView, UICollectionViewDelegate, UI
         backgroundColor = .clear
         delegate = self
         dataSource = self
-        register(LatestGroupsCell.self, forCellWithReuseIdentifier: "latestGroupId")
+        register(LatestGroupsCell.self, forCellWithReuseIdentifier: LatestGroupsCell.reuseId)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,7 +41,7 @@ class LatestGroupsCollectionView: UICollectionView, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: "latestGroupId", for: indexPath) as! LatestGroupsCell
+        let cell = dequeueReusableCell(withReuseIdentifier: LatestGroupsCell.reuseId, for: indexPath) as! LatestGroupsCell
         return cell
     }
     
